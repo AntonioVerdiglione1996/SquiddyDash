@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e256338a461a748a25667a6e86e5b4, type: 3}
+  m_Name: ParticleEffectInstantierLand
+  m_EditorClassIdentifier: 
+  ParticleToInstantiate: {fileID: 1095286050244924, guid: aee24d275b4f8844892967a5d34ba308,
+    type: 2}

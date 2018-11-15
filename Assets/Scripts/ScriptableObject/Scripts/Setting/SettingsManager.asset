@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9205e03655998a840be199855e1be376, type: 3}
+  m_Name: SettingsManager
+  m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: 57fcfc000360c6e49bb1b9e00ae6ede2, type: 2}

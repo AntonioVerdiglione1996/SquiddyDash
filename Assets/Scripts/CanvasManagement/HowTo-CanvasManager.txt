@@ -1,0 +1,16 @@
+﻿How Canvas Manager Work!
+1)Create an empty gameobject CanvasManager and add CanvasContainer.cs Behaviur on it.
+2)Set the keys and the values of the fill list(CanvasCustom Struct contains 2 fields (int)key and (canvas)value)
+3)The script automatically fill the Dictionary inside
+4)When u need to switch canvas, in the OnClick() event of a button than will manage it
+drag The CanvasManager Gameobject you had instantiated before with the canvasContainer.cs , 
+than select the ActivateCurrentCanvas(param:int) and give the key of the canvas you want the button have to switch.
+
+NB: With our Audio Management you can easily add a sound to your button:
+1)Open another event in the OnClick() of the button
+2)Drag your SO simpleAudioEvent setted before
+3)Call the function Play (param:Audiosource)
+4)Here u can pass even an empty audiosource like unity have setted for you... i manage everythings inside the script
+so u can call the sound easily
+
+

@@ -1,0 +1,25 @@
+Questo pacchetto ti fornisce 3 script:
+ObjectPooler.cs , Poolable.cs , Resetter.cs  (In object pooler abbiamo un interfaccia IPoolable)
+
+ObjectPoler è una classe statica,pensata per essere utilizzata senza essere instanziata nella scena 
+poichè statica.
+Ovunque tu abbia bisogno di elementi che si ripeteranno nella scena
+es: zombies da uno spawner, bullets da un arma è la prassi utilizzare un Pooler.
+
+Questo pooler gestisce da se l'instanza dei vari oggetti basta richiamare il Get<T>  all'occorrenza
+e lui automaticamente ti ritornerà l'oggetto che desideri.
+Fasi:
+1)Creati un prefab di ciò che devi instanziare nella scena.
+2)Il prefab necessita del componente 'Poolable' perchè l'ObjectPooler ha bisogno, NECESSARIAMENTE,
+ di ritornare un oggetto che erediti da Poolable.
+3)Nel codice chiama un overload del metodo Get<T> all'occorrenza invece di chiamare Gameobject.Instantiate().
+
+es: ObjectPooler.Get<Poolabe>( [vari parametri per le varie esigenze])
+Lui penserà automaticamente a ritornarti un pool, se gia esiste, Oppure a creartelo nuovo.
+Quindi non avrai bisogno di instanze devi solo chiamare ObjectPooler.Get<T>()   Facile no?!
+
+Attenzione: Sono presenti Action e Func quindi devi sapere di cosa si tratta.
+
+Il pacchetto ti fornisce anche la classe Resetter è un buon modo per chiamare il ObjectPooler.Recycle() automaticamente
+scegliendo solo la durata della vita del prefab.
+1)Inseriscila nel Prefab e lei penserà a tutto!

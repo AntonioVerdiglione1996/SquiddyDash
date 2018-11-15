@@ -1,0 +1,21 @@
+﻿How To Audio System With ScriptableObject Delegate Pattern.
+Explaination:
+With delegate pattern you can made an easy template SO and than create others SO that inherit from it.
+The parent had only some abstract Method u whant in every son
+(example: class Weapon have the Method Fireand Bazooka or machineGun too, so we made another class called 
+MachineGun that inherit from weapon, override the method and implementig peculiar stuffs only machineGun have...
+Like FireRate or for bazooka BlastRadius and so on...).
+
+AudioManager: 
+1) Class AudioEvent that inherit from  ScriptableObject(without the attribute createAssetsMenu on it
+because we want the sons to be created, this is only the standard template others need to follow)
+2) class SimpleAudioEvent that inherit from AudioEvent(with the attribute createAssetsMenu on it so we can
+easily create this object whenever we want from create quick menu)
+
+SimpleAudioEvent:
+Here we have an audioclips array that un can fill with n clips, my script will pick u randomly a clip from
+this array and play it in the audiosource we pass in the Play(AudioSource) method;
+
+SimpleAudioEventEditor:
+if u want to test your how the scripts works, under your simpleAudioEvent, in the Inspector you will have a button..
+click on it when you had already setted your clips and see what happens.
