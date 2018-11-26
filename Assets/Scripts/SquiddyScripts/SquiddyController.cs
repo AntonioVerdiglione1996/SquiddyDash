@@ -7,8 +7,10 @@ public class SquiddyController : MonoBehaviour
 {
     public GameEvent GameoverEvent;
     public GameEvent GameoverBestScoreSerialization;
-    public GameEvent InstantiateParticleSplash;
-    public GameEvent InstantiateParticleLand;
+    //public GameEvent InstantiateParticleSplash;
+    //public GameEvent InstantiateParticleLand;
+    public ParticleSystem Splash;
+    public ParticleSystem LandParticle;
     public GameEvent CameraShakeEvent;
     public GameEvent LerpPrerformer;
 
@@ -30,6 +32,22 @@ public class SquiddyController : MonoBehaviour
     private Camera MainCamera;
     private void Awake()
     {
+        //----------------TODO-------------GET the splash form each model--------------------
+        //getto lo splash peculiare per ogni character  // splash layer = 15
+        ParticleSystem[] psA = GetComponentsInChildren<ParticleSystem>();
+        if (psA != null)
+        {
+            for (int i = 0; i < psA.Length; i++)
+            {
+                if (psA[i] != LandParticle)
+                {
+                    Splash = psA[i];
+                    break;
+                }
+            }
+        }
+        Splash = GetComponentInChildren<ParticleSystem>();
+        //--------------------------------------------------------------------------------
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };
         Rb = GetComponent<Rigidbody>();
@@ -60,7 +78,7 @@ public class SquiddyController : MonoBehaviour
                 }
                 else if (isJumping)
                 {
-                    InstantiateParticleLand.Raise();
+                    LandParticle.Play();
                     Land();
                 }
             }
@@ -79,7 +97,7 @@ public class SquiddyController : MonoBehaviour
                     }
                     else if (isJumping)
                     {
-                        InstantiateParticleLand.Raise();
+                        LandParticle.Play();
                         Land();
                     }
                 }
@@ -106,8 +124,8 @@ public class SquiddyController : MonoBehaviour
                 Rb.AddForce(DirTopRightLow * (SquiddyStats.BouncyPower + 2f), ForceMode.VelocityChange);
             }
             #region EventsRaised
-            if (InstantiateParticleSplash != null)
-                InstantiateParticleSplash.Raise();
+            if (Splash != null)
+                Splash.Play();
             if (CameraShakeEvent != null)
                 CameraShakeEvent.Raise();
             #endregion
@@ -129,8 +147,8 @@ public class SquiddyController : MonoBehaviour
                 Rb.AddForce(DirTopLeftLow * (SquiddyStats.BouncyPower + 3.5f), ForceMode.VelocityChange);
             }
             #region EventsRaised
-            if (InstantiateParticleSplash != null)
-                InstantiateParticleSplash.Raise();
+            if (Splash != null)
+                Splash.Play();
             if (CameraShakeEvent != null)
                 CameraShakeEvent.Raise();
             #endregion

@@ -11,4 +11,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4166c59f7b2ec024a9fd7f8551c95153, type: 3}
   m_Name: AdvertisementManager
   m_EditorClassIdentifier: 
-  EnergySystem: {fileID: 11400000, guid: 383c0e2b464a4b34ea60105c7388caa9, type: 2}
