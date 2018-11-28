@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19dbd2a50ddf0b48a61c1aa723bacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewMultiplier: {x: 0.8, y: 0.8, z: 0}
+  NewMultiplier: {x: 1, y: 1, z: 0}

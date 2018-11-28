@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
-public class Character_Orbit_Mouse : MonoBehaviour
+[AddComponentMenu("Camera-Control/Orbit with zoom")]
+public class Character_Orbit : MonoBehaviour
 {
+    public Transform ylimit;
+
     public Transform target;
     public float distance = 5.0f;
+#if UNITY_STANDALONE
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
+#elif (UNITY_IOS || UNITY_ANDROID)
+    public float xSpeed = 2.0f;
+    public float ySpeed = 2.0f;
+#else
+#endif
     public float scrollrate = 3.0f;
     public float yMinLimit = -20f;
     public float yMaxLimit = 80f;
@@ -38,11 +46,21 @@ public class Character_Orbit_Mouse : MonoBehaviour
     void LateUpdate()
     {
         Vector3 tgt = GetTarget();
-        if (Input.GetMouseButton(0))
+#if UNITY_STANDALONE
+        if (Input.GetMouseButton(0) && Input.mousePosition.y > ylimit.position.y)
         {
             x += Input.GetAxis("Mouse X") * xSpeed/* * distance */ * 0.04f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
         }
+#elif (UNITY_IOS || UNITY_ANDROID)
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.y > GuiLimitYPos.position.y)
+        {
+            x += Input.GetTouch(0).deltaPosition.x * xSpeed/* * distance */ * 0.04f;
+            y -= Input.GetTouch(0).deltaPosition.y * ySpeed * 0.02f;
+        }
+#else
+        throw new Exception("Input not handled for current platform");
+#endif
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 
 
