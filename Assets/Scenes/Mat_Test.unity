@@ -1064,11 +1064,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114929375991889300, guid: 2215432d06378cd449b4fc080a6a1838,
-        type: 2}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 1911044050}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
@@ -1704,8 +1699,7 @@ MonoBehaviour:
   UltimateSkill: {fileID: 11400000, guid: 798de79b63c4a2b4685a4dc248015217, type: 2}
   ScoreRequirementMultIncrementPerInvokation: 1.500001
   SquiddyStats: {fileID: 11400000, guid: 0dbb727b1c6be0b49bb0ad91450a9401, type: 2}
-  StartPlatform: {fileID: 114863693658597924, guid: b57850d917e1abe448c44f6af8571757,
-    type: 2}
+  StartPlatform: {fileID: 1824658337}
 --- !u!54 &1647906376
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1826,44 +1820,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114863693658597924, guid: b57850d917e1abe448c44f6af8571757, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b57850d917e1abe448c44f6af8571757, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1824658331 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1771932111591218, guid: b57850d917e1abe448c44f6af8571757,
+--- !u!114 &1824658337 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114486105019688098, guid: b57850d917e1abe448c44f6af8571757,
     type: 2}
   m_PrefabInternal: {fileID: 1815186359}
---- !u!114 &1824658332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1824658331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3824156294d6a44eaa882a01546697f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1824658337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1824658331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DirRight: 0
-  DirLeft: 0
-  IsLanded: 0
-  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-  PerformLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
-  ScoreUpdater: {fileID: 11400000, guid: 58afac08eaec9f749a83428a929b6d30, type: 2}
-  IsAlreadyUpdatedScore: 1
 --- !u!1001 &1849960877
 Prefab:
   m_ObjectHideFlags: 0

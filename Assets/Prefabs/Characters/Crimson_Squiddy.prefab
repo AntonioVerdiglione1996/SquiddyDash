@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4481612975545922}
   - component: {fileID: 198769642213449992}
   - component: {fileID: 199262781136385764}
+  - component: {fileID: 114461189912992444}
   m_Layer: 15
   m_Name: SplashRedGravity
   m_TagString: Untagged
@@ -497,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367804727374798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4266486217482718}
@@ -1111,6 +1112,17 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114461189912992444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115843556704366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302a00892b07651478dd2c451d43a75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114609854524778354
 MonoBehaviour:
   m_ObjectHideFlags: 1

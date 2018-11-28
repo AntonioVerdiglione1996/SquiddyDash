@@ -7,7 +7,6 @@ public class CharacterSpawner : MonoBehaviour
     public StoringCurrentModelToSpawn scm;
     public void Awake()
     {
-        GameObject go = Instantiate(scm.DownloadCurrentCharacter());
-        go.transform.SetParent(transform);
+        GameObject go = Instantiate(scm.DownloadCurrentCharacter(), transform);
     }
 }

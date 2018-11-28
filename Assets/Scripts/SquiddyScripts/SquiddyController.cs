@@ -27,30 +27,31 @@ public class SquiddyController : MonoBehaviour
 
     private Platform currentPlatform;
     private Camera MainCamera;
+    private void Start()
+    {
+        Splash splash = GetComponentInChildren<Splash>();
+        if (splash)
+        {
+            Splash = splash.GetComponent<ParticleSystem>();
+        }
+#if UNITY_EDITOR
+        if (!Splash)
+        {
+            Debug.LogWarning("Splash particle system not found!!");
+        }
+#endif
+    }
     private void Awake()
     {
-        //----------------TODO-------------GET the splash form each model--------------------
-        //getto lo splash peculiare per ogni character  // splash layer = 15
-        ParticleSystem[] psA = GetComponentsInChildren<ParticleSystem>();
-        if (psA != null)
-        {
-            for (int i = 0; i < psA.Length; i++)
-            {
-                if (psA[i] != LandParticle)
-                {
-                    Splash = psA[i];
-                    break;
-                }
-            }
-        }
-        //Splash = GetComponentInChildren<ParticleSystem>();
-        //--------------------------------------------------------------------------------
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };
         Rb = GetComponent<Rigidbody>();
 
         //t = maxTime;
-        MainCamera = Camera.main;
+        if (MainCamera == null)
+        {
+            MainCamera = Camera.main;
+        }
         //check for the first frame initialization of the current platform
         //TODO: Initialization in another class
         if (CurrentPlatformForSquiddy.CurrentPlatform == null)
@@ -107,9 +108,9 @@ public class SquiddyController : MonoBehaviour
 
         if (UltimateSkill)
         {
-            if(UltimateSkill.InvokeSkill(this, false))
+            if (UltimateSkill.InvokeSkill(this, false))
             {
-                UltimateSkill.ScoreRequirement = (int)(UltimateSkill.ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
+                UltimateSkill.ScoreRequirement += (int)(UltimateSkill.ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
             }
         }
     }

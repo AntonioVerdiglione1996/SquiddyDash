@@ -49,6 +49,10 @@ public class Walls : MonoBehaviour
                 BotWall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y - MainCamera.orthographicSize - BotWall.size.y * 0.5f, 0f), Quaternion.identity);
             }
         }
+        if(MainCamera == null)
+        {
+            MainCamera = Camera.main;
+        }
     }
 #endif
 

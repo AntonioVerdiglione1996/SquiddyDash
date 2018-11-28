@@ -18,6 +18,9 @@ public class UltimateSkill : Skill
     private int defaultScoreRequirement = 10;
 
     private int lastScoreInvoke = 0;
+
+    private bool isSkillOver = true;
+
     protected virtual void SkillLogic(SquiddyController controller)
     {
         controller.Rb.AddForce(ForceApplied, Mode);
@@ -28,6 +31,7 @@ public class UltimateSkill : Skill
         {
             if (SpawnedPrefab)
             {
+                isSkillOver = false;
                 SpawnedPrefab.SetActive(true);
             }
 
@@ -42,11 +46,17 @@ public class UltimateSkill : Skill
 
     public override bool IsSkillInvokable(SquiddyController controller)
     {
-        return ScoreSystem.Score - lastScoreInvoke >= ScoreRequirement;
+        return isSkillOver && (ScoreSystem.Score - lastScoreInvoke >= ScoreRequirement);
+    }
+
+    public void SkillOver()
+    {
+        isSkillOver = true;
     }
 
     protected override void ResetSkill(SquiddyController controller)
     {
+        isSkillOver = true;
         lastScoreInvoke = 0;
         ScoreRequirement = defaultScoreRequirement;
     }
