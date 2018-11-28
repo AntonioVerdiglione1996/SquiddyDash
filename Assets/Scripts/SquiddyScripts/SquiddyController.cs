@@ -68,10 +68,10 @@ public class SquiddyController : MonoBehaviour
     }
     void Update()
     {
-        if (!SquiddyStats.IsPhoneDebugging)
+#if (UNITY_IOS || UNITY_ANDROID)
+        if (Input.touchCount != 0)
         {
-            #region classic PC Standalone
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 if (!IsJumping)
                 {
@@ -83,28 +83,23 @@ public class SquiddyController : MonoBehaviour
                     Land();
                 }
             }
-            #endregion
         }
-        else
+#elif UNITY_STANDALONE
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            #region MobileInput
-            if (Input.touches.Length != 0)
+            if (!IsJumping)
             {
-                if (Input.touches[0].phase == TouchPhase.Began)
-                {
-                    if (!IsJumping)
-                    {
-                        Jump();
-                    }
-                    else
-                    {
-                        LandParticle.Play();
-                        Land();
-                    }
-                }
+                Jump();
             }
-            #endregion
+            else
+            {
+                LandParticle.Play();
+                Land();
+            }
         }
+#else
+        throw new Exception("Input not supported for the current platform");
+#endif
 
         if (UltimateSkill)
         {

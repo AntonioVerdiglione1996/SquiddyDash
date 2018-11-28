@@ -29,22 +29,7 @@ public class TimeHelper : ScriptableObject
     {
         timers.Clear();
     }
-    /*
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-#if UNITY_EDITOR
-            Debug.LogErrorFormat("{0} is duplicated of unique instance {1}! {2} will be destroyed.",this,Instance,this.gameObject);
-#endif
-            Destroy(this.gameObject);
-        }
-    }*/
+
     public void UpdateTime(float deltaTime)
     {
         LinkedListNode<TimerData> currentNode = timers.First;

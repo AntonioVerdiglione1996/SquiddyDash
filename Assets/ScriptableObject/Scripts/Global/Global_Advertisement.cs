@@ -15,18 +15,24 @@ public class Global_Advertisement : ScriptableObject
     {
         if (result == ShowResult.Finished)
         {
+#if UNITY_EDITOR
             Debug.Log("Rewarded player with +2 currency");
+#endif
             //reward for player
         }
         if (result == ShowResult.Skipped)
         {
             //half reward or none
+#if UNITY_EDITOR
             Debug.Log("not fully watched the add");
+#endif
         }
         if (result == ShowResult.Failed)
         {
             //none
+#if UNITY_EDITOR
             Debug.Log("can't show add...check our connection than retry");
+#endif
 
         }
     }

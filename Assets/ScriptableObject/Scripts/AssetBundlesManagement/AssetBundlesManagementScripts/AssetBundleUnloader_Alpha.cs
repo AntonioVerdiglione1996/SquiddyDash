@@ -18,11 +18,15 @@ public class AssetBundleUnloader_Alpha : IDisposable
     public void Dispose()
     {
         mng.UnloadAssetBundle(AssetBundleName);
+#if UNITY_EDITOR
         Debug.Log("Disposed");
+#endif
     }
     ~AssetBundleUnloader_Alpha() {
         Dispose();
+#if UNITY_EDITOR
         Debug.Log("Destroy");
+#endif
 
     }
 }
