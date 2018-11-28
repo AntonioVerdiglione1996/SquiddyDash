@@ -2,57 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 public class SquiddyController : MonoBehaviour
 {
     public GameEvent GameoverEvent;
     public GameEvent GameoverBestScoreSerialization;
     //public GameEvent InstantiateParticleSplash;
     //public GameEvent InstantiateParticleLand;
+    [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
     public GameEvent CameraShakeEvent;
     public GameEvent LerpPrerformer;
 
+    public UltimateSkill UltimateSkill;
+    public float ScoreRequirementMultIncrementPerInvokation = 1.500001f;
+
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
-    private Rigidbody Rb;
+    public Rigidbody Rb { get; private set; }
 
-    private bool isJumping;
-    public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
+    public bool IsJumping { get { return transform.parent == null; } }
 
-    //where percentage of the screen is hitted? 
-    private Vector3 DirTopRightLow = new Vector3(-0.5f, 0.8f, 0);
-    private Vector3 DirTopRightUp = new Vector3(-0.5f, 0.3f, 0);
 
-    private Vector3 DirTopLeftLow = new Vector3(0.5f, 0.8f, 0);
-    private Vector3 DirTopLeftUp = new Vector3(0.5f, 0.3f, 0);
-    //----------------------------------------------------------
     private Platform currentPlatform;
     private Camera MainCamera;
+    private void Start()
+    {
+        Splash splash = GetComponentInChildren<Splash>();
+        if (splash)
+        {
+            Splash = splash.GetComponent<ParticleSystem>();
+        }
+#if UNITY_EDITOR
+        if (!Splash)
+        {
+            Debug.LogWarning("Splash particle system not found!!");
+        }
+#endif
+    }
     private void Awake()
     {
-        //----------------TODO-------------GET the splash form each model--------------------
-        //getto lo splash peculiare per ogni character  // splash layer = 15
-        ParticleSystem[] psA = GetComponentsInChildren<ParticleSystem>();
-        if (psA != null)
-        {
-            for (int i = 0; i < psA.Length; i++)
-            {
-                if (psA[i] != LandParticle)
-                {
-                    Splash = psA[i];
-                    break;
-                }
-            }
-        }
-        //--------------------------------------------------------------------------------
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };
         Rb = GetComponent<Rigidbody>();
 
         //t = maxTime;
-        MainCamera = Camera.main;
+        if (MainCamera == null)
+        {
+            MainCamera = Camera.main;
+        }
         //check for the first frame initialization of the current platform
         //TODO: Initialization in another class
         if (CurrentPlatformForSquiddy.CurrentPlatform == null)
@@ -60,119 +59,77 @@ public class SquiddyController : MonoBehaviour
             CurrentPlatformForSquiddy.CurrentPlatform = StartPlatform;
             CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
         }
+
+        if (UltimateSkill)
+        {
+            UltimateSkill.Initialize(this);
+        }
+
     }
     void Update()
     {
-
-        if (!SquiddyStats.IsPhoneDebugging)
+#if (UNITY_IOS || UNITY_ANDROID)
+        if (Input.touchCount != 0)
         {
-            #region classic PC Standalone
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-
-                if (!isJumping)
+                if (!IsJumping)
                 {
                     Jump();
-
                 }
-                else if (isJumping)
+                else
                 {
                     LandParticle.Play();
                     Land();
                 }
             }
-            #endregion
         }
-        else
+#elif UNITY_STANDALONE
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            #region MobileInput
-            if (Input.touches.Length != 0)
+            if (!IsJumping)
             {
-                if (Input.touches[0].phase == TouchPhase.Began)
-                {
-                    if (!isJumping)
-                    {
-                        Jump();
-                    }
-                    else if (isJumping)
-                    {
-                        LandParticle.Play();
-                        Land();
-                    }
-                }
-            }
-            #endregion
-        }
-
-        //Bouncing System----------------------------------------------------------------------------------------------
-        //squiddy sta toccando con il lato destro il muro destro(il muro è il bordo del device in questo caso)
-        if (transform.position.x + (transform.localScale.x * 0.5f) >= MainCamera.orthographicSize * MainCamera.aspect)
-        {
-            //transform.position -= Vector3.right * SquiddyStats.BouncyPower * Time.deltaTime;
-            Rb.isKinematic = true;
-            Rb.isKinematic = false;
-            //sono sopra la meta dello schermo partendo da squiddy 
-            if (transform.position.y > MainCamera.transform.position.y + MainCamera.aspect)
-            {
-                //up mid screen
-                Rb.AddForce(DirTopRightUp * (SquiddyStats.BouncyPower + 8f), ForceMode.VelocityChange);
+                Jump();
             }
             else
             {
-                //down mid screen
-                Rb.AddForce(DirTopRightLow * (SquiddyStats.BouncyPower + 2f), ForceMode.VelocityChange);
+                LandParticle.Play();
+                Land();
             }
-            #region EventsRaised
-            if (Splash != null)
-                Splash.Play();
-            if (CameraShakeEvent != null)
-                CameraShakeEvent.Raise();
-            #endregion
-            //return;
         }
-        //squiddy sta toccando con il lato sinistro il muro sinistro(il muro è il bordo del device in questo caso)
-        if (transform.position.x - (transform.localScale.x * 0.5f) <= -MainCamera.orthographicSize * MainCamera.aspect)
-        {
-            Rb.isKinematic = true;
-            Rb.isKinematic = false;
-            //SE LA POSIZIONE DI SQUIDDY  è MAGGIORE DELLA METà DELLO SCHERMO
-            if (transform.position.y > MainCamera.transform.position.y + MainCamera.aspect)
-            {
-                Rb.AddForce(DirTopLeftUp * (SquiddyStats.BouncyPower + 8f), ForceMode.VelocityChange);
-            }
-            //MINORE DELLO SCHERMO
-            else
-            {
-                Rb.AddForce(DirTopLeftLow * (SquiddyStats.BouncyPower + 3.5f), ForceMode.VelocityChange);
-            }
-            #region EventsRaised
-            if (Splash != null)
-                Splash.Play();
-            if (CameraShakeEvent != null)
-                CameraShakeEvent.Raise();
-            #endregion
-            //----------------------------------------------------------------------------------------------------
-        }
+#else
+        throw new Exception("Input not supported for the current platform");
+#endif
 
-        //gameover squiddy under the screen 
-        if (transform.position.y < MainCamera.transform.position.y - MainCamera.orthographicSize)
+        if (UltimateSkill)
         {
-            if (GameoverEvent != null)
+            if (UltimateSkill.InvokeSkill(this, false))
             {
-                //forzo la pulizia dell lista dei pool
-                ObjectPooler.OnGameoverPoolClear();
-                GameoverEvent.Raise(GameoverBestScoreSerialization);
+                UltimateSkill.ScoreRequirement += (int)(UltimateSkill.ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
             }
         }
-        //sopra lo schermo 
-        if (transform.position.y > MainCamera.transform.position.y + MainCamera.orthographicSize)
-        {
-            if (LerpPrerformer != null)
-                LerpPrerformer.Raise();
-        }
-
     }
-
+    public void BotBorderCollision()
+    {
+        if (GameoverEvent != null)
+        {
+            //forzo la pulizia dell lista dei pool
+            ObjectPooler.OnGameoverPoolClear();
+            GameoverEvent.Raise(GameoverBestScoreSerialization);
+        }
+    }
+    public void TopBorderCollision()
+    {
+        if (LerpPrerformer != null)
+            LerpPrerformer.Raise();
+    }
+    public void BorderCollided()
+    {
+        if (Splash != null)
+            Splash.Play();
+        if (CameraShakeEvent != null)
+            CameraShakeEvent.Raise();
+    }
     private Vector3 directionSwitcher()
     {
         currentPlatform = CurrentPlatformForSquiddy.CurrentPlatform;
@@ -193,20 +150,18 @@ public class SquiddyController : MonoBehaviour
     {
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
-        isJumping = true;
     }
     private void Land()
     {
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
-        isJumping = false;
     }
 
     private Vector3 returnRightDirection()
     {
-        return SquiddyStats.RightDirections[(int)Random.Range(0, 2)];
+        return SquiddyStats.RightDirections[UnityEngine.Random.Range(0, 2)];
     }
     private Vector3 returnLeftDirection()
     {
-        return SquiddyStats.LeftDirections[(int)Random.Range(0, 2)];
+        return SquiddyStats.LeftDirections[UnityEngine.Random.Range(0, 2)];
     }
 }

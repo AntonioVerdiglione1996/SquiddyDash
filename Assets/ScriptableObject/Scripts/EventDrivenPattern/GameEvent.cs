@@ -11,7 +11,15 @@ public class GameEvent : ScriptableObject
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised();
+            GameEventListener listener = listeners[i];
+            if (listener)
+            {
+                listener.OnEventRaised();
+            }
+            else
+            {
+                listeners.RemoveAt(i);
+            }
         }
         if (gameEventAfterThis != null)
         {

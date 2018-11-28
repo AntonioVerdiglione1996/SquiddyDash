@@ -225,7 +225,9 @@ public class ReusableLevelSelection : MonoBehaviour
             // also container with selection images must be defined and must have exatly the same amount of items as pages container
             if (pageSelectionIcons == null || pageSelectionIcons.childCount != pageCount)
             {
+#if UNITY_EDITOR
                 Debug.LogWarning("Different count of pages and selection icons - will not show page selection");
+#endif
                 showPageSelection = false;
             }
             else
@@ -239,7 +241,9 @@ public class ReusableLevelSelection : MonoBehaviour
                     Image image = pageSelectionIcons.GetChild(i).GetComponent<Image>();
                     if (image == null)
                     {
+#if UNITY_EDITOR
                         Debug.LogWarning("Page selection icon at position " + i + " is missing Image component");
+#endif
                     }
                     pageSelectionImages.Add(image);
                 }

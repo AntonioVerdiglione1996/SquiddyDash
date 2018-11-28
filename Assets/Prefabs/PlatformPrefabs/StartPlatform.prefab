@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 33818442529197456}
   - component: {fileID: 65475730198666854}
   - component: {fileID: 23377553558923040}
-  - component: {fileID: 114863693658597924}
+  - component: {fileID: 114810818596739100}
+  - component: {fileID: 114486105019688098}
   m_Layer: 0
   m_Name: StartPlatform
   m_TagString: Untagged
@@ -96,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114863693658597924
+--- !u!114 &114486105019688098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,3 +113,16 @@ MonoBehaviour:
   IsLanded: 0
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   PerformLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
+  ScoreUpdater: {fileID: 11400000, guid: 58afac08eaec9f749a83428a929b6d30, type: 2}
+  IsAlreadyUpdatedScore: 1
+--- !u!114 &114810818596739100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771932111591218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3824156294d6a44eaa882a01546697f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

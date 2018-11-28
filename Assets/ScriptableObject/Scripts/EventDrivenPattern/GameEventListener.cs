@@ -10,9 +10,18 @@ public class GameEventListener : MonoBehaviour
     //-------------------------------
     public GameEvent Event;
     public UnityEvent Response;
+
+    public bool InvokeFirstTime = false;
+
+    private bool firstTime = true;
     private void OnEnable()
     {
         Event.RegisterListener(this);
+        if(firstTime && InvokeFirstTime)
+        {
+            Event.Raise();
+        }
+        firstTime = false;
     }
     private void OnDisable()
     {

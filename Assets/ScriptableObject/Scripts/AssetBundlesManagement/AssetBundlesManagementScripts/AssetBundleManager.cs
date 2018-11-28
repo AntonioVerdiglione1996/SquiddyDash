@@ -37,7 +37,9 @@ public class AssetBundleManager : ScriptableObject
         AssetBundle manifestBundle = AssetBundle.LoadFromFile(manifestBundlePath);
         manifest = manifestBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
+#if UNITY_EDITOR
         Debug.LogFormat("AssetBundleManager initialised. AssetBundleManifest: '{0}'.", manifest);
+#endif
     }
     public void LoadAssetBundle(string assetBundleName)
     {
@@ -115,7 +117,9 @@ public class AssetBundleManager : ScriptableObject
         }
         else
         {
+#if UNITY_EDITOR
             Debug.LogErrorFormat("AssetBundle '{0}' was not loaded", assetBundleName);
+#endif
         }
     }
     public T LoadAsset<T>(string assetBundleName, string assetName) where T : UnityEngine.Object
@@ -129,12 +133,16 @@ public class AssetBundleManager : ScriptableObject
 
             if (asset == null)
             {
+#if UNITY_EDITOR
                 Debug.LogErrorFormat("Asset '{0}' does not exists in AssetBundle '{1}'", assetName, assetBundleName);
+#endif
             }
         }
         else
         {
+#if UNITY_EDITOR
             Debug.LogErrorFormat("AssetBundle '{0}' not loaded yet", assetBundleName);
+#endif
         }
 
         return asset;

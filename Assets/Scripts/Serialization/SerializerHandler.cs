@@ -22,8 +22,9 @@ public static class SerializerHandler
             Directory.CreateDirectory(directoryPath);
         //create the effective file at that directory with filename you chose
         File.WriteAllText(Path.Combine(directoryPath, fileName), jsonRappresentation);
-
+#if UNITY_EDITOR
         Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+#endif
     }
     public static void SaveJsonFromInstance(string directoryPath, string fileName, object instanceToTransformInJson, bool prettyPrint)
     {
@@ -34,8 +35,9 @@ public static class SerializerHandler
         string jsonRappresentation = JsonUtility.ToJson(instanceToTransformInJson, prettyPrint);
         //create the effective file at that directory with filename you chose
         File.WriteAllText(Path.Combine(directoryPath, fileName), jsonRappresentation);
-
+#if UNITY_EDITOR
         Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+#endif
     }
     public static void RestoreObjectFromJson(string directoryPath, string filename, object objToRestore)
     {
@@ -43,7 +45,9 @@ public static class SerializerHandler
         {
             JsonUtility.FromJsonOverwrite(File.ReadAllText(Path.Combine(directoryPath, filename)), objToRestore);
         }
+#if UNITY_EDITOR
         Debug.LogFormat("DeSerialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, filename), filename);
+#endif
     }
     #endregion
 

@@ -32,7 +32,10 @@ public class GlobalEvents : ScriptableObject
     }
     public void ParentToTarget(Transform Parent, Transform Son)
     {
-        Son.SetParent(Parent);
+        if (Son.parent != Parent)
+        {
+            Son.SetParent(Parent);
+        }
     }
-   
+
 }

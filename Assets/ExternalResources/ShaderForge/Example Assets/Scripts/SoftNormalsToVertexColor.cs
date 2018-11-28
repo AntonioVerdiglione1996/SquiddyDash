@@ -29,16 +29,22 @@ public class SoftNormalsToVertexColor : MonoBehaviour {
 	void TryGenerate() {
 		MeshFilter mf = GetComponent<MeshFilter>();
 		if( mf == null ) {
-			Debug.LogError( "MeshFilter missing on the vertex color generator", gameObject );
-			return;
+#if UNITY_EDITOR
+            Debug.LogError( "MeshFilter missing on the vertex color generator", gameObject );
+#endif
+            return;
 		}
 		if( mf.sharedMesh == null ) {
-			Debug.LogError( "Assign a mesh to the MeshFilter before generating vertex colors", gameObject );
-			return;
+#if UNITY_EDITOR
+            Debug.LogError( "Assign a mesh to the MeshFilter before generating vertex colors", gameObject );
+#endif
+            return;
 		}
 		Generate(mf.sharedMesh);
-		Debug.Log("Vertex colors generated", gameObject);
-	}
+#if UNITY_EDITOR
+        Debug.Log("Vertex colors generated", gameObject);
+#endif
+    }
 
 	void Generate(Mesh m) {
 

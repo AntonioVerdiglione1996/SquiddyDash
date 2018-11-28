@@ -83,8 +83,9 @@ namespace TMPro.Examples
                     TMP_LinkInfo linkInfo = m_TextMeshPro.textInfo.linkInfo[linkIndex];
 
                     // The following provides an example of how to access the link properties.
+#if UNITY_EDITOR
                     Debug.Log("Link ID: \"" + linkInfo.GetLinkID() + "\"   Link Text: \"" + linkInfo.GetLinkText() + "\""); // Example of how to retrieve the Link ID and Link Text.
-
+#endif
                     Vector3 worldPointInRectangle = Vector3.zero;
                     RectTransformUtility.ScreenPointToWorldPointInRectangle(m_TextMeshPro.rectTransform, Input.mousePosition, m_Camera, out worldPointInRectangle);
 
@@ -141,14 +142,18 @@ namespace TMPro.Examples
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+#if UNITY_EDITOR
             Debug.Log("OnPointerEnter()");
+#endif
             m_isHoveringObject = true;
         }
 
 
         public void OnPointerExit(PointerEventData eventData)
         {
+#if UNITY_EDITOR
             Debug.Log("OnPointerExit()");
+#endif
             m_isHoveringObject = false;
         }
 
