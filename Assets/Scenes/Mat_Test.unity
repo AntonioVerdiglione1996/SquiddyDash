@@ -1846,6 +1846,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3824156294d6a44eaa882a01546697f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1824658337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824658331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirRight: 0
+  DirLeft: 0
+  IsLanded: 0
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  PerformLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
+  ScoreUpdater: {fileID: 11400000, guid: 58afac08eaec9f749a83428a929b6d30, type: 2}
+  IsAlreadyUpdatedScore: 1
 --- !u!1001 &1849960877
 Prefab:
   m_ObjectHideFlags: 0

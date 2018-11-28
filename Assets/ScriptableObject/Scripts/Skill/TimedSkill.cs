@@ -16,7 +16,7 @@ public abstract class TimedSkill : Skill
     protected bool isOnCoolDown { get; private set; }
 
     [SerializeField]
-    private bool startOnCooldown = true;
+    protected bool startOnCooldown = true;
 
     public override bool InvokeSkill(SquiddyController controller, bool bypassIsSkillInvokable)
     {
