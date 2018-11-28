@@ -28,6 +28,10 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         //with the new value
         SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, "CurrentModel.json", this, true);
     }
+    public void OnValidate()
+    {
+        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, "CurrentModel.json", this, true);
+    }
     public GameObject DownloadCurrentCharacter()
     {
         GameObject go = null;

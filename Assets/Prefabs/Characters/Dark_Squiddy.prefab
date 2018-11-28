@@ -188,8 +188,6 @@ GameObject:
   - component: {fileID: 4977446930941108}
   - component: {fileID: 198917455546311484}
   - component: {fileID: 199581476604530164}
-  - component: {fileID: 114353913579522142}
-  - component: {fileID: 114370057709546050}
   m_Layer: 15
   m_Name: SplashVioletGravity
   m_TagString: Untagged
@@ -773,29 +771,6 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114353913579522142
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850031526147972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4adbe9e7cf47f0c40a0b517ce71ff3ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114370057709546050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850031526147972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a6aaa017034ab4eac294492b9028c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LifeTime: 1
 --- !u!114 &114833711474533468
 MonoBehaviour:
   m_ObjectHideFlags: 1

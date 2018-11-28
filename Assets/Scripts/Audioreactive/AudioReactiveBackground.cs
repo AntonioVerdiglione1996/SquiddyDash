@@ -27,6 +27,8 @@ public class AudioReactiveBackground : MonoBehaviour
     private int samples = 512;
     private float LerpSmooth = 20;
 
+    private static readonly float[] soundData = new float[2048];
+
     void Awake()
     {
         reactiveCubes = new GameObject[numberOfObjects];
@@ -45,12 +47,13 @@ public class AudioReactiveBackground : MonoBehaviour
     }
     void Update()
     {
-        float[] spectrumData = Source.GetSpectrumData(samples, 0, Mode);
+        Source.GetSpectrumData(soundData, 0, Mode);
         for (int i = 0; i < numberOfObjects; i++)
         {
-            Vector3 previusScale = reactiveCubes[i].transform.localScale;
-            previusScale.y = spectrumData[i] * ScaleMultiplier;
-            reactiveCubes[i].transform.localScale = Vector3.Lerp(reactiveCubes[i].transform.localScale, previusScale, LerpSmooth * Time.deltaTime);
+            Transform cube = reactiveCubes[i].transform;
+            Vector3 previusScale = cube.localScale;
+            previusScale.y = soundData[i] * ScaleMultiplier;
+            cube.localScale = Vector3.Lerp(cube.localScale, previusScale, LerpSmooth * Time.deltaTime);
         }
     }
 }

@@ -12,18 +12,25 @@ public class ScoreTextHandler : MonoBehaviour
 
     public bool IsGameOverSceneBestScore;
 
+    private int lastScore = 0;
+
     private void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    private void Update()
+    public void UpdateScore()
     {
+        int score = 0;
         if (!IsGameOverSceneBestScore)
-            text.text = ScoreSystem.Score.ToString();
+            score = ScoreSystem.Score;
         else
-            text.text = ScoreSystem.BestScore.ToString();
+            score = ScoreSystem.BestScore;
 
-
+        if(score != lastScore)
+        {
+            lastScore = score;
+            text.text = lastScore.ToString();
+        }
     }
 }

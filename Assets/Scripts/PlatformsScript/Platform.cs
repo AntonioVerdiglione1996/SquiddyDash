@@ -25,7 +25,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             IsLanded = true;
-            GlobalEvents.ParentToTarget(transform, collision.transform);
+            GlobalEvents.ParentToTarget(transform, collision.transform.root);
             PerformLerp.Raise();
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
@@ -41,7 +41,6 @@ public class Platform : MonoBehaviour
         {
             IsLanded = false;
             GlobalEvents.ParentToTarget(null, collision.transform);
-            return;
         }
     }
 }
