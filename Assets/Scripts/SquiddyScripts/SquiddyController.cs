@@ -46,7 +46,6 @@ public class SquiddyController : MonoBehaviour
                 }
             }
         }
-        Splash = GetComponentInChildren<ParticleSystem>();
         //--------------------------------------------------------------------------------
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };

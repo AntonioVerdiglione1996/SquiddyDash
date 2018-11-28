@@ -4,6 +4,8 @@ using System.Collections;
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class Character_Orbit_Mobile : MonoBehaviour
 {
+    public Transform GuiLimitYPos;
+
     public Transform target;
     public float distance = 5.0f;
     public float xSpeed = 2.0f;
@@ -38,7 +40,7 @@ public class Character_Orbit_Mobile : MonoBehaviour
     void LateUpdate()
     {
         Vector3 tgt = GetTarget();
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.touches[0].position.y > GuiLimitYPos.position.y)
         {
             x += Input.touches[0].deltaPosition.x * xSpeed/* * distance */ * 0.04f;
             y -= Input.touches[0].deltaPosition.y * ySpeed * 0.02f;

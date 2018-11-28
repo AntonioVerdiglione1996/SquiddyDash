@@ -4,6 +4,8 @@ using System.Collections;
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class Character_Orbit_Mouse : MonoBehaviour
 {
+    public Transform ylimit;
+
     public Transform target;
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
@@ -14,6 +16,7 @@ public class Character_Orbit_Mouse : MonoBehaviour
 
     public float distanceMin = .5f;
     public float distanceMax = 15f;
+
     public Vector3 Offset;
 
     public bool Clip;
@@ -38,7 +41,7 @@ public class Character_Orbit_Mouse : MonoBehaviour
     void LateUpdate()
     {
         Vector3 tgt = GetTarget();
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Input.mousePosition.y > ylimit.position.y)
         {
             x += Input.GetAxis("Mouse X") * xSpeed/* * distance */ * 0.04f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
