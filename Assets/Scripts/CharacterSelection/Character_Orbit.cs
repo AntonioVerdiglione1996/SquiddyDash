@@ -22,6 +22,7 @@ public class Character_Orbit : MonoBehaviour
 
     public float distanceMin = .5f;
     public float distanceMax = 15f;
+
     public Vector3 Offset;
 
     public bool Clip;
