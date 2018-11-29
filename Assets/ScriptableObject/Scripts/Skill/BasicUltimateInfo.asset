@@ -8,6 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e78af8c01d83a438f339fabec401b1, type: 3}
-  m_Name: OnUltimateSkillOver
+  m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
+  m_Name: BasicUltimateInfo
   m_EditorClassIdentifier: 
+  Description: 
+  Image: {fileID: 0}

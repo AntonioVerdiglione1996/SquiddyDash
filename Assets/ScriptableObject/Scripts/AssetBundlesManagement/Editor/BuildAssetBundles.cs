@@ -3,6 +3,13 @@ using UnityEditor;
 
 public class BuildAssetBundles
 {
+    [MenuItem("Assets/BuildAssetBundlesForCurrentBuildPlatform")]
+    static void BuildAllAssetBundles()
+    {
+        string assetBundleDirectoryPath = "Assets/AssetBundles";
+        string windowsDirectoryPath = "CurrentPlatform";
+        BuildForTarget(assetBundleDirectoryPath, windowsDirectoryPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+    }
     [MenuItem("Assets/BuildAssetBundlesForWindows")]
     static void BuildAllAssetBundlesWin()
     {

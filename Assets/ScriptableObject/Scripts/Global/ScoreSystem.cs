@@ -11,7 +11,7 @@ public class ScoreSystem : ScriptableObject
     [NonSerialized]
     public int BestScore;
 
-    public GameEvent OnScoreUpdated;
+    //public GameEvent OnScoreUpdated;
 
     //REACTIVATE ON BUILD
     //private void OnEnable()

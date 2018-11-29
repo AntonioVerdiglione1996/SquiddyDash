@@ -14,11 +14,8 @@ public class Platform : MonoBehaviour
     public GameEvent PerformLerp;
     public GameEvent ScoreUpdater;
 
-    public bool IsAlreadyUpdatedScore;
-    private void Awake()
-    {
-        IsAlreadyUpdatedScore = false;
-    }
+    public bool IsAlreadyUpdatedScore = false;
+
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
