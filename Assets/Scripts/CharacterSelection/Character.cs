@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
             return;
         }
 
-        if(Skills == null)
+        if (Skills == null || Skills.Length == 0)
         {
             Skills = GetComponentsInChildren<Skill>();
         }
@@ -34,6 +34,17 @@ public class Character : MonoBehaviour
             for (int i = 0; i < Skills.Length; i++)
             {
                 Skills[i].Initialize(controller);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (Skills != null)
+        {
+            for (int i = 0; i < Skills.Length; i++)
+            {
+                Skills[i].InvokeSkill();
             }
         }
     }

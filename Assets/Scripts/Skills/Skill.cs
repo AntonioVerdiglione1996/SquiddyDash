@@ -5,7 +5,7 @@ public abstract class Skill : MonoBehaviour
 
     protected SquiddyController Controller { get; private set; }
 
-    public bool InvokeSkill(bool bypassIsSkillInvokable)
+    public bool InvokeSkill(bool bypassIsSkillInvokable = false)
     {
         if(bypassIsSkillInvokable || IsSkillInvokable())
         {

@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public abstract class TimedSkill : Skill
 {
-    public GameEvent OnCoolDownOver;
-
     public float CoolDownDuration = 5f;
 
     public TimeHelper TimeHelper;
@@ -17,12 +15,14 @@ public abstract class TimedSkill : Skill
     [SerializeField]
     protected bool startOnCooldown = true;
 
+    private Action OnCooldownOver;
+
     protected override void ExecuteSkill()
     {
         SkillLogic();
 
         TimeHelper.RemoveTimer(coolDown);
-        coolDown = TimeHelper.AddTimer(OnCoolDownOver, CoolDownDuration);
+        coolDown = TimeHelper.AddTimer(OnCooldownOver, CoolDownDuration);
     }
 
     public override bool IsSkillInvokable()
@@ -43,7 +43,13 @@ public abstract class TimedSkill : Skill
         isOnCoolDown = startOnCooldown;
         if (startOnCooldown)
         {
-            coolDown = TimeHelper.AddTimer(OnCoolDownOver, CoolDownDuration);
+            coolDown = TimeHelper.AddTimer(OnCooldownOver, CoolDownDuration);
         }
+    }
+
+    protected override void Awake()
+    {
+        OnCooldownOver = CoolDownOver;
+        base.Awake();
     }
 }
