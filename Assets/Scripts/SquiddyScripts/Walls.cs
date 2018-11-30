@@ -68,13 +68,21 @@ public class Walls : MonoBehaviour
         {
             ContactPoint contact = collision.contacts[0];
 
-            if (contact.thisCollider == LeftWall || contact.thisCollider == RightWall)
+            if (contact.thisCollider == LeftWall)
             {
-                PlayerBorderCollision(collision, new Vector3(-collision.impulse.x, 0.0f, 0.0f).normalized);
+                PlayerBorderCollision(collision, transform.right);
+            }
+            else if (contact.thisCollider == RightWall)
+            {
+                PlayerBorderCollision(collision, -transform.right);
+            }
+            else if (contact.thisCollider == TopWall)
+            {
+                PlayerBorderCollision(collision, -transform.up);
             }
             else
             {
-                PlayerBorderCollision(collision, new Vector3(0f, -collision.impulse.y, 0.0f).normalized);
+                PlayerBorderCollision(collision, transform.up);
             }
         }
     }

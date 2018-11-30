@@ -23,25 +23,22 @@ public class UltimateSkill : Skill
 
     public Vector3 WallsCustomRepulsion = new Vector3(1f, 1f, 1f);
 
+    public WallsModifier WallsModifier;
+
     private int lastScoreInvoke = 0;
 
-
-    private Walls walls;
-
-    private Vector3 originalRepulsion;
+    protected override void OnDisable()
+    {
+    }
 
     protected virtual void SkillLogic()
     {
         GlobalEvent.ParentToTarget(null, Controller.transform);
         Controller.Rb.AddForce(ForceApplied, Mode);
 
-        if (walls)
-        {
-            originalRepulsion = walls.RepulsionMultiplier;
-            walls.RepulsionMultiplier = WallsCustomRepulsion;
-        }
+        WallsModifier.SetNewRepulsion(WallsCustomRepulsion,false,false);
     }
-    protected override void ExecuteSkill()
+    protected override void OnEnable()
     {
         lastScoreInvoke = ScoreSystem.Score;
 
@@ -63,10 +60,7 @@ public class UltimateSkill : Skill
 
         if (!enabled)
         {
-            if (walls)
-            {
-                walls.RepulsionMultiplier = originalRepulsion;
-            }
+            WallsModifier.ResetRepulsion();
         }
     }
 
@@ -80,6 +74,5 @@ public class UltimateSkill : Skill
         enabled = false;
         lastScoreInvoke = 0;
         ScoreRequirement = defaultScoreRequirement;
-        walls = FindObjectOfType<Walls>();
     }
 }

@@ -1,55 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System.Collections.Generic;
+/// <summary>
+/// Base class for all skills that uses a cooldown system. It gets enabled when skill is invoked successfully, then it should be disabled in child classes to put it back into cooldown
+/// </summary>
 public abstract class TimedSkill : Skill
 {
+    /// <summary>
+    /// Cooldown duration (starts when skill gets disabled)
+    /// </summary>
     public float CoolDownDuration = 5f;
 
+    /// <summary>
+    /// Timer manager
+    /// </summary>
     public TimeHelper TimeHelper;
 
-    protected LinkedListNode<TimerData> coolDown = null;
+    /// <summary>
+    /// cooldown timer associated with the TimeHelper
+    /// </summary>
+    protected LinkedListNode<TimerData> coolDownTimer = null;
 
-    protected bool isOnCoolDown { get; private set; }
-
-    [SerializeField]
-    protected bool startOnCooldown = true;
-
-    private Action OnCooldownOver;
-
-    protected override void ExecuteSkill()
-    {
-        SkillLogic();
-
-        TimeHelper.RemoveTimer(coolDown);
-        coolDown = TimeHelper.AddTimer(OnCooldownOver, CoolDownDuration);
-    }
-
+    /// <summary>
+    /// Condition checked when an InvokeSkill with bypass = false is requested.
+    /// </summary>
+    /// <returns>False if cooldown timer either does not exist or if it is not over, true if skill is off cooldown</returns>
     public override bool IsSkillInvokable()
     {
-        return !isOnCoolDown;
+        if (coolDownTimer == null)
+        {
+            return false;
+        }
+        TimerData Data = coolDownTimer.Value;
+        return (Data.ElapsedTime >= Data.Duration);
     }
 
-    public void CoolDownOver()
-    {
-        isOnCoolDown = false;
-    }
-
-    protected abstract void SkillLogic();
-
+    /// <summary>
+    /// Disables timer
+    /// </summary>
     protected override void ResetSkill()
     {
-        TimeHelper.RemoveTimer(coolDown);
-        isOnCoolDown = startOnCooldown;
-        if (startOnCooldown)
-        {
-            coolDown = TimeHelper.AddTimer(OnCooldownOver, CoolDownDuration);
-        }
+        TimeHelper.RemoveTimer(coolDownTimer);
+        coolDownTimer = null;
     }
 
-    protected override void Awake()
+    /// <summary>
+    /// Starts cooldown phase
+    /// </summary>
+    protected override void OnDisable()
     {
-        OnCooldownOver = CoolDownOver;
-        base.Awake();
+        coolDownTimer = TimeHelper.AddTimer(null, null, CoolDownDuration);
+    }
+    /// <summary>
+    /// Ends cooldown phase
+    /// </summary>
+    protected override void OnEnable()
+    {
+        ResetSkill();
     }
 }

@@ -5,62 +5,51 @@ public class Invincibility : TimedSkill
 {
     public float Duration = 1f;
 
-    protected LinkedListNode<TimerData> durationTimer;
+    public WallsModifier WallsModifier;
 
-    private Walls walls;
+    public Vector3 NewRepulsionMultiplier = new Vector3(0.8f, 0.8f, 0.8f);
+
+    protected LinkedListNode<TimerData> durationTimer;
 
     private Action OnInvincibilityOver;
 
-    private void OnDisable()
-    {
-        if (walls)
-        {
-            walls.BotWall.isTrigger = true;
-        }
 
-        if (coolDown != null)
-        {
-            TimerData data = coolDown.Value;
-            data.Enabled = true;
-            coolDown.Value = data;
-        }
-    }
-    protected override void SkillLogic()
+    protected override void OnDisable()
     {
-#if UNITY_EDITOR
-        Debug.Log("Invincibility");
-#endif
+        base.OnDisable();
+
+        WallsModifier.Walls.BotWall.isTrigger = true;
+        WallsModifier.ResetRepulsion();
+    }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
         TimeHelper.RemoveTimer(durationTimer);
         durationTimer = TimeHelper.AddTimer(OnInvincibilityOver, Duration);
 
-        walls.BotWall.isTrigger = false;
-
-        if (coolDown != null)
-        {
-            TimerData data = coolDown.Value;
-            data.Enabled = false;
-            coolDown.Value = data;
-        }
+        WallsModifier.Walls.BotWall.isTrigger = false;
+        WallsModifier.SetNewRepulsion(NewRepulsionMultiplier,true, true);
     }
 
     protected override void ResetSkill()
     {
         base.ResetSkill();
         TimeHelper.RemoveTimer(durationTimer);
+        durationTimer = null;
     }
 
     private void InvincibilityOver()
     {
-#if UNITY_EDITOR
-        Debug.Log("Invincibility over");
-#endif
         enabled = false;
     }
 
-    protected override void Awake()
+    protected override void OnValidate()
     {
-        walls = FindObjectOfType<Walls>();
+        base.OnValidate();
+    }
+    void Awake()
+    {
         OnInvincibilityOver = InvincibilityOver;
-        base.Awake();
     }
 }

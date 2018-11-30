@@ -1,26 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class WallsModifier : MonoBehaviour
+﻿using UnityEngine;
+[CreateAssetMenu]
+public class WallsModifier : ScriptableObject
 {
-    public Vector3 NewMultiplier = new Vector3(0.8f, 0.8f, 0f);
+    public Walls Walls
+    {
+        get
+        {
+            if (!walls)
+            {
+                Awake();
+            }
+            return walls;
+        }
+    }
+    public Vector3 OriginalRepulsionMultiplier { get; private set; }
+    public bool OriginalMultiplyWhenFalling { get; private set; }
+
+    public bool IsRepulsionChanged { get; private set; }
+    public bool IsCurrentRepulsionAbsolute { get; private set; }
+
     private Walls walls;
-    private Vector3 prevMultiplier;
-    // Use this for initialization
+
     void Awake()
     {
         walls = FindObjectOfType<Walls>();
+        if (walls)
+        {
+            OriginalRepulsionMultiplier = walls.RepulsionMultiplier;
+            OriginalMultiplyWhenFalling = walls.MultiplyWhenFalling;
+        }
+        IsRepulsionChanged = false;
+        IsCurrentRepulsionAbsolute = false;
     }
 
-    // Update is called once per frame
-    void OnEnable()
+    public bool SetNewRepulsion(Vector3 newRepulsion, bool multiplyWhenFalling, bool isRepulsionAbsolute)
     {
-        prevMultiplier = walls.RepulsionMultiplier;
-        walls.RepulsionMultiplier = NewMultiplier;
+        IsRepulsionChanged = true;
+        IsCurrentRepulsionAbsolute = isRepulsionAbsolute;
+
+        if (!walls || IsCurrentRepulsionAbsolute)
+        {
+            return false;
+        }
+
+        walls.RepulsionMultiplier = newRepulsion;
+        walls.MultiplyWhenFalling = multiplyWhenFalling;
+
+        return true;
     }
-    private void OnDisable()
+    public void ResetRepulsion()
     {
-        walls.RepulsionMultiplier = prevMultiplier;
+        IsCurrentRepulsionAbsolute = false;
+        IsRepulsionChanged = false;
+        if (!walls)
+        {
+            return;
+        }
+        walls.MultiplyWhenFalling = OriginalMultiplyWhenFalling;
+        walls.RepulsionMultiplier = OriginalRepulsionMultiplier;
     }
 }

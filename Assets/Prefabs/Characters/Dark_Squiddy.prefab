@@ -119,6 +119,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4747605206841144}
+  - component: {fileID: 114550726581504850}
   m_Layer: 8
   m_Name: Skills
   m_TagString: Untagged
@@ -188,22 +189,6 @@ GameObject:
   - component: {fileID: 199515200196460526}
   m_Layer: 1
   m_Name: particle master
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1787026634451356
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4282853545755304}
-  - component: {fileID: 114084246887587904}
-  m_Layer: 8
-  m_Name: Invincibility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,19 +311,6 @@ Transform:
   m_Father: {fileID: 4665320496140956}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4282853545755304
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1787026634451356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4747605206841144}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4323702985113012
 Transform:
   m_ObjectHideFlags: 1
@@ -448,8 +420,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4282853545755304}
+  m_Children: []
   m_Father: {fileID: 4665320496140956}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -831,24 +802,6 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114084246887587904
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1787026634451356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b5d8fefd636a349a8b258d4a4fba1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
-  OnCoolDownOver: {fileID: 0}
-  CoolDownDuration: 5
-  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
-  startOnCooldown: 1
-  Duration: 1
-  InvincibilityOver: {fileID: 0}
 --- !u!114 &114288796514280008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,6 +813,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302a00892b07651478dd2c451d43a75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114550726581504850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396754703562430}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b5d8fefd636a349a8b258d4a4fba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
+  CoolDownDuration: 5
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  Duration: 2.5
+  WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
+  NewRepulsionMultiplier: {x: 0.8, y: 0.8, z: 0.8}
 --- !u!114 &114833711474533468
 MonoBehaviour:
   m_ObjectHideFlags: 1
