@@ -119,7 +119,7 @@ MonoBehaviour:
   GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   ForceApplied: {x: 0, y: 50, z: 0}
   Mode: 1
-  defaultScoreRequirement: 10
+  defaultScoreRequirement: 15
   ScoreRequirementMultIncrementPerInvokation: 1.500001
   WallsCustomRepulsion: {x: 1, y: 1, z: 1}
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
@@ -228,7 +228,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1604480806
+  randomSeed: -994527474
   InitialModule:
     serializedVersion: 3
     enabled: 1

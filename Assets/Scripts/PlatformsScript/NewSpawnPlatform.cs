@@ -7,9 +7,10 @@ public class NewSpawnPlatform : MonoBehaviour
     public Transform Squiddy;
     public GameObject PlatformPrefab;
     public GameObject PlatformPrefabWithPowerUp;
-    public List<GameObject> PlatformPrefabsList;
+    [System.NonSerialized]
+    public List<GameObject> PlatformPrefabsList = new List<GameObject>();
     public Material Material;
-    public GameEvent ScoreUpdater;
+    //public GameEvent ScoreUpdater;
 
     public float PlatformPrefabListLength { get { return PlatformPrefabsList.Count; } }
     int numberOfObject;
@@ -37,7 +38,7 @@ public class NewSpawnPlatform : MonoBehaviour
             {
                 GameObject go = Instantiate(PlatformPrefab, newPos, Quaternion.identity);
                 if (Material != null)
-                    go.GetComponent<Renderer>().material = Material;
+                    go.GetComponentInChildren<Renderer>().material = Material;
 
                 PlatformPrefabsList.Add(go);
             }
@@ -46,9 +47,12 @@ public class NewSpawnPlatform : MonoBehaviour
             {
                 GameObject go = Instantiate(PlatformPrefabWithPowerUp, newPos, Quaternion.identity);
                 if (Material != null)
-                    go.GetComponent<Renderer>().material = Material;
+                    go.GetComponentInChildren<Renderer>().material = Material;
 
                 PlatformPrefabsList.Add(go);
+
+                PowerUp pw = go.GetComponentInChildren<PowerUp>(true);
+                pw.ResetState();
             }
             //this will happend even the last cycle. we want that this happend only until the cicle before the last so we do it manually.
             if (i < numberOfObject - 1)
@@ -73,8 +77,14 @@ public class NewSpawnPlatform : MonoBehaviour
                 //
 
                 //resetting this bool for perform again the score update for 1 frame after recycle
-                currentPlatform.GetComponent<Platform>().IsAlreadyUpdatedScore = false;
+                currentPlatform.GetComponentInChildren<Platform>().IsAlreadyUpdatedScore = false;
                 index++;
+
+                PowerUp pw = currentPlatform.GetComponentInChildren<PowerUp>(true);
+                if (pw)
+                {
+                    pw.ResetState();
+                }
 
                 if (index == numberOfObject)
                 {

@@ -17,9 +17,11 @@ public class Invincibility : TimedSkill
     protected override void OnDisable()
     {
         base.OnDisable();
-
-        WallsModifier.Walls.BotWall.isTrigger = true;
-        WallsModifier.ResetRepulsion();
+        if (WallsModifier && WallsModifier.Walls)
+        {
+            WallsModifier.Walls.BotWall.isTrigger = true;
+            WallsModifier.ResetRepulsion();
+        }
     }
     protected override void OnEnable()
     {
@@ -29,7 +31,7 @@ public class Invincibility : TimedSkill
         durationTimer = TimeHelper.AddTimer(OnInvincibilityOver, Duration);
 
         WallsModifier.Walls.BotWall.isTrigger = false;
-        WallsModifier.SetNewRepulsion(NewRepulsionMultiplier,true, true);
+        WallsModifier.SetNewRepulsion(NewRepulsionMultiplier, true, true);
     }
 
     protected override void ResetSkill()
@@ -44,10 +46,6 @@ public class Invincibility : TimedSkill
         enabled = false;
     }
 
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-    }
     void Awake()
     {
         OnInvincibilityOver = InvincibilityOver;

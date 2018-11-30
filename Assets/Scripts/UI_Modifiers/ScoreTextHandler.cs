@@ -17,10 +17,16 @@ public class ScoreTextHandler : MonoBehaviour
     private void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        UpdateScore();
     }
 
     public void UpdateScore()
     {
+        if (!text)
+        {
+            return;
+        }
+
         int score = 0;
         if (!IsGameOverSceneBestScore)
             score = ScoreSystem.Score;

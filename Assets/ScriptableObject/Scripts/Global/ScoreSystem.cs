@@ -4,40 +4,43 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "ScoreSystem", menuName = "ScoreSystem")]
-public class ScoreSystem : ScriptableObject
+public class ScoreSystem : GameEvent
 {
+    public int Score { get { return score; } }
+    public int BestScore { get { return bestScore; } }
     [NonSerialized]
-    public int Score;
-    [NonSerialized]
-    public int BestScore;
+    private int score;
+    [SerializeField]
+    private int bestScore;
 
-    //public GameEvent OnScoreUpdated;
-
-    //REACTIVATE ON BUILD
-    //private void OnEnable()
-    //{
-    //    Restore();
-    //}
-    public void OnGameOverActive()
+    private void OnEnable()
     {
-        CheckBestScore();
+#if !(UNITY_EDITOR)
+        Restore();
+#endif
+    }
+    public void SaveBestScore()
+    {
         SerializerHandler.SaveJsonFile(SerializerHandler.PersistentDataDirectoryPath, "Score.json", JsonUtility.ToJson(this));
     }
-    public void Restore()
+    private void Restore()
     {
         SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, "Score.json", this);
+        UpdateScore(0);
     }
-    public void UpdateScore()
+    public void UpdateScore(int amountToSum)
     {
-        Score++;
+        score += amountToSum;
+
+        if(score > bestScore)
+        {
+            bestScore = score;
+        }
+
+        Raise();
     }
-    public void ReleaseDataForScore()
+    public void ResetScore()
     {
-        Score = 0;
-    }
-    public void CheckBestScore()
-    {
-        int previusBestScore = BestScore;
-        BestScore = Score > previusBestScore ? Score : previusBestScore;
+        UpdateScore(-Score);
     }
 }

@@ -13,10 +13,12 @@ public class NewMovePlatform : MonoBehaviour
     private Platform platform;
 
     Transform myTransform;
+    Transform root;
     Vector3 dir;
     private void Awake()
     {
         myTransform = transform;
+        root = myTransform.root;
         MainCamera = Camera.main;
         platform = GetComponent<Platform>();
         possibleDirections = new Vector3[] { Vector3.right, -Vector3.right };
@@ -28,9 +30,9 @@ public class NewMovePlatform : MonoBehaviour
     private void Update()
     {
 
-        myTransform.position += dir * Speed * Time.deltaTime;
+        root.position += dir * Speed * Time.deltaTime;
         //la piattaforma sta toccando con il lato destro il muro destro
-        if (myTransform.position.x + (myTransform.localScale.x * 0.5f) >= MainCamera.orthographicSize * MainCamera.aspect)
+        if (root.position.x + (myTransform.localScale.x * 0.5f) >= MainCamera.orthographicSize * MainCamera.aspect)
         {
             dir = -Vector3.right;
 
@@ -39,7 +41,7 @@ public class NewMovePlatform : MonoBehaviour
 
         }
         //la piattaforma sta toccando con il lato sinistro il muro sinistro
-        if (myTransform.position.x - (myTransform.localScale.x * 0.5f) <= -MainCamera.orthographicSize * MainCamera.aspect)
+        if (root.position.x - (myTransform.localScale.x * 0.5f) <= -MainCamera.orthographicSize * MainCamera.aspect)
         {
             dir = Vector3.right;
 

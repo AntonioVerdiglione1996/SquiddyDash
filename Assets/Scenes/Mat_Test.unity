@@ -438,6 +438,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 569858521}
+--- !u!1001 &786745619
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &868668480
 Prefab:
   m_ObjectHideFlags: 0
@@ -735,7 +777,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-        m_MethodName: OnGameOverActive
+        m_MethodName: SaveBestScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -823,21 +865,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explain: SCOREUPDATER
-  Event: {fileID: 11400000, guid: 58afac08eaec9f749a83428a929b6d30, type: 2}
+  Event: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-        m_MethodName: UpdateScore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 569858523}
         m_MethodName: UpdateScore
         m_Mode: 1
@@ -1015,11 +1046,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114929375991889300, guid: 2215432d06378cd449b4fc080a6a1838,
-        type: 2}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 1911044050}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
@@ -1035,6 +1061,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4303906424518350, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1112,6 +1143,42 @@ Prefab:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1911044049}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 569858523}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Event
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
+        type: 2}
+    - target: {fileID: 114818552074918114, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveBestScore
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
   m_IsPrefabParent: 0
@@ -1752,54 +1819,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1815186359
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4073157081063146, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b57850d917e1abe448c44f6af8571757, type: 2}
-  m_IsPrefabParent: 0
---- !u!114 &1824658337 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114486105019688098, guid: b57850d917e1abe448c44f6af8571757,
-    type: 2}
-  m_PrefabInternal: {fileID: 1815186359}
-  m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
 --- !u!1001 &1849960877
 Prefab:
   m_ObjectHideFlags: 0
@@ -1989,6 +2008,167 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1951949693}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  milestones:
+  - Score: 10
+    Reward: 1
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 25
+    Reward: 5
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 50
+    Reward: 10
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 85
+    Reward: 20
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 130
+    Reward: 30
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 190
+    Reward: 80
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 330
+    Reward: 100
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 500
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 1200
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 2000
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 2800
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 3500
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 4200
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 4900
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 5600
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 6400
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 7100
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 7700
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 8800
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 9400
+    Reward: 500
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 10000
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 11500
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 13000
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 14500
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 15600
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 16700
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 17800
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 18900
+    Reward: 1000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 20000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 23000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 26000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 29000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 32000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 35000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 38000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 41000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 44000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 47000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 50000
+    Reward: 2000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
+  - Score: 100000
+    Reward: 100000
+    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
+    SpeedMultiplier: 1.15
 --- !u!114 &1951949693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,13 +2181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Squiddy: {fileID: 1647906374}
-  PlatformPrefab: {fileID: 1508514376602276, guid: 004fba7134cbe4040b24b9efd1446494,
+  PlatformPrefab: {fileID: 1651665378513498, guid: 004fba7134cbe4040b24b9efd1446494,
     type: 2}
-  PlatformPrefabWithPowerUp: {fileID: 1508514376602276, guid: a6b0c1548ae39ab429009b4eaaed6600,
+  PlatformPrefabWithPowerUp: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca,
     type: 2}
-  PlatformPrefabsList: []
   Material: {fileID: 0}
-  ScoreUpdater: {fileID: 11400000, guid: 58afac08eaec9f749a83428a929b6d30, type: 2}
 --- !u!4 &1951949694
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,7 +2197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1958164648
 Prefab:
@@ -2060,11 +2238,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114835219694571498, guid: 6d66d5f6fabc0d8409000df996001fa4,
-        type: 2}
-      propertyPath: StartPlatform
-      value: 
-      objectReference: {fileID: 1824658337}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
   m_IsPrefabParent: 0

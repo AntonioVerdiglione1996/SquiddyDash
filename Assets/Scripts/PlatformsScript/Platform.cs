@@ -12,7 +12,9 @@ public class Platform : MonoBehaviour
 
     public GlobalEvents GlobalEvents;
     public GameEvent PerformLerp;
-    public GameEvent ScoreUpdater;
+    public ScoreSystem ScoreSystem;
+
+    public int ScoreValue = 1;
 
     public bool IsAlreadyUpdatedScore = false;
 
@@ -22,12 +24,12 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             IsLanded = true;
-            GlobalEvents.ParentToTarget(transform, collision.transform.root);
+            GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
             PerformLerp.Raise();
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
             {
-                ScoreUpdater.Raise();
+                ScoreSystem.UpdateScore(ScoreValue);
                 IsAlreadyUpdatedScore = true;
             }
         }
