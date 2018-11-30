@@ -18,7 +18,7 @@ public class Walls : MonoBehaviour
     public GameEvent TopCollision;
     public GameEvent BotCollision;
 
-    public Vector3 RepulsionMultiplier = new Vector3(0.8f, 1.0f, 0f);
+    public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0f);
 
     public bool MultiplyWhenFalling = false;
 
@@ -49,7 +49,7 @@ public class Walls : MonoBehaviour
                 BotWall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y - MainCamera.orthographicSize - BotWall.size.y * 0.5f, 0f), Quaternion.identity);
             }
         }
-        if(MainCamera == null)
+        if (MainCamera == null)
         {
             MainCamera = Camera.main;
         }
@@ -74,7 +74,7 @@ public class Walls : MonoBehaviour
             }
             else
             {
-                PlayerBorderCollision(collision, new Vector3(0f,-collision.impulse.y, 0.0f).normalized);
+                PlayerBorderCollision(collision, new Vector3(0f, -collision.impulse.y, 0.0f).normalized);
             }
         }
     }
@@ -97,7 +97,7 @@ public class Walls : MonoBehaviour
 
     private void PlayerBotScreenCollision(Collider other)
     {
-        if(BotCollision != null)
+        if (BotCollision != null)
         {
             BotCollision.Raise();
         }
@@ -113,15 +113,15 @@ public class Walls : MonoBehaviour
 
     private void PlayerBorderCollision(Collision collision, Vector3 normal)
     {
-        Vector3 reflection = Vector3.Reflect(collision.relativeVelocity.normalized, normal);
+        Vector3 reflection = Vector3.Reflect(collision.relativeVelocity.normalized, normal).normalized;
 
         if (!MultiplyWhenFalling && collision.relativeVelocity.y < 0)
         {
-            collision.rigidbody.AddForce(reflection * collision.relativeVelocity.magnitude * 0.5f, ForceMode.VelocityChange);
+            collision.rigidbody.AddForce(reflection * collision.relativeVelocity.magnitude, ForceMode.VelocityChange);
         }
         else
         {
-            Vector3 Vel = reflection * collision.relativeVelocity.magnitude * 0.5f;
+            Vector3 Vel = reflection * collision.relativeVelocity.magnitude;
             collision.rigidbody.AddForce(new Vector3(Vel.x * RepulsionMultiplier.x, Vel.y * RepulsionMultiplier.y, Vel.z * RepulsionMultiplier.z), ForceMode.VelocityChange);
         }
 

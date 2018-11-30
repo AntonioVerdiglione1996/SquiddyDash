@@ -174,7 +174,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!65 &65093191831608884
 BoxCollider:
@@ -244,5 +244,5 @@ MonoBehaviour:
   BorderCollision: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   TopCollision: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
   BotCollision: {fileID: 11400000, guid: 9ecb9858df5a01c4b9071e13aa85ac0d, type: 2}
-  RepulsionMultiplier: {x: 0.8, y: 1.2, z: 0}
+  RepulsionMultiplier: {x: 0.6, y: 0.8, z: 0}
   MultiplyWhenFalling: 0

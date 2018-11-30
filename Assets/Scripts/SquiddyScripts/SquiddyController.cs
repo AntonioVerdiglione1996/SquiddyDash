@@ -16,7 +16,6 @@ public class SquiddyController : MonoBehaviour
     public GameEvent LerpPrerformer;
 
     public UltimateSkill UltimateSkill;
-    public float ScoreRequirementMultIncrementPerInvokation = 1.500001f;
 
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
@@ -52,12 +51,21 @@ public class SquiddyController : MonoBehaviour
         {
             MainCamera = Camera.main;
         }
+        if(!StartPlatform)
+        {
+            StartPlatform = FindObjectOfType<StartPlatform>().GetComponent<Platform>();
+        }
         //check for the first frame initialization of the current platform
         //TODO: Initialization in another class
         if (CurrentPlatformForSquiddy.CurrentPlatform == null)
         {
             CurrentPlatformForSquiddy.CurrentPlatform = StartPlatform;
             CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
+        }
+
+        if (!UltimateSkill)
+        {
+            UltimateSkill = GetComponentInChildren<UltimateSkill>();
         }
 
         if (UltimateSkill)
@@ -103,10 +111,7 @@ public class SquiddyController : MonoBehaviour
 
         if (UltimateSkill)
         {
-            if (UltimateSkill.InvokeSkill(this, false))
-            {
-                UltimateSkill.ScoreRequirement += (int)(UltimateSkill.ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
-            }
+            UltimateSkill.InvokeSkill(false);
         }
     }
     public void BotBorderCollision()
@@ -146,12 +151,12 @@ public class SquiddyController : MonoBehaviour
         else
             return Vector3.up;
     }
-    private void Jump()
+    public void Jump()
     {
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
     }
-    private void Land()
+    public void Land()
     {
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
     }

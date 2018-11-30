@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 [CreateAssetMenu]
 public class TimeHelper : ScriptableObject
 {
@@ -15,6 +15,16 @@ public class TimeHelper : ScriptableObject
     public LinkedListNode<TimerData> AddTimer(GameEvent callback, float duration)
     {
         return timers.AddLast(new TimerData(callback, duration));
+    }
+
+    public LinkedListNode<TimerData> AddTimer(Action callback, float duration)
+    {
+        return timers.AddLast(new TimerData(callback, duration));
+    }
+
+    public LinkedListNode<TimerData> AddTimer(Action callbackAction,GameEvent callbackEvent, float duration)
+    {
+        return timers.AddLast(new TimerData(callbackAction, callbackEvent, duration));
     }
 
     public void RemoveTimer(LinkedListNode<TimerData> toRemove)
@@ -53,9 +63,13 @@ public class TimeHelper : ScriptableObject
                     timer.Enabled = false;
                     currentNode.Value = timer;
                     timers.Remove(currentNode);
-                    if (timer.Event != null)
+                    if (timer.CallbackEvent != null)
                     {
-                        timer.Event.Raise();
+                        timer.CallbackEvent.Raise();
+                    }
+                    if(timer.CallbackAction != null)
+                    {
+                        timer.CallbackAction();
                     }
                 }
             }

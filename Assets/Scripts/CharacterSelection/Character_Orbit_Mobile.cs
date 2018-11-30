@@ -42,8 +42,8 @@ public class Character_Orbit_Mobile : MonoBehaviour
         Vector3 tgt = GetTarget();
         if (Input.touchCount > 0 && Input.touches[0].position.y > GuiLimitYPos.position.y)
         {
-            x += Input.touches[0].deltaPosition.x * xSpeed/* * distance */ * 0.04f;
-            y -= Input.touches[0].deltaPosition.y * ySpeed * 0.02f;
+            x += Input.GetTouch(0).deltaPosition.x * xSpeed/* * distance */ * 0.04f;
+            y -= Input.GetTouch(0).deltaPosition.y * ySpeed * 0.02f;
         }
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 

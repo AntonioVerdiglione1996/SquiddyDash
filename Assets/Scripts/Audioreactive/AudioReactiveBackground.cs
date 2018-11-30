@@ -24,7 +24,7 @@ public class AudioReactiveBackground : MonoBehaviour
 
     private GameObject[] reactiveCubes;
 
-    private int samples = 512;
+    //private int samples = 512;
     private float LerpSmooth = 20;
 
     private static readonly float[] soundData = new float[2048];
