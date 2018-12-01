@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
-    public GameEvent GameoverEvent;
-
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
@@ -120,16 +118,6 @@ public class SquiddyController : MonoBehaviour
         if (UltimateSkill)
         {
             UltimateSkill.InvokeSkill(false);
-        }
-    }
-    public void BotBorderCollision()
-    {
-        if (GameoverEvent != null && enabled)
-        {
-            //forzo la pulizia dell lista dei pool
-            enabled = false;
-            ObjectPooler.OnGameoverPoolClear();
-            GameoverEvent.Raise();
         }
     }
     public void BorderCollided()

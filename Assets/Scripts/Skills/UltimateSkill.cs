@@ -27,6 +27,8 @@ public class UltimateSkill : Skill
 
     private int lastScoreInvoke = 0;
 
+    private bool successfullWallModification = false;
+
     protected override void OnDisable()
     {
     }
@@ -36,7 +38,7 @@ public class UltimateSkill : Skill
         GlobalEvent.ParentToTarget(null, Controller.transform);
         Controller.Rb.AddForce(ForceApplied, Mode);
 
-        WallsModifier.SetNewRepulsion(WallsCustomRepulsion,false,false);
+        successfullWallModification = WallsModifier.SetNewRepulsion(WallsCustomRepulsion,false,false);
     }
     protected override void OnEnable()
     {
@@ -58,7 +60,7 @@ public class UltimateSkill : Skill
 
         enabled = Controller.IsJumping;
 
-        if (!enabled)
+        if (!enabled && successfullWallModification)
         {
             WallsModifier.ResetRepulsion();
         }
@@ -71,6 +73,7 @@ public class UltimateSkill : Skill
 
     protected override void ResetSkill()
     {
+        successfullWallModification = false;
         enabled = false;
         lastScoreInvoke = 0;
         ScoreRequirement = defaultScoreRequirement;
