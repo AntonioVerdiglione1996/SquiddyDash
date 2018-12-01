@@ -16,10 +16,10 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
     {
         TimeHelper.RemoveTimer(timer);
         timer = TimeHelper.AddTimer(TimeOver, Duration);
-        ScoreSystem.ScoreMultiplier = Multiplier;
+        ScoreSystem.ScoreMultiplier += Multiplier;
     }
     private void TimeOver()
     {
-        ScoreSystem.ResetScoreMultiplier();
+        ScoreSystem.ScoreMultiplier -= Multiplier;
     }
 }
