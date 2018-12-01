@@ -7,7 +7,7 @@ public class VelocityLimiter : MonoBehaviour
 
     public Rigidbody Body;
     public float MaxVelocity = 30f;
-
+    public ForceMode SlowingForceMode = ForceMode.VelocityChange;
 
     private void OnValidate()
     {
@@ -26,7 +26,7 @@ public class VelocityLimiter : MonoBehaviour
         float velocityMagn = velocity.magnitude;
         if (velocityMagn > MaxVelocity)
         {
-            Body.velocity = velocity.normalized * MaxVelocity;
+            Body.AddForce(-velocity.normalized * (velocityMagn - MaxVelocity), SlowingForceMode);
         }
     }
 }

@@ -6,13 +6,10 @@ using System;
 public class SquiddyController : MonoBehaviour
 {
     public GameEvent GameoverEvent;
-    public GameEvent GameoverBestScoreSerialization;
 
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
-    public GameEvent CameraShakeEvent;
-    public GameEvent LerpPrerformer;
 
     public UltimateSkill UltimateSkill;
 
@@ -127,24 +124,21 @@ public class SquiddyController : MonoBehaviour
     }
     public void BotBorderCollision()
     {
-        if (GameoverEvent != null)
+        if (GameoverEvent != null && enabled)
         {
             //forzo la pulizia dell lista dei pool
+            enabled = false;
             ObjectPooler.OnGameoverPoolClear();
-            GameoverEvent.Raise(GameoverBestScoreSerialization);
+            GameoverEvent.Raise();
         }
-    }
-    public void TopBorderCollision()
-    {
-        if (LerpPrerformer != null)
-            LerpPrerformer.Raise();
     }
     public void BorderCollided()
     {
         if (Splash != null)
+        {
+            Splash.time = 0f;
             Splash.Play();
-        if (CameraShakeEvent != null)
-            CameraShakeEvent.Raise();
+        }
     }
     private Vector3 directionSwitcher()
     {

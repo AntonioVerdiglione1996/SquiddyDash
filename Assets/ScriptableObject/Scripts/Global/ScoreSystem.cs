@@ -22,6 +22,9 @@ public class ScoreSystem : GameEvent
     public void SaveBestScore()
     {
         SerializerHandler.SaveJsonFile(SerializerHandler.PersistentDataDirectoryPath, "Score.json", JsonUtility.ToJson(this));
+#if UNITY_EDITOR
+        Debug.Log("Saved score");
+#endif
     }
     private void Restore()
     {

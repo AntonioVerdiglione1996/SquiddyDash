@@ -18,6 +18,10 @@ public class Platform : MonoBehaviour
 
     public bool IsAlreadyUpdatedScore = false;
 
+    private void OnCollisionEnter(Collision collision)
+    {
+            PerformLerp.Raise();
+    }
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
@@ -25,7 +29,6 @@ public class Platform : MonoBehaviour
         {
             IsLanded = true;
             GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
-            PerformLerp.Raise();
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
             {
