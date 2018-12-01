@@ -7,7 +7,7 @@ public class NewCameraLerp : MonoBehaviour
 
     //public Transform Target;
 
-    public float smooth;
+    //public float smooth;
 
     [Range(0.01f, 0.2f)]
     public float damp = 0.08f;

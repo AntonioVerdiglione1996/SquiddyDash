@@ -31,7 +31,7 @@ public class UltimateSkill : Skill
 
     protected virtual void Awake()
     {
-        wallsRepulsionStatus = new RepulsionModificationStatus(false, false, WallsCustomRepulsion);
+        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
     }
     protected override void OnValidate()
     {
@@ -40,7 +40,7 @@ public class UltimateSkill : Skill
         {
             WallsModifier.ResetRepulsion();
         }
-        wallsRepulsionStatus = new RepulsionModificationStatus(false, false, WallsCustomRepulsion);
+        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
     }
 
     protected override void OnDisable()

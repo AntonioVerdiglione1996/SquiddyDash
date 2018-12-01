@@ -179,6 +179,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 358313174}
+        m_MethodName: StopAndRestartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   InvokeFirstTime: 1
@@ -232,6 +243,7 @@ GameObject:
   - component: {fileID: 358313170}
   - component: {fileID: 358313175}
   - component: {fileID: 358313176}
+  - component: {fileID: 358313174}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,6 +316,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358313174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358313169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85c83646eb32ba4c87b20773a4bc5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AscensionSpeed: 2
+  StartsAsEnabled: 0
+  TimerDurationBeforeAscension: 2
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  OtherMovementBehaviour: {fileID: 358313176}
 --- !u!114 &358313175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef5df86d5d7d14b82992fe5e2f6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 3
   damp: 0.08
 --- !u!4 &439749840 stripped
 Transform:

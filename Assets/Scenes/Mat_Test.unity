@@ -1033,6 +1033,11 @@ Prefab:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114588360665407152, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4303906424518350, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1349,6 +1354,21 @@ Prefab:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114588360665407152, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1911044054}
+    - target: {fileID: 114588360665407152, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopAndRestartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588360665407152, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
@@ -1446,6 +1466,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1647906374}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1911044054}
+        m_MethodName: StopAndRestartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2051,6 +2082,7 @@ GameObject:
   - component: {fileID: 1911044051}
   - component: {fileID: 1911044049}
   - component: {fileID: 1911044048}
+  - component: {fileID: 1911044054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2069,7 +2101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef5df86d5d7d14b82992fe5e2f6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 3
   damp: 0.08
 --- !u!114 &1911044049
 MonoBehaviour:
@@ -2151,6 +2182,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1911044054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911044047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85c83646eb32ba4c87b20773a4bc5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AscensionSpeed: 2
+  StartsAsEnabled: 0
+  TimerDurationBeforeAscension: 2
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  OtherMovementBehaviour: {fileID: 1911044048}
 --- !u!1 &1951949691
 GameObject:
   m_ObjectHideFlags: 0

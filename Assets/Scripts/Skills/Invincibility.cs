@@ -22,7 +22,7 @@ public class Invincibility : TimedSkill
         {
             WallsModifier.ResetRepulsion();
         }
-        wallsRepulsionState = new RepulsionModificationStatus(true, true, NewRepulsionMultiplier);
+        wallsRepulsionState = new RepulsionModificationStatus(WallsModifier, true, true, NewRepulsionMultiplier);
     }
 
     protected override void OnDisable()
@@ -66,7 +66,7 @@ public class Invincibility : TimedSkill
 
     void Awake()
     {
-        wallsRepulsionState = new RepulsionModificationStatus(true, true, NewRepulsionMultiplier);
+        wallsRepulsionState = new RepulsionModificationStatus(WallsModifier, true, true, NewRepulsionMultiplier);
         OnInvincibilityOver = InvincibilityOver;
     }
 }
