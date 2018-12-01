@@ -362,6 +362,7 @@ MonoBehaviour:
   - {fileID: 4768050904220646}
   PowerUps:
   - {fileID: 11400000, guid: e62e47559c88a9a43bf7d87aec1a2e21, type: 2}
+  - {fileID: 11400000, guid: 7678ca66c0c79c14da99c16a5fb3a07f, type: 2}
   powRenderer: {fileID: 23895109886719494}
   powMeshFilter: {fileID: 33565568263609326}
 --- !u!114 &114741969028539820

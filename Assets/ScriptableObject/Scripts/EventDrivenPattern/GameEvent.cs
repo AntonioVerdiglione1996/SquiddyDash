@@ -6,6 +6,7 @@ using System;
 [CreateAssetMenu(menuName = "Events/GameEvent")]
 public class GameEvent : ScriptableObject
 {
+    public event Action OnEventRaised;
     private List<GameEventListener> listeners = new List<GameEventListener>();
     public void Raise(GameEvent gameEventAfterThis)
     {
@@ -62,6 +63,14 @@ public class GameEvent : ScriptableObject
                 Debug.LogWarningFormat("\tEventListener at index {0} forcefully removed.", i);
 #endif
             }
+        }
+
+        if(OnEventRaised != null)
+        {
+            OnEventRaised();
+#if UNITY_EDITOR
+            Debug.Log("\tOnEventRaised c# event raised.");
+#endif
         }
     }
 }

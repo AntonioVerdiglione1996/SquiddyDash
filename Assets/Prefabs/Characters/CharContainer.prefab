@@ -146,12 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4797eb428696a34419fa7b408967be32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameoverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
-  GameoverBestScoreSerialization: {fileID: 11400000, guid: 448c8041eaaa1bb4a9e3419a5601fac4,
-    type: 2}
   LandParticle: {fileID: 198768375296158612}
-  CameraShakeEvent: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
-  LerpPrerformer: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
   UltimateSkill: {fileID: 114075871032493104}
   SquiddyStats: {fileID: 11400000, guid: 0dbb727b1c6be0b49bb0ad91450a9401, type: 2}
   StartPlatform: {fileID: 0}
@@ -168,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 54785306299008804}
   MaxVelocity: 30
+  SlowingForceMode: 2
 --- !u!198 &198768375296158612
 ParticleSystem:
   m_ObjectHideFlags: 1

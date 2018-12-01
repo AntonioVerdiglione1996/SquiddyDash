@@ -6,9 +6,10 @@ using System;
 [CreateAssetMenu(menuName = "InGameCurrency")]
 public class InGameCurrency : ScriptableObject
 {
+    public const string Filename = "Currency.json";
     public long GameCurrency { get { return gameCurrency; } }
     [SerializeField]
-    private long gameCurrency;
+    private long gameCurrency = 0;
     public bool ModifyGameCurrencyAmount(long toSum)
     {
         long result = gameCurrency + toSum;
@@ -18,8 +19,14 @@ public class InGameCurrency : ScriptableObject
         }
 
         gameCurrency = result;
-        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, "Currency.json", this, true);
+
+        SaveToFile();
+
         return true;
+    }
+    public bool Restore()
+    {
+        return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
     }
     public long FetchUpdatedPremiumCurrencyFromServer()
     {
@@ -35,5 +42,17 @@ public class InGameCurrency : ScriptableObject
 
         //TODO: inform server of this operation. Dovrebbe essere gestito come operazione asyncrona
         return false;
+    }
+    public void SaveToFile()
+    {
+        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
+    }
+    private void OnEnable()
+    {
+        if (!Restore())
+        {
+            gameCurrency = 0;
+            SaveToFile();
+        }
     }
 }
