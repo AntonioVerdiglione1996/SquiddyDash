@@ -12,14 +12,20 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
 
     private LinkedListNode<TimerData> timer;
 
+    private double usedMultiplier;
+
     public override void PowerUpCollected(Collider player, PowerUp powUp)
     {
-        TimeHelper.RemoveTimer(timer);
+        if (TimeHelper.RemoveTimer(timer))
+        {
+            TimeOver();
+        }
         timer = TimeHelper.AddTimer(TimeOver, Duration);
         ScoreSystem.ScoreMultiplier += Multiplier;
+        usedMultiplier = Multiplier;
     }
     private void TimeOver()
     {
-        ScoreSystem.ScoreMultiplier -= Multiplier;
+        ScoreSystem.ScoreMultiplier -= usedMultiplier;
     }
 }
