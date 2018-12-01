@@ -13,7 +13,17 @@ public class Invincibility : TimedSkill
 
     private Action OnInvincibilityOver;
 
-    private bool successfullWallModification = false;
+    private RepulsionModificationStatus wallsRepulsionState;
+
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (WallsModifier && wallsRepulsionState != null && wallsRepulsionState.IsValid)
+        {
+            WallsModifier.ResetRepulsion();
+        }
+        wallsRepulsionState = new RepulsionModificationStatus(true, true, NewRepulsionMultiplier);
+    }
 
     protected override void OnDisable()
     {
@@ -21,7 +31,7 @@ public class Invincibility : TimedSkill
         if (WallsModifier && WallsModifier.Walls)
         {
             WallsModifier.Walls.BotWall.isTrigger = true;
-            if (successfullWallModification)
+            if (wallsRepulsionState.IsValid)
             {
                 WallsModifier.ResetRepulsion();
             }
@@ -35,13 +45,16 @@ public class Invincibility : TimedSkill
         durationTimer = TimeHelper.AddTimer(OnInvincibilityOver, Duration);
 
         WallsModifier.Walls.BotWall.isTrigger = false;
-        successfullWallModification = WallsModifier.SetNewRepulsion(NewRepulsionMultiplier, true, true);
+        WallsModifier.SetNewRepulsion(wallsRepulsionState);
     }
 
     protected override void ResetSkill()
     {
         base.ResetSkill();
-        successfullWallModification = false;
+        if (wallsRepulsionState.IsValid)
+        {
+            WallsModifier.ResetRepulsion();
+        }
         TimeHelper.RemoveTimer(durationTimer);
         durationTimer = null;
     }
@@ -53,6 +66,7 @@ public class Invincibility : TimedSkill
 
     void Awake()
     {
+        wallsRepulsionState = new RepulsionModificationStatus(true, true, NewRepulsionMultiplier);
         OnInvincibilityOver = InvincibilityOver;
     }
 }
