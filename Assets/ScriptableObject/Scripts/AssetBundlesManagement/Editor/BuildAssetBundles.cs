@@ -3,27 +3,26 @@ using UnityEditor;
 
 public class BuildAssetBundles
 {
+
     [MenuItem("Assets/BuildAssetBundlesForCurrentBuildPlatform")]
     static void BuildAllAssetBundles()
     {
-        string assetBundleDirectoryPath = "Assets/AssetBundles";
-        string windowsDirectoryPath = "CurrentPlatform";
-        BuildForTarget(assetBundleDirectoryPath, windowsDirectoryPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+        BuildForTarget(AssetBundleRootFolder.BundlesDirectoryPath, AssetBundleRootFolder.DefaultDirectoryPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
     }
     [MenuItem("Assets/BuildAssetBundlesForWindows")]
     static void BuildAllAssetBundlesWin()
     {
-        string assetBundleDirectoryPath = "Assets/AssetBundles";
-        string windowsDirectoryPath = "Windows";
-        BuildForTarget(assetBundleDirectoryPath, windowsDirectoryPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
+        BuildForTarget(AssetBundleRootFolder.BundlesDirectoryPath, AssetBundleRootFolder.WindowsDirectoryPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows);
     }
     [MenuItem("Assets/BuildAssetBundlesForAndroid")]
     static void BuildAllAssetBundlesAndroid()
     {
-        string assetBundleDirectoryPath = "Assets/AssetBundles";
-        string androidDirectoryPath = "Android";
-
-        BuildForTarget(assetBundleDirectoryPath, androidDirectoryPath, BuildAssetBundleOptions.None, BuildTarget.Android);
+        BuildForTarget(AssetBundleRootFolder.BundlesDirectoryPath, AssetBundleRootFolder.AndroidDirectoryPath, BuildAssetBundleOptions.None, BuildTarget.Android);
+    }
+    [MenuItem("Assets/BuildAssetBundlesForIOS")]
+    static void BuildAllAssetBundlesIOS()
+    {
+        BuildForTarget(AssetBundleRootFolder.BundlesDirectoryPath, AssetBundleRootFolder.IOSDirectoryPath, BuildAssetBundleOptions.None, BuildTarget.Android);
     }
     static void BuildForTarget(string assetBundleDirectoryPath, string targetPlatformDirectoryPath, BuildAssetBundleOptions opt, BuildTarget target)
     {

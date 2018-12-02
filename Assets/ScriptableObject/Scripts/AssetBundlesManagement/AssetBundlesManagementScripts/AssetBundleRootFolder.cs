@@ -9,21 +9,26 @@ public enum AssetBundleRootPath
 }
 public enum PlatformFolderTarget
 {
-    Widnows,
-    Android
+    Windows,
+    Android,
+    IOS,
+    Default
 }
 [CreateAssetMenu(menuName = "AssetBundlesManagement/AssetBundleRootFolder")]
 public class AssetBundleRootFolder : ScriptableObject
 {
+    public const string BundlesDirectoryPath = "AssetBundles";
+    public const string WindowsDirectoryPath = "Windows";
+    public const string AndroidDirectoryPath = "Android";
+    public const string IOSDirectoryPath = "IOS";
+    public const string DefaultDirectoryPath = "CurrentPlatform";
     //path were AssetBundles folder is stored (ex: C://Users/MyAccount/Documents/MyProject/Assets if we chose default value)
     [SerializeField]
     private AssetBundleRootPath rootPath = AssetBundleRootPath.DataPath;
     //our platform Folder Name(ex:Windows) we build all bundles each time for different platforms
     [SerializeField]
-    private PlatformFolderTarget targetPlatform = PlatformFolderTarget.Widnows;
+    private PlatformFolderTarget targetPlatform = PlatformFolderTarget.Windows;
 
-    //our assetBundles folder
-    private string assetBundleFolder = "AssetBundles";
 
     /// <summary>
     /// Get manifest assetbundle container path. Ready to be estracted 
@@ -38,7 +43,7 @@ public class AssetBundleRootFolder : ScriptableObject
     /// </summary>
     public string GetAssetBundlesFolderPath()
     {
-        return Path.Combine(getRootPath(), assetBundleFolder);
+        return Path.Combine(getRootPath(), BundlesDirectoryPath);
     }
     /// <summary>
     /// Get Platform folder path inside out AssetBundles folder. Here we have every assetBundles
@@ -50,7 +55,7 @@ public class AssetBundleRootFolder : ScriptableObject
     }
     private string getAssetBundlePath(string assetBundleName)
     {
-        string directory = Path.Combine(getRootPath(), assetBundleFolder);
+        string directory = Path.Combine(getRootPath(), BundlesDirectoryPath);
         return Path.Combine(directory, Path.Combine(getPlatformPath(), assetBundleName));
     }
     private string getRootPath()
@@ -67,10 +72,23 @@ public class AssetBundleRootFolder : ScriptableObject
     private string getPlatformPath()
     {
         string toreturn = string.Empty;
-        if (targetPlatform == PlatformFolderTarget.Widnows)
-            toreturn = "Windows";
-        else if (targetPlatform == PlatformFolderTarget.Android)
-            toreturn = "Android";
+        switch (targetPlatform)
+        {
+            case PlatformFolderTarget.Windows:
+                toreturn = WindowsDirectoryPath;
+                break;
+            case PlatformFolderTarget.Android:
+                toreturn = AndroidDirectoryPath;
+                break;
+            case PlatformFolderTarget.IOS:
+                toreturn = IOSDirectoryPath;
+                break;
+            case PlatformFolderTarget.Default:
+                toreturn = DefaultDirectoryPath;
+                break;
+            default:
+                break;
+        }
         return toreturn;
     }
 }

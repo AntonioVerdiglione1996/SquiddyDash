@@ -6,12 +6,25 @@ using System;
 [CreateAssetMenu(menuName = "Events/GameEvent")]
 public class GameEvent : ScriptableObject
 {
+#if UNITY_EDITOR
+    public static bool AllDebugActive { get; set; }
+    public bool LocalDebugActive = true;
+    static GameEvent()
+    {
+        AllDebugActive = true;
+    }
+#endif
+
+
     public event Action OnEventRaised;
     private List<GameEventListener> listeners = new List<GameEventListener>();
     public void Raise(GameEvent gameEventAfterThis)
     {
 #if UNITY_EDITOR
-        Debug.LogFormat("GameEvent {0} raised with {1} as post event to raise.", this.name, (gameEventAfterThis ? gameEventAfterThis.name : "NONE"));
+        if (AllDebugActive && LocalDebugActive)
+        {
+            Debug.LogFormat("GameEvent {0} raised with {1} as post event to raise.", this.name, (gameEventAfterThis ? gameEventAfterThis.name : "NONE"));
+        }
 #endif
 
         ExecuteListeners();
@@ -24,7 +37,10 @@ public class GameEvent : ScriptableObject
     public void Raise()
     {
 #if UNITY_EDITOR
-        Debug.LogFormat("GameEvent {0} raised.", this.name);
+        if (AllDebugActive && LocalDebugActive)
+        {
+            Debug.LogFormat("GameEvent {0} raised.", this.name);
+        }
 #endif
 
         ExecuteListeners();
@@ -33,14 +49,20 @@ public class GameEvent : ScriptableObject
     {
         listeners.Add(listener);
 #if UNITY_EDITOR
-        Debug.LogFormat("GameEvent {0} registered eventlistener {1}.", this.name, (listener ? listener.ToString() : "NONE"));
+        if (AllDebugActive && LocalDebugActive)
+        {
+            Debug.LogFormat("GameEvent {0} registered eventlistener {1}.", this.name, (listener ? listener.ToString() : "NONE"));
+        }
 #endif
     }
     public void UnregisterListener(GameEventListener listener)
     {
         listeners.Remove(listener);
 #if UNITY_EDITOR
-        Debug.LogFormat("GameEvent {0} unregistered eventlistener {1}.", this.name, (listener ? listener.ToString() : "NONE"));
+        if (AllDebugActive && LocalDebugActive)
+        {
+            Debug.LogFormat("GameEvent {0} unregistered eventlistener {1}.", this.name, (listener ? listener.ToString() : "NONE"));
+        }
 #endif
     }
 
@@ -52,7 +74,10 @@ public class GameEvent : ScriptableObject
             if (listener)
             {
 #if UNITY_EDITOR
-                Debug.LogFormat("\tEventListener {0} invoked.", listener);
+                if (AllDebugActive && LocalDebugActive)
+                {
+                    Debug.LogFormat("\tEventListener {0} invoked.", listener);
+                }
 #endif
                 listener.OnEventRaised();
             }
@@ -60,16 +85,22 @@ public class GameEvent : ScriptableObject
             {
                 listeners.RemoveAt(i);
 #if UNITY_EDITOR
-                Debug.LogWarningFormat("\tEventListener at index {0} forcefully removed.", i);
+                if (AllDebugActive && LocalDebugActive)
+                {
+                    Debug.LogWarningFormat("\tEventListener at index {0} forcefully removed.", i);
+                }
 #endif
             }
         }
 
-        if(OnEventRaised != null)
+        if (OnEventRaised != null)
         {
             OnEventRaised();
 #if UNITY_EDITOR
-            Debug.Log("\tOnEventRaised c# event raised.");
+            if (AllDebugActive && LocalDebugActive)
+            {
+                Debug.Log("\tOnEventRaised c# event raised.");
+            }
 #endif
         }
     }
