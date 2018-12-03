@@ -29,6 +29,10 @@ public class PowerUp : MonoBehaviour
     }
     public void ResetState()
     {
+        if (currentLogic)
+        {
+            currentLogic.ResetPowerup();
+        }
         if (SpawnPoints != null && SpawnPoints.Length > 0)
         {
             int random = Random.Range(0, SpawnPoints.Length);
@@ -40,6 +44,10 @@ public class PowerUp : MonoBehaviour
             currentLogic = PowerUps[random];
             powMeshFilter.mesh = currentLogic.Mesh;
             powRenderer.materials = currentLogic.Materials;
+        }
+        if (currentLogic)
+        {
+            currentLogic.InitPowerup(this);
         }
         gameObject.SetActive(true);
     }
