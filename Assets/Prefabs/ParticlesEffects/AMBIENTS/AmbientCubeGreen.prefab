@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198857306208792656}
   - component: {fileID: 199722827679874788}
   m_Layer: 0
-  m_Name: AmbientCube
+  m_Name: AmbientCubeGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,8 +194,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.6827586, b: 0, a: 1}
-        key1: {r: 0.8206897, g: 1, b: 0, a: 0.77254903}
+        key0: {r: 0, g: 0.6827586, b: 0, a: 1}
+        key1: {r: 0.35150337, g: 0.41176468, b: 0.075692035, a: 0.77254903}
         key2: {r: 0, g: 0, b: 0, a: 0.37254903}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
