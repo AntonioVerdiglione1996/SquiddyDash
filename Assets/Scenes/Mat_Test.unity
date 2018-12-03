@@ -735,8 +735,6 @@ GameObject:
   - component: {fileID: 1033544094}
   - component: {fileID: 1033544096}
   - component: {fileID: 1033544095}
-  - component: {fileID: 1033544090}
-  - component: {fileID: 1033544089}
   m_Layer: 0
   m_Name: Squiddy_Events_Setter
   m_TagString: Untagged
@@ -758,68 +756,6 @@ Transform:
   m_Father: {fileID: 1189834291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1033544089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1033544087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09184be12e2b9a4db31513a4963be8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: OnLandListener
-  Explain: 
-  Event: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1647906376}
-        m_MethodName: ChangeStateToLerpToDefault
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  InvokeFirstTime: 0
---- !u!114 &1033544090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1033544087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09184be12e2b9a4db31513a4963be8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: OnJumpListener
-  Explain: 
-  Event: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1647906376}
-        m_MethodName: ChangeStateToRotate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  InvokeFirstTime: 0
 --- !u!114 &1033544092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,17 +862,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
         m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1647906376}
-        m_MethodName: TryCalculateNewRotationValues
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1101,7 +1026,7 @@ Prefab:
     - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114367944752624052, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1448,7 +1373,7 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1647906376}
+      objectReference: {fileID: 0}
     - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -1458,6 +1383,16 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2062,12 +1997,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1958164648}
   m_Script: {fileID: 11500000, guid: 4797eb428696a34419fa7b408967be32, type: 3}
---- !u!114 &1647906376 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114316210280325222, guid: 6d66d5f6fabc0d8409000df996001fa4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1958164648}
-  m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
 --- !u!1001 &1739002350
 Prefab:
   m_ObjectHideFlags: 0

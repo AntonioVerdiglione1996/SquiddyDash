@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Character : MonoBehaviour
 {
 #if UNITY_EDITOR
@@ -11,10 +10,79 @@ public class Character : MonoBehaviour
     public Color colorName;
     public Sprite Icon;
 
+    public GameEvent StartRotation;
+    public GameEvent ResetRotation;
+    public GameEvent StartLerpRotation;
+
     [SerializeField]
     private Skill[] Skills = null;
 
     private SquiddyController controller = null;
+
+    private DynamicRotator rotator;
+
+    private void OnEnable()
+    {
+        if (rotator)
+        {
+            if (StartRotation)
+            {
+                StartRotation.OnEventRaised += StartRot;
+            }
+            if (ResetRotation)
+            {
+                ResetRotation.OnEventRaised += RestartRot;
+            }
+            if (StartLerpRotation)
+            {
+                StartLerpRotation.OnEventRaised += StartLerpRot;
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        if (rotator)
+        {
+            if (StartRotation)
+            {
+                StartRotation.OnEventRaised -= StartRot;
+            }
+            if (ResetRotation)
+            {
+                ResetRotation.OnEventRaised -= RestartRot;
+            }
+            if (StartLerpRotation)
+            {
+                StartLerpRotation.OnEventRaised -= StartLerpRot;
+            }
+        }
+    }
+    private void StartRot()
+    {
+        if (rotator)
+        {
+            rotator.ChangeCurrentState(DynamicRotatorState.Rotating);
+        }
+    }
+    private void RestartRot()
+    {
+        if (rotator)
+        {
+            rotator.TryCalculateNewRotationValues();
+        }
+    }
+    private void StartLerpRot()
+    {
+        if (rotator)
+        {
+            rotator.ChangeCurrentState(DynamicRotatorState.LerpToDefault);
+        }
+    }
+
+    private void Awake()
+    {
+        rotator = GetComponent<DynamicRotator>();
+    }
 
     private void Start()
     {
@@ -51,6 +119,13 @@ public class Character : MonoBehaviour
             for (int i = 0; i < Skills.Length; i++)
             {
                 Skills[i].InvokeSkill();
+            }
+        }
+        if (controller)
+        {
+            if (!controller.IsJumping)
+            {
+                StartLerpRot();
             }
         }
     }

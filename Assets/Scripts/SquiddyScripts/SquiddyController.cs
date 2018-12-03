@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
+    public GameEvent OnLanding;
+
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
@@ -79,6 +81,11 @@ public class SquiddyController : MonoBehaviour
         {
             UltimateSkill = GetComponentInChildren<UltimateSkill>();
         }
+        Rigidbody bd = GetComponent<Rigidbody>();
+        if (bd)
+        {
+            bd.freezeRotation = true;
+        }
     }
     void Update()
     {
@@ -152,6 +159,10 @@ public class SquiddyController : MonoBehaviour
     public void Land()
     {
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
+        if (OnLanding)
+        {
+            OnLanding.Raise();
+        }
     }
 
     private Vector3 returnRightDirection()

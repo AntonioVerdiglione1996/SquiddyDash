@@ -11,16 +11,18 @@ public enum DynamicRotatorState
 public class DynamicRotator : MonoBehaviour
 {
     public const float MinDurationValue = 0.0f;
-    public Rigidbody Body;
 
     public TimeHelper TimeHelper;
 
-    public Vector2 MinMaxSpeed = new Vector2(-5f, 5f);
+    public Vector2 MinMaxSpeed = new Vector2(-180f, 180f);
+
+    public float MinAbsoluteSpeed = 40f;
 
     public Vector2 MinMaxRotDuration = new Vector2(0.5f, 2f);
     public Quaternion DefaultRotation = Quaternion.identity;
 
     public float LerpSpeed = 2f;
+
 
     public float CurrentSpeed { get; protected set; }
     public float CurrentDuration { get; protected set; }
@@ -101,6 +103,11 @@ public class DynamicRotator : MonoBehaviour
         randomTimer = TimeHelper.AddTimer(CalculateNewRotationValues, CurrentDuration);
 
         CurrentSpeed = UnityEngine.Random.Range(MinMaxSpeed.x, MinMaxSpeed.y);
+        float sign = Mathf.Sign(CurrentSpeed);
+        if(Mathf.Abs(CurrentSpeed) < MinAbsoluteSpeed)
+        {
+            CurrentSpeed = sign * MinAbsoluteSpeed;
+        }
     }
     private void OnValidate()
     {
@@ -144,14 +151,14 @@ public class DynamicRotator : MonoBehaviour
     }
     private void Rotate()
     {
-        //TODO: use physics
+        //TODO: do not change physic object, only renderer
         Vector3 rot = transform.rotation.eulerAngles;
         rot.z += CurrentSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(rot);
     }
     private void LerpToDefault()
     {
-        //TODO: use physics
+        //TODO: do not change physic object, only renderer
         if (lerp > 1f)
         {
             ChangeCurrentState(DynamicRotatorState.NotRotating);

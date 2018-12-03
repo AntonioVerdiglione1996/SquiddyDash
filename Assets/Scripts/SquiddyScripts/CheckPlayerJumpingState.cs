@@ -14,7 +14,7 @@ public class CheckPlayerJumpingState : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        controller = FindObjectOfType<SquiddyController>();
+        controller = GetComponent<SquiddyController>();
 
     }
     private void Start()
