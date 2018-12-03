@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+#if UNITY_EDITOR
+    public bool DebugActive = true;
+#endif
     public string Name;
     public Color colorName;
     public Sprite Icon;
@@ -19,7 +22,10 @@ public class Character : MonoBehaviour
         if (!controller)
         {
 #if UNITY_EDITOR
-            Debug.LogErrorFormat("{0} could not find a valid controller reference!", this);
+            if (DebugActive)
+            {
+                Debug.LogErrorFormat("{0} could not find a valid controller reference!", this);
+            }
 #endif
             return;
         }

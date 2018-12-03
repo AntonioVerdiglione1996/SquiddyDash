@@ -18,4 +18,4 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   Duration: 10
-  Multiplier: 2
+  AdditiveScoreMultiplier: 1

@@ -8,7 +8,7 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
     public TimeHelper TimeHelper;
 
     public float Duration = 10f;
-    public double Multiplier = 2.0d;
+    public double AdditiveScoreMultiplier = 1.0d;
 
     private LinkedListNode<TimerData> timer;
 
@@ -21,8 +21,8 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
             TimeOver();
         }
         timer = TimeHelper.AddTimer(TimeOver, Duration);
-        ScoreSystem.ScoreMultiplier += Multiplier;
-        usedMultiplier = Multiplier;
+        ScoreSystem.ScoreMultiplier += AdditiveScoreMultiplier;
+        usedMultiplier = AdditiveScoreMultiplier;
     }
     private void TimeOver()
     {
