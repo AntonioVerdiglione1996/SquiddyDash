@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114835219694571498}
   - component: {fileID: 114075871032493104}
   - component: {fileID: 114884507819233278}
+  - component: {fileID: 114316210280325222}
   m_Layer: 8
   m_Name: CharContainer
   m_TagString: Untagged
@@ -123,6 +124,22 @@ MonoBehaviour:
   ScoreRequirementMultIncrementPerInvokation: 1.500001
   WallsCustomRepulsion: {x: 1, y: 1, z: 1}
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
+--- !u!114 &114316210280325222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948740379086476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  MinMaxSpeed: {x: -5, y: 5}
+  MinMaxRotDuration: {x: 0.5, y: 2}
+  DefaultRotation: {x: -0, y: -0, z: -0, w: 1}
+  LerpSpeed: 1
 --- !u!114 &114446529115914972
 MonoBehaviour:
   m_ObjectHideFlags: 1
