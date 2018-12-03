@@ -15,6 +15,8 @@ MonoBehaviour:
   Materials:
   - {fileID: 2100000, guid: 4a36ae71b48f14d6fb2eae31da682a32, type: 2}
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  prefab: {fileID: 0}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   Duration: 10

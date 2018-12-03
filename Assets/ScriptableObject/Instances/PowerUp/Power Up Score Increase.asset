@@ -15,5 +15,7 @@ MonoBehaviour:
   Materials:
   - {fileID: 2100000, guid: 23fc898268709d346b696ab505c07656, type: 2}
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  prefab: {fileID: 0}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreIncrease: 5
