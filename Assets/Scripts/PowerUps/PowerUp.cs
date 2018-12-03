@@ -1,23 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(MeshRenderer),typeof(MeshFilter))]
 public class PowerUp : MonoBehaviour
 {
-    public List<Transform> SpawnPoints;
-    public ScoreSystem ScoreSystem;
-    private void OnBecameVisible()
-    {
-        int random = (int)Random.Range(0, 3);
-        transform.position = SpawnPoints[random].position;
+    public Transform[] SpawnPoints;
 
+    public PowerUpLogic[] PowerUps;
+
+    [SerializeField]
+    private MeshRenderer powRenderer;
+    [SerializeField]
+    private MeshFilter powMeshFilter;
+
+    private PowerUpLogic currentLogic;
+    private void OnValidate()
+    {
+        if(powMeshFilter == null)
+        {
+            powMeshFilter = GetComponent<MeshFilter>();
+            powMeshFilter.mesh = null;
+        }
+        if (powRenderer == null)
+        {
+            powRenderer = GetComponent<MeshRenderer>();
+            powRenderer.materials = null;
+        }
     }
+    public void ResetState()
+    {
+        if (SpawnPoints != null && SpawnPoints.Length > 0)
+        {
+            int random = Random.Range(0, SpawnPoints.Length);
+            transform.position = SpawnPoints[random].position;
+        }
+        if (PowerUps != null && PowerUps.Length > 0)
+        {
+            int random = Random.Range(0, PowerUps.Length);
+            currentLogic = PowerUps[random];
+            powMeshFilter.mesh = currentLogic.Mesh;
+            powRenderer.materials = currentLogic.Materials;
+        }
+        gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //squiddy layer
         if (other.gameObject.layer == 8)
         {
-            ScoreSystem.Score += 5;
+            if (currentLogic)
+            {
+                currentLogic.PowerUpCollected(other, this);
+            }
 
             gameObject.SetActive(false);
         }

@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5538a1771b79c9f4cb7c395b5120bb10, type: 3}
   m_Name: ScoreSystem
   m_EditorClassIdentifier: 
+  LocalDebugActive: 1
+  bestScore: 14

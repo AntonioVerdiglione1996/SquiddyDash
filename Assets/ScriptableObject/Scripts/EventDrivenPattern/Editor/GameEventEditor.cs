@@ -6,15 +6,26 @@ using UnityEngine;
 [CustomEditor(typeof(GameEvent), true)]
 public class GameEventEditor : Editor
 {
+    private GameEvent obj;
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
+        base.OnInspectorGUI();
 
-        EditorGUI.BeginDisabledGroup(serializedObject.isEditingMultipleObjects);
         if (GUILayout.Button("Raise"))
         {
-            ((GameEvent)target).Raise();
+            obj.Raise();
         }
-        EditorGUI.EndDisabledGroup();
+        if (GUILayout.Button(obj.LocalDebugActive ? "Local debug active" : "Local debug not active"))
+        {
+            obj.LocalDebugActive = !obj.LocalDebugActive;
+        }
+        if (GUILayout.Button(GameEvent.AllDebugActive ? "Debug active" : "Debug not active"))
+        {
+            GameEvent.AllDebugActive = !GameEvent.AllDebugActive;
+        }
+    }
+    private void OnEnable()
+    {
+        obj = target as GameEvent;
     }
 }

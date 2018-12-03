@@ -6,11 +6,53 @@ using System;
 [CreateAssetMenu(menuName = "InGameCurrency")]
 public class InGameCurrency : ScriptableObject
 {
-    public int Currency;
-
-    public void IncreaseAmount(int amount)
+    public const string Filename = "Currency.json";
+    public long GameCurrency { get { return gameCurrency; } }
+    [SerializeField]
+    private long gameCurrency = 0;
+    public bool ModifyGameCurrencyAmount(long toSum)
     {
-        Currency += amount;
-        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, "Currency.json", this, true);
+        long result = gameCurrency + toSum;
+        if(result < 0)
+        {
+            return false;
+        }
+
+        gameCurrency = result;
+
+        SaveToFile();
+
+        return true;
+    }
+    public bool Restore()
+    {
+        return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
+    }
+    public long FetchUpdatedPremiumCurrencyFromServer()
+    {
+        //TODO: gestire premiumC lato server forse? (per evitare manomissioni lato client).Problema di questo approccio è che una persona offline non possa usare i suoi PremiumCurrency. Dovrebbe essere gestito come operazione asyncrona
+        return 0;
+    }
+    public bool UsePremiumCurrency(long amountUsed)
+    {
+        if(amountUsed <= 0)
+        {
+            return false;
+        }
+
+        //TODO: inform server of this operation. Dovrebbe essere gestito come operazione asyncrona
+        return false;
+    }
+    public void SaveToFile()
+    {
+        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
+    }
+    private void OnEnable()
+    {
+        if (!Restore())
+        {
+            gameCurrency = 0;
+            SaveToFile();
+        }
     }
 }

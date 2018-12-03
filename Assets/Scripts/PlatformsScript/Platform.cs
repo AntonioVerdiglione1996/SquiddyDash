@@ -12,22 +12,27 @@ public class Platform : MonoBehaviour
 
     public GlobalEvents GlobalEvents;
     public GameEvent PerformLerp;
-    public GameEvent ScoreUpdater;
+    public ScoreSystem ScoreSystem;
+
+    public int ScoreValue = 1;
 
     public bool IsAlreadyUpdatedScore = false;
 
+    private void OnCollisionEnter(Collision collision)
+    {
+            PerformLerp.Raise();
+    }
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
         if (collision.gameObject.layer == 8)
         {
             IsLanded = true;
-            GlobalEvents.ParentToTarget(transform, collision.transform.root);
-            PerformLerp.Raise();
+            GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
             {
-                ScoreUpdater.Raise();
+                ScoreSystem.UpdateScore(ScoreValue);
                 IsAlreadyUpdatedScore = true;
             }
         }

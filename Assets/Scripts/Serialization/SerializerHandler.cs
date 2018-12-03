@@ -5,14 +5,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SerializerHandler
 {
-    public static string PersistentDataDirectoryPath { get { return persistentDataDirectoryPath; } }
-    public static string AssetDirectoryPath { get { return assetDirectoryPath; } }
-    public static string StreamingAssetsDirectoryPath { get { return streamingAssetsDirectoryPath; } }
-
-    private const string serializedDatafolderName = "SerializedData";
-    private static string persistentDataDirectoryPath = Path.Combine(Application.persistentDataPath, serializedDatafolderName);
-    private static string assetDirectoryPath = Path.Combine(Application.dataPath, serializedDatafolderName);
-    private static string streamingAssetsDirectoryPath = Path.Combine(Application.streamingAssetsPath, serializedDatafolderName);
+    public const string SerializedDatafolderName = "SerializedData";
+    public static readonly string PersistentDataDirectoryPath = Path.Combine(Application.persistentDataPath, SerializedDatafolderName);
+    public static readonly string AssetDirectoryPath = Path.Combine(Application.dataPath, SerializedDatafolderName);
+    public static readonly string StreamingAssetsDirectoryPath = Path.Combine(Application.streamingAssetsPath, SerializedDatafolderName);
 
     #region========================== Json ==============================================================
     public static void SaveJsonFile(string directoryPath, string fileName, string jsonRappresentation)
@@ -39,15 +35,18 @@ public static class SerializerHandler
         Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
 #endif
     }
-    public static void RestoreObjectFromJson(string directoryPath, string filename, object objToRestore)
+    public static bool RestoreObjectFromJson(string directoryPath, string filename, object objToRestore)
     {
-        if (File.Exists(Path.Combine(directoryPath, filename)))
+        if (!File.Exists(Path.Combine(directoryPath, filename)))
         {
-            JsonUtility.FromJsonOverwrite(File.ReadAllText(Path.Combine(directoryPath, filename)), objToRestore);
+            return false;
         }
+
+        JsonUtility.FromJsonOverwrite(File.ReadAllText(Path.Combine(directoryPath, filename)), objToRestore);
 #if UNITY_EDITOR
         Debug.LogFormat("DeSerialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, filename), filename);
 #endif
+        return true;
     }
     #endregion
 

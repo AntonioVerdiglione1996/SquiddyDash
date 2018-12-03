@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c1b0127f5673c43a4814dce51f18a4, type: 3}
   m_Name: InGameCurrency
   m_EditorClassIdentifier: 
-  Currency: 0
+  gameCurrency: 0

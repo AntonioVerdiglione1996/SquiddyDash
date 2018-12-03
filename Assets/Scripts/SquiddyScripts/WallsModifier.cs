@@ -1,4 +1,48 @@
 ﻿using UnityEngine;
+public class RepulsionModificationStatus
+{
+    public bool IsValid { get { return WallsModifier && WallsModifier.CurrentMod == this; } }
+    public bool MultiplyWhenFalling { get; private set; }
+    public bool IsRepulsionAbsolute { get; private set; }
+    public Vector3 RepulsionMultiplier { get; private set; }
+    public WallsModifier WallsModifier { get; private set; }
+    
+    public RepulsionModificationStatus(WallsModifier wallsModifier, bool multiplyWhenFalling, bool isRepulsionAbsolute, Vector3 repulsionMultiplier)
+    {
+        WallsModifier = wallsModifier;
+        SetValues(multiplyWhenFalling, isRepulsionAbsolute, repulsionMultiplier);
+    }
+    public void SetValues(bool multiplyWhenFalling, bool isRepulsionAbsolute, Vector3 repulsionMultiplier)
+    {
+        MultiplyWhenFalling = multiplyWhenFalling;
+        IsRepulsionAbsolute = isRepulsionAbsolute;
+        RepulsionMultiplier = repulsionMultiplier;
+    }
+    public void ChangeWallsModifier(WallsModifier newWallsModifier)
+    {
+        if(WallsModifier == newWallsModifier)
+        {
+            return;
+        }
+        if (!WallsModifier)
+        {
+            WallsModifier = newWallsModifier;
+            return;
+        }
+        if(!newWallsModifier)
+        {
+            return;
+        }
+
+        if (IsValid)
+        {
+            WallsModifier.ResetRepulsion();
+        }
+
+        WallsModifier = newWallsModifier;
+    }
+}
+
 [CreateAssetMenu]
 public class WallsModifier : ScriptableObject
 {
@@ -8,7 +52,7 @@ public class WallsModifier : ScriptableObject
         {
             if (!walls)
             {
-                Awake();
+                Reset();
             }
             return walls;
         }
@@ -16,47 +60,57 @@ public class WallsModifier : ScriptableObject
     public Vector3 OriginalRepulsionMultiplier { get; private set; }
     public bool OriginalMultiplyWhenFalling { get; private set; }
 
-    public bool IsRepulsionChanged { get; private set; }
-    public bool IsCurrentRepulsionAbsolute { get; private set; }
+    public bool IsRepulsionChanged { get { return CurrentMod != null; } }
+    public bool IsCurrentRepulsionAbsolute { get { return (IsRepulsionChanged ? CurrentMod.IsRepulsionAbsolute : false); } }
+
+    public RepulsionModificationStatus CurrentMod { get; private set; }
 
     private Walls walls;
 
-    void Awake()
+    public void Reset()
     {
+        ResetRepulsion();
+
         walls = FindObjectOfType<Walls>();
         if (walls)
         {
             OriginalRepulsionMultiplier = walls.RepulsionMultiplier;
             OriginalMultiplyWhenFalling = walls.MultiplyWhenFalling;
         }
-        IsRepulsionChanged = false;
-        IsCurrentRepulsionAbsolute = false;
     }
-
-    public bool SetNewRepulsion(Vector3 newRepulsion, bool multiplyWhenFalling, bool isRepulsionAbsolute)
+    public void SetNewRepulsion(RepulsionModificationStatus status)
     {
-        IsRepulsionChanged = true;
-        IsCurrentRepulsionAbsolute = isRepulsionAbsolute;
-
-        if (!walls || IsCurrentRepulsionAbsolute)
+        if (!Walls || status == null || IsCurrentRepulsionAbsolute)
         {
-            return false;
+            return;
         }
 
-        walls.RepulsionMultiplier = newRepulsion;
-        walls.MultiplyWhenFalling = multiplyWhenFalling;
+        ResetRepulsion();
 
-        return true;
+        status.ChangeWallsModifier(this);
+
+        CurrentMod = status;
+
+        walls.RepulsionMultiplier = CurrentMod.RepulsionMultiplier;
+        walls.MultiplyWhenFalling = CurrentMod.MultiplyWhenFalling;
+
+        return;
     }
     public void ResetRepulsion()
     {
-        IsCurrentRepulsionAbsolute = false;
-        IsRepulsionChanged = false;
+        CurrentMod = null;
+
         if (!walls)
         {
             return;
         }
+
         walls.MultiplyWhenFalling = OriginalMultiplyWhenFalling;
         walls.RepulsionMultiplier = OriginalRepulsionMultiplier;
+    }
+
+    void Awake()
+    {
+        Reset();
     }
 }

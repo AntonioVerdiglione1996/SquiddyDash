@@ -4,40 +4,57 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "ScoreSystem", menuName = "ScoreSystem")]
-public class ScoreSystem : ScriptableObject
+public class ScoreSystem : GameEvent
 {
+    public const string Filename = "Score.json";
+    public const double DefaultScoreMultiplier = 1.0d;
+    public int Score { get { return score; } }
+    public int BestScore { get { return bestScore; } }
     [NonSerialized]
-    public int Score;
+    public double ScoreMultiplier = DefaultScoreMultiplier;
     [NonSerialized]
-    public int BestScore;
+    private int score;
+    [SerializeField]
+    private int bestScore;
 
-    //public GameEvent OnScoreUpdated;
+    public void ResetScoreMultiplier()
+    {
+        ScoreMultiplier = DefaultScoreMultiplier;
+    }
+    private void OnEnable()
+    {
+        ResetScoreMultiplier();
+#if !(UNITY_EDITOR)
+        Restore();
+#endif
+    }
+    public void SaveBestScore()
+    {
+        SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
+#if UNITY_EDITOR
+        Debug.Log("Saved score");
+#endif
+    }
+    private void Restore()
+    {
+        SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
+        UpdateScore(0);
+    }
+    public void UpdateScore(int amountToSum)
+    {
+        amountToSum = (int)(amountToSum * ScoreMultiplier);
 
-    //REACTIVATE ON BUILD
-    //private void OnEnable()
-    //{
-    //    Restore();
-    //}
-    public void OnGameOverActive()
-    {
-        CheckBestScore();
-        SerializerHandler.SaveJsonFile(SerializerHandler.PersistentDataDirectoryPath, "Score.json", JsonUtility.ToJson(this));
+        score += amountToSum;
+
+        if (score > bestScore)
+        {
+            bestScore = score;
+        }
+
+        Raise();
     }
-    public void Restore()
+    public void ResetScore()
     {
-        SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, "Score.json", this);
-    }
-    public void UpdateScore()
-    {
-        Score++;
-    }
-    public void ReleaseDataForScore()
-    {
-        Score = 0;
-    }
-    public void CheckBestScore()
-    {
-        int previusBestScore = BestScore;
-        BestScore = Score > previusBestScore ? Score : previusBestScore;
+        UpdateScore(-Score);
     }
 }

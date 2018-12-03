@@ -27,6 +27,22 @@ public class UltimateSkill : Skill
 
     private int lastScoreInvoke = 0;
 
+    private RepulsionModificationStatus wallsRepulsionStatus;
+
+    protected virtual void Awake()
+    {
+        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
+    }
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (WallsModifier && wallsRepulsionStatus != null && wallsRepulsionStatus.IsValid)
+        {
+            WallsModifier.ResetRepulsion();
+        }
+        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
+    }
+
     protected override void OnDisable()
     {
     }
@@ -36,7 +52,7 @@ public class UltimateSkill : Skill
         GlobalEvent.ParentToTarget(null, Controller.transform);
         Controller.Rb.AddForce(ForceApplied, Mode);
 
-        WallsModifier.SetNewRepulsion(WallsCustomRepulsion,false,false);
+        WallsModifier.SetNewRepulsion(wallsRepulsionStatus);
     }
     protected override void OnEnable()
     {
@@ -49,16 +65,16 @@ public class UltimateSkill : Skill
 
     protected virtual void Update()
     {
-        if(!Controller)
+        if (!Controller)
         {
 #if UNITY_EDITOR
-            Debug.LogErrorFormat("{0} does not have a valid reference to a squiddy controller" , this);
+            Debug.LogErrorFormat("{0} does not have a valid reference to a squiddy controller", this);
 #endif
         }
 
         enabled = Controller.IsJumping;
 
-        if (!enabled)
+        if (!enabled && wallsRepulsionStatus.IsValid)
         {
             WallsModifier.ResetRepulsion();
         }
@@ -71,6 +87,10 @@ public class UltimateSkill : Skill
 
     protected override void ResetSkill()
     {
+        if (wallsRepulsionStatus.IsValid)
+        {
+            WallsModifier.ResetRepulsion();
+        }
         enabled = false;
         lastScoreInvoke = 0;
         ScoreRequirement = defaultScoreRequirement;

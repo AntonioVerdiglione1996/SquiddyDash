@@ -5,15 +5,9 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
-    public GameEvent GameoverEvent;
-    public GameEvent GameoverBestScoreSerialization;
-    //public GameEvent InstantiateParticleSplash;
-    //public GameEvent InstantiateParticleLand;
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
-    public GameEvent CameraShakeEvent;
-    public GameEvent LerpPrerformer;
 
     public UltimateSkill UltimateSkill;
 
@@ -21,7 +15,7 @@ public class SquiddyController : MonoBehaviour
     public Platform StartPlatform;
     public Rigidbody Rb { get; private set; }
 
-    public bool IsJumping { get { return transform.parent == null; } }
+    public bool IsJumping { get { return !(transform.parent); } }
 
 
     private Platform currentPlatform;
@@ -51,7 +45,7 @@ public class SquiddyController : MonoBehaviour
         {
             MainCamera = Camera.main;
         }
-        if(!StartPlatform)
+        if (!StartPlatform)
         {
             StartPlatform = FindObjectOfType<StartPlatform>().GetComponent<Platform>();
         }
@@ -63,16 +57,28 @@ public class SquiddyController : MonoBehaviour
             CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
         }
 
-        if (!UltimateSkill)
-        {
-            UltimateSkill = GetComponentInChildren<UltimateSkill>();
-        }
+
 
         if (UltimateSkill)
         {
             UltimateSkill.Initialize(this);
         }
 
+    }
+    private void OnValidate()
+    {
+        if (!StartPlatform)
+        {
+            StartPlatform startP = FindObjectOfType<StartPlatform>();
+            if (startP)
+            {
+                StartPlatform = startP.GetComponentInChildren<Platform>();
+            }
+        }
+        if (!UltimateSkill)
+        {
+            UltimateSkill = GetComponentInChildren<UltimateSkill>();
+        }
     }
     void Update()
     {
@@ -114,26 +120,13 @@ public class SquiddyController : MonoBehaviour
             UltimateSkill.InvokeSkill(false);
         }
     }
-    public void BotBorderCollision()
-    {
-        if (GameoverEvent != null)
-        {
-            //forzo la pulizia dell lista dei pool
-            ObjectPooler.OnGameoverPoolClear();
-            GameoverEvent.Raise(GameoverBestScoreSerialization);
-        }
-    }
-    public void TopBorderCollision()
-    {
-        if (LerpPrerformer != null)
-            LerpPrerformer.Raise();
-    }
     public void BorderCollided()
     {
         if (Splash != null)
+        {
+            Splash.time = 0f;
             Splash.Play();
-        if (CameraShakeEvent != null)
-            CameraShakeEvent.Raise();
+        }
     }
     private Vector3 directionSwitcher()
     {

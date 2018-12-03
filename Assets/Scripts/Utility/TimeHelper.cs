@@ -22,17 +22,19 @@ public class TimeHelper : ScriptableObject
         return timers.AddLast(new TimerData(callback, duration));
     }
 
-    public LinkedListNode<TimerData> AddTimer(Action callbackAction,GameEvent callbackEvent, float duration)
+    public LinkedListNode<TimerData> AddTimer(Action callbackAction, GameEvent callbackEvent, float duration)
     {
         return timers.AddLast(new TimerData(callbackAction, callbackEvent, duration));
     }
 
-    public void RemoveTimer(LinkedListNode<TimerData> toRemove)
+    public bool RemoveTimer(LinkedListNode<TimerData> toRemove)
     {
-        if(toRemove != null && toRemove.List == timers)
+        if (toRemove != null && toRemove.List == timers)
         {
             timers.Remove(toRemove);
+            return true;
         }
+        return false;
     }
 
     public void RemoveAllTimers()
@@ -67,7 +69,7 @@ public class TimeHelper : ScriptableObject
                     {
                         timer.CallbackEvent.Raise();
                     }
-                    if(timer.CallbackAction != null)
+                    if (timer.CallbackAction != null)
                     {
                         timer.CallbackAction();
                     }

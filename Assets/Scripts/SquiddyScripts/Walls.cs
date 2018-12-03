@@ -18,9 +18,11 @@ public class Walls : MonoBehaviour
     public GameEvent TopCollision;
     public GameEvent BotCollision;
 
-    public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0f);
+    public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0.6f);
 
     public bool MultiplyWhenFalling = false;
+
+    public ForceMode RepulsionMode = ForceMode.VelocityChange;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -125,12 +127,12 @@ public class Walls : MonoBehaviour
 
         if (!MultiplyWhenFalling && collision.relativeVelocity.y < 0)
         {
-            collision.rigidbody.AddForce(reflection * collision.relativeVelocity.magnitude, ForceMode.VelocityChange);
+            collision.rigidbody.AddForce(reflection * collision.relativeVelocity.magnitude, RepulsionMode);
         }
         else
         {
             Vector3 Vel = reflection * collision.relativeVelocity.magnitude;
-            collision.rigidbody.AddForce(new Vector3(Vel.x * RepulsionMultiplier.x, Vel.y * RepulsionMultiplier.y, Vel.z * RepulsionMultiplier.z), ForceMode.VelocityChange);
+            collision.rigidbody.AddForce(new Vector3(Vel.x * RepulsionMultiplier.x, Vel.y * RepulsionMultiplier.y, Vel.z * RepulsionMultiplier.z), RepulsionMode);
         }
 
         if (BorderCollision != null)

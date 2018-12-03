@@ -9,6 +9,6 @@ public class CurrencyTextHandler : MonoBehaviour
     public TextMeshProUGUI Text;
     void Update()
     {
-        Text.text = CurrencySystem.Currency.ToString();
+        Text.text = CurrencySystem.GameCurrency.ToString();
     }
 }
