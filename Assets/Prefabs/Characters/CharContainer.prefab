@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114075871032493104}
   - component: {fileID: 114884507819233278}
   - component: {fileID: 114316210280325222}
+  - component: {fileID: 114322603737358726}
   m_Layer: 8
   m_Name: CharContainer
   m_TagString: Untagged
@@ -90,7 +91,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 56
   m_CollisionDetection: 2
 --- !u!65 &65305988475881468
 BoxCollider:
@@ -135,11 +136,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Body: {fileID: 54785306299008804}
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   MinMaxSpeed: {x: -5, y: 5}
   MinMaxRotDuration: {x: 0.5, y: 2}
   DefaultRotation: {x: -0, y: -0, z: -0, w: 1}
-  LerpSpeed: 1
+  LerpSpeed: 2
+--- !u!114 &114322603737358726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948740379086476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c21e651ce6b3e48b318b2376312895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsJumping: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  IsNotJumping: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  RaiseAtStart: 1
 --- !u!114 &114446529115914972
 MonoBehaviour:
   m_ObjectHideFlags: 1

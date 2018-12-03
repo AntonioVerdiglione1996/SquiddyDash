@@ -11,6 +11,8 @@ public enum DynamicRotatorState
 public class DynamicRotator : MonoBehaviour
 {
     public const float MinDurationValue = 0.0f;
+    public Rigidbody Body;
+
     public TimeHelper TimeHelper;
 
     public Vector2 MinMaxSpeed = new Vector2(-5f, 5f);
@@ -18,7 +20,7 @@ public class DynamicRotator : MonoBehaviour
     public Vector2 MinMaxRotDuration = new Vector2(0.5f, 2f);
     public Quaternion DefaultRotation = Quaternion.identity;
 
-    public float LerpSpeed = 1f;
+    public float LerpSpeed = 2f;
 
     public float CurrentSpeed { get; protected set; }
     public float CurrentDuration { get; protected set; }
@@ -26,16 +28,11 @@ public class DynamicRotator : MonoBehaviour
     {
         get
         {
-            if(randomTimer == null || randomTimer.List == null)
+            if (randomTimer == null || randomTimer.List == null)
             {
                 return 0f;
             }
-            TimerData data = randomTimer.Value;
-            if (!data.Enabled)
-            {
-                return 0f;
-            }
-            return data.ElapsedTime;
+            return randomTimer.Value.ElapsedTime;
         }
     }
 
@@ -44,25 +41,16 @@ public class DynamicRotator : MonoBehaviour
 
     private float lerp = 0f;
 
+    public void TryCalculateNewRotationValues()
+    {
+        if (currentState == DynamicRotatorState.Rotating)
+        {
+            CalculateNewRotationValues();
+        }
+    }
     public DynamicRotatorState GetCurrentState()
     {
         return currentState;
-    }
-    public void ForceNewRotationValues()
-    {
-#if UNITY_EDITOR
-        if (currentState != DynamicRotatorState.Rotating)
-        {
-            Debug.LogWarningFormat("Warning! {0} is going to switch state outside of the given ChangeCurrentState method! Initial state: {1} , final state : {2}.", this, currentState, DynamicRotatorState.Rotating);
-        }
-#endif
-        currentState = DynamicRotatorState.Rotating;
-
-        TimeHelper.RemoveTimer(randomTimer);
-        CurrentDuration = UnityEngine.Random.Range(MinMaxRotDuration.x, MinMaxRotDuration.y);
-        randomTimer = TimeHelper.AddTimer(ForceNewRotationValues, CurrentDuration);
-
-        CurrentSpeed = UnityEngine.Random.Range(MinMaxSpeed.x, MinMaxSpeed.y);
     }
     public void ChangeCurrentState(DynamicRotatorState newState)
     {
@@ -70,15 +58,17 @@ public class DynamicRotator : MonoBehaviour
         {
             return;
         }
-        TimeHelper.RemoveTimer(randomTimer);
         switch (newState)
         {
             case DynamicRotatorState.NotRotating:
+                TimeHelper.RemoveTimer(randomTimer);
                 break;
             case DynamicRotatorState.Rotating:
-                ForceNewRotationValues();
+                CalculateNewRotationValues();
                 break;
             case DynamicRotatorState.LerpToDefault:
+                lerp = 0f;
+                TimeHelper.RemoveTimer(randomTimer);
                 break;
             default:
 #if UNITY_EDITOR
@@ -88,6 +78,29 @@ public class DynamicRotator : MonoBehaviour
         }
 
         currentState = newState;
+    }
+    public void ChangeStateToRotate()
+    {
+        ChangeCurrentState(DynamicRotatorState.Rotating);
+    }
+    public void ChangeStateToNotRotate()
+    {
+        ChangeCurrentState(DynamicRotatorState.NotRotating);
+    }
+    public void ChangeStateToLerpToDefault()
+    {
+        ChangeCurrentState(DynamicRotatorState.LerpToDefault);
+    }
+
+    private void CalculateNewRotationValues()
+    {
+        currentState = DynamicRotatorState.Rotating;
+
+        TimeHelper.RemoveTimer(randomTimer);
+        CurrentDuration = UnityEngine.Random.Range(MinMaxRotDuration.x, MinMaxRotDuration.y);
+        randomTimer = TimeHelper.AddTimer(CalculateNewRotationValues, CurrentDuration);
+
+        CurrentSpeed = UnityEngine.Random.Range(MinMaxSpeed.x, MinMaxSpeed.y);
     }
     private void OnValidate()
     {
@@ -131,17 +144,20 @@ public class DynamicRotator : MonoBehaviour
     }
     private void Rotate()
     {
+        //TODO: use physics
         Vector3 rot = transform.rotation.eulerAngles;
         rot.z += CurrentSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(rot);
     }
     private void LerpToDefault()
     {
-        if(lerp > 1f)
+        //TODO: use physics
+        if (lerp > 1f)
         {
+            ChangeCurrentState(DynamicRotatorState.NotRotating);
             return;
         }
         lerp += Time.deltaTime * LerpSpeed;
-        Quaternion.Lerp(transform.rotation, DefaultRotation, lerp);
+        transform.rotation = Quaternion.Lerp(transform.rotation, DefaultRotation, lerp);
     }
 }
