@@ -11,7 +11,7 @@ public class SquiddyController : MonoBehaviour
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
 
-    public UltimateSkill UltimateSkill;
+    public Skill UltimateSkill;
 
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
