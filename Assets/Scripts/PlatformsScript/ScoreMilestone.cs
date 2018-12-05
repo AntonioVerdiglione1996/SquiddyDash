@@ -3,7 +3,7 @@ using UnityEngine;
 [Serializable]
 public class ScoreMilestone
 {
-    public static readonly Vector3 DefaultScaleMultiplier = new Vector3(0.95f,1f,1f);
+    public static readonly Vector3 DefaultScaleMultiplier = new Vector3(0.90f,1f,1f);
     public const float DefaultSpeedMultiplier = 1.05f;
     public int Score;
     public int Reward;

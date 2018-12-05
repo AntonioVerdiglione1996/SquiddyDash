@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -10,6 +9,8 @@ public static class SerializerHandler
     public static readonly string AssetDirectoryPath = Path.Combine(Application.dataPath, SerializedDatafolderName);
     public static readonly string StreamingAssetsDirectoryPath = Path.Combine(Application.streamingAssetsPath, SerializedDatafolderName);
 
+    public static bool ActiveDebug = true;
+
     #region========================== Json ==============================================================
     public static void SaveJsonFile(string directoryPath, string fileName, string jsonRappresentation)
     {
@@ -19,7 +20,10 @@ public static class SerializerHandler
         //create the effective file at that directory with filename you chose
         File.WriteAllText(Path.Combine(directoryPath, fileName), jsonRappresentation);
 #if UNITY_EDITOR
-        Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+        if (ActiveDebug)
+        {
+            Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+        }
 #endif
     }
     public static void SaveJsonFromInstance(string directoryPath, string fileName, object instanceToTransformInJson, bool prettyPrint)
@@ -32,7 +36,10 @@ public static class SerializerHandler
         //create the effective file at that directory with filename you chose
         File.WriteAllText(Path.Combine(directoryPath, fileName), jsonRappresentation);
 #if UNITY_EDITOR
-        Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+        if (ActiveDebug)
+        {
+            Debug.LogFormat("Serialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, fileName), fileName);
+        }
 #endif
     }
     public static bool RestoreObjectFromJson(string directoryPath, string filename, object objToRestore)
@@ -44,7 +51,10 @@ public static class SerializerHandler
 
         JsonUtility.FromJsonOverwrite(File.ReadAllText(Path.Combine(directoryPath, filename)), objToRestore);
 #if UNITY_EDITOR
-        Debug.LogFormat("DeSerialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, filename), filename);
+        if (ActiveDebug)
+        {
+            Debug.LogFormat("DeSerialized at path : {0} , Filename : {1}", Path.Combine(directoryPath, filename), filename);
+        }
 #endif
         return true;
     }

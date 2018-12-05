@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
   m_Name: Level00Data
   m_EditorClassIdentifier: 
-  IsUnlocked: 1
+  levelIndex: 1
+  isUnlocked: 0
+  unlockCost: 10
+  bestScore: 0

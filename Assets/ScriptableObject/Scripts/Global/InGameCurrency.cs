@@ -17,7 +17,9 @@ public class InGameCurrency : ScriptableObject
         {
             return false;
         }
-
+#if UNITY_EDITOR
+        Debug.LogFormat("{0} summed to current gamecurrency {1}. Final amount: {2}." , toSum , gameCurrency , result);
+#endif
         gameCurrency = result;
 
         SaveToFile();

@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.9019608, g: 0, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -707,7 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df756b2d77e002944a82daf6bda92a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelData: {fileID: 11400000, guid: edb68fbb36f1b654a9e7d09add7e5f1c, type: 2}
+  LevelData: {fileID: 11400000, guid: f94a7fbb8cc30a842b2c2a766e1f00fc, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Locker: {fileID: 993095724}
 --- !u!114 &134709712
 MonoBehaviour:
@@ -749,13 +751,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: SelectLevelByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 134709711}
+        m_MethodName: OnClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1509,7 +1511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2289,15 +2291,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: SelectLevelByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 530604083}
+        m_MethodName: OnClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_01
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2349,6 +2351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelData: {fileID: 11400000, guid: edb68fbb36f1b654a9e7d09add7e5f1c, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Locker: {fileID: 2023344870}
 --- !u!1 &581670617
 GameObject:
@@ -2859,7 +2863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df756b2d77e002944a82daf6bda92a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelData: {fileID: 11400000, guid: edb68fbb36f1b654a9e7d09add7e5f1c, type: 2}
+  LevelData: {fileID: 11400000, guid: 27bb9986d62317744bc4ee8fbc2b8d79, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Locker: {fileID: 185258849}
 --- !u!114 &658146767
 MonoBehaviour:
@@ -2901,13 +2907,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: SelectLevelByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 658146766}
+        m_MethodName: OnClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3370,7 +3376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3478,13 +3484,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: SelectLevelByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 815106402}
+        m_MethodName: OnClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3538,6 +3544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelData: {fileID: 11400000, guid: 90388eebfd5094740ac2859cc096771e, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Locker: {fileID: 1843275780}
 --- !u!1 &821122005
 GameObject:
@@ -3866,13 +3874,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: SelectLevelByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 865945504}
+        m_MethodName: OnClicked
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3926,6 +3934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelData: {fileID: 11400000, guid: 5bc18bd64f787f14b98804c8ec5bea83, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Locker: {fileID: 2114376693}
 --- !u!224 &868394802
 RectTransform:
@@ -4621,7 +4631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.7647059, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4699,7 +4709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.33793116, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4989,7 +4999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1403618825
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5294,7 +5304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

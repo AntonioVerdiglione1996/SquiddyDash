@@ -107,13 +107,13 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponentInParent<SquiddyController>();
+        controller = transform.root.GetComponentInChildren<SquiddyController>();
         if (!controller)
         {
 #if UNITY_EDITOR
             if (DebugActive)
             {
-                Debug.LogErrorFormat("{0} could not find a valid controller reference!", this);
+                Debug.LogWarningFormat("{0} could not find a valid controller reference!", this);
             }
 #endif
             return;
