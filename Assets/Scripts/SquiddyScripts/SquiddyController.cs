@@ -19,6 +19,8 @@ public class SquiddyController : MonoBehaviour
 
     public bool IsJumping { get { return !(transform.parent); } }
 
+    [SerializeField]
+    private ButtonSkillActivator ultimateActivator;
 
     private Platform currentPlatform;
     private Camera MainCamera;
@@ -64,11 +66,21 @@ public class SquiddyController : MonoBehaviour
         if (UltimateSkill)
         {
             UltimateSkill.Initialize(this);
+            if (!UltimateSkill.IsSkillAutoActivating)
+            {
+                ultimateActivator.ActivableSkill = UltimateSkill;
+                ultimateActivator.gameObject.SetActive(true);
+            }
         }
 
     }
     private void OnValidate()
     {
+        if (!ultimateActivator)
+        {
+            ultimateActivator = GetComponentInChildren<ButtonSkillActivator>();
+        }
+
         if (!StartPlatform)
         {
             StartPlatform startP = FindObjectOfType<StartPlatform>();
@@ -122,7 +134,7 @@ public class SquiddyController : MonoBehaviour
         throw new Exception("Input not supported for the current platform");
 #endif
 
-        if (UltimateSkill)
+        if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {
             UltimateSkill.InvokeSkill(false);
         }

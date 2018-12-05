@@ -14,14 +14,14 @@ public class DynamicRotator : MonoBehaviour
 
     public TimeHelper TimeHelper;
 
-    public Vector2 MinMaxSpeed = new Vector2(-180f, 180f);
+    public Vector2 MinMaxSpeed = new Vector2(-720f, 720f);
 
-    public float MinAbsoluteSpeed = 40f;
+    public float MinAbsoluteSpeed = 250f;
 
     public Vector2 MinMaxRotDuration = new Vector2(0.5f, 2f);
     public Quaternion DefaultRotation = Quaternion.identity;
 
-    public float LerpSpeed = 2f;
+    public float LerpSpeed = 10f;
 
 
     public float CurrentSpeed { get; protected set; }

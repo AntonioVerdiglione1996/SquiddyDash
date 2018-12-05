@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: BasicUltimateInfo
   m_EditorClassIdentifier: 
   Description: 
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}

@@ -11,8 +11,11 @@ public class Character : MonoBehaviour
     public Sprite Icon;
 
     public GameEvent StartRotation;
+    public GameEvent StopRotation;
     public GameEvent ResetRotation;
     public GameEvent StartLerpRotation;
+
+    public ButtonSkillActivator SkillIconUIPrefab;
 
     [SerializeField]
     private Skill[] Skills = null;
@@ -20,6 +23,8 @@ public class Character : MonoBehaviour
     private SquiddyController controller = null;
 
     private DynamicRotator rotator;
+
+    private Canvas SkillUIHolder;
 
     private void OnEnable()
     {
@@ -36,6 +41,10 @@ public class Character : MonoBehaviour
             if (StartLerpRotation)
             {
                 StartLerpRotation.OnEventRaised += StartLerpRot;
+            }
+            if (StopRotation)
+            {
+                StopRotation.OnEventRaised += StopRot;
             }
         }
     }
@@ -55,6 +64,10 @@ public class Character : MonoBehaviour
             {
                 StartLerpRotation.OnEventRaised -= StartLerpRot;
             }
+            if (StopRotation)
+            {
+                StopRotation.OnEventRaised -= StopRot;
+            }
         }
     }
     private void StartRot()
@@ -63,6 +76,10 @@ public class Character : MonoBehaviour
         {
             rotator.ChangeCurrentState(DynamicRotatorState.Rotating);
         }
+    }
+    private void StopRot()
+    {
+        StartLerpRot();
     }
     private void RestartRot()
     {
@@ -77,6 +94,10 @@ public class Character : MonoBehaviour
         {
             rotator.ChangeCurrentState(DynamicRotatorState.LerpToDefault);
         }
+    }
+    private void OnValidate()
+    {
+        Skills = GetComponentsInChildren<Skill>();
     }
 
     private void Awake()
@@ -98,16 +119,44 @@ public class Character : MonoBehaviour
             return;
         }
 
-        if (Skills == null || Skills.Length == 0)
+        SkillUIHolder = transform.root.GetComponentInChildren<Canvas>();
+        if (!SkillUIHolder)
         {
-            Skills = GetComponentsInChildren<Skill>();
+#if UNITY_EDITOR
+            if (DebugActive)
+            {
+                Debug.LogErrorFormat("{0} could not find a valid Canvas reference to hold the skill icons!", this);
+            }
+#endif
+            return;
+        }
+
+        if (!SkillIconUIPrefab)
+        {
+#if UNITY_EDITOR
+            if (DebugActive)
+            {
+                Debug.LogErrorFormat("SkillIconUIPrefab needs to be a valid prefab!!!", this);
+            }
+#endif
+            return;
         }
 
         if (Skills != null)
         {
+            int uiSpawnedCount = 0;
             for (int i = 0; i < Skills.Length; i++)
             {
-                Skills[i].Initialize(controller);
+                Skill skill = Skills[i];
+                skill.Initialize(controller);
+                if (!skill.IsSkillAutoActivating && SkillIconUIPrefab && SkillUIHolder)
+                {
+                    ButtonSkillActivator skillIcon = Instantiate<ButtonSkillActivator>(SkillIconUIPrefab, SkillUIHolder.transform);
+                    skillIcon.ActivableSkill = skill;
+                    skillIcon.transform.position += new Vector3(0f,i * 128,0f); 
+                    skillIcon.gameObject.SetActive(true);
+                    uiSpawnedCount++;
+                }
             }
         }
     }
@@ -118,14 +167,11 @@ public class Character : MonoBehaviour
         {
             for (int i = 0; i < Skills.Length; i++)
             {
-                Skills[i].InvokeSkill();
-            }
-        }
-        if (controller)
-        {
-            if (!controller.IsJumping)
-            {
-                StartLerpRot();
+                Skill skill = Skills[i];
+                if (skill.IsSkillAutoActivating)
+                {
+                    skill.InvokeSkill();
+                }
             }
         }
     }

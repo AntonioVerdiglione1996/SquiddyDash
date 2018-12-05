@@ -815,11 +815,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
-  MinMaxSpeed: {x: -250, y: 250}
-  MinAbsoluteSpeed: 160
+  MinMaxSpeed: {x: -720, y: 720}
+  MinAbsoluteSpeed: 250
   MinMaxRotDuration: {x: 0.5, y: 2}
   DefaultRotation: {x: 0, y: 0, z: 0, w: 1}
-  LerpSpeed: 2
+  LerpSpeed: 10
 --- !u!114 &114288796514280008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -843,6 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
+  IsAutoActivating: 0
   CoolDownDuration: 5
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   Duration: 2.5
@@ -864,9 +865,15 @@ MonoBehaviour:
   colorName: {r: 0, g: 0, b: 0, a: 1}
   Icon: {fileID: 21300004, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
   StartRotation: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
-  Skills: []
+  SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
+    type: 2}
+  Skills:
+  - {fileID: 114550726581504850}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114851572641145374
 MonoBehaviour:
   m_ObjectHideFlags: 1
