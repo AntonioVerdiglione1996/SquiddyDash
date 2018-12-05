@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90812eb5e4fe1084fbafa56bf07c6408, type: 3}
   m_Name: GlobalEvents
   m_EditorClassIdentifier: 
+  LocalDebugActive: 0

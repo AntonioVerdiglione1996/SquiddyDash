@@ -988,6 +988,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65099040822710264, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
@@ -2168,7 +2192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef5df86d5d7d14b82992fe5e2f6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damp: 0.08
+  LerpSpeed: 2
 --- !u!114 &1911044049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,164 +2323,164 @@ MonoBehaviour:
   milestones:
   - Score: 10
     Reward: 1
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 25
     Reward: 5
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 50
     Reward: 10
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 85
     Reward: 20
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 130
     Reward: 30
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 190
     Reward: 80
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 330
     Reward: 100
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 500
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 1200
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 2000
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 2800
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 3500
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 4200
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 4900
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 5600
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 6400
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 7100
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 7700
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 8800
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 9400
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 10000
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 11500
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 13000
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 14500
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 15600
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 16700
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 17800
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 18900
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 20000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 23000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 26000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 29000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 32000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 35000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 38000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 41000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 44000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 47000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 50000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 100000
     Reward: 100000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05
 --- !u!114 &1951949693
 MonoBehaviour:
   m_ObjectHideFlags: 0

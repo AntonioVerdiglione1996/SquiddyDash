@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 114075871032493104}
   - component: {fileID: 114884507819233278}
   - component: {fileID: 114322603737358726}
+  - component: {fileID: 114974407072716316}
   m_Layer: 8
   m_Name: CharContainer
   m_TagString: Untagged
@@ -190,7 +191,7 @@ MonoBehaviour:
   Mode: 1
   defaultScoreRequirement: 15
   ScoreRequirementMultIncrementPerInvokation: 1.500001
-  WallsCustomRepulsion: {x: 1, y: 1, z: 1}
+  WallsCustomRepulsion: {x: 0.8, y: 0.8, z: 0.8}
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
 --- !u!114 &114156650123403284
 MonoBehaviour:
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 54785306299008804}
-  MaxVelocity: 50
+  MaxVelocity: 40
   SlowingForceMode: 2
 --- !u!114 &114897862962290558
 MonoBehaviour:
@@ -308,6 +309,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114974407072716316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948740379086476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1859b68d8119c4aa64853e8dfd4c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeightForAward: 15
+  ScoreAward: 1
+  Target: {fileID: 4272207224775192}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
 --- !u!198 &198768375296158612
 ParticleSystem:
   m_ObjectHideFlags: 1

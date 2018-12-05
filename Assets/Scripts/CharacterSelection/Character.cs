@@ -153,7 +153,15 @@ public class Character : MonoBehaviour
                 {
                     ButtonSkillActivator skillIcon = Instantiate<ButtonSkillActivator>(SkillIconUIPrefab, SkillUIHolder.transform);
                     skillIcon.ActivableSkill = skill;
-                    skillIcon.transform.position += new Vector3(0f,i * 128,0f); 
+                    RectTransform rect = skillIcon.GetComponent<RectTransform>();
+                    if (rect)
+                    {
+                        rect.position += new Vector3(0f,rect.rect.height * i, 0f);
+                    }
+                    else
+                    {
+                        skillIcon.transform.position += new Vector3(0f, i * 128, 0f);
+                    }
                     skillIcon.gameObject.SetActive(true);
                     uiSpawnedCount++;
                 }

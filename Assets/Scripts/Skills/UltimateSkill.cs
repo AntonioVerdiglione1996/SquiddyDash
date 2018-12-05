@@ -21,7 +21,7 @@ public class UltimateSkill : Skill
 
     public float ScoreRequirementMultIncrementPerInvokation = 1.500001f;
 
-    public Vector3 WallsCustomRepulsion = new Vector3(1f, 1f, 1f);
+    public Vector3 WallsCustomRepulsion = new Vector3(0.8f, 0.8f, 0.8f);
 
     public WallsModifier WallsModifier;
 
