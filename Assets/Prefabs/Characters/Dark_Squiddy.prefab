@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 33013162599114110}
   - component: {fileID: 23783842198829110}
   - component: {fileID: 114833711474533468}
+  - component: {fileID: 114065378254048996}
   m_Layer: 8
   m_Name: Dark_Squiddy
   m_TagString: Untagged
@@ -802,6 +803,23 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114065378254048996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862803101919830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  MinMaxSpeed: {x: -720, y: 720}
+  MinAbsoluteSpeed: 250
+  MinMaxRotDuration: {x: 0.5, y: 2}
+  DefaultRotation: {x: 0, y: 0, z: 0, w: 1}
+  LerpSpeed: 10
 --- !u!114 &114288796514280008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -825,9 +843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
-  CoolDownDuration: 5
+  IsAutoActivating: 0
+  CoolDownDuration: 30
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
-  Duration: 2.5
+  Duration: 3
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
   NewRepulsionMultiplier: {x: 0.8, y: 0.8, z: 0.8}
 --- !u!114 &114833711474533468
@@ -841,10 +860,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b1025ec6da6c44b91f547f6099a0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugActive: 1
   Name: Void
   colorName: {r: 0, g: 0, b: 0, a: 1}
   Icon: {fileID: 21300004, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
-  Skills: []
+  StartRotation: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
+  StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
+    type: 2}
+  Skills:
+  - {fileID: 114550726581504850}
 --- !u!114 &114851572641145374
 MonoBehaviour:
   m_ObjectHideFlags: 1

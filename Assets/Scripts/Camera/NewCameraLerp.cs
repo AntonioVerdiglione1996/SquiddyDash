@@ -9,24 +9,27 @@ public class NewCameraLerp : MonoBehaviour
 
     //public float smooth;
 
-    [Range(0.01f, 0.2f)]
-    public float damp = 0.08f;
+
+    public float LerpSpeed = 2f;
 
     private Vector3 cameraArm;
 
-    private Vector3 CameraPos;
+    //private Vector3 CameraPos;
     //private float lerpDuration;
     private Vector3 EndPoint = Vector3.zero;
+    private float lerp;
 
     void Start()
     {
         cameraArm = new Vector3(0f, 9f, -20f);
-        CameraPos = transform.position;
+        lerp = 0f;
+        //CameraPos = transform.position;
     }
 
     public void SetEndPoint(Transform transform)
     {
         EndPoint = transform.position;
+        lerp = 0f;
     }
 
     //find another bool for checking if landed (maybe a new event?)
@@ -40,9 +43,10 @@ public class NewCameraLerp : MonoBehaviour
         //{
         //end = Target.position;
         //if (transform.position.y < end.y)
-        CameraPos.y = Mathf.Lerp(transform.position.y, EndPoint.y + cameraArm.y, damp);
+        Vector3 currentPos = transform.position;
+        lerp += Time.deltaTime * LerpSpeed;
 
-        transform.position = CameraPos;
+        transform.position = new Vector3(currentPos.x, Mathf.Lerp(currentPos.y, EndPoint.y + cameraArm.y, lerp) , currentPos.z);
 
         //}
     }

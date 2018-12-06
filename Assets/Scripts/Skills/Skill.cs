@@ -9,10 +9,18 @@ public abstract class Skill : MonoBehaviour
     /// </summary>
     public SkillDescriber Describer;
 
+    public bool IsSkillAutoActivating { get { return IsAutoActivating; } }
+
     /// <summary>
     /// Controller associated with this skill when initialized
     /// </summary>
     protected SquiddyController Controller { get; private set; }
+
+    /// <summary>
+    /// Boolean that determines if this skill should require to be activated by some sort of input. If true skill will be automatically re-activated
+    /// </summary>
+    [SerializeField]
+    protected bool IsAutoActivating = false;
 
     /// <summary>
     /// Invokes this skill and enables this monobehaviour
@@ -27,6 +35,11 @@ public abstract class Skill : MonoBehaviour
         }
         return enabled;
     }
+    /// <summary>
+    /// Returns how much is left before a new skill invokation is available. Some skills may not fully support this
+    /// </summary>
+    /// <returns>0f if cooldown over, 1f if cooldown just started. Lerped value between 0 and 1 if supported by skill</returns>
+    public abstract float GetCooldownRemainingPercentage();
     /// <summary>
     /// Condition checked when an InvokeSkill with bypass = false is requested.
     /// </summary>

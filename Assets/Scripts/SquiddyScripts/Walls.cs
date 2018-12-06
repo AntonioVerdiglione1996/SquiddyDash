@@ -19,6 +19,7 @@ public class Walls : MonoBehaviour
     public GameEvent BotCollision;
 
     public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0.6f);
+    public Vector3 BotWallMinimumRepulsionForce = new Vector3(0f, 15f, 0f);
 
     public bool MultiplyWhenFalling = false;
 
@@ -68,23 +69,29 @@ public class Walls : MonoBehaviour
     {
         if (collision.collider.gameObject.layer == 8 && collision.rigidbody) //player layer
         {
-            ContactPoint contact = collision.contacts[0];
+            Vector3 otherPosition = collision.collider.transform.position;
+            float distanceFromTop = TopWall.transform.position.y - otherPosition.y;
+            float distanceFromBot = otherPosition.y - BotWall.transform.position.y;
+            float distanceFromLeft = otherPosition.x - LeftWall.transform.position.x;
+            float distanceFromRight = RightWall.transform.position.x - otherPosition.x;
 
-            if (contact.thisCollider == LeftWall)
+            float minDistance = Mathf.Min(distanceFromBot, distanceFromLeft, distanceFromRight, distanceFromTop);
+
+            if (distanceFromLeft == minDistance)
             {
                 PlayerBorderCollision(collision, transform.right);
             }
-            else if (contact.thisCollider == RightWall)
+            else if (distanceFromRight == minDistance)
             {
                 PlayerBorderCollision(collision, -transform.right);
             }
-            else if (contact.thisCollider == TopWall)
+            else if (distanceFromTop == minDistance)
             {
                 PlayerBorderCollision(collision, -transform.up);
             }
             else
             {
-                PlayerBorderCollision(collision, transform.up);
+                PlayerBorderCollision(collision, transform.up, BotWallMinimumRepulsionForce);
             }
         }
     }
@@ -121,19 +128,29 @@ public class Walls : MonoBehaviour
         }
     }
 
-    private void PlayerBorderCollision(Collision collision, Vector3 normal)
+    private void PlayerBorderCollision(Collision collision, Vector3 normal, Vector3 MinimumRepulsionForce = new Vector3())
     {
         Vector3 reflection = Vector3.Reflect(collision.relativeVelocity.normalized, normal).normalized;
 
+        Rigidbody other = collision.rigidbody;
+
+        other.AddForce(-other.velocity, ForceMode.VelocityChange);
+
+        Vector3 finalForce;
+
         if (!MultiplyWhenFalling && collision.relativeVelocity.y < 0)
         {
-            collision.rigidbody.AddForce(reflection * collision.relativeVelocity.magnitude, RepulsionMode);
+            finalForce = reflection * collision.relativeVelocity.magnitude ;
         }
         else
         {
             Vector3 Vel = reflection * collision.relativeVelocity.magnitude;
-            collision.rigidbody.AddForce(new Vector3(Vel.x * RepulsionMultiplier.x, Vel.y * RepulsionMultiplier.y, Vel.z * RepulsionMultiplier.z), RepulsionMode);
+            finalForce = new Vector3(Vel.x * RepulsionMultiplier.x, Vel.y * RepulsionMultiplier.y, Vel.z * RepulsionMultiplier.z);
         }
+
+        finalForce = finalForce.MaxAbsoluteValue(MinimumRepulsionForce);
+
+        other.AddForce(finalForce, RepulsionMode);
 
         if (BorderCollision != null)
         {

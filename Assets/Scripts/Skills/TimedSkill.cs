@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 /// <summary>
 /// Base class for all skills that uses a cooldown system. It gets enabled when skill is invoked successfully, then it should be disabled in child classes to put it back into cooldown
 /// </summary>
@@ -20,6 +21,24 @@ public abstract class TimedSkill : Skill
     protected LinkedListNode<TimerData> coolDownTimer = null;
 
     /// <summary>
+    /// Returns how much is left before a new skill invokation is available. Some skills may not fully support this
+    /// </summary>
+    /// <returns>0f if cooldown over, 1f if cooldown just started. Lerped value between 0 and 1 if supported by skill</returns>
+    public override float GetCooldownRemainingPercentage()
+    {
+        if (coolDownTimer == null)
+        {
+            return 0f;
+        }
+        TimerData Data = coolDownTimer.Value;
+        if (Data.Duration != 0f)
+        {
+            return Mathf.Clamp01(Data.ElapsedTime / Data.Duration);
+        }
+        return 1f;
+    }
+
+    /// <summary>
     /// Condition checked when an InvokeSkill with bypass = false is requested.
     /// </summary>
     /// <returns>False if cooldown timer either does not exist or if it is not over, true if skill is off cooldown</returns>
@@ -38,7 +57,10 @@ public abstract class TimedSkill : Skill
     /// </summary>
     protected override void ResetSkill()
     {
-        TimeHelper.RemoveTimer(coolDownTimer);
+        if (TimeHelper)
+        {
+            TimeHelper.RemoveTimer(coolDownTimer);
+        }
         coolDownTimer = null;
     }
 

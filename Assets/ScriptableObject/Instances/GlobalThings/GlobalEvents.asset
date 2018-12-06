@@ -11,3 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90812eb5e4fe1084fbafa56bf07c6408, type: 3}
   m_Name: GlobalEvents
   m_EditorClassIdentifier: 
+  GameCurrency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  Calculator: {fileID: 11400000, guid: 05f3973eae1b38749a29904d4e03acfc, type: 2}
+  LocalDebugActive: 1

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -818,6 +818,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+        m_MethodName: IncreaseGameCurrency
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScoreSystem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameOver
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
         m_MethodName: SelectLevelByString
         m_Mode: 5
         m_Arguments:
@@ -988,6 +1000,70 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65099040822710264, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 4209115858140794, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209115858140794, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 509.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -509.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718529492142856, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718529492142856, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
@@ -1016,7 +1092,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114573088225988806, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1161,17 +1237,17 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SelectLevelByString
+      value: IncreaseGameCurrency
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: ScoreSystem, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1369,6 +1445,37 @@ Prefab:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TryCalculateNewRotationValues
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
@@ -1378,6 +1485,48 @@ AudioSource:
   m_PrefabParentObject: {fileID: 82985325945469966, guid: 42eb2682355553449a7abbb301cdb470,
     type: 2}
   m_PrefabInternal: {fileID: 1739002350}
+--- !u!1001 &1089006222
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1189834290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,17 +2109,17 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 1948740379086476, guid: 6d66d5f6fabc0d8409000df996001fa4,
     type: 2}
-  m_PrefabInternal: {fileID: 1958164648}
+  m_PrefabInternal: {fileID: 1089006222}
 --- !u!4 &1647906374 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4,
     type: 2}
-  m_PrefabInternal: {fileID: 1958164648}
+  m_PrefabInternal: {fileID: 1089006222}
 --- !u!114 &1647906375 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114835219694571498, guid: 6d66d5f6fabc0d8409000df996001fa4,
     type: 2}
-  m_PrefabInternal: {fileID: 1958164648}
+  m_PrefabInternal: {fileID: 1089006222}
   m_Script: {fileID: 11500000, guid: 4797eb428696a34419fa7b408967be32, type: 3}
 --- !u!1001 &1739002350
 Prefab:
@@ -2101,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef5df86d5d7d14b82992fe5e2f6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damp: 0.08
+  LerpSpeed: 2
 --- !u!114 &1911044049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2197,6 +2346,7 @@ MonoBehaviour:
   StartsAsEnabled: 0
   TimerDurationBeforeAscension: 2
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   OtherMovementBehaviour: {fileID: 1911044048}
 --- !u!1 &1951949691
 GameObject:
@@ -2231,164 +2381,164 @@ MonoBehaviour:
   milestones:
   - Score: 10
     Reward: 1
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 25
     Reward: 5
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 50
     Reward: 10
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 85
     Reward: 20
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 130
     Reward: 30
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 190
     Reward: 80
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 330
     Reward: 100
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 500
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 1200
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 2000
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 2800
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 3500
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 4200
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 4900
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 5600
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 6400
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 7100
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 7700
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 8800
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 9400
     Reward: 500
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 10000
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 11500
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 13000
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 14500
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 15600
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 16700
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 17800
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 18900
     Reward: 1000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 20000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 23000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 26000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 29000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 32000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 35000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 38000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 41000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 44000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 47000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 50000
     Reward: 2000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
   - Score: 100000
     Reward: 100000
-    ScaleMultiplier: {x: 0.8, y: 1, z: 1}
-    SpeedMultiplier: 1.15
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.05
 --- !u!114 &1951949693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2419,48 +2569,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1958164648
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1988979699
 GameObject:
   m_ObjectHideFlags: 0

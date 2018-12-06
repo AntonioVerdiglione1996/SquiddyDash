@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
+    public GameEvent OnLanding;
+
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
 
-    public UltimateSkill UltimateSkill;
+    public Skill UltimateSkill;
 
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
@@ -17,6 +19,8 @@ public class SquiddyController : MonoBehaviour
 
     public bool IsJumping { get { return !(transform.parent); } }
 
+    [SerializeField]
+    private ButtonSkillActivator ultimateActivator;
 
     private Platform currentPlatform;
     private Camera MainCamera;
@@ -62,11 +66,21 @@ public class SquiddyController : MonoBehaviour
         if (UltimateSkill)
         {
             UltimateSkill.Initialize(this);
+            if (!UltimateSkill.IsSkillAutoActivating)
+            {
+                ultimateActivator.ActivableSkill = UltimateSkill;
+                ultimateActivator.gameObject.SetActive(true);
+            }
         }
 
     }
     private void OnValidate()
     {
+        if (!ultimateActivator)
+        {
+            ultimateActivator = GetComponentInChildren<ButtonSkillActivator>();
+        }
+
         if (!StartPlatform)
         {
             StartPlatform startP = FindObjectOfType<StartPlatform>();
@@ -78,6 +92,11 @@ public class SquiddyController : MonoBehaviour
         if (!UltimateSkill)
         {
             UltimateSkill = GetComponentInChildren<UltimateSkill>();
+        }
+        Rigidbody bd = GetComponent<Rigidbody>();
+        if (bd)
+        {
+            bd.freezeRotation = true;
         }
     }
     void Update()
@@ -115,7 +134,7 @@ public class SquiddyController : MonoBehaviour
         throw new Exception("Input not supported for the current platform");
 #endif
 
-        if (UltimateSkill)
+        if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {
             UltimateSkill.InvokeSkill(false);
         }
@@ -152,6 +171,10 @@ public class SquiddyController : MonoBehaviour
     public void Land()
     {
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
+        if (OnLanding)
+        {
+            OnLanding.Raise();
+        }
     }
 
     private Vector3 returnRightDirection()

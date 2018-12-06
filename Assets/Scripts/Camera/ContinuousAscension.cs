@@ -8,6 +8,7 @@ public class ContinuousAscension : MonoBehaviour
     public float TimerDurationBeforeAscension = 2f;
 
     public TimeHelper TimeHelper;
+    public ScoreSystem ScoreSystem;
 
     public MonoBehaviour OtherMovementBehaviour;
 
@@ -35,6 +36,10 @@ public class ContinuousAscension : MonoBehaviour
     }
     public void StartAscension()
     {
+        if(ScoreSystem.Score <= 0)
+        {
+            return;
+        }
         enabled = true;
         if (OtherMovementBehaviour)
         {
