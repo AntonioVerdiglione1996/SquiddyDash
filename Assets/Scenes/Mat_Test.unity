@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: OnBorderCollisionListener
-  Explain: 
+  Explain: Safe collision with borders
   Event: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   Response:
     m_PersistentCalls:
@@ -1476,6 +1476,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
         type: 2}
+    - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Explain
+      value: Safe collision with borders
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 83c123e4e0d9ccf44b9fdd32c1a30118, type: 2}
@@ -2167,7 +2172,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1798109136328414, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
