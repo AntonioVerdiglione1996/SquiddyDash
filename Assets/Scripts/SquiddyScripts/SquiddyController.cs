@@ -169,14 +169,15 @@ public class SquiddyController : MonoBehaviour
     }
     public void Jump()
     {
-        PlayJumpSound.Play(ASource);
+        if (PlayJumpSound != null)
+            PlayJumpSound.Play(ASource);
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
     }
     public void Land()
     {
-        PlayLandSound.Play(ASource);
-
+        if (PlayLandSound != null)
+            PlayLandSound.Play(ASource);
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
         if (OnLanding)
         {

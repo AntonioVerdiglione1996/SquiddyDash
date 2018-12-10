@@ -8,7 +8,7 @@ public class GameEvent : ScriptableObject
 {
 #if UNITY_EDITOR
     public static bool AllDebugActive { get; set; }
-    public bool LocalDebugActive = false;
+    public bool LocalDebugActive = true;
     static GameEvent()
     {
         AllDebugActive = true;

@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c21e651ce6b3e48b318b2376312895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsJumping: {fileID: 0}
-  IsNotJumping: {fileID: 0}
+  IsJumping: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  IsNotJumping: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   RaiseAtStart: 1
 --- !u!114 &114446529115914972
 MonoBehaviour:
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4797eb428696a34419fa7b408967be32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnLanding: {fileID: 0}
+  OnLanding: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   ASource: {fileID: 0}
   PlayJumpSound: {fileID: 0}
   PlayLandSound: {fileID: 0}
