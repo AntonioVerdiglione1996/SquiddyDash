@@ -1,0 +1,13 @@
+BUGS
+1)fix bug parte in aria
+2)gameover sulla piattaforma 
+3)camera shake bug
+4)ultimate skill si carica troppo velocemente e ricomincia quando landi su una platform dopo l 'utilizzo.
+
+SVILUPPO:
+1)cambiare gli audio reactive dietro magari con forme diverse per ogni livello 
+2)dinamicita del livello ampliata( ps) e cambio dell'audioreattivo in ogni livello
+3)leaderboard
+4)currency a pagamento
+5)accessori e customizzazione del character
+6)secondo livello in rosso con laser ed effetto particellare di squiddy polverizzato.
