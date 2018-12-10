@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: InvincibilitySkillInfo
   m_EditorClassIdentifier: 
   Description: 
-  Image: {fileID: 21300000, guid: e08e5a7b146faa9438ef783b36e58925, type: 3}
+  Image: {fileID: 21300000, guid: 7668154bd83199648963a7d78190470f, type: 3}
