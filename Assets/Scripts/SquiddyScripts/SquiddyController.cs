@@ -7,6 +7,10 @@ public class SquiddyController : MonoBehaviour
 {
     public GameEvent OnLanding;
 
+    public AudioSource ASource;
+    public AudioEvent PlayJumpSound;
+    public AudioEvent PlayLandSound;
+
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
@@ -165,11 +169,14 @@ public class SquiddyController : MonoBehaviour
     }
     public void Jump()
     {
+        PlayJumpSound.Play(ASource);
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
     }
     public void Land()
     {
+        PlayLandSound.Play(ASource);
+
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
         if (OnLanding)
         {
