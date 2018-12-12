@@ -1,7 +1,7 @@
 BUGS
 1)fix bug parte in aria
 2)gameover sulla piattaforma 
-3)camera shake bug
+3)camera shake bug -done, to be tested
 4)ultimate skill si carica troppo velocemente e ricomincia quando landi su una platform dopo l 'utilizzo. -done
 5)best score sotto ogni livello nella selezione dei livelli dello start menu -done
 

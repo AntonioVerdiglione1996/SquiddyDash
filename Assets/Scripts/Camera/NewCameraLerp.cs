@@ -23,6 +23,7 @@ public class NewCameraLerp : MonoBehaviour
     {
         cameraArm = new Vector3(0f, 9f, -20f);
         lerp = 0f;
+        enabled = true;
         //CameraPos = transform.position;
     }
 
@@ -30,6 +31,7 @@ public class NewCameraLerp : MonoBehaviour
     {
         EndPoint = transform.position;
         lerp = 0f;
+        enabled = true;
     }
 
     //find another bool for checking if landed (maybe a new event?)
@@ -47,6 +49,11 @@ public class NewCameraLerp : MonoBehaviour
         lerp += Time.deltaTime * LerpSpeed;
 
         transform.position = new Vector3(currentPos.x, Mathf.Lerp(currentPos.y, EndPoint.y + cameraArm.y, lerp) , currentPos.z);
+
+        if(lerp > 1f)
+        {
+            enabled = false;
+        }
 
         //}
     }

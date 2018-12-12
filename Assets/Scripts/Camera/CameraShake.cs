@@ -25,9 +25,8 @@ public class CameraShake : MonoBehaviour
         originalPos = cam.transform.localPosition;
         if (shakeDuration > 0)
         {
-            originalPos += Random.insideUnitSphere * shakeAmount;
+            originalPos.y += Random.insideUnitSphere.y * shakeAmount;
             //i dont want the shake on the x axsis
-            originalPos.x = 0;
             cam.transform.localPosition = originalPos;
             shakeDuration -= Time.deltaTime * decreaseFactor;
         }

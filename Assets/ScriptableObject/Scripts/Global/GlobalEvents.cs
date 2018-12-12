@@ -14,7 +14,7 @@ public class GlobalEvents : ScriptableObject
     public LevelData CurrentLevel { get; private set; }
     public void RemoveCurrentLevel()
     {
-        CurrentLevel = null;
+        SetCurrentLevel(null);
     }
     public void SetCurrentLevel(LevelData Level)
     {
