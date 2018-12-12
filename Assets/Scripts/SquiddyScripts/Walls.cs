@@ -61,7 +61,7 @@ public class Walls : MonoBehaviour
 
     public void LateUpdate()
     {
-        transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, MainCamera.transform.position.y, transform.position.z);
     }
     // Update is called once per frame
 
@@ -70,10 +70,10 @@ public class Walls : MonoBehaviour
         if (collision.collider.gameObject.layer == 8 && collision.rigidbody) //player layer
         {
             Vector3 otherPosition = collision.collider.transform.position;
-            float distanceFromTop = TopWall.transform.position.y - otherPosition.y;
-            float distanceFromBot = otherPosition.y - BotWall.transform.position.y;
-            float distanceFromLeft = otherPosition.x - LeftWall.transform.position.x;
-            float distanceFromRight = RightWall.transform.position.x - otherPosition.x;
+            float distanceFromTop = Mathf.Abs((TopWall.transform.position.y - TopWall.size.y * 0.5f) - otherPosition.y);
+            float distanceFromBot = Mathf.Abs(otherPosition.y - (BotWall.transform.position.y + BotWall.size.y * 0.5f));
+            float distanceFromLeft = Mathf.Abs(otherPosition.x - (LeftWall.transform.position.x + LeftWall.size.x * 0.5f));
+            float distanceFromRight = Mathf.Abs((RightWall.transform.position.x - RightWall.size.x * 0.5f) - otherPosition.x);
 
             float minDistance = Mathf.Min(distanceFromBot, distanceFromLeft, distanceFromRight, distanceFromTop);
 

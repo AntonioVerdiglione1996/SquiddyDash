@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e78af8c01d83a438f339fabec401b1, type: 3}
   m_Name: CameraLerpPerformer
   m_EditorClassIdentifier: 
+  LocalDebugActive: 0

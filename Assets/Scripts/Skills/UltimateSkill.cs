@@ -74,6 +74,8 @@ public class UltimateSkill : Skill
 
         enabled = Controller.IsJumping;
 
+        lastScoreInvoke = ScoreSystem.Score;
+
         if (!enabled && wallsRepulsionStatus.IsValid)
         {
             WallsModifier.ResetRepulsion();
