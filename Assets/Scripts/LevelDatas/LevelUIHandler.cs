@@ -10,13 +10,13 @@ public class LevelUIHandler : MonoBehaviour
     public InGameCurrency Currency;
 
     public Image Locker;
-
-    private Button self;
+    public Text ScoreText;
 
     public void OnClicked()
     {
         if (LevelData.IsUnlocked)
         {
+            GlobalEvents.SetCurrentLevel(LevelData);
             GlobalEvents.SelectLevelByIndex(LevelData.LevelIndex);
             return;
         }
@@ -27,10 +27,6 @@ public class LevelUIHandler : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        self = GetComponent<Button>();
-    }
     private void Start()
     {
         if (LevelData.IsUnlocked)
@@ -40,6 +36,10 @@ public class LevelUIHandler : MonoBehaviour
         else
         {
             Locker.gameObject.SetActive(true);
+        }
+        if(ScoreText)
+        {
+            ScoreText.text = LevelData.BestScore.ToString();
         }
     }
 }

@@ -11,7 +11,21 @@ public class GlobalEvents : ScriptableObject
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
 #endif
-
+    public LevelData CurrentLevel { get; private set; }
+    public void RemoveCurrentLevel()
+    {
+        CurrentLevel = null;
+    }
+    public void SetCurrentLevel(LevelData Level)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Setted current level data to {0}, index {1}. Previous level was {2}, index {3}.", Level, Level ? Level.LevelIndex : -1, CurrentLevel, CurrentLevel ? CurrentLevel.LevelIndex : -1);
+        }
+#endif
+        CurrentLevel = Level;
+    }
     public void IncreaseGameCurrency(ScoreSystem system)
     {
         if (system && Calculator && GameCurrency)
@@ -25,9 +39,13 @@ public class GlobalEvents : ScriptableObject
 #if UNITY_EDITOR
             if (LocalDebugActive)
             {
-                Debug.LogFormat("The calculated amount {0} {1} added to the GameCurrency amount!\nPrevious gamecurrency amount: {2} , current amount: {3}.", amount , result ? "was successfully" : "failed to be" , previousGC ,GameCurrency.GameCurrency);
+                Debug.LogFormat("The calculated amount {0} {1} added to the GameCurrency amount!\nPrevious gamecurrency amount: {2} , current amount: {3}.", amount, result ? "was successfully" : "failed to be", previousGC, GameCurrency.GameCurrency);
             }
 #endif
+        }
+        if (CurrentLevel && system)
+        {
+            CurrentLevel.BestScore = system.BestScore;
         }
     }
     public void GameOverTrigger()

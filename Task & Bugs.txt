@@ -2,8 +2,8 @@ BUGS
 1)fix bug parte in aria
 2)gameover sulla piattaforma 
 3)camera shake bug
-4)ultimate skill si carica troppo velocemente e ricomincia quando landi su una platform dopo l 'utilizzo.
-5)best score sotto ogni livello nella selezione dei livelli dello start menu
+4)ultimate skill si carica troppo velocemente e ricomincia quando landi su una platform dopo l 'utilizzo. -done
+5)best score sotto ogni livello nella selezione dei livelli dello start menu -done
 
 SVILUPPO:
 1)cambiare gli audio reactive dietro magari con forme diverse per ogni livello 

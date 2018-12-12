@@ -25,7 +25,6 @@ public class Walls : MonoBehaviour
 
     public ForceMode RepulsionMode = ForceMode.VelocityChange;
 
-#if UNITY_EDITOR
     private void OnValidate()
     {
         if (TopWall != null && BotWall != null && LeftWall != null && RightWall != null && Body != null)
@@ -57,7 +56,6 @@ public class Walls : MonoBehaviour
             MainCamera = Camera.main;
         }
     }
-#endif
 
     public void LateUpdate()
     {
@@ -77,15 +75,15 @@ public class Walls : MonoBehaviour
 
             float minDistance = Mathf.Min(distanceFromBot, distanceFromLeft, distanceFromRight, distanceFromTop);
 
-            if (distanceFromLeft == minDistance)
+            if (Mathf.Approximately(minDistance, distanceFromLeft))
             {
                 PlayerBorderCollision(collision, transform.right);
             }
-            else if (distanceFromRight == minDistance)
+            else if (Mathf.Approximately(minDistance, distanceFromRight))
             {
                 PlayerBorderCollision(collision, -transform.right);
             }
-            else if (distanceFromTop == minDistance)
+            else if (Mathf.Approximately(minDistance, distanceFromTop))
             {
                 PlayerBorderCollision(collision, -transform.up);
             }
@@ -99,8 +97,9 @@ public class Walls : MonoBehaviour
     {
         if (other.gameObject.layer == 8) //player layer
         {
-            float distanceFromTop = TopWall.transform.position.y - other.transform.position.y;
-            float distanceFromBot = other.transform.position.y - BotWall.transform.position.y;
+            Vector3 otherPosition = other.transform.position;
+            float distanceFromTop = Mathf.Abs((TopWall.transform.position.y - TopWall.size.y * 0.5f) - otherPosition.y);
+            float distanceFromBot = Mathf.Abs(otherPosition.y - (BotWall.transform.position.y + BotWall.size.y * 0.5f));
             if (distanceFromTop < distanceFromBot)
             {
                 PlayerTopScreenCollision(other);
@@ -140,7 +139,7 @@ public class Walls : MonoBehaviour
 
         if (!MultiplyWhenFalling && collision.relativeVelocity.y < 0)
         {
-            finalForce = reflection * collision.relativeVelocity.magnitude ;
+            finalForce = reflection * collision.relativeVelocity.magnitude;
         }
         else
         {

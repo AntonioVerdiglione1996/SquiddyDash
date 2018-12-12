@@ -830,6 +830,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+        m_MethodName: RemoveCurrentLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
         m_MethodName: SelectLevelByString
         m_Mode: 5
         m_Arguments:
@@ -1092,7 +1103,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114573088225988806, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1263,12 +1274,12 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SelectLevelByString
+      value: RemoveCurrentLevel
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1278,7 +1289,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
-      value: GameOver
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1480,6 +1491,63 @@ Prefab:
         type: 2}
       propertyPath: Explain
       value: Safe collision with borders
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733,
+        type: 2}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733,
+        type: 2}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SelectLevelByString
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_StringArgument
+      value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SelectLevelByString
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
