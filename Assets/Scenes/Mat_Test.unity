@@ -806,17 +806,6 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-        m_MethodName: SaveBestScore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GameOver
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
         m_MethodName: IncreaseGameCurrency
         m_Mode: 2
@@ -1103,7 +1092,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114573088225988806, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1248,22 +1237,22 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: IncreaseGameCurrency
+      value: RemoveCurrentLevel
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: ScoreSystem, Assembly-CSharp
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: GameOver
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1274,12 +1263,12 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: RemoveCurrentLevel
+      value: SelectLevelByString
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1289,23 +1278,23 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
-      value: 
+      value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
+      objectReference: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733,
         type: 2}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SaveBestScore
+      value: IncreaseGameCurrency
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1485,8 +1474,7 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Explain
@@ -1553,6 +1541,22 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PerformShake
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802,
+        type: 2}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ScoreSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

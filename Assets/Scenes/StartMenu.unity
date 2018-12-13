@@ -790,6 +790,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: f94a7fbb8cc30a842b2c2a766e1f00fc, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Locker: {fileID: 993095724}
   ScoreText: {fileID: 1861139298}
 --- !u!114 &134709712
@@ -2590,6 +2591,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: edb68fbb36f1b654a9e7d09add7e5f1c, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Locker: {fileID: 2023344870}
   ScoreText: {fileID: 354504647}
 --- !u!1 &581670617
@@ -3106,6 +3108,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: 27bb9986d62317744bc4ee8fbc2b8d79, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Locker: {fileID: 185258849}
   ScoreText: {fileID: 41332727}
 --- !u!114 &658146767
@@ -3867,6 +3870,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: 90388eebfd5094740ac2859cc096771e, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Locker: {fileID: 1843275780}
   ScoreText: {fileID: 156192456}
 --- !u!1 &821122005
@@ -4260,6 +4264,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: 5bc18bd64f787f14b98804c8ec5bea83, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Locker: {fileID: 2114376693}
   ScoreText: {fileID: 1290245416}
 --- !u!224 &868394802

@@ -46,6 +46,7 @@ public class GlobalEvents : ScriptableObject
         if (CurrentLevel && system)
         {
             CurrentLevel.BestScore = system.BestScore;
+            CurrentLevel.SaveToFile();
         }
     }
     public void GameOverTrigger()

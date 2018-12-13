@@ -8,6 +8,7 @@ public class LevelUIHandler : MonoBehaviour
     public LevelData LevelData;
     public GlobalEvents GlobalEvents;
     public InGameCurrency Currency;
+    public ScoreSystem ScoreSystem;
 
     public Image Locker;
     public Text ScoreText;
@@ -16,6 +17,7 @@ public class LevelUIHandler : MonoBehaviour
     {
         if (LevelData.IsUnlocked)
         {
+            ScoreSystem.Reset();
             GlobalEvents.SetCurrentLevel(LevelData);
             GlobalEvents.SelectLevelByIndex(LevelData.LevelIndex);
             return;
