@@ -1,4 +1,5 @@
 BUGS
+new 1) score should be handled by leveldatas, not scoresystem.
 1)fix bug parte in aria -non riesco a riprodurre il bug
 2)gameover sulla piattaforma -non riesco a riprodurre il bug
 3)camera shake bug -done, to be tested 

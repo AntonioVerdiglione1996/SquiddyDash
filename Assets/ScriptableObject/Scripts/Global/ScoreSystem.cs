@@ -14,7 +14,8 @@ public class ScoreSystem : GameEvent
     public double ScoreMultiplier = DefaultScoreMultiplier;
     [NonSerialized]
     private int score;
-    [SerializeField]
+    //TODO: score should not be serialized here anymore, leveldata will store and save its own bestscore
+    [SerializeField] 
     private int bestScore;
 
     public void ResetScoreMultiplier()
