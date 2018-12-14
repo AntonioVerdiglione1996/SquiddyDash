@@ -85,7 +85,7 @@ public class UltimateSkill : Skill
     /// Returns how much is left before a new skill invokation is available. Some skills may not fully support this
     /// </summary>
     /// <returns>0f if cooldown over, 1f if cooldown just started. Lerped value between 0 and 1 if supported by skill</returns>
-    public override float GetCooldownRemainingPercentage()
+    public override float GetCooldownPassedPercentage()
     {
         float num = ScoreSystem.Score - lastScoreInvoke;
         if (ScoreRequirement != 0f)

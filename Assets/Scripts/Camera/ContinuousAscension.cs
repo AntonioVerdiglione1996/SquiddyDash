@@ -11,10 +11,15 @@ public class ContinuousAscension : MonoBehaviour
     public ScoreSystem ScoreSystem;
 
     public MonoBehaviour OtherMovementBehaviour;
+    public CameraShake CamShake;
+
+    public float ShakeAmount = 1f;
 
     private LinkedListNode<TimerData> timer;
 
     private Transform myTransform;
+    [SerializeField]
+    private float prevShakeAmount;
 
     public void RestartTimer()
     {
@@ -23,6 +28,11 @@ public class ContinuousAscension : MonoBehaviour
     }
     public void StopAscension()
     {
+        if (CamShake)
+        {
+            CamShake.StopShake();
+            CamShake.shakeAmount = prevShakeAmount;
+        }
         enabled = false;
         if (OtherMovementBehaviour)
         {
@@ -36,9 +46,15 @@ public class ContinuousAscension : MonoBehaviour
     }
     public void StartAscension()
     {
-        if(ScoreSystem.Score <= 0)
+        if (ScoreSystem.Score <= 0)
         {
             return;
+        }
+        if (CamShake)
+        {
+            CamShake.PerformShake(float.MaxValue);
+            prevShakeAmount = CamShake.shakeAmount;
+            CamShake.shakeAmount = ShakeAmount;
         }
         enabled = true;
         if (OtherMovementBehaviour)
@@ -52,6 +68,10 @@ public class ContinuousAscension : MonoBehaviour
         if (OtherMovementBehaviour)
         {
             OtherMovementBehaviour.enabled = !enabled;
+        }
+        if (CamShake)
+        {
+            prevShakeAmount = CamShake.shakeAmount;
         }
     }
     private void Awake()

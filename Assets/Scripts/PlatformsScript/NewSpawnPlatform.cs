@@ -10,7 +10,6 @@ public class NewSpawnPlatform : MonoBehaviour
     [System.NonSerialized]
     public List<GameObject> PlatformPrefabsList = new List<GameObject>();
     public Material Material;
-    //public GameEvent ScoreUpdater;
 
     public float PlatformPrefabListLength { get { return PlatformPrefabsList.Count; } }
     int numberOfObject;

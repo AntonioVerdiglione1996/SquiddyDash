@@ -64,7 +64,7 @@ public class ButtonSkillActivator : MonoBehaviour
     {
         if (CheckValidState())
         {
-            Image.fillAmount = ActivableSkill.GetCooldownRemainingPercentage();
+            Image.fillAmount = ActivableSkill.GetCooldownPassedPercentage();
         }
     }
 }
