@@ -535,7 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   MinMaxSpeed: {x: -720, y: 720}
   MinAbsoluteSpeed: 250
   MinMaxRotDuration: {x: 0.5, y: 2}
@@ -556,7 +555,7 @@ MonoBehaviour:
   Name: Squiddy
   colorName: {r: 0, g: 1, b: 0, a: 1}
   Icon: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
-  StartRotation: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
