@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 569858525}
   - component: {fileID: 569858524}
   - component: {fileID: 569858523}
+  - component: {fileID: 569858526}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -438,6 +439,91 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 569858521}
+--- !u!114 &569858526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569858521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10debb280616bd9459cb6cf25375bc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScaleProgressionX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 0.5
+      value: 1.5
+      inSlope: -3.4147723
+      outSlope: -3.4147723
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  ScaleProgressionY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 0.5
+      value: 1.5
+      inSlope: -3.4147723
+      outSlope: -3.4147723
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  ScaleProgressionZ:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    - serializedVersion: 2
+      time: 0.5
+      value: 1.5
+      inSlope: -3.4147723
+      outSlope: -3.4147723
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  Duration: 0.2
+  Target: {fileID: 569858522}
 --- !u!1001 &786745619
 Prefab:
   m_ObjectHideFlags: 0
@@ -785,6 +871,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 569858526}
+        m_MethodName: ResetAndStartScaleMod
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   InvokeFirstTime: 0
@@ -1087,7 +1184,7 @@ Prefab:
     - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1160,7 +1257,7 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 569858523}
+      objectReference: {fileID: 569858526}
     - target: {fileID: 114023677403000610, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1200,7 +1297,7 @@ Prefab:
     - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UpdateScore
+      value: ResetAndStartScaleMod
       objectReference: {fileID: 0}
     - target: {fileID: 114120744521788188, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1557,6 +1654,11 @@ Prefab:
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114470921709468472, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
+        type: 2}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2356,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1911044050}
   shakeDuration: 0
-  shakeAmount: 2
+  shakeAmount: 0.15
   decreaseFactor: 1
 --- !u!20 &1911044050
 Camera:
@@ -2441,8 +2543,8 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   OtherMovementBehaviour: {fileID: 1911044048}
   CamShake: {fileID: 1911044049}
-  ShakeAmount: 0.5
-  prevShakeAmount: 2
+  ShakeAmount: 0.15
+  prevShakeAmount: 0.15
 --- !u!1 &1951949691
 GameObject:
   m_ObjectHideFlags: 0

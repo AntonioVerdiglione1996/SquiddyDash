@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
 
     public float shakeDuration = 0f;
 
-    public float shakeAmount = 2f;
+    public float shakeAmount = 0.15f;
     public float decreaseFactor = 1.0f;
 
 
