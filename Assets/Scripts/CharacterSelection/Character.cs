@@ -160,6 +160,7 @@ public class Character : MonoBehaviour
                     }
                     else
                     {
+                        //TODO: remove magic number
                         skillIcon.transform.position += new Vector3(0f, i * 128, 0f);
                     }
                     skillIcon.gameObject.SetActive(true);
