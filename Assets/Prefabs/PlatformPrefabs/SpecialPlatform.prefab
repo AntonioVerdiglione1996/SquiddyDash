@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf3a6892368f54e98474d1c420f3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlatformParent: {fileID: 1457279156767718}
+  Platform: {fileID: 114937821941201354}
 --- !u!114 &114937821941201354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +396,7 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0
+  PlatCollider: {fileID: 65249556401990190}
 --- !u!135 &135817882334816762
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ActivateCollidersOnPlatforms : MonoBehaviour
 {
-    public GameObject PlatformParent;
+    public Platform Platform;
     private void OnTriggerEnter(Collider collider)
     {
         // 8 = squiddy
         if (collider.gameObject.layer == 8)
         {
-            PlatformParent.GetComponent<Collider>().enabled = true;
-            //setting current platform 
-            CurrentPlatformForSquiddy.CurrentPlatform = PlatformParent.GetComponent<Platform>();
+            Platform.ActivateCollisions();
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -20,7 +18,7 @@ public class ActivateCollidersOnPlatforms : MonoBehaviour
         //8 is squiddy
         if (collider.gameObject.layer == 8)
         {
-            PlatformParent.GetComponent<Collider>().enabled = false;
+            Platform.DeactivateCollisions();
         }
     }
 }

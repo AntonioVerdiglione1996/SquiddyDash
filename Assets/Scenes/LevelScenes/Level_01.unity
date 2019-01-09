@@ -212,7 +212,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 358313175}
-        m_MethodName: PreformShake
+        m_MethodName: PerformShake
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ef5df86d5d7d14b82992fe5e2f6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damp: 0.08
+  LerpSpeed: 2
 --- !u!1001 &449814590
 Prefab:
   m_ObjectHideFlags: 0

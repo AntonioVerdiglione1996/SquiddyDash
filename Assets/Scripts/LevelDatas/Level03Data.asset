@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Level03Data
   m_EditorClassIdentifier: 
   levelIndex: 6
-  isUnlocked: 0
+  isUnlocked: 1
   unlockCost: 10
-  bestScore: 0
+  bestScore: 20

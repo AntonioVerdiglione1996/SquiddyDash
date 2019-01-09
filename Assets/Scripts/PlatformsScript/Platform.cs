@@ -18,9 +18,19 @@ public class Platform : MonoBehaviour
 
     public bool IsAlreadyUpdatedScore = false;
 
+    public Collider PlatCollider;
+
+    public void ActivateCollisions()
+    {
+        PlatCollider.enabled = true;
+    }
+    public void DeactivateCollisions()
+    {
+        PlatCollider.enabled = false;
+    }
     private void OnCollisionEnter(Collision collision)
     {
-            PerformLerp.Raise();
+        PerformLerp.Raise();
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -29,6 +39,8 @@ public class Platform : MonoBehaviour
         {
             IsLanded = true;
             GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
+            CurrentPlatformForSquiddy.CurrentPlatform = this;
+
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
             {
@@ -43,6 +55,7 @@ public class Platform : MonoBehaviour
         {
             IsLanded = false;
             GlobalEvents.ParentToTarget(null, collision.transform);
+            CurrentPlatformForSquiddy.CurrentPlatform =null;
         }
     }
 }

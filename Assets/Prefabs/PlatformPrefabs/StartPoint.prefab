@@ -145,6 +145,7 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreValue: 0
   IsAlreadyUpdatedScore: 1
+  PlatCollider: {fileID: 65401351683488880}
 --- !u!114 &114539530126699110
 MonoBehaviour:
   m_ObjectHideFlags: 1
