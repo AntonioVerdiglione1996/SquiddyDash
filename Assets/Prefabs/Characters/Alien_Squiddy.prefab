@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 33517448516018134}
   - component: {fileID: 23932267271093580}
   - component: {fileID: 114412756316483454}
+  - component: {fileID: 114623443167578446}
   m_Layer: 8
   m_Name: Alien_Squiddy
   m_TagString: Untagged
@@ -655,8 +656,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442022274270006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29, y: 0.7671696, z: -1.41}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4183020106664240}
   - {fileID: 4133696092853550}
@@ -1078,8 +1079,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.5724139, g: 0, b: 1, a: 0.5019608}
-      key1: {r: 0.36551714, g: 0, b: 1, a: 0.77254903}
+      key0: {r: 0, g: 1, b: 0.5034485, a: 0.5019608}
+      key1: {r: 0.4122897, g: 0.7647059, b: 0.36548442, a: 0.77254903}
       key2: {r: 0, g: 0, b: 0, a: 0.59607846}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1135,10 +1136,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Name: Venom
-  colorName: {r: 0, g: 1, b: 1, a: 1}
-  Icon: {fileID: 21300006, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  Name: Alien
+  colorName: {r: 0.27735728, g: 0.6985294, b: 0.29768977, a: 1}
+  Icon: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
+  StartRotation: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
+  StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
+    type: 2}
   Skills: []
+--- !u!114 &114623443167578446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442022274270006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  MinMaxSpeed: {x: -720, y: 720}
+  MinAbsoluteSpeed: 250
+  MinMaxRotDuration: {x: 0.5, y: 2}
+  DefaultRotation: {x: 0, y: 0, z: 0, w: 1}
+  LerpSpeed: 10
 --- !u!198 &198011907712451006
 ParticleSystem:
   m_ObjectHideFlags: 1

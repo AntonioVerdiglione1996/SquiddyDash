@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33004707378769334}
   - component: {fileID: 23833983355599002}
   - component: {fileID: 114272621446510868}
+  - component: {fileID: 114221546933234282}
   m_Layer: 0
   m_Name: female_Squiddy
   m_TagString: Untagged
@@ -1021,6 +1022,23 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114221546933234282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073723814803810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f926386a2e81047ad9cb2026751f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  MinMaxSpeed: {x: -720, y: 720}
+  MinAbsoluteSpeed: 250
+  MinMaxRotDuration: {x: 0.5, y: 2}
+  DefaultRotation: {x: 0, y: 0, z: 0, w: 1}
+  LerpSpeed: 10
 --- !u!114 &114272621446510868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1036,6 +1054,12 @@ MonoBehaviour:
   Name: Pinka
   colorName: {r: 0, g: 0, b: 0, a: 0}
   Icon: {fileID: 0}
+  StartRotation: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
+  StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
+    type: 2}
   Skills: []
 --- !u!114 &114276769007727204
 MonoBehaviour:

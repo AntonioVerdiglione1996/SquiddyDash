@@ -37,6 +37,7 @@ public class ScoreTextHandler : MonoBehaviour
         {
             lastScore = score;
             text.text = lastScore.ToString();
+
         }
     }
 }

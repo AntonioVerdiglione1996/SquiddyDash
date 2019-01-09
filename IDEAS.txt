@@ -1,0 +1,11 @@
+Character selection:
+fare piedistallo che fa levitare squiddy per mostrare il trail
+pulsante di info in alto a destra per mostrare le skill
+ripensare al particellare perche troppo presente
+
+
+Main menu:
+pulsante per mostrare una ads e guadagnare monete
+
+FEATURES:
+Unlocking dei personaggi per soldi 
