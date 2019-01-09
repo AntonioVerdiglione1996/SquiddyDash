@@ -19,9 +19,11 @@ public class UI_ParticleSystemActivator : MonoBehaviour
     {
         if (SkillImage != null)
         {
-            if(SkillImage.fillAmount >= 1)
+            if (SkillImage.fillAmount >= 1)
             {
+
                 UI_PS.SetActive(true);
+                UI_PS.GetComponent<UIParticleSystem>().Play();
             }
             else
             {
