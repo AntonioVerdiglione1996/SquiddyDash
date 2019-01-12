@@ -83,7 +83,7 @@ public class AudioReactiveSource : MonoBehaviour
         {
             if (ClipData.Timestamps != null && ClipData.Timestamps.Length > 0)
             {
-                currentTimestampIndex = ClipData.Timestamps.Length;
+                currentTimestampIndex = ClipData.Timestamps.Length - 1;
                 for (int i = 0; i < ClipData.Timestamps.Length; i++)
                 {
                     if (ClipData.Timestamps[i] >= clipTime)
