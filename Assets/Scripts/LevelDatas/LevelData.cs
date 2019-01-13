@@ -7,6 +7,10 @@ public class LevelData : ScriptableObject
 {
     public const string Filename = "LevelData";
 
+    public Sprite Image;
+    public Color Color = new Color(1f,1f,1f,1f);
+    public Material Material;
+
     public bool IsUnlocked
     {
         get
@@ -62,7 +66,7 @@ public class LevelData : ScriptableObject
     private long unlockCost = 10;
     [SerializeField]
     private int bestScore;
-
+    [SerializeField]
     private string fileNameFull;
     void OnValidate()
     {
