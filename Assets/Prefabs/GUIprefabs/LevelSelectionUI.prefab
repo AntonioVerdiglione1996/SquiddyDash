@@ -512,6 +512,7 @@ MonoBehaviour:
   ScoreText: {fileID: 114455110722904580}
   UnlockUI: {fileID: 1400982557588130}
   UnlockButtonText: {fileID: 114356357622580446}
+  LevelNameText: {fileID: 114040843647753734}
   DeactivateUnlockUIEvent: {fileID: 11400000, guid: 08655aa4f0b2e8f479b5b17f4ccd6806,
     type: 2}
 --- !u!114 &114665451100599272

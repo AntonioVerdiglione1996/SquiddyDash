@@ -1,32 +1,29 @@
 ﻿using UnityEngine;
 using System;
-public class Spawner : MonoBehaviour
+public static class Spawner
 {
-    public Transform Parent;
-    public GameObject Prefab;
-    public GameEvent FinishedSpawn;
-    public bool SpawnPrefabs(int count, Action<GameObject, int> OnSpawn = null)
+    public static bool SpawnPrefabs(int count, GameObject prefab, Transform parent = null, GameEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null)
     {
         for (int i = 0; i < count; i++)
         {
-            if (!SpawnPrefab(OnSpawn, i))
+            if (!SpawnPrefab(OnSpawn, i, prefab, parent))
             {
                 return false;
             }
         }
-        if (FinishedSpawn)
+        if (finishedSpawn)
         {
-            FinishedSpawn.Raise();
+            finishedSpawn.Raise();
         }
         return true;
     }
-    private bool SpawnPrefab(Action<GameObject, int> OnSpawn, int index)
+    private static bool SpawnPrefab(Action<GameObject, int> OnSpawn, int index, GameObject prefab, Transform parent)
     {
-        if (!Prefab)
+        if (!prefab)
         {
             return false;
         }
-        GameObject go = GameObject.Instantiate(Prefab, Parent);
+        GameObject go = GameObject.Instantiate(prefab, parent);
         if (!go)
         {
             return false;

@@ -5,11 +5,12 @@ using UnityEngine;
 public class LevelSelectionSpawnHandler : MonoBehaviour
 {
     public ReusableLevelSelection LevelSelection;
-    public Spawner Spawner;
+    public Transform ContainerParentTransform;
+    public GameObject LevelUIPrefab;
     public LevelContainer Container;
     void Start()
     {
-        if(Spawner.SpawnPrefabs(Container.Datas.Length, OnGOSpawned))
+        if (Spawner.SpawnPrefabs(Container.Datas.Length, LevelUIPrefab, ContainerParentTransform, null, OnGOSpawned))
         {
             LevelSelection.Initialize();
         }
@@ -17,10 +18,9 @@ public class LevelSelectionSpawnHandler : MonoBehaviour
     private void OnGOSpawned(GameObject spawned, int index)
     {
         LevelUIHandler ui = spawned.GetComponentInChildren<LevelUIHandler>(true);
-        if(ui)
+        if (ui)
         {
-            ui.LevelData = Container.Datas[index];
-            ui.Initialize();
+            ui.Initialize(Container.Datas[index]);
         }
     }
 }

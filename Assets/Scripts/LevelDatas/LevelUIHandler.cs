@@ -18,6 +18,8 @@ public class LevelUIHandler : IIndexable
     public GameObject UnlockUI;
     public Text UnlockButtonText;
 
+    public Text LevelNameText;
+
     public GameEvent DeactivateUnlockUIEvent;
 
     private void DeactivateUnlockUI()
@@ -66,9 +68,19 @@ public class LevelUIHandler : IIndexable
         }
     }
 
-    public void Initialize()
+    public void Initialize(LevelData data)
     {
+        LevelData = data;
+        if(!LevelData)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
         DeactivateUnlockUI();
+        if(LevelNameText)
+        {
+            LevelNameText.text = LevelData.name;
+        }
         if (LevelData.IsUnlocked)
         {
             Locker.gameObject.SetActive(false);

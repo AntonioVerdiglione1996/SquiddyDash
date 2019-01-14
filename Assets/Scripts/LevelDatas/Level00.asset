@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
-  m_Name: Level02Data
+  m_Name: Level00
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  Color: {r: 0, g: 0.058823526, b: 1, a: 1}
+  Color: {r: 0.33088234, g: 0.49264705, b: 0, a: 1}
   Material: {fileID: 0}
-  levelIndex: 3
-  isUnlocked: 0
-  unlockCost: 10
+  levelIndex: 1
+  isUnlocked: 1
+  unlockCost: 1
   bestScore: 0
-  fileNameFull: LevelData3Level02Data
+  fileNameFull: LevelData1Level00Data

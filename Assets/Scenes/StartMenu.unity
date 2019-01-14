@@ -4746,7 +4746,6 @@ GameObject:
   - component: {fileID: 1714342312}
   - component: {fileID: 1714342317}
   - component: {fileID: 1714342318}
-  - component: {fileID: 1714342314}
   - component: {fileID: 1714342316}
   - component: {fileID: 1714342315}
   - component: {fileID: 1714342313}
@@ -4825,20 +4824,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &1714342314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1714342311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d28e952793b4604e8c6202119079140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Parent: {fileID: 45346523}
-  Prefab: {fileID: 1887149935994262, guid: 4072e4de57667c64d91dbcc11fa58d65, type: 2}
-  FinishedSpawn: {fileID: 0}
 --- !u!222 &1714342315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4916,7 +4901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelSelection: {fileID: 1714342317}
-  Spawner: {fileID: 1714342314}
+  ContainerParentTransform: {fileID: 45346523}
+  LevelUIPrefab: {fileID: 1887149935994262, guid: 4072e4de57667c64d91dbcc11fa58d65,
+    type: 2}
   Container: {fileID: 11400000, guid: 50921a9f4c31bf14c86ddc41ebf25300, type: 2}
 --- !u!223 &1751424237
 Canvas:
