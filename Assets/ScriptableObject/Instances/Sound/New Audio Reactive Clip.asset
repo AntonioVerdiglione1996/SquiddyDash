@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcc10926660dc94abf4fb204c7506be, type: 3}
+  m_Name: New Audio Reactive Clip
+  m_EditorClassIdentifier: 
+  Clip: {fileID: 8300000, guid: acbe7b0a0084649439771526600f6b61, type: 3}
+  Timestamps:
+  - 0
+  - 0.5
+  - 1
+  - 1.5

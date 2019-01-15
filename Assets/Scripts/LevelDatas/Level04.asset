@@ -9,9 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
-  m_Name: Level00Data
+  m_Name: Level04
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  Image: {fileID: 0}
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  Material: {fileID: 0}
+  levelIndex: 6
   isUnlocked: 0
   unlockCost: 10
   bestScore: 0
+  fileNameFull: LevelData6Level04Data

@@ -11,7 +11,9 @@ public class GlobalEvents : ScriptableObject
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
 #endif
-    public LevelData CurrentLevel { get; private set; }
+    public LevelData CurrentLevel { get { return currentLevel; } }
+    [SerializeField]
+    private LevelData currentLevel;
     public void RemoveCurrentLevel()
     {
         SetCurrentLevel(null);
@@ -24,7 +26,7 @@ public class GlobalEvents : ScriptableObject
             Debug.LogFormat("Setted current level data to {0}, index {1}. Previous level was {2}, index {3}.", Level, Level ? Level.LevelIndex : -1, CurrentLevel, CurrentLevel ? CurrentLevel.LevelIndex : -1);
         }
 #endif
-        CurrentLevel = Level;
+        currentLevel = Level;
     }
     public void IncreaseGameCurrency(ScoreSystem system)
     {

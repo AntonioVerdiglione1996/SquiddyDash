@@ -3,16 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUIHandler : MonoBehaviour
+public class LevelUIHandler : IIndexable
 {
+    public const string UnlockButtonMessage = "Unlock price: ";
     public LevelData LevelData;
     public GlobalEvents GlobalEvents;
     public InGameCurrency Currency;
     public ScoreSystem ScoreSystem;
 
     public Image Locker;
+    public Image LevelImage;
     public Text ScoreText;
 
+    public GameObject UnlockUI;
+    public Text UnlockButtonText;
+
+    public Text LevelNameText;
+
+    public GameEvent DeactivateUnlockUIEvent;
+
+    private void DeactivateUnlockUI()
+    {
+        if (UnlockUI)
+        {
+            UnlockUI.SetActive(false);
+        }
+    }
+    public void OnEnable()
+    {
+        if (DeactivateUnlockUIEvent)
+        {
+            DeactivateUnlockUIEvent.OnEventRaised += DeactivateUnlockUI;
+        }
+    }
+    public void OnDisable()
+    {
+        DeactivateUnlockUI();
+        if (DeactivateUnlockUIEvent)
+        {
+            DeactivateUnlockUIEvent.OnEventRaised -= DeactivateUnlockUI;
+        }
+    }
     public void OnClicked()
     {
         if (LevelData.IsUnlocked)
@@ -22,15 +53,34 @@ public class LevelUIHandler : MonoBehaviour
             GlobalEvents.SelectLevelByIndex(LevelData.LevelIndex);
             return;
         }
+        if (UnlockUI)
+        {
+            UnlockUI.SetActive(true);
+        }
+    }
+    public void UnlockLevel()
+    {
         if (Currency.ModifyGameCurrencyAmount(-LevelData.UnlockCost))
         {
             LevelData.IsUnlocked = true;
             Locker.gameObject.SetActive(false);
+            DeactivateUnlockUI();
         }
     }
 
-    private void Start()
+    public void Initialize(LevelData data)
     {
+        LevelData = data;
+        if(!LevelData)
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
+        DeactivateUnlockUI();
+        if(LevelNameText)
+        {
+            LevelNameText.text = LevelData.name;
+        }
         if (LevelData.IsUnlocked)
         {
             Locker.gameObject.SetActive(false);
@@ -39,9 +89,19 @@ public class LevelUIHandler : MonoBehaviour
         {
             Locker.gameObject.SetActive(true);
         }
-        if(ScoreText)
+        if (ScoreText)
         {
             ScoreText.text = LevelData.BestScore.ToString();
+        }
+        if (LevelImage)
+        {
+            LevelImage.sprite = LevelData.Image;
+            LevelImage.material = LevelData.Material;
+            LevelImage.color = LevelData.Color;
+        }
+        if(UnlockButtonText)
+        {
+            UnlockButtonText.text = UnlockButtonMessage + LevelData.UnlockCost.ToString();
         }
     }
 }

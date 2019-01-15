@@ -25,7 +25,7 @@ public class ReusableLevelSelection : MonoBehaviour
     public int CenterPositionValue = 2;
     //if u want your images to be distantiated than u have t kee this over 1 else u have to keep this as a percentage
     public float MultiplierOfScaling = 2;
-  
+
     //Button to go to the previous page (optional)
     public GameObject prevButton;
     //Button to go to the next page (optional)
@@ -38,6 +38,11 @@ public class ReusableLevelSelection : MonoBehaviour
     public Transform pageSelectionIcons;
 
     public RawImage image;
+
+    public GameEvent PageChanged;
+    public GameEvent PageChanging;
+
+    public int CurrentPage { get { return this.currentPage; } }
 
     //---------------------PRIVATES------------------------------
 
@@ -55,7 +60,7 @@ public class ReusableLevelSelection : MonoBehaviour
     private int currentPage;
 
     // whether lerping is in progress and target lerp position
-    private bool lerp;
+    private bool lerp = false;
     private Vector2 lerpTo;
 
     // target position of every page
@@ -72,9 +77,12 @@ public class ReusableLevelSelection : MonoBehaviour
     // container with Image components - one Image for each page
     private List<Image> pageSelectionImages;
 
+    private bool initialized = false;
+
     //------------------------------------------------------------------------
-    void Start()
+    public void Initialize()
     {
+        initialized = true;
         scrollRectComponent = GetComponent<ScrollRect>();
         scrollRectRect = GetComponent<RectTransform>();
         container = scrollRectComponent.content;
@@ -130,6 +138,11 @@ public class ReusableLevelSelection : MonoBehaviour
                 lerp = false;
                 // clear also any scrollrect move that may interfere with our lerping
                 scrollRectComponent.velocity = Vector2.zero;
+
+                if(PageChanged)
+                {
+                    PageChanged.Raise();
+                }
             }
 
             // switches selection icon exactly to correct page
@@ -186,15 +199,22 @@ public class ReusableLevelSelection : MonoBehaviour
             Vector2 childPosition;
             if (horizontal)
             {
-                childPosition = new Vector2(i * width - containerWidth / MultiplierOfScaling + offsetX , 0f);
+                childPosition = new Vector2(i * width - containerWidth / MultiplierOfScaling + offsetX, 0f);
             }
             //vertical setup
             else
             {
-                childPosition = new Vector2(0f, -(i * height - containerHeight / MultiplierOfScaling + offsetY ));
+                childPosition = new Vector2(0f, -(i * height - containerHeight / MultiplierOfScaling + offsetY));
             }
             child.anchoredPosition = childPosition;
             pagePositions.Add(-childPosition);
+
+            //If there is an indexable behaviour in the given child set its index
+            IIndexable indexable = child.GetComponentInChildren<IIndexable>(true);
+            if (indexable)
+            {
+                indexable.SetIndex(pagePositions.Count - 1);
+            }
         }
     }
 
@@ -204,11 +224,19 @@ public class ReusableLevelSelection : MonoBehaviour
         PageIndex = Mathf.Clamp(PageIndex, 0, pageCount - 1);
         container.anchoredPosition = pagePositions[PageIndex];
         currentPage = PageIndex;
+        if (PageIndex != currentPage && PageChanged)
+        {
+            PageChanged.Raise();
+        }
     }
 
     //------------------------------------------------------------------------
     private void LerpToPage(int PageIndex)
     {
+        if (PageIndex != currentPage && PageChanging)
+        {
+            PageChanging.Raise();
+        }
         PageIndex = Mathf.Clamp(PageIndex, 0, pageCount - 1);
         lerpTo = pagePositions[PageIndex];
         lerp = true;
@@ -309,6 +337,10 @@ public class ReusableLevelSelection : MonoBehaviour
     //Events called with the event trigger component
     public void OnBeginDrag()
     {
+        if (!initialized)
+        {
+            return;
+        }
         // if currently lerping, then stop it as user is draging
         lerp = false;
         // not dragging yet
@@ -316,6 +348,10 @@ public class ReusableLevelSelection : MonoBehaviour
     }
     public void OnEndDrag()
     {
+        if (!initialized)
+        {
+            return;
+        }
         // how much was container's content dragged
         float difference;
         if (horizontal)
@@ -354,6 +390,10 @@ public class ReusableLevelSelection : MonoBehaviour
     // this is for little icons under images if we want
     public void OnDrag()
     {
+        if(!initialized)
+        {
+            return;
+        }
         if (!dragging)
         {
             // dragging started

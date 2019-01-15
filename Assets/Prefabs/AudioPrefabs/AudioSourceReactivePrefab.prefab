@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4919453586446664}
   - component: {fileID: 82985325945469966}
+  - component: {fileID: 114830152049273746}
   m_Layer: 0
-  m_Name: AudioSourcePrefab
+  m_Name: AudioSourceReactivePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +54,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -120,3 +121,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114830152049273746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798109136328414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e8e7ee90fff0843b81f82d2f15788b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClipData: {fileID: 0}
+  Source: {fileID: 82985325945469966}
+  SoundEvent: {fileID: 11400000, guid: 8d6773b3494fa134d9fbc5972c090b38, type: 2}
