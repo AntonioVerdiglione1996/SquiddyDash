@@ -7,6 +7,7 @@ public class UI_ParticleSystemActivator : MonoBehaviour
 {
     public GameObject UI_PS;
     public Image SkillImage;
+
     private void Awake()
     {
         //always initialize the UI particle system of the skill at false

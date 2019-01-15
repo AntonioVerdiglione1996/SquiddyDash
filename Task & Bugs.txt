@@ -1,25 +1,30 @@
-BUGS
+BUGS:
+1)at 130 milestone , bugs 75k score
+2) camera orbit to adjust, character needs to be in the center of the camera orbit.
+
+
+TO DO in FUTURE: 
+1)LEADERBOARD
+4)currency a pagamento
 
 SVILUPPO:
 1)cambiare gli audio reactive dietro magari con forme diverse per ogni livello 
-2)dinamicita del livello ampliata( ps) e cambio dell'audioreattivo in ogni livello
-3)leaderboard
-4)currency a pagamento
 5)accessori e customizzazione del character
 6)secondo livello in rosso con laser ed effetto particellare di squiddy polverizzato.
-7)icone dei vari squiddy su ps
-8) cambiare la character selection mettendo le icone fatte in ps e aggiungere un pannello di info per le skill.
-
-
+8)pannello di info per le skill dinamico nella char selection.
+9) aggiustare lo spawn dei character, aggiungendo i nuovi: alien vulkan e venom al character
+container scriptable object in modo tale da poterli giocare. NB: è precaria come cosa perche
+va settato a mano tutto.
+10)riflettere su che colore di score sia meglio per il primo livello(anto test)
 
 TESTING
 1)fix bug parte in aria -non riesco a riprodurre il bug
 2)gameover sulla piattaforma -non riesco a riprodurre il bug
 3)camera shake bug -done, to be tested 
 
-
-
 DONE
+7)icone dei vari squiddy su ps 8) cambio character sel
+2)dinamicita del livello ampliata( ps) e cambio dell'audioreattivo in ogni livello
 new 1) score should be handled by leveldatas, not scoresystem. -done
 4)ultimate skill si carica troppo velocemente e ricomincia quando landi su una platform dopo l 'utilizzo. -done
 5)best score sotto ogni livello nella selezione dei livelli dello start menu -done

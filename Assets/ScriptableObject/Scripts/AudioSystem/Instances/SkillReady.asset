@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085fffdb202997b41ab4d993555de558, type: 3}
-  m_Name: MenuButtonSfx
+  m_Name: SkillReady
   m_EditorClassIdentifier: 
+  Source: {fileID: 0}
   clips:
-  - {fileID: 8300000, guid: cc28686a6e373b443b82c2419f2407ad, type: 3}
+  - {fileID: 8300000, guid: f246931f44631a246baf01e28dd1b8c4, type: 3}
   Volume: 0.5
   Pitch: 1
   Loop: 0
