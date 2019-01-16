@@ -1,0 +1,16 @@
+-Loccaggio camera (no rotazione quando telefono viene ruotato)
+-metodi per vedere currency
+-Niente musica nelmenu iniziale
+-GUI per descrizione skill nella char selection
+-orbit character da tunare
+-simbolo in basso a destra non usato
+-simbolo a sinistra in mezzo non usato
+-Swipe nella level selection da rivedere
+-Skill ui sballate nelle dimensioni nei livelli
+-da rivedere camera shake con ascension, inizia troppo presto.
+-rivedere suono nel menu di pausa
+-Settings nel menu pausa non usato
+-score a inizio livello (dopo altre partite) puo essere negativo, forse nel reset
+-shake da gestire con deltatime
+-nel mat level powerup non scompaiono una volta presi
+-diversi simboli ui mancanti
