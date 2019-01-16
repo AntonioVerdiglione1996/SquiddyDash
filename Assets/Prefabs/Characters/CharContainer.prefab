@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
+  text: {fileID: 0}
 --- !u!114 &114547558581344818
 MonoBehaviour:
   m_ObjectHideFlags: 1

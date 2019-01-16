@@ -36,6 +36,10 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     public GameObject DownloadCurrentCharacter()
     {
         GameObject go = null;
+        if(Characters == null)
+        {
+            return go;
+        }
         for (int i = 0; i < Characters.Count; i++)
         {
             if (i == index)
