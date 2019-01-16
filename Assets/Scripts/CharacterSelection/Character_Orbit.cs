@@ -54,7 +54,7 @@ public class Character_Orbit : MonoBehaviour
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
         }
 #elif (UNITY_IOS || UNITY_ANDROID)
-        if (Input.touchCount > 0 && Input.GetTouch(0).position.y > GuiLimitYPos.position.y)
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.y > ylimit.position.y)
         {
             x += Input.GetTouch(0).deltaPosition.x * xSpeed/* * distance */ * 0.04f;
             y -= Input.GetTouch(0).deltaPosition.y * ySpeed * 0.02f;
