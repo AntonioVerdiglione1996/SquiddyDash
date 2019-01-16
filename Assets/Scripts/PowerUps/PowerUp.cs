@@ -25,8 +25,12 @@ public class PowerUp : MonoBehaviour
     private void Awake()
     {
         //rifattorizzare?
-        aSourceForTrigger = FindObjectOfType<AudioSourceFinder>().SourceForTrigger;
-        aSourceForVocal = FindObjectOfType<AudioSourceFinder>().SourceForVocalSayNameOfPowerUp;
+        AudioSourceFinder finder = FindObjectOfType<AudioSourceFinder>();
+        if (finder)
+        {
+            aSourceForTrigger = finder.SourceForTrigger;
+            aSourceForVocal = finder.SourceForVocalSayNameOfPowerUp;
+        }
     }
     private void OnValidate()
     {

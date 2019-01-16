@@ -24,9 +24,16 @@ public class Walls : MonoBehaviour
     public bool MultiplyWhenFalling = false;
 
     public ForceMode RepulsionMode = ForceMode.VelocityChange;
-
+    private void Start()
+    {
+        OnValidate();
+    }
     private void OnValidate()
     {
+        if (MainCamera == null)
+        {
+            MainCamera = Camera.main;
+        }
         if (TopWall != null && BotWall != null && LeftWall != null && RightWall != null && Body != null)
         {
             Body.isKinematic = true;
@@ -50,10 +57,6 @@ public class Walls : MonoBehaviour
                 TopWall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y + MainCamera.orthographicSize + TopWall.size.y * 0.5f, 0f), Quaternion.identity);
                 BotWall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y - MainCamera.orthographicSize - BotWall.size.y * 0.5f, 0f), Quaternion.identity);
             }
-        }
-        if (MainCamera == null)
-        {
-            MainCamera = Camera.main;
         }
     }
 
