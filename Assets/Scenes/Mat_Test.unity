@@ -2311,7 +2311,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1798109136328414, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82985325945469966, guid: 42eb2682355553449a7abbb301cdb470,
         type: 2}
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AscensionSpeed: 1
   StartsAsEnabled: 0
-  TimerDurationBeforeAscension: 2
+  TimerDurationBeforeAscension: 100
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   OtherMovementBehaviour: {fileID: 1911044048}
