@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class GameEventListener : MonoBehaviour
 {
     //--------REMOVE AFTER-----------
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     public string Name = null;
     public string Explain;
-#endif
+//#endif
     //-------------------------------
     public GameEvent Event;
     public UnityEvent Response;

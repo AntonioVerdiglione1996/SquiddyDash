@@ -9,20 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: a6386353d1dd0f044bc7f6a830dd9acd
   - enabled: 1
-    path: Assets/Scenes/LevelScenes/Level_01.unity
-    guid: 359b9df6d210e634596b258debc4391a
+    path: Assets/Scenes/Anto_Test.unity
+    guid: 34087aca7c7bc854cb029b09d9b96bcc
   - enabled: 1
-    path: Assets/Scenes/LevelScenes/Level_02.unity
-    guid: 05e61714ebce5c946af2f7909cc67503
-  - enabled: 1
-    path: Assets/Scenes/LevelScenes/Level_03.unity
-    guid: 6bd780230c25a7e4c9319dbd9614494e
+    path: Assets/Scenes/Mat_Test.unity
+    guid: 7be206df0adf95f42836402de8987e0d
   - enabled: 1
     path: Assets/Scenes/CharacterSelection.unity
     guid: e1139ba40c09d6c409065b7d9ae27353
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 547abd344694d48429e7e395f95cb714
-  - enabled: 1
-    path: Assets/Scenes/Mat_Test.unity
-    guid: 7be206df0adf95f42836402de8987e0d

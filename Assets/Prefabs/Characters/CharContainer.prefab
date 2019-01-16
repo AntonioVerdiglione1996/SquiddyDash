@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 222949419431898948}
   - component: {fileID: 114547558581344818}
   m_Layer: 8
-  m_Name: CellGray
+  m_Name: CellBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   Duration: 5
   Looping: 1
   Lifetime: 1.2
-  Speed: 1
+  Speed: 0.4
   Size: 0.08
   RandomizeRotation: 1
   RandomizeMultiplayer: 0.1
@@ -398,7 +398,7 @@ MonoBehaviour:
   EmissionAngle: 360
   ColorOverLifetime:
     serializedVersion: 2
-    key0: {r: 0.034482718, g: 1, b: 0, a: 0.7254902}
+    key0: {r: 1, g: 0.93103445, b: 0, a: 0.7254902}
     key1: {r: 0.32413793, g: 1, b: 0, a: 0}
     key2: {r: 1, g: 1, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33115268, g: 0.3602941, b: 0.35613105, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
