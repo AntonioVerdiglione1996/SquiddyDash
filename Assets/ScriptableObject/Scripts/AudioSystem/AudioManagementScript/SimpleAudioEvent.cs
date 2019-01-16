@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "SimpleAudioEvent", menuName = "AudioEvents/Simple")]
 public class SimpleAudioEvent : AudioEvent
 {
+    public AudioSource Source;
+
     public AudioClip[] clips;
     [Range(0f, 1f)]
     public float Volume = 0.5f;
@@ -24,5 +26,18 @@ public class SimpleAudioEvent : AudioEvent
         source.pitch = Pitch;
 
         source.Play();
+    }
+    public void PlayWithDefaultAudiosource( )
+    {
+        if (clips.Length == 0)
+            return;
+        Source.clip = clips[Random.Range(0, clips.Length)];
+
+        Source.loop = Loop;
+        Source.playOnAwake = false;
+        Source.volume = Volume;
+        Source.pitch = Pitch;
+
+        Source.Play();
     }
 }

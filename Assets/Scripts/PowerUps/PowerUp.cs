@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(MeshRenderer),typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class PowerUp : MonoBehaviour
 {
     public Transform[] SpawnPoints;
 
     public PowerUpLogic[] PowerUps;
+
+    //audio source is needed for playing sound of trigger of each PU
+    private AudioSource aSourceForTrigger;
+    //audio source is needed for playing sound of vocal  saying name of pu
+    private AudioSource aSourceForVocal;
+
+    public GameObject ParticleTrigger;
 
     [SerializeField]
     private MeshRenderer powRenderer;
@@ -14,9 +21,16 @@ public class PowerUp : MonoBehaviour
     private MeshFilter powMeshFilter;
 
     private PowerUpLogic currentLogic;
+
+    private void Awake()
+    {
+        //rifattorizzare?
+        aSourceForTrigger = FindObjectOfType<AudioSourceFinder>().SourceForTrigger;
+        aSourceForVocal = FindObjectOfType<AudioSourceFinder>().SourceForVocalSayNameOfPowerUp;
+    }
     private void OnValidate()
     {
-        if(powMeshFilter == null)
+        if (powMeshFilter == null)
         {
             powMeshFilter = GetComponent<MeshFilter>();
             powMeshFilter.mesh = null;
@@ -60,8 +74,18 @@ public class PowerUp : MonoBehaviour
             if (currentLogic)
             {
                 currentLogic.PowerUpCollected(other, this);
+                //instantiate tigger particle after squiddy pick up PU
+                if (currentLogic.ParticleAfterTrigger != null)
+                    Instantiate(currentLogic.ParticleAfterTrigger, transform.position, Quaternion.identity);
             }
-
+            //activate sound
+            if (currentLogic.TriggerSound != null)
+            {
+                //trigger sound
+                currentLogic.TriggerSound.Play(aSourceForTrigger);
+                //vocal trigger sound
+                currentLogic.VocalSound.Play(aSourceForVocal);
+            }
             gameObject.SetActive(false);
         }
     }

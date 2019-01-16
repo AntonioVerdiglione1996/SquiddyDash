@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085fffdb202997b41ab4d993555de558, type: 3}
-  m_Name: MenuButtonSfx
+  m_Name: ImpactLateral
   m_EditorClassIdentifier: 
+  Source: {fileID: 0}
   clips:
-  - {fileID: 8300000, guid: cc28686a6e373b443b82c2419f2407ad, type: 3}
-  Volume: 0.5
+  - {fileID: 8300000, guid: ea4f3bdd870fcb04b860b367a8294d48, type: 3}
+  Volume: 0.256
   Pitch: 1
   Loop: 0

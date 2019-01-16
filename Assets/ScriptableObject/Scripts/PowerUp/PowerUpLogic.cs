@@ -4,6 +4,13 @@ public abstract class PowerUpLogic : ScriptableObject
     public SkillDescriber Describer;
     public Material[] Materials;
     public Mesh Mesh;
+    //particle to instantiate after squiddy take the pu
+    public GameObject ParticleAfterTrigger;
+
+    //audio of trigger
+    public AudioEvent TriggerSound;
+    //audio of vocal saying something when squiddy pick up a power up
+    public AudioEvent VocalSound;
 
     [SerializeField]
     protected GlobalEvents GlobalEvents;

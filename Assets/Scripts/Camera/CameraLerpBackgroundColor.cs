@@ -9,7 +9,7 @@ public class CameraLerpBackgroundColor : MonoBehaviour
     //public Gradient color2;
     public float duration = 3.0F;
 
-    public Camera cam;
+    private Camera cam;
 
     void Start()
     {
