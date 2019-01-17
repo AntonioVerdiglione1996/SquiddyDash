@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CurrencyTextHandler : MonoBehaviour
-{
-    public InGameCurrency Currency;
+public class LevelScoreTextHandler : MonoBehaviour {
+
+    public GlobalEvents GlobalStats;
 
     public TextMeshProUGUI Text;
 
-    private long lastCurrency = 0;
+    private int lastScore = 0;
 
     private void OnEnable()
     {
@@ -20,18 +20,17 @@ public class CurrencyTextHandler : MonoBehaviour
     }
     public void Update()
     {
-        if (!Text)
+        if (!Text || !GlobalStats.CurrentLevel)
         {
             return;
         }
 
-        long curr = Currency.GameCurrency;
+        int score = GlobalStats.CurrentLevel.BestScore;
 
-        if (curr != lastCurrency)
+        if (score != lastScore)
         {
-            lastCurrency = curr;
-            Text.text = lastCurrency.ToString();
-
+            lastScore = score;
+            Text.text = lastScore.ToString();
         }
     }
 }

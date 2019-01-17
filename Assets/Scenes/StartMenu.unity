@@ -3809,7 +3809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
-  text: {fileID: 0}
 --- !u!4 &1488468711
 Transform:
   m_ObjectHideFlags: 0
@@ -4224,6 +4223,7 @@ GameObject:
   - component: {fileID: 1631922954}
   - component: {fileID: 1631922956}
   - component: {fileID: 1631922955}
+  - component: {fileID: 1631922957}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -4367,6 +4367,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1631922953}
+--- !u!114 &1631922957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1631922953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d66feac37f75d4f9914fff6daf4b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  Text: {fileID: 1631922955}
 --- !u!1 &1687257242
 GameObject:
   m_ObjectHideFlags: 0

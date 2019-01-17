@@ -8,35 +8,36 @@ public class ScoreTextHandler : MonoBehaviour
     //SO where score value is stored
     public ScoreSystem ScoreSystem;
 
-    TextMeshProUGUI text;
-
-    public bool IsGameOverSceneBestScore;
+    public TextMeshProUGUI Text;
 
     private int lastScore = 0;
 
-    private void Start()
+    private void OnEnable()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        if (!Text)
+        {
+            Text = GetComponent<TextMeshProUGUI>();
+        }
         UpdateScore();
+        (ScoreSystem as GameEvent).OnEventRaised += UpdateScore;
     }
-
+    private void OnDisable()
+    {
+        (ScoreSystem as GameEvent).OnEventRaised -= UpdateScore;
+    }
     public void UpdateScore()
     {
-        if (!text)
+        if (!Text)
         {
             return;
         }
 
-        int score = 0;
-        if (!IsGameOverSceneBestScore)
-            score = ScoreSystem.Score;
-        else
-            score = ScoreSystem.BestScore;
+        int score = ScoreSystem.Score;
 
-        if(score != lastScore)
+        if (score != lastScore)
         {
             lastScore = score;
-            text.text = lastScore.ToString();
+            Text.text = lastScore.ToString();
 
         }
     }

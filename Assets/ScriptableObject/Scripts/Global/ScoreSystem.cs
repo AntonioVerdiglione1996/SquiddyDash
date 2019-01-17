@@ -8,13 +8,10 @@ public class ScoreSystem : GameEvent
 {
     public const double DefaultScoreMultiplier = 1.0d;
     public int Score { get { return score; } }
-    public int BestScore { get { return bestScore; } }
     [NonSerialized]
     public double ScoreMultiplier = DefaultScoreMultiplier;
     [NonSerialized]
     private int score;
-    [NonSerialized] 
-    private int bestScore;
 
     public void Reset()
     {
@@ -36,16 +33,10 @@ public class ScoreSystem : GameEvent
 
         score += amountToSum;
 
-        if (score > bestScore)
-        {
-            bestScore = score;
-        }
-
         Raise();
     }
     public void ResetScore()
     {
         score = 0;
-        bestScore = 0;
     }
 }

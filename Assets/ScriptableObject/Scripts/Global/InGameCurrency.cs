@@ -57,4 +57,8 @@ public class InGameCurrency : ScriptableObject
             SaveToFile();
         }
     }
+    private void OnDisable()
+    {
+        SaveToFile();
+    }
 }
