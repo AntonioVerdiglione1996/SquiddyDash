@@ -14,3 +14,4 @@
 -shake da gestire con deltatime
 -nel mat level powerup non scompaiono una volta presi
 -diversi simboli ui mancanti
+-rework input orbit camera con deltatime

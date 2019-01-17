@@ -1,6 +1,7 @@
 BUGS:
 1)at 130 milestone , bugs 75k score
 2) camera orbit to adjust, character needs to be in the center of the camera orbit.
+3)parenting with new platform broken(platform_reworked)
 
 
 TO DO in FUTURE: 

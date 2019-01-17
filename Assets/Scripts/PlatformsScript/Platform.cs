@@ -38,6 +38,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             IsLanded = true;
+            //TODO: rework for deparenting
             GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
             CurrentPlatformForSquiddy.CurrentPlatform = this;
 

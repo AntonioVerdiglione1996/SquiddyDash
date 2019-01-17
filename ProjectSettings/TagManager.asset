@@ -14,14 +14,14 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - WallDx
+  - WallSx
+  - Platform
+  - WallUp
+  - WallDown
+  - PowerUp
+  - Splash
   - 
   - 
   - 
