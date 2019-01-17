@@ -17,6 +17,7 @@ public class CurrencyTextHandler : MonoBehaviour
         {
             Text = GetComponent<TextMeshProUGUI>();
         }
+        Update();
     }
     public void Update()
     {

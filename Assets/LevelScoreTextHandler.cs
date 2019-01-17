@@ -17,6 +17,7 @@ public class LevelScoreTextHandler : MonoBehaviour {
         {
             Text = GetComponent<TextMeshProUGUI>();
         }
+        Update();
     }
     public void Update()
     {
