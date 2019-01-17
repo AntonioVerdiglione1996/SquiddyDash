@@ -43,7 +43,7 @@ public class RepulsionModificationStatus
     }
 }
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Gameplay/WallsModifier")]
 public class WallsModifier : ScriptableObject
 {
     public Walls Walls

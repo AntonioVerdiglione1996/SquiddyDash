@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-[CreateAssetMenu(menuName = "AdvertisementManager")]
+[CreateAssetMenu(menuName = "Utility/AdvertisementManager")]
 public class Global_Advertisement : ScriptableObject
 {
 //    public void ShowAd()

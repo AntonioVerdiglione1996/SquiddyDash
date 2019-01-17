@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Utility/TimeManager")]
 public class TimeHelper : ScriptableObject
 {
     private LinkedList<TimerData> timers = new LinkedList<TimerData>();

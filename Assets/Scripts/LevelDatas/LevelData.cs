@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Levels/LevelData")]
+[CreateAssetMenu(menuName = "Gameplay/Levels/Data")]
 public class LevelData : ScriptableObject
 {
     public const string Filename = "LevelData";

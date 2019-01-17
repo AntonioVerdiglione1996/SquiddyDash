@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Particle/Instantier")]
+[CreateAssetMenu(menuName = "Gameplay/ParticleInstantier")]
 public class ParticleEffectInstantier : ScriptableObject
 {
     public GameObject ParticleToInstantiate;

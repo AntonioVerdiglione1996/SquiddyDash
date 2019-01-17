@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-[CreateAssetMenu(menuName = "SettingsManager")]
+[CreateAssetMenu(menuName = "Audio/SettingsManager")]
 public class Settings_Manager : ScriptableObject
 {
     public AudioMixer AudioMixer;

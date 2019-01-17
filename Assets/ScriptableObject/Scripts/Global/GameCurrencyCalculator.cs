@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "SavedStats/Currency/Calculator")]
 public class GameCurrencyCalculator : ScriptableObject
 {
     [SerializeField]

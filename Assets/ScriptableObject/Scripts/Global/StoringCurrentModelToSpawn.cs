@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StoringModel")]
+[CreateAssetMenu(menuName = "SavedStats/StoringModel")]
 public class StoringCurrentModelToSpawn : ScriptableObject
 {
     public const string Filename = "CurrentModel.json";

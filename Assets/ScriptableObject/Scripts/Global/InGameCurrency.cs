@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(menuName = "InGameCurrency")]
+[CreateAssetMenu(menuName = "SavedStats/Currency/Ordinary")]
 public class InGameCurrency : ScriptableObject
 {
     public const string Filename = "Currency.json";

@@ -11,7 +11,7 @@ public class NewSpawnPlatform : MonoBehaviour
     public List<GameObject> PlatformPrefabsList = new List<GameObject>();
     public Material Material;
 
-    public float PlatformPrefabListLength { get { return PlatformPrefabsList.Count; } }
+    public int PlatformPrefabListLength { get { return PlatformPrefabsList.Count; } }
     int numberOfObject;
 
     private Vector3 newPos;

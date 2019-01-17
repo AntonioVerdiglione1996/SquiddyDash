@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Characters/Stats")]
+[CreateAssetMenu(menuName = "Gameplay/Characters/Stats")]
 public class SquiddyStats : ScriptableObject
 {
     public bool IsPhoneDebugging;

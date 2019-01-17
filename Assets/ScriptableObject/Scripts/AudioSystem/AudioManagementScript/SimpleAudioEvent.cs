@@ -2,7 +2,7 @@
 using System.Collections;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "SimpleAudioEvent", menuName = "AudioEvents/Simple")]
+[CreateAssetMenu(fileName = "SimpleAudioEvent", menuName = "Audio/SimpleEvent")]
 public class SimpleAudioEvent : AudioEvent
 {
     public AudioSource Source;

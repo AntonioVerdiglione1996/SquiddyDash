@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-[CreateAssetMenu(menuName = "Skill/Describer")]
+[CreateAssetMenu(menuName = "Gameplay/Skills/Describer")]
 public class SkillDescriber : ScriptableObject
 {
     public string Description;

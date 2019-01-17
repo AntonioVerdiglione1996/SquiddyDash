@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu(menuName = "Events/GlobalEvents")]
+[CreateAssetMenu(menuName = "Utility/Events/Global")]
 public class GlobalEvents : ScriptableObject
 {
     public InGameCurrency GameCurrency;

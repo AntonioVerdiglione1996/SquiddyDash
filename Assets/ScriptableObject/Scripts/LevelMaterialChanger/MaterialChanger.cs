@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = " MaterialChanger")]
+[CreateAssetMenu(menuName = "Utility/MaterialChanger")]
 public class MaterialChanger : ScriptableObject
 {
     public List<GameObject> ObjectToChangeMaterial;

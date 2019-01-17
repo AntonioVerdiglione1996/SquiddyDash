@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-[CreateAssetMenu(menuName = "Levels/Container")]
+[CreateAssetMenu(menuName = "Gameplay/Levels/Container")]
 public class LevelContainer : ScriptableObject
 {
 

@@ -10,7 +10,7 @@
     }
     protected override void ResetSkill()
     {
-        IsAutoActivating = false;
+        IsAutoActivating = true;
         enabled = true;
     }
     protected override void OnValidate()

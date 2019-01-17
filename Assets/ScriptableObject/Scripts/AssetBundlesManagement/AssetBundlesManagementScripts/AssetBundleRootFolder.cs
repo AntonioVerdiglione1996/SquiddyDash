@@ -14,7 +14,7 @@ public enum PlatformFolderTarget
     IOS,
     Default
 }
-[CreateAssetMenu(menuName = "AssetBundlesManagement/AssetBundleRootFolder")]
+[CreateAssetMenu(menuName = "AssetBundles/RootFolder")]
 public class AssetBundleRootFolder : ScriptableObject
 {
     public const string BundlesDirectoryPath = "AssetBundles";

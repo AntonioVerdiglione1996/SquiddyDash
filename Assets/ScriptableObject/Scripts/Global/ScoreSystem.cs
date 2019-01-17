@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "ScoreSystem", menuName = "ScoreSystem")]
+[CreateAssetMenu(fileName = "ScoreSystem", menuName = "Utility/Events/ScoreSystem")]
 public class ScoreSystem : GameEvent
 {
     public const double DefaultScoreMultiplier = 1.0d;
@@ -45,7 +45,7 @@ public class ScoreSystem : GameEvent
     }
     public void ResetScore()
     {
-        UpdateScore(-Score);
+        score = 0;
         bestScore = 0;
     }
 }

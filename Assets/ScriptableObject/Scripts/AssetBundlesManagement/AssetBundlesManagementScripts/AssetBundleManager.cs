@@ -9,7 +9,7 @@ public class AssetBundleData
     public string[] Dependencies;
     public int ReferencesCount;
 }
-[CreateAssetMenu(menuName = "AssetBundlesManagement/AssetBundleManager")]
+[CreateAssetMenu(menuName = "AssetBundles/Manager")]
 public class AssetBundleManager : ScriptableObject
 {
     public AssetBundleRootFolder AssetBundleRootFolder;
