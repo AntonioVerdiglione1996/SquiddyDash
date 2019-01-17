@@ -37,7 +37,14 @@ public class NewSpawnPlatform : MonoBehaviour
             {
                 GameObject go = Instantiate(PlatformPrefab, newPos, Quaternion.identity);
                 if (Material != null)
-                    go.GetComponentInChildren<Renderer>().material = Material;
+                {
+                   Renderer[] go_renderers = go.GetComponentsInChildren<Renderer>();
+                    for (int j = 0; j < go_renderers.Length; j++)
+                    {
+                        go_renderers[j].material = Material;
+                    }
+
+                }
 
                 PlatformPrefabsList.Add(go);
             }
