@@ -602,6 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4797eb428696a34419fa7b408967be32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   OnLanding: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   ASource: {fileID: 82413609021436728}
   PlayJumpSound: {fileID: 11400000, guid: fcfe951d2fbd1f4409965b83933c6d43, type: 2}
@@ -612,6 +613,8 @@ MonoBehaviour:
   SquiddyStats: {fileID: 11400000, guid: 0dbb727b1c6be0b49bb0ad91450a9401, type: 2}
   StartPlatform: {fileID: 0}
   ultimateActivator: {fileID: 114156650123403284}
+  OnBorderCollisionEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee,
+    type: 2}
 --- !u!114 &114884507819233278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4289,7 +4292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.80280274, y: 0}
   m_AnchorMax: {x: 1, y: 0.12739733}
-  m_AnchoredPosition: {x: -0.16000366, y: -0.05999756}
+  m_AnchoredPosition: {x: -0.16003418, y: -0.05999756}
   m_SizeDelta: {x: -0.6899996, y: -0.13000011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224138893972500106

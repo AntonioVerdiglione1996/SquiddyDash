@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 547abd344694d48429e7e395f95cb714
+  - enabled: 1
+    path: Assets/Scenes/Laser_level.unity
+    guid: 8ebb562a750fdff4ba907417c80b3513

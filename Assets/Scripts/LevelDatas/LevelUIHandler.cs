@@ -20,7 +20,7 @@ public class LevelUIHandler : IIndexable
 
     public Text LevelNameText;
 
-    public GameEvent DeactivateUnlockUIEvent;
+    public BasicEvent DeactivateUnlockUIEvent;
 
     private void DeactivateUnlockUI()
     {

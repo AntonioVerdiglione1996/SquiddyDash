@@ -30,7 +30,7 @@ public class GameEventListener : MonoBehaviour
         if (firstTime && InvokeFirstTime)
         {
 #if UNITY_EDITOR
-            if (GameEvent.AllDebugActive && Event.LocalDebugActive)
+            if (BasicEvent.AllDebugActive && Event.LocalDebugActive)
             {
                 Debug.LogFormat("{0} listener setted as invoke first time raising event {1}", Name, Event.name);
             }
@@ -47,7 +47,7 @@ public class GameEventListener : MonoBehaviour
     {
         Response.Invoke();
 #if UNITY_EDITOR
-        if (GameEvent.AllDebugActive && Event.LocalDebugActive)
+        if (BasicEvent.AllDebugActive && Event.LocalDebugActive)
         {
             Debug.LogFormat("\t\tEventListener {0} invoked with {1} number of persistent methods registered.", Name, Response.GetPersistentEventCount());
             for (int i = 0; i < Response.GetPersistentEventCount(); i++)

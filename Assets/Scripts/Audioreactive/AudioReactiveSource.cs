@@ -6,7 +6,7 @@ public class AudioReactiveSource : MonoBehaviour
 {
     public AudioReactiveClip ClipData;
     public AudioSource Source;
-    public GameEvent SoundEvent;
+    public BasicEvent SoundEvent;
 
     private int currentTimestampIndex;
     private float lastTimeStamp;

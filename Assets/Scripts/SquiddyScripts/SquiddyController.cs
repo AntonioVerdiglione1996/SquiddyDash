@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
-    public GameEvent OnLanding;
+    public BasicEvent GameOverEvent;
+
+    public BasicEvent OnLanding;
 
     public AudioSource ASource;
     public AudioEvent PlayJumpSound;
     public AudioEvent PlayLandSound;
 
-    public GameEvent CameraShake;
+    public BasicEvent CameraShake;
 
     [NonSerialized]
     public ParticleSystem Splash;
@@ -30,6 +32,8 @@ public class SquiddyController : MonoBehaviour
 
     private Platform currentPlatform;
     private Camera MainCamera;
+
+    public BasicEvent OnBorderCollisionEvent;
     private void Start()
     {
         Splash splash = GetComponentInChildren<Splash>();
@@ -46,6 +50,10 @@ public class SquiddyController : MonoBehaviour
     }
     private void Awake()
     {
+        if (OnBorderCollisionEvent)
+        {
+            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+        }
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };
         Rb = GetComponent<Rigidbody>();
@@ -79,6 +87,26 @@ public class SquiddyController : MonoBehaviour
             }
         }
 
+        if (GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised += DisableRoot;
+        }
+
+    }
+    private void DisableRoot()
+    {
+        this.transform.root.gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        if (GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised -= DisableRoot;
+        }
+        if (OnBorderCollisionEvent)
+        {
+            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+        }
     }
     private void OnValidate()
     {

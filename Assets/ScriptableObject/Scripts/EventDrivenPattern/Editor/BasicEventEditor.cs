@@ -19,9 +19,9 @@ public class BasicEventEditor : Editor
         {
             obj.LocalDebugActive = !obj.LocalDebugActive;
         }
-        if (GUILayout.Button(GameEvent.AllDebugActive ? "Debug active" : "Debug not active"))
+        if (GUILayout.Button(BasicEvent.AllDebugActive ? "Debug active" : "Debug not active"))
         {
-            GameEvent.AllDebugActive = !GameEvent.AllDebugActive;
+            BasicEvent.AllDebugActive = !BasicEvent.AllDebugActive;
         }
     }
     private void OnEnable()
