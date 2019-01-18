@@ -11,7 +11,7 @@ public class SquiddyController : MonoBehaviour
     public AudioEvent PlayJumpSound;
     public AudioEvent PlayLandSound;
 
-
+    public GameEvent CameraShake;
 
     [NonSerialized]
     public ParticleSystem Splash;
@@ -173,6 +173,8 @@ public class SquiddyController : MonoBehaviour
     {
         if (PlayJumpSound && ASource)
             PlayJumpSound.Play(ASource);
+        if (CameraShake != null)
+            CameraShake.Raise();
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
     }
@@ -180,6 +182,8 @@ public class SquiddyController : MonoBehaviour
     {
         if (PlayLandSound && ASource)
             PlayLandSound.Play(ASource);
+        if (CameraShake != null)
+            CameraShake.Raise();
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
         if (OnLanding)
         {
