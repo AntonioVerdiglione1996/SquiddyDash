@@ -11,6 +11,8 @@ public class SquiddyController : MonoBehaviour
     public AudioEvent PlayJumpSound;
     public AudioEvent PlayLandSound;
 
+
+
     [NonSerialized]
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
