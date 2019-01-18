@@ -4,47 +4,10 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(menuName = "Utility/Events/Game")]
-public class GameEvent : ScriptableObject
+public class GameEvent : BasicEvent
 {
-#if UNITY_EDITOR
-    public static bool AllDebugActive { get; set; }
-    public bool LocalDebugActive = true;
-    static GameEvent()
-    {
-        AllDebugActive = true;
-    }
-#endif
-
-
-    public event Action OnEventRaised;
     private List<GameEventListener> listeners = new List<GameEventListener>();
-    public void Raise(GameEvent gameEventAfterThis)
-    {
-#if UNITY_EDITOR
-        if (AllDebugActive && LocalDebugActive)
-        {
-            Debug.LogFormat("GameEvent {0} raised with {1} as post event to raise.", this.name, (gameEventAfterThis ? gameEventAfterThis.name : "NONE"));
-        }
-#endif
 
-        ExecuteListeners();
-
-        if (gameEventAfterThis != null)
-        {
-            gameEventAfterThis.Raise();
-        }
-    }
-    public void Raise()
-    {
-#if UNITY_EDITOR
-        if (AllDebugActive && LocalDebugActive)
-        {
-            Debug.LogFormat("GameEvent {0} raised.", this.name);
-        }
-#endif
-
-        ExecuteListeners();
-    }
     public void RegisterListener(GameEventListener listener)
     {
         listeners.Add(listener);
@@ -66,8 +29,10 @@ public class GameEvent : ScriptableObject
 #endif
     }
 
-    private void ExecuteListeners()
+    protected override void ExecuteListeners()
     {
+        base.ExecuteListeners();
+
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
             GameEventListener listener = listeners[i];
@@ -91,17 +56,6 @@ public class GameEvent : ScriptableObject
                 }
 #endif
             }
-        }
-
-        if (OnEventRaised != null)
-        {
-            OnEventRaised();
-#if UNITY_EDITOR
-            if (AllDebugActive && LocalDebugActive)
-            {
-                Debug.Log("\tOnEventRaised c# event raised.");
-            }
-#endif
         }
     }
 }

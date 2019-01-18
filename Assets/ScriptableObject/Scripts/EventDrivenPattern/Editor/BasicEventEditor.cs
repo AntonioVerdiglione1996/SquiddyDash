@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GameEvent), true)]
-public class GameEventEditor : Editor
+[CustomEditor(typeof(BasicEvent), true)]
+public class BasicEventEditor : Editor
 {
-    private GameEvent obj;
+    private BasicEvent obj;
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -26,6 +26,6 @@ public class GameEventEditor : Editor
     }
     private void OnEnable()
     {
-        obj = target as GameEvent;
+        obj = target as BasicEvent;
     }
 }
