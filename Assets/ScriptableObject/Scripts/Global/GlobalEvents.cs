@@ -45,9 +45,9 @@ public class GlobalEvents : ScriptableObject
             }
 #endif
         }
-        if (CurrentLevel && system && CurrentLevel.BestScore < system.BestScore)
+        if (CurrentLevel && system && CurrentLevel.BestScore < system.Score)
         {
-            CurrentLevel.BestScore = system.BestScore;
+            CurrentLevel.BestScore = system.Score;
             CurrentLevel.SaveToFile();
         }
     }

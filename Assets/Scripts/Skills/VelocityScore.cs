@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class VelocityScore : PassiveSkill
 {
-    public float PercentageAverageToScore;
-    public float AwardIntervall;
+    public float PercentageAverageToScore = 0.2f;
+    public float AwardIntervall = 1.0f;
+    public int MinAverageForReward = 5;
     public ScoreSystem Score;
 
-    public float Average { get; private set; }
+    public int Average { get; private set; }
 
     private float timer;
     private int previousScore;
@@ -21,14 +22,17 @@ public class VelocityScore : PassiveSkill
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= AwardIntervall)
+        if (timer >= AwardIntervall)
         {
             Average = Score.Score - previousScore;
-            Score.UpdateScore((int)(Average * PercentageAverageToScore));
+            if (MinAverageForReward <= Average)
+            {
+                Score.UpdateScore((int)(Average * PercentageAverageToScore));
 
 #if UNITY_EDITOR
-            Debug.LogFormat("Skill: Passive skill {0} updated score by {1}!", this, (int)(Average * PercentageAverageToScore));
+                Debug.LogFormat("Skill: Passive skill {0} updated score by {1}!", this, (int)(Average * PercentageAverageToScore));
 #endif
+            }
 
             ResetTempVars();
         }

@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  IsGameOverSceneBestScore: 0
+  Text: {fileID: 0}
 --- !u!114 &932733692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,17 +1123,6 @@ MonoBehaviour:
           m_StringArgument: GameOver
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-        m_MethodName: RemoveCurrentLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   InvokeFirstTime: 0
@@ -1402,7 +1391,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114573088225988806, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1578,7 +1567,7 @@ Prefab:
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114255848920308098, guid: 83c123e4e0d9ccf44b9fdd32c1a30118,
         type: 2}
@@ -1933,7 +1922,7 @@ Prefab:
     - target: {fileID: 224566772493478596, guid: 6d66d5f6fabc0d8409000df996001fa4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.24002075
+      value: 0.23999023
       objectReference: {fileID: 0}
     - target: {fileID: 224566772493478596, guid: 6d66d5f6fabc0d8409000df996001fa4,
         type: 2}
