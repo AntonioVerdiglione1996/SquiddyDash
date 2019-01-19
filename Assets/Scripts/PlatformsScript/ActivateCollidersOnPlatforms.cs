@@ -22,12 +22,12 @@ public class ActivateCollidersOnPlatforms : MonoBehaviour
             Platform.ActivateCollisions();
         }
     }
-    private void OnTriggerExit(Collider collider)
-    {
-        //8 is squiddy
-        if (collider.gameObject.layer == 8)
-        {
-            Platform.DeactivateCollisions();
-        }
-    }
+    //private void OnTriggerExit(Collider collider)
+    //{
+    //    //8 is squiddy
+    //    if (collider.gameObject.layer == 8)
+    //    {
+    //        Platform.DeactivateCollisions();
+    //    }
+    //}
 }

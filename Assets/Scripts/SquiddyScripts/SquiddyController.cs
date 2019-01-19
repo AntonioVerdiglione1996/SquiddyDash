@@ -34,6 +34,8 @@ public class SquiddyController : MonoBehaviour
     private Camera MainCamera;
 
     public BasicEvent OnBorderCollisionEvent;
+
+    public bool InputConsumed { get; private set; }
     private void Start()
     {
         Splash splash = GetComponentInChildren<Splash>();
@@ -50,6 +52,7 @@ public class SquiddyController : MonoBehaviour
     }
     private void Awake()
     {
+        InputConsumed = false;
         if (OnBorderCollisionEvent)
         {
             OnBorderCollisionEvent.OnEventRaised += BorderCollided;
@@ -108,6 +111,10 @@ public class SquiddyController : MonoBehaviour
             OnBorderCollisionEvent.OnEventRaised += BorderCollided;
         }
     }
+    public void ConsumeInput()
+    {
+        InputConsumed = true;
+    }
     private void OnValidate()
     {
         if (!ultimateActivator)
@@ -135,6 +142,8 @@ public class SquiddyController : MonoBehaviour
     }
     void Update()
     {
+        if (!InputConsumed)
+        {
 #if (UNITY_IOS || UNITY_ANDROID)
         if (Input.touchCount != 0)
         {
@@ -152,21 +161,24 @@ public class SquiddyController : MonoBehaviour
             }
         }
 #elif UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            if (!IsJumping)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                Jump();
+                if (!IsJumping)
+                {
+                    Jump();
+                }
+                else
+                {
+                    LandParticle.Play();
+                    Land();
+                }
             }
-            else
-            {
-                LandParticle.Play();
-                Land();
-            }
-        }
 #else
         throw new Exception("Input not supported for the current platform");
 #endif
+        }
+
+        InputConsumed = false;
 
         if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {

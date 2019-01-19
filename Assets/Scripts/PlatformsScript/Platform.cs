@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
 
     public bool DirLeft;
 
-    public bool IsLanded;
+    public bool IsLanded = false;
 
     public GlobalEvents GlobalEvents;
     public BasicEvent PerformLerp;
@@ -37,6 +37,12 @@ public class Platform : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
+#if UNITY_EDITOR
+        if(!IsLanded)
+        {
+            Debug.LogFormat("{0} oncollisionstay called after the oncollisionexit");
+        }
+#endif
         if (collision.gameObject.layer == 8 && IsLanded)
         {
             //TODO: rework for deparenting
@@ -58,6 +64,7 @@ public class Platform : MonoBehaviour
             IsLanded = false;
             GlobalEvents.ParentToTarget(null, collision.transform);
             CurrentPlatformForSquiddy.CurrentPlatform = null;
+            DeactivateCollisions();
         }
     }
 }
