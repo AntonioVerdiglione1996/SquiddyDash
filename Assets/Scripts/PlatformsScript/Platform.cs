@@ -23,11 +23,14 @@ public class Platform : MonoBehaviour
 
     public void ActivateCollisions()
     {
-        PlatCollider.enabled = true;
+        if (PlatCollider)
+        {
+            PlatCollider.enabled = true;
+        }
     }
     public void DeactivateCollisions()
     {
-        if (!IsLanded)
+        if (!IsLanded && PlatCollider)
         {
             PlatCollider.enabled = false;
         }

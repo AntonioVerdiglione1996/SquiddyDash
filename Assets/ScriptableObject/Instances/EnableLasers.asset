@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702e599a4f8fe774dbcb2d00b1cfde7b, type: 3}
-  m_Name: SoundEvent
+  m_Script: {fileID: 11500000, guid: fead05278a7221546bedaba4c40415e0, type: 3}
+  m_Name: EnableLasers
   m_EditorClassIdentifier: 
   LocalDebugActive: 0
-  CurrentStrenght: 0
