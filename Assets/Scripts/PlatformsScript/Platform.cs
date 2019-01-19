@@ -27,7 +27,10 @@ public class Platform : MonoBehaviour
     }
     public void DeactivateCollisions()
     {
-        PlatCollider.enabled = false;
+        if (!IsLanded)
+        {
+            PlatCollider.enabled = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,7 +41,7 @@ public class Platform : MonoBehaviour
     {
         //is squiddy 
 #if UNITY_EDITOR
-        if(!IsLanded)
+        if (!IsLanded)
         {
             Debug.LogFormat("{0} oncollisionstay called after the oncollisionexit");
         }

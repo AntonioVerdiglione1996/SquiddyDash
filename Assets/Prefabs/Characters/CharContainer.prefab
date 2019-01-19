@@ -357,6 +357,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 114835219694571498}
+          m_MethodName: ConsumeInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 114156650123403284}
           m_MethodName: InvokeSkill
           m_Mode: 1
@@ -477,7 +488,7 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   ForceApplied: {x: 0, y: 50, z: 0}
-  Mode: 1
+  Mode: 2
   defaultScoreRequirement: 15
   ScoreRequirementMultIncrementPerInvokation: 1.500001
   WallsCustomRepulsion: {x: 0.8, y: 0.8, z: 0.8}
