@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -951,7 +951,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4845043392773328, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
         type: 2}
@@ -987,7 +987,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 511.5024
+      value: 512.29565
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -999,7 +999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -511.5024
+      value: -512.29565
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1025,11 +1025,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1034565109 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1698048337442548, guid: 2215432d06378cd449b4fc080a6a1838,
-    type: 2}
-  m_PrefabInternal: {fileID: 1034565108}
 --- !u!4 &1044696148 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4896535585969290, guid: 310ffda030f1cea449c565720316edee,
@@ -1911,7 +1906,7 @@ Prefab:
     - target: {fileID: 82985325945469966, guid: 42eb2682355553449a7abbb301cdb470,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1798109136328414, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
       propertyPath: m_IsActive
