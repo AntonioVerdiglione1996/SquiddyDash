@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: ImpactLateral
   m_EditorClassIdentifier: 
   Source: {fileID: 0}
+  RestartClipEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   clips:
   - {fileID: 8300000, guid: ea4f3bdd870fcb04b860b367a8294d48, type: 3}
-  Volume: 0.256
+  Volume: 1
   Pitch: 1
   Loop: 0

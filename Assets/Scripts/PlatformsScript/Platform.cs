@@ -8,10 +8,10 @@ public class Platform : MonoBehaviour
 
     public bool DirLeft;
 
-    public bool IsLanded;
+    public bool IsLanded = false;
 
     public GlobalEvents GlobalEvents;
-    public GameEvent PerformLerp;
+    public BasicEvent PerformLerp;
     public ScoreSystem ScoreSystem;
 
     public int ScoreValue = 1;
@@ -20,24 +20,37 @@ public class Platform : MonoBehaviour
 
     public Collider PlatCollider;
 
+
     public void ActivateCollisions()
     {
-        PlatCollider.enabled = true;
+        if (PlatCollider)
+        {
+            PlatCollider.enabled = true;
+        }
     }
     public void DeactivateCollisions()
     {
-        PlatCollider.enabled = false;
+        if (!IsLanded && PlatCollider)
+        {
+            PlatCollider.enabled = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
         PerformLerp.Raise();
+        IsLanded = true;
     }
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
-        if (collision.gameObject.layer == 8)
+#if UNITY_EDITOR
+        if (!IsLanded)
         {
-            IsLanded = true;
+            Debug.LogFormat("{0} oncollisionstay called after the oncollisionexit");
+        }
+#endif
+        if (collision.gameObject.layer == 8 && IsLanded)
+        {
             //TODO: rework for deparenting
             GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
             CurrentPlatformForSquiddy.CurrentPlatform = this;
@@ -56,7 +69,8 @@ public class Platform : MonoBehaviour
         {
             IsLanded = false;
             GlobalEvents.ParentToTarget(null, collision.transform);
-            CurrentPlatformForSquiddy.CurrentPlatform =null;
+            CurrentPlatformForSquiddy.CurrentPlatform = null;
+            DeactivateCollisions();
         }
     }
 }

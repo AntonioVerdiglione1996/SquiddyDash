@@ -11,7 +11,13 @@ public class CameraShake : MonoBehaviour
     public float shakeAmount = 0.15f;
     public float decreaseFactor = 1.0f;
 
+    public BasicEvent BorderShakeEvent;
+    public float DefaultShakeDuration = 0.2f;
 
+    public void PerformShake()
+    {
+        PerformShake(DefaultShakeDuration);
+    }
     public void PerformShake(float duration)
     {
         shakeDuration = duration;
@@ -28,6 +34,17 @@ public class CameraShake : MonoBehaviour
     private void Awake()
     {
         StopShake();
+        if(BorderShakeEvent)
+        {
+            BorderShakeEvent.OnEventRaised += PerformShake;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (BorderShakeEvent)
+        {
+            BorderShakeEvent.OnEventRaised -= PerformShake;
+        }
     }
 
     void Update()

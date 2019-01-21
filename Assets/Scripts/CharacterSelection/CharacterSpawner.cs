@@ -8,7 +8,7 @@ public class CharacterSpawner : MonoBehaviour
     public StoringCurrentModelToSpawn scm;
     public void Start()
     {
-        GameObject go = Instantiate(scm.DownloadCurrentCharacter(), transform);
+        Instantiate(scm.DownloadCurrentCharacter(), transform);
         Destroy(this);
     }
 }

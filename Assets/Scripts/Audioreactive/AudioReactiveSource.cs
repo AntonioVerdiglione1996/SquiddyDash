@@ -6,7 +6,7 @@ public class AudioReactiveSource : MonoBehaviour
 {
     public AudioReactiveClip ClipData;
     public AudioSource Source;
-    public GameEvent SoundEvent;
+    public SoundEvent SoundEvent;
 
     private int currentTimestampIndex;
     private float lastTimeStamp;
@@ -28,6 +28,10 @@ public class AudioReactiveSource : MonoBehaviour
         Source.clip = ClipData.Clip;
         Source.time = 0f;
         Source.Play();
+        if (SoundEvent)
+        {
+            SoundEvent.CurrentStrenght = 0;
+        }
     }
     private void Update()
     {
@@ -44,10 +48,12 @@ public class AudioReactiveSource : MonoBehaviour
         float time = Source.time;
         if (time > lastTimeStamp)
         {
-            if (!waitingForLoop && time > ClipData.Timestamps[currentTimestampIndex])
+            ReactiveClipData data = ClipData.Timestamps[currentTimestampIndex];
+            if (!waitingForLoop && time > data.Timestamp)
             {
                 if (SoundEvent)
                 {
+                    SoundEvent.CurrentStrenght = data.Strenght;
                     SoundEvent.Raise();
                 }
 #if UNITY_EDITOR
@@ -86,7 +92,7 @@ public class AudioReactiveSource : MonoBehaviour
                 currentTimestampIndex = ClipData.Timestamps.Length - 1;
                 for (int i = 0; i < ClipData.Timestamps.Length; i++)
                 {
-                    if (ClipData.Timestamps[i] >= clipTime)
+                    if (ClipData.Timestamps[i].Timestamp >= clipTime)
                     {
                         currentTimestampIndex = i;
                         break;

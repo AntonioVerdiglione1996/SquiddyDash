@@ -12,6 +12,7 @@ public class ContinuousAscension : MonoBehaviour
 
     public MonoBehaviour OtherMovementBehaviour;
     public CameraShake CamShake;
+    public BasicEvent RestartTimerEvent;
 
     public float ShakeAmount = 1f;
 
@@ -78,6 +79,18 @@ public class ContinuousAscension : MonoBehaviour
     {
         myTransform = transform;
         enabled = StartsAsEnabled;
+        if(RestartTimerEvent)
+        {
+            RestartTimerEvent.OnEventRaised += StopAndRestartTimer;
+        }
+        StopAndRestartTimer();
+    }
+    private void OnDestroy()
+    {
+        if (RestartTimerEvent)
+        {
+            RestartTimerEvent.OnEventRaised -= StopAndRestartTimer;
+        }
     }
     void LateUpdate()
     {

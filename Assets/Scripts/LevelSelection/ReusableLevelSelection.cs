@@ -39,8 +39,8 @@ public class ReusableLevelSelection : MonoBehaviour
 
     public RawImage image;
 
-    public GameEvent PageChanged;
-    public GameEvent PageChanging;
+    public BasicEvent PageChanged;
+    public BasicEvent PageChanging;
 
     public int CurrentPage { get { return this.currentPage; } }
 

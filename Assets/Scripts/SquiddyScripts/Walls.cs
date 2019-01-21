@@ -14,9 +14,9 @@ public class Walls : MonoBehaviour
 
     public Camera MainCamera;
 
-    public GameEvent BorderCollision;
-    public GameEvent TopCollision;
-    public GameEvent BotCollision;
+    public BasicEvent BorderCollision;
+    public BasicEvent TopCollision;
+    public BasicEvent GameOverEvent;
 
     public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0.6f);
     public Vector3 BotWallMinimumRepulsionForce = new Vector3(0f, 15f, 0f);
@@ -116,9 +116,10 @@ public class Walls : MonoBehaviour
 
     private void PlayerBotScreenCollision(Collider other)
     {
-        if (BotCollision != null)
+        if (GameOverEvent != null)
         {
-            BotCollision.Raise();
+            this.transform.root.gameObject.SetActive(false);
+            GameOverEvent.Raise();
         }
     }
 

@@ -12,8 +12,23 @@ public class ScaleModifier : MonoBehaviour
     public Transform Target;
     public float CurrentTimer { get; private set; }
     public float InverseDuration { get; private set; }
+    public BasicEvent RestartScaleModEvent;
     // Use this for initialization
-    void Awake() { this.enabled = false; }
+    void Awake()
+    {
+        this.enabled = false;
+        if (RestartScaleModEvent)
+        {
+            RestartScaleModEvent.OnEventRaised += ResetAndStartScaleMod;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (RestartScaleModEvent)
+        {
+            RestartScaleModEvent.OnEventRaised -= ResetAndStartScaleMod;
+        }
+    }
     private void OnEnable()
     {
         CurrentTimer = 0f;

@@ -315,7 +315,7 @@ MonoBehaviour:
   DirLeft: 0
   IsLanded: 0
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-  PerformLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
+  PerformLerp: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0
@@ -341,7 +341,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.56
+  m_Radius: 0.13
+  m_Height: 1
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}

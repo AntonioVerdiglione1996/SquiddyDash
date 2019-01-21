@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CheckPlayerJumpingState : MonoBehaviour
 {
-    public GameEvent IsJumping;
-    public GameEvent IsNotJumping;
+    public BasicEvent IsJumping;
+    public BasicEvent IsNotJumping;
 
     public bool RaiseAtStart = true;
 

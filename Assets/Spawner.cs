@@ -2,7 +2,7 @@
 using System;
 public static class Spawner
 {
-    public static bool SpawnPrefabs(int count, GameObject prefab, Transform parent = null, GameEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null)
+    public static bool SpawnPrefabs(int count, GameObject prefab, Transform parent = null, BasicEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null)
     {
         for (int i = 0; i < count; i++)
         {

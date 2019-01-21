@@ -19,21 +19,24 @@ public class LevelContainer : ScriptableObject
         }
 
         List<LevelData> tempList = new List<LevelData>(Datas.Length);
-        for(int i = 0; i < Datas.Length; i++)
+        for (int i = 0; i < Datas.Length; i++)
         {
             LevelData level1 = Datas[i];
             bool unique = true;
-            for(int j = i + 1; j < Datas.Length; j++)
+            for (int j = i + 1; j < Datas.Length; j++)
             {
-                if(Datas[j] == level1)
+                if (Datas[j] == level1)
                 {
                     unique = false;
                     break;
                 }
             }
-            if(unique)
+            if (unique)
             {
-                tempList.Add(level1);
+                if (level1 != null)
+                {
+                    tempList.Add(level1);
+                }
             }
         }
 

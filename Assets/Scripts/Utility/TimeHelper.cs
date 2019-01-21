@@ -12,7 +12,7 @@ public class TimeHelper : ScriptableObject
         return timers.AddLast(data);
     }
 
-    public LinkedListNode<TimerData> AddTimer(GameEvent callback, float duration)
+    public LinkedListNode<TimerData> AddTimer(BasicEvent callback, float duration)
     {
         return timers.AddLast(new TimerData(callback, duration));
     }
@@ -22,7 +22,7 @@ public class TimeHelper : ScriptableObject
         return timers.AddLast(new TimerData(callback, duration));
     }
 
-    public LinkedListNode<TimerData> AddTimer(Action callbackAction, GameEvent callbackEvent, float duration)
+    public LinkedListNode<TimerData> AddTimer(Action callbackAction, BasicEvent callbackEvent, float duration)
     {
         return timers.AddLast(new TimerData(callbackAction, callbackEvent, duration));
     }

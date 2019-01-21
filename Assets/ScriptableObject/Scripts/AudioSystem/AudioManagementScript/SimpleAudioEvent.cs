@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class SimpleAudioEvent : AudioEvent
 {
     public AudioSource Source;
+    public BasicEvent RestartClipEvent;
 
     public AudioClip[] clips;
     [Range(0f, 1f)]
@@ -13,7 +14,20 @@ public class SimpleAudioEvent : AudioEvent
     [Range(0f, 2f)]
     public float Pitch = 1f;
     public bool Loop;
-
+    private void OnEnable()
+    {
+        if (RestartClipEvent)
+        {
+            RestartClipEvent.OnEventRaised += PlayWithDefaultAudiosource;
+        }
+    }
+    private void OnDisable()
+    {
+        if (RestartClipEvent)
+        {
+            RestartClipEvent.OnEventRaised -= PlayWithDefaultAudiosource;
+        }
+    }
     public override void Play(AudioSource source)
     {
         if (clips.Length == 0)
@@ -24,20 +38,12 @@ public class SimpleAudioEvent : AudioEvent
         source.playOnAwake = false;
         source.volume = Volume;
         source.pitch = Pitch;
+        source.time = 0f;
 
         source.Play();
     }
     public void PlayWithDefaultAudiosource( )
     {
-        if (clips.Length == 0)
-            return;
-        Source.clip = clips[Random.Range(0, clips.Length)];
-
-        Source.loop = Loop;
-        Source.playOnAwake = false;
-        Source.volume = Volume;
-        Source.pitch = Pitch;
-
-        Source.Play();
+        Play(Source);
     }
 }

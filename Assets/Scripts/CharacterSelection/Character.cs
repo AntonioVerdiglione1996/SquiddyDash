@@ -10,10 +10,10 @@ public class Character : MonoBehaviour
     public Color colorName;
     public Sprite Icon;
 
-    public GameEvent StartRotation;
-    public GameEvent StopRotation;
-    public GameEvent ResetRotation;
-    public GameEvent StartLerpRotation;
+    public BasicEvent StartRotation;
+    public BasicEvent StopRotation;
+    public BasicEvent ResetRotation;
+    public BasicEvent StartLerpRotation;
 
     public ButtonSkillActivator SkillIconUIPrefab;
 

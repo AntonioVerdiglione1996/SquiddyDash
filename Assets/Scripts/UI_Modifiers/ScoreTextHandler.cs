@@ -19,11 +19,11 @@ public class ScoreTextHandler : MonoBehaviour
             Text = GetComponent<TextMeshProUGUI>();
         }
         UpdateScore();
-        (ScoreSystem as GameEvent).OnEventRaised += UpdateScore;
+        ScoreSystem.OnEventRaised += UpdateScore;
     }
     private void OnDisable()
     {
-        (ScoreSystem as GameEvent).OnEventRaised -= UpdateScore;
+        ScoreSystem.OnEventRaised -= UpdateScore;
     }
     public void UpdateScore()
     {

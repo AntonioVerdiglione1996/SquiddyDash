@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
-    public GameEvent OnLanding;
+    public BasicEvent GameOverEvent;
+
+    public BasicEvent OnLanding;
 
     public AudioSource ASource;
     public AudioEvent PlayJumpSound;
     public AudioEvent PlayLandSound;
 
-    public GameEvent CameraShake;
+    public BasicEvent CameraShake;
 
     [NonSerialized]
     public ParticleSystem Splash;
@@ -30,6 +32,10 @@ public class SquiddyController : MonoBehaviour
 
     private Platform currentPlatform;
     private Camera MainCamera;
+
+    public BasicEvent OnBorderCollisionEvent;
+
+    public bool InputConsumed { get; private set; }
     private void Start()
     {
         Splash splash = GetComponentInChildren<Splash>();
@@ -46,6 +52,11 @@ public class SquiddyController : MonoBehaviour
     }
     private void Awake()
     {
+        InputConsumed = false;
+        if (OnBorderCollisionEvent)
+        {
+            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+        }
         SquiddyStats.RightDirections = new Vector3[] { SquiddyStats.topRight, SquiddyStats.LessTopRight };
         SquiddyStats.LeftDirections = new Vector3[] { SquiddyStats.topLeft, SquiddyStats.LessTopLeft };
         Rb = GetComponent<Rigidbody>();
@@ -79,6 +90,30 @@ public class SquiddyController : MonoBehaviour
             }
         }
 
+        if (GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised += DisableRoot;
+        }
+
+    }
+    private void DisableRoot()
+    {
+        this.transform.root.gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        if (GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised -= DisableRoot;
+        }
+        if (OnBorderCollisionEvent)
+        {
+            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+        }
+    }
+    public void ConsumeInput()
+    {
+        InputConsumed = true;
     }
     private void OnValidate()
     {
@@ -107,6 +142,8 @@ public class SquiddyController : MonoBehaviour
     }
     void Update()
     {
+        if (!InputConsumed)
+        {
 #if (UNITY_IOS || UNITY_ANDROID)
         if (Input.touchCount != 0)
         {
@@ -124,21 +161,24 @@ public class SquiddyController : MonoBehaviour
             }
         }
 #elif UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
-            if (!IsJumping)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                Jump();
+                if (!IsJumping)
+                {
+                    Jump();
+                }
+                else
+                {
+                    LandParticle.Play();
+                    Land();
+                }
             }
-            else
-            {
-                LandParticle.Play();
-                Land();
-            }
-        }
 #else
         throw new Exception("Input not supported for the current platform");
 #endif
+        }
+
+        InputConsumed = false;
 
         if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {

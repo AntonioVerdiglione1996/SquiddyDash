@@ -8,12 +8,31 @@ public class GlobalEvents : ScriptableObject
 {
     public InGameCurrency GameCurrency;
     public GameCurrencyCalculator Calculator;
+    public ScoreSystem System;
+    public BasicEvent GameOverEvent;
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
 #endif
     public LevelData CurrentLevel { get { return currentLevel; } }
     [SerializeField]
     private LevelData currentLevel;
+
+    private void OnEnable()
+    {
+        if(GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised += IncreaseGameCurrency;
+            GameOverEvent.OnEventRaised += GameOverTrigger;
+        }
+    }
+    private void OnDisable()
+    {
+        if(GameOverEvent)
+        {
+            GameOverEvent.OnEventRaised -= IncreaseGameCurrency;
+            GameOverEvent.OnEventRaised -= GameOverTrigger;
+        }
+    }
     public void RemoveCurrentLevel()
     {
         SetCurrentLevel(null);
@@ -28,14 +47,14 @@ public class GlobalEvents : ScriptableObject
 #endif
         currentLevel = Level;
     }
-    public void IncreaseGameCurrency(ScoreSystem system)
+    public void IncreaseGameCurrency()
     {
-        if (system && Calculator && GameCurrency)
+        if (System && Calculator && GameCurrency)
         {
 #if UNITY_EDITOR
             long previousGC = GameCurrency.GameCurrency;
 #endif
-            long amount = Calculator.CalculateCurrencyIncreaseAmount(system);
+            long amount = Calculator.CalculateCurrencyIncreaseAmount(System);
 
             bool result = GameCurrency.ModifyGameCurrencyAmount(amount);
 #if UNITY_EDITOR
@@ -45,9 +64,9 @@ public class GlobalEvents : ScriptableObject
             }
 #endif
         }
-        if (CurrentLevel && system && CurrentLevel.BestScore < system.Score)
+        if (CurrentLevel && System && CurrentLevel.BestScore < System.Score)
         {
-            CurrentLevel.BestScore = system.Score;
+            CurrentLevel.BestScore = System.Score;
             CurrentLevel.SaveToFile();
         }
     }

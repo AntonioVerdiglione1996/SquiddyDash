@@ -14,8 +14,8 @@ MonoBehaviour:
   Image: {fileID: 0}
   Color: {r: 0.9411765, g: 0.9044118, b: 0, a: 1}
   Material: {fileID: 0}
-  levelIndex: 2
-  isUnlocked: 0
+  levelIndex: 3
+  isUnlocked: 1
   unlockCost: 22
-  bestScore: 0
-  fileNameFull: LevelData2Level_Met
+  bestScore: 130
+  fileNameFull: LevelData3Level_Met

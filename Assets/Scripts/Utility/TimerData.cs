@@ -4,9 +4,9 @@ public struct TimerData
     public bool Enabled;
     public float ElapsedTime;
     public float Duration;
-    public GameEvent CallbackEvent;
+    public BasicEvent CallbackEvent;
     public Action CallbackAction;
-    public TimerData(GameEvent callback, float duration, bool enabled = true, float elapsedTime = 0f)
+    public TimerData(BasicEvent callback, float duration, bool enabled = true, float elapsedTime = 0f)
     {
         Duration = duration;
         CallbackEvent = callback;
@@ -22,7 +22,7 @@ public struct TimerData
         ElapsedTime = elapsedTime;
         CallbackAction = callback;
     }
-    public TimerData(Action callbackAction, GameEvent callbackEvent, float duration, bool enabled = true, float elapsedTime = 0f)
+    public TimerData(Action callbackAction, BasicEvent callbackEvent, float duration, bool enabled = true, float elapsedTime = 0f)
     {
         Duration = duration;
         CallbackEvent = callbackEvent;

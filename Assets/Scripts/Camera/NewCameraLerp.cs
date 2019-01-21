@@ -11,6 +11,7 @@ public class NewCameraLerp : MonoBehaviour
 
 
     public float LerpSpeed = 2f;
+    public Transform DefaultTarget;
 
     private Vector3 cameraArm;
 
@@ -19,6 +20,22 @@ public class NewCameraLerp : MonoBehaviour
     private Vector3 EndPoint = Vector3.zero;
     private float lerp;
 
+    public BasicEvent StartLerpEvent;
+    private void OnEnable()
+    {
+        if (StartLerpEvent)
+        {
+            StartLerpEvent.OnEventRaised += SetEndPoint;
+        }
+        SetEndPoint();
+    }
+    private void OnDisable()
+    {
+        if (StartLerpEvent)
+        {
+            StartLerpEvent.OnEventRaised -= SetEndPoint;
+        }
+    }
     void Start()
     {
         cameraArm = new Vector3(0f, 9f, -20f);
@@ -26,12 +43,22 @@ public class NewCameraLerp : MonoBehaviour
         enabled = true;
         //CameraPos = transform.position;
     }
-
+    public void SetEndPoint()
+    {
+        if(!DefaultTarget)
+        {
+            DefaultTarget = FindObjectOfType<CharacterController>().transform.root;
+        }
+        SetEndPoint(DefaultTarget);
+    }
     public void SetEndPoint(Transform transform)
     {
-        EndPoint = transform.position;
-        lerp = 0f;
-        enabled = true;
+        if (transform)
+        {
+            EndPoint = transform.position;
+            lerp = 0f;
+            enabled = true;
+        }
     }
 
     //find another bool for checking if landed (maybe a new event?)
@@ -48,9 +75,9 @@ public class NewCameraLerp : MonoBehaviour
         Vector3 currentPos = transform.position;
         lerp += Time.deltaTime * LerpSpeed;
 
-        transform.position = new Vector3(currentPos.x, Mathf.Lerp(currentPos.y, EndPoint.y + cameraArm.y, lerp) , currentPos.z);
+        transform.position = new Vector3(currentPos.x, Mathf.Lerp(currentPos.y, EndPoint.y + cameraArm.y, lerp), currentPos.z);
 
-        if(lerp > 1f)
+        if (lerp > 1f)
         {
             enabled = false;
         }

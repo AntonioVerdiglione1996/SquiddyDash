@@ -13,4 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameCurrency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Calculator: {fileID: 11400000, guid: 05f3973eae1b38749a29904d4e03acfc, type: 2}
-  LocalDebugActive: 1
+  System: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  LocalDebugActive: 0
+  currentLevel: {fileID: 0}

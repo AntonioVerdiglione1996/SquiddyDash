@@ -49,13 +49,14 @@ public class ButtonSkillActivator : MonoBehaviour
     }
     public void InvokeSkill()
     {
+
         if (!CheckValidState())
         {
             return;
         }
         if (ActivableSkill.InvokeSkill())
         {
-            //TODO: do stuff here
+
         }
     }
 
