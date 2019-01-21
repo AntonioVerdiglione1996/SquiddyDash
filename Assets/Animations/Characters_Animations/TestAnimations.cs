@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TestAnimations : MonoBehaviour {
 
-    public bool bol;
+    public bool IsJumping;
     public Animator animator;
 
     private void Update()
     {
-        if (bol)
+        if (IsJumping)
         {
             animator.SetBool("IsJumping", true);
         }

@@ -1,0 +1,23 @@
+Diego Ricchiuti
+	
+Ok ho provato Squid Dash, divido la mail in due parti:
+
+Business Model:
+Squid Dash è un hyper-casual game (il cui mercato è attualmente dominato da KetchApp), questo tipo di giochi ha alcuni MUST, a livello di business model:
+
+    Cross-Reference: ogni gioco, pubblicizza e da premi ad altri hyper-casual dello stesso produttore
+    0 production: Il costo di produzione deve essere bassissimo
+    Aggressive Ads: Un sistema di pubblicità aggressivo+
+    High numbers: Si devono produrre 1000000 di questi giochi per avere successo (Con Affinity, ora che siamo in down con Don-Ay inizieremo a farne tipo 3 al mese).
+
+Gioco:
+Alla base il gameplay funziona ed il controlli vanno abbastanza bene, ed il mood (jappo/fun funziona bene), per diventare un progetto da rilascio deve:
+
+    Grafica: La grafica deve essere rivista in modo da essere minimal e matchare il mood
+    Treedmil: Deve essere inserito (per quanto basilare) un sistema di treadmill
+        Skin: un sistema basilare di skin
+        Progression: qualche potenziamento o cose da sbloccare
+        Coin/Exp: una currency con cui sbloccare gli elementi 
+        Leaderboard: classifiche
+        Daily reward/quest: piccole sfide da fare per reward
+    Varietà: il gioco ha bisogno di una maggiore varietà nel gameplay (nulla di incredibile), ma qualcosa come piattaforme differenti, effetti differenti e altre cose.
