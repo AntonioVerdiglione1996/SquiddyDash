@@ -10,6 +10,7 @@ public class ExtendedWindZone : MonoBehaviour
     public Vector2 WindVelocity;
     public Vector2 MaxWindVelocity = new Vector2(5f, 2f);
     public Vector2 MinWindVelocity = new Vector2(-5f, -2f);
+    public Vector2 DefaultDirection = Vector2.up;
     public Vector3 WindVelocity3 { get { return new Vector3(WindVelocity.x, WindVelocity.y, 0f); } }
 
     private float timer;
@@ -50,8 +51,12 @@ public class ExtendedWindZone : MonoBehaviour
     {
         timer = 0f;
         //TODO: calculate new wind direction correctly
-        Vector2 newWindDirection = UnityEngine.Random.insideUnitCircle.normalized;
-        WindVelocity = newWindDirection * (Manipulator.WindMain + Manipulator.WindPulseMagnitude + UnityEngine.Random.Range(-1f, 1f) * Manipulator.WindTurbolence);
+        Vector2 newWindDirection = UnityEngine.Random.insideUnitCircle;
+
+        float impulseIntensity = newWindDirection.magnitude * Manipulator.WindPulseMagnitude;
+        newWindDirection = Mathf.Approximately(newWindDirection.magnitude, 1f) ? newWindDirection.normalized : DefaultDirection;
+
+        WindVelocity = newWindDirection * (Manipulator.WindMain + impulseIntensity + UnityEngine.Random.Range(-1f, 1f) * Manipulator.WindTurbolence);
         WindVelocity.x = Mathf.Clamp(WindVelocity.x, MinWindVelocity.x, MaxWindVelocity.x);
         WindVelocity.y = Mathf.Clamp(WindVelocity.y, MinWindVelocity.y, MaxWindVelocity.y);
     }
