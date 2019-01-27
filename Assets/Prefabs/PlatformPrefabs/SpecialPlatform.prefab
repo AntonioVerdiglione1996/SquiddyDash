@@ -394,6 +394,7 @@ MonoBehaviour:
   IsLanded: 0
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   PerformLerp: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
+  PlatformClaimed: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0

@@ -115,7 +115,7 @@ public class GlobalEvents : ScriptableObject
         }
 #endif
     }
-    public void ParentToTarget(Transform Parent, Transform Son)
+    public bool ParentToTarget(Transform Parent, Transform Son)
     {
         if (Son && Son != Parent && Son.parent != Parent)
         {
@@ -126,7 +126,9 @@ public class GlobalEvents : ScriptableObject
                 Debug.LogFormat("{0} parented to {1}", Son, (Parent ? Parent.ToString() : "NONE"));
             }
 #endif
+            return true;
         }
+        return false;
     }
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 512.29565
+      value: 509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -999,7 +999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -512.29565
+      value: -509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2041,10 +2041,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1911044050}
   shakeDuration: 0.1
-  shakeAmount: 0.5
+  shakeAmount: 20
   decreaseFactor: 1
   BorderShakeEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
-  DefaultShakeDuration: 0.2
+  DefaultShakeDuration: 0.25
 --- !u!20 &1911044050
 Camera:
   m_ObjectHideFlags: 0
@@ -2129,9 +2129,9 @@ MonoBehaviour:
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   OtherMovementBehaviour: {fileID: 1911044048}
   CamShake: {fileID: 1911044049}
-  RestartTimerEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  ShakeAmount: 0.15
-  prevShakeAmount: 0.5
+  RestartTimerEvent: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  ShakeAmount: 12
+  prevShakeAmount: 9
 --- !u!114 &1911044055
 MonoBehaviour:
   m_ObjectHideFlags: 0

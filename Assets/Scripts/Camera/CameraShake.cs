@@ -8,11 +8,13 @@ public class CameraShake : MonoBehaviour
 
     public float shakeDuration = 0f;
 
-    public float shakeAmount = 0.15f;
+    public float shakeAmount = 9f;
     public float decreaseFactor = 1.0f;
 
     public BasicEvent BorderShakeEvent;
-    public float DefaultShakeDuration = 0.2f;
+    public float DefaultShakeDuration = 0.25f;
+
+    private float originalX;
 
     public void PerformShake()
     {
@@ -23,6 +25,11 @@ public class CameraShake : MonoBehaviour
         shakeDuration = duration;
         if (shakeDuration > 0f && cam)
         {
+            if(enabled)
+            {
+                StopShake();
+            }
+            originalX = cam.transform.localPosition.x;
             enabled = true;
         }
     }
@@ -30,6 +37,7 @@ public class CameraShake : MonoBehaviour
     {
         shakeDuration = 0f;
         enabled = false;
+        cam.transform.localPosition = new Vector3(originalX, cam.transform.localPosition.y, cam.transform.localPosition.z);
     }
     private void Awake()
     {
@@ -57,7 +65,7 @@ public class CameraShake : MonoBehaviour
             StopShake();
         }
         Vector3 originalPos = cam.transform.localPosition;
-        originalPos.y += Random.insideUnitSphere.y * shakeAmount;
+        originalPos.x += UnityEngine.Random.insideUnitCircle.x * shakeAmount * Time.deltaTime;
         //i dont want the shake on the x axsis
         cam.transform.localPosition = originalPos;
         shakeDuration -= Time.deltaTime * decreaseFactor;
