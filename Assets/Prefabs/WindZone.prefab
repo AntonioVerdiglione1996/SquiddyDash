@@ -127,7 +127,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  IntervallToDefaultIntensity: 0.15
+  IntervallToDefaultIntensity: 0.5
 --- !u!114 &114858104057557516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,8 +142,9 @@ MonoBehaviour:
   Manipulator: {fileID: 114270071772080610}
   Windzone: {fileID: 0}
   WindVelocity: {x: 0, y: 0}
-  MaxWindVelocity: {x: 5, y: 2}
-  MinWindVelocity: {x: -5, y: -2}
+  MaxWindVelocity: {x: 10, y: 4}
+  MinWindVelocity: {x: -10, y: -4}
+  DefaultDirection: {x: 0, y: 1}
 --- !u!114 &114990299907481676
 MonoBehaviour:
   m_ObjectHideFlags: 1
