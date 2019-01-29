@@ -5,8 +5,8 @@ using System;
 [CreateAssetMenu(menuName = "Utility/Events/Sound")]
 public class SoundEvent : GameEvent {
 
-    public int CurrentStrenght = 0;
-    public event Action<int> OnSoundEvent;
+    public byte CurrentStrenght = 0;
+    public event Action<byte> OnSoundEvent;
     private void OnEnable()
     {
         CurrentStrenght = 0;

@@ -55,79 +55,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultIntensity: 1
   SoundEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
-  IntensityMultiplier:
+  IntensityCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 255
+      outSlope: 255
       tangentMode: 34
     - serializedVersion: 2
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 255
+      inSlope: 255
+      outSlope: 255
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  PulseMultiplier:
+  PulseMagnitudeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 127
+      outSlope: 127
       tangentMode: 34
     - serializedVersion: 2
       time: 1
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
+      value: 127
+      inSlope: 127
+      outSlope: 127
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  TurbolenceMultiplier:
+  TurbolenceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 255
+      outSlope: 255
       tangentMode: 34
     - serializedVersion: 2
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 255
+      inSlope: 255
+      outSlope: 255
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  FrequencyMultiplier:
+  PulseFrequencyCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.01
-      inSlope: 0
-      outSlope: 0
+      value: -0
+      inSlope: 10
+      outSlope: 10
       tangentMode: 34
     - serializedVersion: 2
       time: 1
-      value: 0.01
-      inSlope: 0
-      outSlope: 0
+      value: 10
+      inSlope: 10
+      outSlope: 10
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  IntervallToDefaultIntensity: 0.5
+  IntervallToDefaultIntensity: 10
 --- !u!114 &114858104057557516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,8 +142,8 @@ MonoBehaviour:
   Manipulator: {fileID: 114270071772080610}
   Windzone: {fileID: 0}
   WindVelocity: {x: 0, y: 0}
-  MaxWindVelocity: {x: 10, y: 4}
-  MinWindVelocity: {x: -10, y: -4}
+  MaxWindVelocity: {x: 255, y: 125}
+  MinWindVelocity: {x: -255, y: -4}
   DefaultDirection: {x: 0, y: 1}
 --- !u!114 &114990299907481676
 MonoBehaviour:

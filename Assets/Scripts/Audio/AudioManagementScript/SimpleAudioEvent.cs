@@ -30,7 +30,7 @@ public class SimpleAudioEvent : AudioEvent
     }
     public override void Play(AudioSource source)
     {
-        if (clips.Length == 0)
+        if (clips.Length == 0 || !source)
             return;
         source.clip = clips[Random.Range(0, clips.Length)];
 

@@ -6,7 +6,7 @@ using System.Linq;
 public struct ReactiveClipData
 {
     public float Timestamp;
-    public int Strenght;
+    public byte Strenght;
 }
 [CreateAssetMenu(menuName = "Audio/ReactiveClip")]
 public class AudioReactiveClip : ScriptableObject

@@ -884,6 +884,16 @@ Prefab:
       propertyPath: AffectedBody
       value: 
       objectReference: {fileID: 617022352}
+    - target: {fileID: 114270071772080610, guid: ce77bcb46c2ce774381b64847d34d9d0,
+        type: 2}
+      propertyPath: DefaultIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270071772080610, guid: ce77bcb46c2ce774381b64847d34d9d0,
+        type: 2}
+      propertyPath: IntervallToDefaultIntensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce77bcb46c2ce774381b64847d34d9d0, type: 2}
   m_IsPrefabParent: 0

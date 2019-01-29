@@ -21,7 +21,7 @@ public class NewCameraLerp : MonoBehaviour
     private float lerp;
 
     public BasicEvent StartLerpEvent;
-    private void OnEnable()
+    private void Awake()
     {
         if (StartLerpEvent)
         {
@@ -29,7 +29,7 @@ public class NewCameraLerp : MonoBehaviour
         }
         SetEndPoint();
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (StartLerpEvent)
         {

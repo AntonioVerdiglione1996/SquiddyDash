@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: SoundEvent
   m_EditorClassIdentifier: 
   LocalDebugActive: 0
-  CurrentStrenght: 0
+  CurrentStrenght: 10

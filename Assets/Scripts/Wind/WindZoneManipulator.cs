@@ -4,24 +4,25 @@ using UnityEngine;
 using System;
 public class WindZoneManipulator : MonoBehaviour
 {
-    public int DefaultIntensity = 1;
+    public const float InverseMaxByte = 1f / byte.MaxValue;
+    public byte DefaultIntensity = 0;
 
     public SoundEvent SoundEvent;
 
     public event Action OnWindzoneUpdate;
 
-    public AnimationCurve IntensityMultiplier;
-    public AnimationCurve PulseMultiplier;
-    public AnimationCurve TurbolenceMultiplier;
-    public AnimationCurve FrequencyMultiplier;
-    public float IntervallToDefaultIntensity = 0.15f;
+    public AnimationCurve IntensityCurve;
+    public AnimationCurve PulseMagnitudeCurve;
+    public AnimationCurve TurbolenceCurve;
+    public AnimationCurve PulseFrequencyCurve;
+    public float IntervallToDefaultIntensity = 0.5f;
 
-    public int CurrentIntensity { get; private set; }
+    public byte CurrentIntensity { get; private set; }
     public bool IsCurrentIntensityCustom { get { return CurrentIntensity != DefaultIntensity; } }
-    public float WindMain { get { return CurrentIntensity * IntensityMultiplier.Evaluate(CurrentIntensity); } }
-    public float WindPulseMagnitude { get { return CurrentIntensity * PulseMultiplier.Evaluate(CurrentIntensity); } }
-    public float WindTurbolence { get { return CurrentIntensity * TurbolenceMultiplier.Evaluate(CurrentIntensity); } }
-    public float WindPulseFrequency { get { return CurrentIntensity * FrequencyMultiplier.Evaluate(CurrentIntensity); } }
+    public float WindMain { get { return IntensityCurve.Evaluate(CurrentIntensity * InverseMaxByte); } }
+    public float WindPulseMagnitude { get { return PulseMagnitudeCurve.Evaluate(CurrentIntensity * InverseMaxByte); } }
+    public float WindTurbolence { get { return TurbolenceCurve.Evaluate(CurrentIntensity * InverseMaxByte); } }
+    public float WindPulseFrequency { get { return PulseFrequencyCurve.Evaluate(CurrentIntensity * InverseMaxByte); } }
 
     private float timer = 0f;
 
@@ -53,7 +54,7 @@ public class WindZoneManipulator : MonoBehaviour
             SetIntensity(DefaultIntensity);
         }
     }
-    public void SetIntensity(int Intensity)
+    public void SetIntensity(byte Intensity)
     {
         timer = 0f;
 
@@ -74,13 +75,13 @@ public class WindZoneManipulator : MonoBehaviour
     }
     private void SetWrapModes()
     {
-        IntensityMultiplier.postWrapMode = WrapMode.Clamp;
-        IntensityMultiplier.preWrapMode = WrapMode.Clamp;
-        PulseMultiplier.postWrapMode = WrapMode.Clamp;
-        PulseMultiplier.preWrapMode = WrapMode.Clamp;
-        TurbolenceMultiplier.postWrapMode = WrapMode.Clamp;
-        TurbolenceMultiplier.preWrapMode = WrapMode.Clamp;
-        FrequencyMultiplier.postWrapMode = WrapMode.Clamp;
-        FrequencyMultiplier.preWrapMode = WrapMode.Clamp;
+        IntensityCurve.postWrapMode = WrapMode.Clamp;
+        IntensityCurve.preWrapMode = WrapMode.Clamp;
+        PulseMagnitudeCurve.postWrapMode = WrapMode.Clamp;
+        PulseMagnitudeCurve.preWrapMode = WrapMode.Clamp;
+        TurbolenceCurve.postWrapMode = WrapMode.Clamp;
+        TurbolenceCurve.preWrapMode = WrapMode.Clamp;
+        PulseFrequencyCurve.postWrapMode = WrapMode.Clamp;
+        PulseFrequencyCurve.preWrapMode = WrapMode.Clamp;
     }
 }
