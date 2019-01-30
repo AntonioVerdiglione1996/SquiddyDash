@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d73fe6ca41abf848a7fe32a9a8a4246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultIntensity: 1
+  DefaultIntensity: 0
   SoundEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
   IntensityCurve:
     serializedVersion: 2
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  IntervallToDefaultIntensity: 10
+  IntervallToDefaultIntensity: 1
 --- !u!114 &114858104057557516
 MonoBehaviour:
   m_ObjectHideFlags: 1
