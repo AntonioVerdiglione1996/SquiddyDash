@@ -31,6 +31,7 @@ public class ContinuousAscension : MonoBehaviour
     {
         if (CamShake)
         {
+            CamShake.shakeY = true;
             CamShake.StopShake();
             CamShake.shakeAmount = prevShakeAmount;
         }
@@ -53,6 +54,7 @@ public class ContinuousAscension : MonoBehaviour
         }
         if (CamShake)
         {
+            CamShake.shakeY = false;
             CamShake.PerformShake(float.MaxValue);
             prevShakeAmount = CamShake.shakeAmount;
             CamShake.shakeAmount = ShakeAmount;

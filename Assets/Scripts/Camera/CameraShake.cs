@@ -14,6 +14,8 @@ public class CameraShake : MonoBehaviour
     public BasicEvent BorderShakeEvent;
     public float DefaultShakeDuration = 0.25f;
 
+    public bool shakeY = true;
+
     private float originalX;
 
     public void PerformShake()
@@ -25,7 +27,7 @@ public class CameraShake : MonoBehaviour
         shakeDuration = duration;
         if (shakeDuration > 0f && cam)
         {
-            if(enabled)
+            if (enabled)
             {
                 StopShake();
             }
@@ -42,7 +44,7 @@ public class CameraShake : MonoBehaviour
     private void Awake()
     {
         StopShake();
-        if(BorderShakeEvent)
+        if (BorderShakeEvent)
         {
             BorderShakeEvent.OnEventRaised += PerformShake;
         }
@@ -57,7 +59,7 @@ public class CameraShake : MonoBehaviour
 
     void Update()
     {
-        if(!cam)
+        if (!cam)
         {
 #if UNITY_EDITOR
             Debug.LogError("Camera shake component does not have a valid reference to the main camera");
@@ -66,10 +68,12 @@ public class CameraShake : MonoBehaviour
         }
         Vector3 originalPos = cam.transform.localPosition;
         originalPos.x += UnityEngine.Random.insideUnitCircle.x * shakeAmount * Time.deltaTime;
+        if (shakeY)
+            originalPos.y += UnityEngine.Random.insideUnitCircle.y * shakeAmount * Time.deltaTime;
         //i dont want the shake on the x axsis
         cam.transform.localPosition = originalPos;
         shakeDuration -= Time.deltaTime * decreaseFactor;
-        if(shakeDuration < 0f)
+        if (shakeDuration < 0f)
         {
             StopShake();
         }
