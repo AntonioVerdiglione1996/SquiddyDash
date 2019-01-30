@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1454,6 +1454,7 @@ MonoBehaviour:
   LerpSpeed: 2
   DefaultTarget: {fileID: 2071625348}
   StartLerpEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
+  StartLerpEvent2: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
 --- !u!114 &1259412786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,7 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1346226270}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  milestones: []
+  milestones: {fileID: 0}
 --- !u!114 &1346226270
 MonoBehaviour:
   m_ObjectHideFlags: 0

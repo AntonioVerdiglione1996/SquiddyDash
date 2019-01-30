@@ -2117,6 +2117,7 @@ MonoBehaviour:
   LerpSpeed: 2
   DefaultTarget: {fileID: 1647906374}
   StartLerpEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
+  StartLerpEvent2: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
 --- !u!114 &1911044049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2133,6 +2134,7 @@ MonoBehaviour:
   shakeAmount: 20
   decreaseFactor: 1
   BorderShakeEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
+  CameraShakeEvent: {fileID: 0}
   DefaultShakeDuration: 0.2
   shakeY: 1
 --- !u!20 &1911044050
@@ -2312,6 +2314,10 @@ MonoBehaviour:
   PlatformPrefabWithPowerUp: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca,
     type: 2}
   Material: {fileID: 2100000, guid: 1024c759097bcf949a2ec73bc9542e07, type: 2}
+  OnPlatformSpawn: {fileID: 0}
+  numberOfObject: 9
+  VectorToAdd: {x: 0, y: 11, z: 0}
+  treshHold: 25
 --- !u!4 &1951949694
 Transform:
   m_ObjectHideFlags: 0

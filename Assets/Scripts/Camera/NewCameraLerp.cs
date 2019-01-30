@@ -21,11 +21,16 @@ public class NewCameraLerp : MonoBehaviour
     private float lerp;
 
     public BasicEvent StartLerpEvent;
+    public BasicEvent StartLerpEvent2;
     private void Awake()
     {
         if (StartLerpEvent)
         {
             StartLerpEvent.OnEventRaised += SetEndPoint;
+        }
+        if (StartLerpEvent2)
+        {
+            StartLerpEvent2.OnEventRaised += SetEndPoint;
         }
         SetEndPoint();
     }
@@ -34,6 +39,10 @@ public class NewCameraLerp : MonoBehaviour
         if (StartLerpEvent)
         {
             StartLerpEvent.OnEventRaised -= SetEndPoint;
+        }
+        if (StartLerpEvent2)
+        {
+            StartLerpEvent2.OnEventRaised -= SetEndPoint;
         }
     }
     void Start()

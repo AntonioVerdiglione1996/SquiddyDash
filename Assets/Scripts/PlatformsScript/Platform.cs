@@ -38,7 +38,10 @@ public class Platform : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        PerformLerp.Raise();
+        if (PerformLerp)
+        {
+            PerformLerp.Raise();
+        }
         IsLanded = true;
     }
     private void OnCollisionStay(Collision collision)
