@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CharacterSpawner : MonoBehaviour
 {
     public StoringCurrentModelToSpawn scm;
-    public void Start()
+    public void Awake()
     {
         Instantiate(scm.DownloadCurrentCharacter(), transform);
         Destroy(this);

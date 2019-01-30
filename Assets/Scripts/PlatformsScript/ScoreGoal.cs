@@ -7,7 +7,7 @@ public class ScoreGoal : MonoBehaviour
 
     public ScoreSystem ScoreSystem;
     [SerializeField]
-    private ScoreMilestone[] milestones = new ScoreMilestone[0];
+    private MilestoneHolder milestones;
 
     private int currentMilestone = 0;
 
@@ -17,12 +17,12 @@ public class ScoreGoal : MonoBehaviour
     }
     void OnScoreGoal()
     {
-        if (milestones == null || milestones.Length == 0 || currentMilestone >= milestones.Length)
+        if (milestones == null || milestones.Milestones.Length == 0 || currentMilestone >= milestones.Milestones.Length)
         {
             return;
         }
 
-        ScoreMilestone milestone = milestones[currentMilestone];
+        ScoreMilestone milestone = milestones.Milestones[currentMilestone];
         if (ScoreSystem.Score >= milestone.Score)
         {
             currentMilestone++;

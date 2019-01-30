@@ -41,7 +41,7 @@ public class SquiddyController : MonoBehaviour
     public bool InputConsumed { get; private set; }
     private void Start()
     {
-        Splash splash = GetComponentInChildren<Splash>();
+        Splash splash = transform.root.GetComponentInChildren<Splash>(true);
         if (splash)
         {
             Splash = splash.GetComponent<ParticleSystem>();
@@ -49,7 +49,14 @@ public class SquiddyController : MonoBehaviour
 #if UNITY_EDITOR
         if (!Splash)
         {
-            Debug.LogWarning("Splash particle system not found!!");
+            if (!splash)
+            {
+                Debug.LogWarning("Splash component not found!!");
+            }
+            else
+            {
+                Debug.LogWarning("Splash particle system not found!!");
+            }
         }
 #endif
     }
