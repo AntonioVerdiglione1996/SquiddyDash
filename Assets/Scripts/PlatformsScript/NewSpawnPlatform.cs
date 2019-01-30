@@ -11,24 +11,21 @@ public class NewSpawnPlatform : MonoBehaviour
     public List<GameObject> PlatformList = new List<GameObject>();
     public Material Material;
 
-    public int PlatformListLength { get { return PlatformList.Count; } }
-    int numberOfObject;
+    public PositionalEvent OnPlatformSpawn;
 
+    public int PlatformListLength { get { return PlatformList.Count; } }
+    public int numberOfObject = 9;
+
+    public Vector3 VectorToAdd = new Vector3(0f,11f,0f);
+    public int treshHold = 25;
     private Vector3 newPos;
-    private Vector3 vectorToAdd;
-    private float yPos;
-    private int treshHold;
     private int index;
 
     private void Awake()
     {
         index = 0;
-        numberOfObject = 9;
-        treshHold = 25;
-        yPos = 11f;
 
-        newPos = new Vector3(0, yPos, 0);
-        vectorToAdd = new Vector3(0, yPos, 0);
+        newPos = VectorToAdd;
 
         for (int i = 0; i < numberOfObject; i++)
         {
@@ -47,6 +44,11 @@ public class NewSpawnPlatform : MonoBehaviour
                 }
 
                 PlatformList.Add(go);
+                if(OnPlatformSpawn)
+                {
+                    OnPlatformSpawn.Location = go.transform;
+                    OnPlatformSpawn.Raise();
+                }
             }
             //powerUp
             else
@@ -59,10 +61,16 @@ public class NewSpawnPlatform : MonoBehaviour
 
                 PowerUp pw = go.GetComponentInChildren<PowerUp>(true);
                 pw.ResetState();
+
+                if(OnPlatformSpawn)
+                {
+                    OnPlatformSpawn.Location = go.transform;
+                    OnPlatformSpawn.Raise();
+                }
             }
             //this will happend even the last cycle. we want that this happend only until the cicle before the last so we do it manually.
             if (i < numberOfObject - 1)
-                newPos += vectorToAdd;
+                newPos += VectorToAdd;
         }
     }
     private void Update()

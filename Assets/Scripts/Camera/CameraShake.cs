@@ -12,6 +12,7 @@ public class CameraShake : MonoBehaviour
     public float decreaseFactor = 1.0f;
 
     public BasicEvent BorderShakeEvent;
+    public BasicEvent CameraShakeEvent;
     public float DefaultShakeDuration = 0.25f;
 
     public bool shakeY = true;
@@ -48,12 +49,20 @@ public class CameraShake : MonoBehaviour
         {
             BorderShakeEvent.OnEventRaised += PerformShake;
         }
+        if (CameraShakeEvent)
+        {
+            CameraShakeEvent.OnEventRaised += PerformShake;
+        }
     }
     private void OnDestroy()
     {
         if (BorderShakeEvent)
         {
             BorderShakeEvent.OnEventRaised -= PerformShake;
+        }
+        if (CameraShakeEvent)
+        {
+            CameraShakeEvent.OnEventRaised -= PerformShake;
         }
     }
 

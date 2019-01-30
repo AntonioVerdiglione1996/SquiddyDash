@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SOPool", menuName = "SOPRO/Pool")]
+[Serializable]
 public class SOPool : ScriptableObject
 {
     public int ElementsStored { get { return elements.Count; } }
@@ -238,6 +239,37 @@ public class SOPool : ScriptableObject
             if (!instantiated)
             {
                 res.transform.SetPositionAndRotation(position, rotation);
+                if (parentAlways)
+                    res.transform.parent = parent;
+            }
+        }
+        res.SetActive(true);
+        return res;
+    }
+
+    /// <summary>
+    /// Requests an element from the pool.
+    /// </summary>
+    /// <param name="parent">transform to use as the requested element parent.</param>
+    /// <param name="position">object position</param>
+    /// <param name="nullObjsRemoved">Number of objs removed when PersistentPoolInScenes is true</param>
+    /// <param name="parentAlways">false to set parent only when instantiating obj, true to set parent always</param>
+    /// <returns>the requested element instance</returns>
+    public GameObject Get(Transform parent, Vector3 position, out int nullObjsRemoved, bool parentAlways = false)
+    {
+        nullObjsRemoved = 0;
+        GameObject res = null;
+        if (elements.Count == 0)
+        {
+            res = GameObject.Instantiate(Prefab, position, Prefab.transform.rotation, parent);
+        }
+        else
+        {
+            bool instantiated = false;
+            res = PersistentPoolInScenes ? GetRemoveNullRefs(out nullObjsRemoved, out instantiated, parent, position, Prefab.transform.rotation) : elements.Dequeue();
+            if (!instantiated)
+            {
+                res.transform.SetPositionAndRotation(position, Prefab.transform.rotation);
                 if (parentAlways)
                     res.transform.parent = parent;
             }
