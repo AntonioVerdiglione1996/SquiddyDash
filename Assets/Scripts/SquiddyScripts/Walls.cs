@@ -65,11 +65,21 @@ public class Walls : MonoBehaviour
         transform.position = new Vector3(transform.position.x, MainCamera.transform.position.y, transform.position.z);
     }
     // Update is called once per frame
-
+//    private void Update()
+//    {
+//#if UNITY_EDITOR
+//        Vector3 start = MainCamera.transform.position + MainCamera.transform.forward * 5f;
+//        Vector3 otherPosition = FindObjectOfType<SquiddyController>().transform.position;
+//        Debug.Log(start + " , " + (start + Vector3.right * Mathf.Abs((RightWall.transform.position.x - RightWall.size.x * 0.5f) - otherPosition.x)));
+//        Debug.DrawLine(start, start + Vector3.right * Mathf.Abs((RightWall.transform.position.x - RightWall.size.x * 0.5f) - otherPosition.x), Color.white);
+//        Debug.DrawLine(start, start + Vector3.up * Mathf.Abs((TopWall.transform.position.y - TopWall.size.y * 0.5f) - otherPosition.y));
+//#endif
+//    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.layer == 8 && collision.rigidbody) //player layer
         {
+            //TODO: verify that these distances aare correct
             Vector3 otherPosition = collision.collider.transform.position;
             float distanceFromTop = Mathf.Abs((TopWall.transform.position.y - TopWall.size.y * 0.5f) - otherPosition.y);
             float distanceFromBot = Mathf.Abs(otherPosition.y - (BotWall.transform.position.y + BotWall.size.y * 0.5f));

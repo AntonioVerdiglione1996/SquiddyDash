@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Skill[] Skills = null;
 
+    public float DefaultIconsHeightDistance = 128.0f;
+
     private SquiddyController controller = null;
 
     private DynamicRotator rotator;
@@ -160,8 +162,7 @@ public class Character : MonoBehaviour
                     }
                     else
                     {
-                        //TODO: remove magic number
-                        skillIcon.transform.position += new Vector3(0f, i * 128, 0f);
+                        skillIcon.transform.position += new Vector3(0f, i * DefaultIconsHeightDistance, 0f);
                     }
                     skillIcon.gameObject.SetActive(true);
                     uiSpawnedCount++;

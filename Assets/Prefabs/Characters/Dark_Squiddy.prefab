@@ -890,6 +890,7 @@ MonoBehaviour:
   Skills:
   - {fileID: 114550726581504850}
   - {fileID: 114373228997915840}
+  DefaultIconsHeightDistance: 128
 --- !u!114 &114851572641145374
 MonoBehaviour:
   m_ObjectHideFlags: 1
