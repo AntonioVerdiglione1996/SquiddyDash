@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 public static class Utils
 {
+    public static bool Approximately(this Vector3 v1, Vector3 Other)
+    {
+        return Mathf.Approximately(v1.sqrMagnitude, Other.sqrMagnitude) && Mathf.Approximately(v1.x, Other.x) && Mathf.Approximately(v1.y, Other.y) && Mathf.Approximately(v1.z, Other.z);
+    }
     public static Vector3 MaxAbsoluteValue(this Vector3 v1, Vector3 MinimumValues)
     {
         Vector3 result;

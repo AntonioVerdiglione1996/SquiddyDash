@@ -542,6 +542,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4316808701292418, guid: 222cb407a43787a44a187595f9e5f666,
     type: 2}
   m_PrefabInternal: {fileID: 279233176}
+--- !u!198 &279233178 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198857306208792656, guid: 222cb407a43787a44a187595f9e5f666,
+    type: 2}
+  m_PrefabInternal: {fileID: 279233176}
 --- !u!1001 &425062619
 Prefab:
   m_ObjectHideFlags: 0
@@ -884,19 +889,15 @@ Prefab:
       propertyPath: AffectedBody
       value: 
       objectReference: {fileID: 617022352}
-    - target: {fileID: 114270071772080610, guid: ce77bcb46c2ce774381b64847d34d9d0,
-        type: 2}
-      propertyPath: DefaultIntensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114270071772080610, guid: ce77bcb46c2ce774381b64847d34d9d0,
-        type: 2}
-      propertyPath: IntervallToDefaultIntensity
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce77bcb46c2ce774381b64847d34d9d0, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &587503768 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114858104057557516, guid: ce77bcb46c2ce774381b64847d34d9d0,
+    type: 2}
+  m_PrefabInternal: {fileID: 587503767}
+  m_Script: {fileID: 11500000, guid: f0c1e0049e1270f48b67fae48cfb6584, type: 3}
 --- !u!1 &589688047
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +913,7 @@ GameObject:
   - component: {fileID: 589688050}
   - component: {fileID: 589688049}
   - component: {fileID: 589688048}
+  - component: {fileID: 589688056}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1079,6 +1081,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589688056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589688047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2742a80cb05aef4fae3668c36a23119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Windzone: {fileID: 587503768}
+  Particles: {fileID: 279233178}
+  MaxNumberOfParticlesAffected: 45
 --- !u!1001 &617022350
 Prefab:
   m_ObjectHideFlags: 0
