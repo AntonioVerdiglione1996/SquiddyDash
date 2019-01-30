@@ -12,6 +12,7 @@ public class TimedDisabler : MonoBehaviour {
     private LinkedListNode<TimerData> timer;
     private void Awake()
     {
+        //TODO: si devono levare eventi dopo recycler
         if(DisablerEvent)
         {
             DisablerEvent.OnEventRaised += Disable;
