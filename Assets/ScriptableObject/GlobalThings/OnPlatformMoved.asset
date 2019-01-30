@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e586779606660e4fa441832f8816af3, type: 3}
   m_Name: OnPlatformMoved
   m_EditorClassIdentifier: 
-  LocalDebugActive: 1
+  LocalDebugActive: 0
   Location: {fileID: 0}
