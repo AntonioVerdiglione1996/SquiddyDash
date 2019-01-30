@@ -1,0 +1,5 @@
+- 3 characters
+   * 3 diverse skill  RocketJump, Planare, Berserk Fire
+   * espressioni
+-3 Livelli Diversi
+   * Base,Laser,Wind

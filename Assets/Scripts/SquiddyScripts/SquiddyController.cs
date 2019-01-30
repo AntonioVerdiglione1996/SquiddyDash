@@ -19,6 +19,9 @@ public class SquiddyController : MonoBehaviour
     public ParticleSystem Splash;
     public ParticleSystem LandParticle;
 
+    public ParticleSystem CircleLowToBig;
+    public ParticleSystem CircleBigToLow;
+
     public Skill UltimateSkill;
 
     public SquiddyStats SquiddyStats;
@@ -165,10 +168,12 @@ public class SquiddyController : MonoBehaviour
             {
                 if (!IsJumping)
                 {
+                    CircleLowToBig.Play();
                     Jump();
                 }
                 else
                 {
+                    CircleBigToLow.Play();
                     LandParticle.Play();
                     Land();
                 }
