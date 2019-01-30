@@ -30,21 +30,15 @@ public class ExtendedWindParticleAffector : MonoBehaviour
             return;
         }
 
-        Particles.GetParticles(ParticlesList);
+        int particlesGettedCount = Particles.GetParticles(ParticlesList);
 
-        int particleCount = Mathf.Min(Particles.particleCount, ParticlesList.Length);
+        int particleCount = Mathf.Min(particlesGettedCount, ParticlesList.Length);
 
         Vector3 velocityChange = Windzone.WindVelocity3 * Time.deltaTime;
 
         for (int i = 0; i < particleCount; i++)
         {
-#if UNITY_EDITOR
-            Vector3 velocity = ParticlesList[i].totalVelocity;
-#endif
             ParticlesList[i].velocity = ParticlesList[i].totalVelocity + velocityChange;
-#if UNITY_EDITOR
-            Debug.LogFormat("Particle prev velocity: {0}, new velocity: {1}, velocity change expected: {2}. Velocity correct? {3}.", velocity, ParticlesList[i].totalVelocity, velocityChange, ParticlesList[i].totalVelocity.Approximately(velocity + velocityChange));
-#endif
         }
 
         Particles.SetParticles(ParticlesList, particleCount);
