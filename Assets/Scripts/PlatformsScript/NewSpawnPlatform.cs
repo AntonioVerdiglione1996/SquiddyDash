@@ -30,7 +30,7 @@ public class NewSpawnPlatform : MonoBehaviour
         for (int i = 0; i < numberOfObject; i++)
         {
             //normal platform spawn
-            if (i != 8)
+            if (i != numberOfObject -1)
             {
                 GameObject go = Instantiate(PlatformPrefab, newPos, Quaternion.identity);
                 if (Material != null)
