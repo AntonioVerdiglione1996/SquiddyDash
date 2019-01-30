@@ -8,6 +8,7 @@ public class LaserSpawner : MonoBehaviour
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
     public SOPool Pool;
     public Camera MainCamera;
+    public float SpawnChance = 0.1f;
     // Use this for initialization
     void OnEnable()
     {
@@ -35,8 +36,11 @@ public class LaserSpawner : MonoBehaviour
     {
         if (Pool && ReferenceLocation)
         {
-            int nullObj;
-            Pool.Get(null, ReferenceLocation.position + Offset, out nullObj);
+            if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance)
+            {
+                int nullObj;
+                Pool.Get(null, ReferenceLocation.position + Offset, out nullObj);
+            }
         }
     }
 }
