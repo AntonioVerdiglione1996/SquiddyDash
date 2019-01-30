@@ -1,7 +1,6 @@
 BUGS:
-1)at 130 milestone , bugs 75k score
 2) camera orbit to adjust, character needs to be in the center of the camera orbit.
-3)parenting with new platform broken(platform_reworked)
+3) input jump/land viene effettuato anche quando si preme su una skill o button dell'ui
 
 
 TO DO in FUTURE: 
@@ -19,9 +18,7 @@ va settato a mano tutto.
 10)riflettere su che colore di score sia meglio per il primo livello(anto test)
 
 TESTING
-1)fix bug parte in aria -non riesco a riprodurre il bug
 2)gameover sulla piattaforma -non riesco a riprodurre il bug
-3)camera shake bug -done, to be tested 
 
 DONE
 7)icone dei vari squiddy su ps 8) cambio character sel
