@@ -11,11 +11,14 @@ public class LaserSpawner : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        if(!MainCamera)
+        if (!MainCamera)
         {
             MainCamera = Camera.main;
+            if (MainCamera)
+            {
+                Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect;
+            }
         }
-        Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect;
         if (OnPlatformMoved)
         {
             OnPlatformMoved.OnPositionalRaised += SpawnLaser;
@@ -30,7 +33,7 @@ public class LaserSpawner : MonoBehaviour
     }
     public void SpawnLaser(Transform ReferenceLocation)
     {
-        if(Pool && ReferenceLocation)
+        if (Pool && ReferenceLocation)
         {
             int nullObj;
             Pool.Get(null, ReferenceLocation.position + Offset, out nullObj);
