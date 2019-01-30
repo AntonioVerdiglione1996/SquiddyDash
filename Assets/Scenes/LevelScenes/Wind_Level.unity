@@ -1743,9 +1743,9 @@ MonoBehaviour:
     type: 2}
   Material: {fileID: 2100000, guid: 1024c759097bcf949a2ec73bc9542e07, type: 2}
   OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
-  numberOfObject: 0
+  numberOfObject: 9
   VectorToAdd: {x: 0, y: 11, z: 0}
-  treshHold: 0
+  treshHold: 25
 --- !u!4 &1510182581
 Transform:
   m_ObjectHideFlags: 0
