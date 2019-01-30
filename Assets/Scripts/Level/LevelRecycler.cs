@@ -23,7 +23,7 @@ public class LevelRecycler : MonoBehaviour
             Obj = transform.root;
         }
     }
-    private void OnBecameInvisible()
+    private void Update()
     {
         if (Character && Obj && Pool)
         {
