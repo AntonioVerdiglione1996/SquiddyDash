@@ -12,6 +12,7 @@ public class Platform : MonoBehaviour
 
     public GlobalEvents GlobalEvents;
     public BasicEvent PerformLerp;
+    public BasicEvent PlatformClaimed;
     public ScoreSystem ScoreSystem;
 
     public int ScoreValue = 1;
@@ -52,14 +53,20 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.layer == 8 && IsLanded)
         {
             //TODO: rework for deparenting
-            GlobalEvents.ParentToTarget(transform.root, collision.transform.root);
-            CurrentPlatformForSquiddy.CurrentPlatform = this;
+            if (GlobalEvents.ParentToTarget(transform.root, collision.transform.root))
+            {
+                CurrentPlatformForSquiddy.CurrentPlatform = this;
+            }
 
             //ci entra solo per un frame
             if (!IsAlreadyUpdatedScore)
             {
                 ScoreSystem.UpdateScore(ScoreValue);
                 IsAlreadyUpdatedScore = true;
+                if (PlatformClaimed)
+                {
+                    PlatformClaimed.Raise();
+                }
             }
         }
     }

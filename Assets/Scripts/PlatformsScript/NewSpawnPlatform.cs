@@ -8,10 +8,10 @@ public class NewSpawnPlatform : MonoBehaviour
     public GameObject PlatformPrefab;
     public GameObject PlatformPrefabWithPowerUp;
     [System.NonSerialized]
-    public List<GameObject> PlatformPrefabsList = new List<GameObject>();
+    public List<GameObject> PlatformList = new List<GameObject>();
     public Material Material;
 
-    public int PlatformPrefabListLength { get { return PlatformPrefabsList.Count; } }
+    public int PlatformListLength { get { return PlatformList.Count; } }
     int numberOfObject;
 
     private Vector3 newPos;
@@ -46,7 +46,7 @@ public class NewSpawnPlatform : MonoBehaviour
 
                 }
 
-                PlatformPrefabsList.Add(go);
+                PlatformList.Add(go);
             }
             //powerUp
             else
@@ -55,7 +55,7 @@ public class NewSpawnPlatform : MonoBehaviour
                 if (Material != null)
                     go.GetComponentInChildren<Renderer>().material = Material;
 
-                PlatformPrefabsList.Add(go);
+                PlatformList.Add(go);
 
                 PowerUp pw = go.GetComponentInChildren<PowerUp>(true);
                 pw.ResetState();
@@ -68,9 +68,9 @@ public class NewSpawnPlatform : MonoBehaviour
     private void Update()
     {
         //resetting part: se squiddy va oltre il treshhold, la piattaforma all'indice corrente si sposta
-        if (index <= PlatformPrefabsList.Count)
+        if (index <= PlatformList.Count)
         {
-            GameObject currentPlatform = PlatformPrefabsList[index];
+            GameObject currentPlatform = PlatformList[index];
             if (currentPlatform.transform.position.y + treshHold < Squiddy.position.y)
             {
                 currentPlatform.transform.position += newPos;

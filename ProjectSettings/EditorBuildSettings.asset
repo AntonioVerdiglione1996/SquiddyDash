@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 547abd344694d48429e7e395f95cb714
   - enabled: 1
+    path: Assets/Scenes/Anto_Test.unity
+    guid: 34087aca7c7bc854cb029b09d9b96bcc
+  - enabled: 1
     path: Assets/Scenes/Laser_level.unity
     guid: 8ebb562a750fdff4ba907417c80b3513
   - enabled: 1
-    path: Assets/Scenes/Anto_Test.unity
-    guid: 34087aca7c7bc854cb029b09d9b96bcc
+    path: Assets/Scenes/Wind_Level.unity
+    guid: 1cc14073e99b8e24f831d5f0f7ca034c

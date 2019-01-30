@@ -32,9 +32,9 @@ public class ScoreGoal : MonoBehaviour
     }
     void Resize(Vector3 ScaleMultiplier, float SpeedMultiplier)
     {
-        for (int i = 0; i < newSpawn.PlatformPrefabListLength; i++)
+        for (int i = 0; i < newSpawn.PlatformListLength; i++)
         {
-            GameObject go = newSpawn.PlatformPrefabsList[i];
+            GameObject go = newSpawn.PlatformList[i];
             NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
             Vector3 localScale = mover.transform.localScale;
 
