@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Name: AntoMusic
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: a37caf94ce58c534996d028d5dc5290e, type: 3}
-  Timestamps: []
+  Timestamps:
+  - Timestamp: 3
+    Strenght: 15
+  - Timestamp: 10
+    Strenght: 15
+  - Timestamp: 20
+    Strenght: 15

@@ -2212,15 +2212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85c83646eb32ba4c87b20773a4bc5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AscensionSpeed: 1.5
+  AscensionSpeed: 2
   StartsAsEnabled: 0
-  TimerDurationBeforeAscension: 3.5
+  TimerDurationBeforeAscension: 3
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   OtherMovementBehaviour: {fileID: 1911044048}
   CamShake: {fileID: 1911044049}
-  RestartTimerEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  ShakeAmount: 20
+  RestartTimerEvent: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  ShakeAmount: 12
   prevShakeAmount: 20
 --- !u!114 &1911044055
 MonoBehaviour:
@@ -2294,27 +2294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1951949693}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  milestones:
-  - Score: 10
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 25
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 40
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 60
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 80
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
+  milestones: {fileID: 11400000, guid: 989ef8c0110a25e4084cc4c0425cc271, type: 2}
 --- !u!114 &1951949693
 MonoBehaviour:
   m_ObjectHideFlags: 0

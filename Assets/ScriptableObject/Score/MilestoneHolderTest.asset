@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c063281e22c002449603bf1f3279a4b, type: 3}
+  m_Name: MilestoneHolderTest
+  m_EditorClassIdentifier: 
+  Milestones:
+  - Score: 3
+    ScoreAsRewardMultiplier: 0
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.1
+  - Score: 13
+    ScoreAsRewardMultiplier: 0
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.1
+  - Score: 23
+    ScoreAsRewardMultiplier: 0
+    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    SpeedMultiplier: 1.1

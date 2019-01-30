@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4417192123989364}
   - component: {fileID: 198640481968158184}
   - component: {fileID: 199058481470441274}
-  - component: {fileID: 114438649177655616}
-  - component: {fileID: 114937814070445292}
+  - component: {fileID: 114410941593544480}
   m_Layer: 15
   m_Name: SplashGreenGravity
   m_TagString: Untagged
@@ -43,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114438649177655616
+--- !u!114 &114410941593544480
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,21 +50,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1153877778228148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4adbe9e7cf47f0c40a0b517ce71ff3ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 302a00892b07651478dd2c451d43a75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114937814070445292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1153877778228148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a6aaa017034ab4eac294492b9028c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LifeTime: 1
 --- !u!198 &198640481968158184
 ParticleSystem:
   m_ObjectHideFlags: 1
