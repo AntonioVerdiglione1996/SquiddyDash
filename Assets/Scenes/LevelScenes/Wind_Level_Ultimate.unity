@@ -968,7 +968,7 @@ Prefab:
     - target: {fileID: 114990299907481676, guid: ce77bcb46c2ce774381b64847d34d9d0,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce77bcb46c2ce774381b64847d34d9d0, type: 2}
@@ -1294,6 +1294,11 @@ Prefab:
         type: 2}
       propertyPath: m_Color.a
       value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 54785306299008804, guid: 6d66d5f6fabc0d8409000df996001fa4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
@@ -1898,7 +1903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1510182580}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  milestones: {fileID: 0}
+  milestones: {fileID: 11400000, guid: 989ef8c0110a25e4084cc4c0425cc271, type: 2}
 --- !u!114 &1510182580
 MonoBehaviour:
   m_ObjectHideFlags: 0

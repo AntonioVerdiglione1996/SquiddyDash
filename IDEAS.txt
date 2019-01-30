@@ -9,3 +9,6 @@ pulsante per mostrare una ads e guadagnare monete
 
 FEATURES:
 Unlocking dei personaggi per soldi 
+
+Editor for level:
+user can do his level, upload his music and do the level he want.
