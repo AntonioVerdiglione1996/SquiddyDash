@@ -20,7 +20,7 @@ public static class ObjectPooler
             action.Invoke(prefab);
 
         T result = pools[prefab].Get().GetComponent<T>();
-        result.prefab = prefab;
+        result.Prefab = prefab;
         return result;
     }
     public static T Get<T>(GameObject prefab, Vector3 pos, Quaternion rot) where T : Component, IPoolable
@@ -30,7 +30,7 @@ public static class ObjectPooler
 
 
         T result = pools[prefab].Get(pos, rot).GetComponent<T>();
-        result.prefab = prefab;
+        result.Prefab = prefab;
         return result;
     }
     public static T Get<T>(GameObject prefab, Transform parent) where T : Component, IPoolable
@@ -40,12 +40,12 @@ public static class ObjectPooler
 
 
         T result = pools[prefab].Get(parent).GetComponent<T>();
-        result.prefab = prefab;
+        result.Prefab = prefab;
         return result;
     }
     public static void Recycle(GameObject instance, Action<GameObject> resetter = null)
     {
-        pools[instance.GetComponent<IPoolable>().prefab].Recycle(instance);
+        pools[instance.GetComponent<IPoolable>().Prefab].Recycle(instance);
 
         if (resetter != null)
             resetter.Invoke(instance);
@@ -117,7 +117,7 @@ public static class ObjectPooler
     }
     public interface IPoolable
     {
-        GameObject prefab { get; set; }
+        GameObject Prefab { get; set; }
     }
 }
 

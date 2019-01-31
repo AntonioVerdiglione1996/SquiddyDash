@@ -5,7 +5,7 @@ public abstract class PowerUpLogic : ScriptableObject
     public Material[] Materials;
     public Mesh Mesh;
     //particle to instantiate after squiddy take the pu
-    public GameObject ParticleAfterTrigger;
+    public SOPool ParticleAfterTriggerPool;
 
     //audio of trigger
     public AudioEvent TriggerSound;
@@ -16,46 +16,23 @@ public abstract class PowerUpLogic : ScriptableObject
     protected GlobalEvents GlobalEvents;
 
     [SerializeField]
-    private GameObject prefab;
+    private SOPool prefabPool;
     private GameObject instanciatedPrefab;
 
     public GameObject GetInstanciatedPrefab()
     {
-        if (!prefab)
-        {
-            return null;
-        }
-        if (!instanciatedPrefab)
-        {
-            instanciatedPrefab = Instantiate<GameObject>(prefab);
-            return instanciatedPrefab;
-        }
-
-        return instanciatedPrefab;
-    }
-    public GameObject DeactivateAndActivateInstancedPrefab(Transform parent)
-    {
-        GameObject go = GetInstanciatedPrefab(parent);
-        go.SetActive(false);
-        go.SetActive(true);
-        return go;
-    }
-    public GameObject DeactivateAndActivateInstancedPrefab()
-    {
-        GameObject go = GetInstanciatedPrefab();
-        go.SetActive(false);
-        go.SetActive(true);
-        return go;
+        return GetInstanciatedPrefab(null);
     }
     public GameObject GetInstanciatedPrefab(Transform parent)
     {
-        if (!prefab)
+        if (!prefabPool)
         {
             return null;
         }
         if (!instanciatedPrefab)
         {
-            instanciatedPrefab = Instantiate<GameObject>(prefab, parent);
+            int nullObj;
+            instanciatedPrefab = prefabPool.Get(parent, out nullObj, true);
             return instanciatedPrefab;
         }
 
@@ -68,15 +45,12 @@ public abstract class PowerUpLogic : ScriptableObject
     {
         if (instanciatedPrefab)
         {
-            instanciatedPrefab.SetActive(false);
+            prefabPool.Recycle(instanciatedPrefab);
+            instanciatedPrefab = null;
         }
     }
     public virtual void InitPowerup(PowerUp powUp)
     {
         GetInstanciatedPrefab(powUp.transform);
-        if (instanciatedPrefab)
-        {
-            instanciatedPrefab.SetActive(true);
-        }
     }
 }

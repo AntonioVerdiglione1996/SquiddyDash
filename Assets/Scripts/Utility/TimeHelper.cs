@@ -26,7 +26,11 @@ public class TimeHelper : ScriptableObject
     {
         return timers.AddLast(new TimerData(callbackAction, callbackEvent, duration));
     }
-
+    public LinkedListNode<TimerData> RestartTimer(Action callbackAction, BasicEvent callbackEvent, LinkedListNode<TimerData> toRemove, float duration)
+    {
+        RemoveTimer(toRemove);
+        return AddTimer(callbackAction, callbackEvent, duration);
+    }
     public bool RemoveTimer(LinkedListNode<TimerData> toRemove)
     {
         if (toRemove != null && toRemove.List == timers)

@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resetter : MonoBehaviour
+public class TimeResetter : MonoBehaviour
 {
     public float LifeTime = 1f;
+    public SOPool Pool;
+    public GameObject Obj;
+    public TimeHelper TimeHelper;
 
-    private float t;
-    private void Start()
+    private LinkedListNode<TimerData> timer;
+    private void OnEnable()
     {
-        t = LifeTime;
+        Reset();
     }
-    private void Update()
+    public void Reset()
     {
-        t -= Time.deltaTime;
-        if (t < 0f)
+        timer = TimeHelper.RestartTimer(RecycleObj, null, timer, LifeTime);
+    }
+    public void RecycleObj()
+    {
+        if (!Obj)
         {
-            disactive();
-            t = LifeTime;
+            Obj = gameObject;
         }
+        if (Pool)
+        {
+            Pool.Recycle(Obj);
+            return;
+        }
+        ObjectPooler.Recycle(Obj);
     }
-    private void disactive()
-    {
-        ObjectPooler.Recycle(gameObject);
-    }
-   
+
 }

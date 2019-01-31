@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1346226270}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  milestones: {fileID: 0}
+  milestones: {fileID: 11400000, guid: 989ef8c0110a25e4084cc4c0425cc271, type: 2}
 --- !u!114 &1346226270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,9 +1545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Squiddy: {fileID: 2071625348}
-  PlatformPrefab: {fileID: 1064548950936320, guid: ca94c88dd6a52d24fb21c298395225cf,
-    type: 2}
-  PlatformPrefabWithPowerUp: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca,
+  PlatformPool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
+  PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
     type: 2}
   Material: {fileID: 2100000, guid: 296f55138b80ff74da1182859ba547f4, type: 2}
   OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
@@ -1709,6 +1708,7 @@ MonoBehaviour:
   Offset: {x: 0, y: 5.5, z: 0}
   Pool: {fileID: 11400000, guid: 433f55ec953eb9445b94ecbba389a2f5, type: 2}
   MainCamera: {fileID: 0}
+  SpawnChance: 0.1
 --- !u!4 &1423505584
 Transform:
   m_ObjectHideFlags: 0

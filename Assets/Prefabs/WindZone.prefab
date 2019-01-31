@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4897643515815838}
-  - component: {fileID: 114270071772080610}
   - component: {fileID: 114858104057557516}
   - component: {fileID: 114990299907481676}
   m_Layer: 0
@@ -42,15 +41,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114270071772080610
+--- !u!114 &114858104057557516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101718958326684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d73fe6ca41abf848a7fe32a9a8a4246, type: 3}
+  m_Script: {fileID: 11500000, guid: f0c1e0049e1270f48b67fae48cfb6584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultIntensity: 0
@@ -79,32 +78,14 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 127
-      outSlope: 127
+      inSlope: 127.5
+      outSlope: 127.5
       tangentMode: 34
     - serializedVersion: 2
       time: 1
-      value: 127
-      inSlope: 127
-      outSlope: 127
-      tangentMode: 34
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  TurbolenceCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 255
-      outSlope: 255
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 1
-      value: 255
-      inSlope: 255
-      outSlope: 255
+      value: 127.5
+      inSlope: 127.5
+      outSlope: 127.5
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -114,7 +95,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: -0
+      value: 0
       inSlope: 10
       outSlope: 10
       tangentMode: 34
@@ -128,23 +109,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   IntervallToDefaultIntensity: 1
---- !u!114 &114858104057557516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101718958326684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c1e0049e1270f48b67fae48cfb6584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manipulator: {fileID: 114270071772080610}
-  Windzone: {fileID: 0}
-  WindVelocity: {x: 0, y: 0}
-  MaxWindVelocity: {x: 255, y: 125}
-  MinWindVelocity: {x: -255, y: -4}
-  DefaultDirection: {x: 0, y: 1}
+  WindVelocity: {x: 0, y: 0, z: 0}
+  MaxWindVelocity: {x: 255, y: 125, z: 0}
+  MinWindVelocity: {x: -255, y: -4, z: 0}
+  DefaultDirection: {x: 0, y: 1, z: 0}
 --- !u!114 &114990299907481676
 MonoBehaviour:
   m_ObjectHideFlags: 1

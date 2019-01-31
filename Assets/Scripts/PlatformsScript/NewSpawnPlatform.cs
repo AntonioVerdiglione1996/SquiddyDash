@@ -5,8 +5,8 @@ using UnityEngine;
 public class NewSpawnPlatform : MonoBehaviour
 {
     public Transform Squiddy;
-    public GameObject PlatformPrefab;
-    public GameObject PlatformPrefabWithPowerUp;
+    public SOPool PlatformPool;
+    public SOPool PlatformWithPowerUpPool;
     [System.NonSerialized]
     public List<GameObject> PlatformList = new List<GameObject>();
     public Material Material;
@@ -16,7 +16,7 @@ public class NewSpawnPlatform : MonoBehaviour
     public int PlatformListLength { get { return PlatformList.Count; } }
     public int numberOfObject = 9;
 
-    public Vector3 VectorToAdd = new Vector3(0f,11f,0f);
+    public Vector3 VectorToAdd = new Vector3(0f, 11f, 0f);
     public int treshHold = 25;
     private Vector3 newPos;
     private int index;
@@ -30,12 +30,13 @@ public class NewSpawnPlatform : MonoBehaviour
         for (int i = 0; i < numberOfObject; i++)
         {
             //normal platform spawn
-            if (i != numberOfObject -1)
+            if (i != numberOfObject - 1)
             {
-                GameObject go = Instantiate(PlatformPrefab, newPos, Quaternion.identity);
+                int nullObj;
+                GameObject go = PlatformPool.Get(null, newPos, Quaternion.identity, out nullObj, true);
                 if (Material != null)
                 {
-                   Renderer[] go_renderers = go.GetComponentsInChildren<Renderer>();
+                    Renderer[] go_renderers = go.GetComponentsInChildren<Renderer>();
                     for (int j = 0; j < go_renderers.Length; j++)
                     {
                         go_renderers[j].material = Material;
@@ -44,7 +45,7 @@ public class NewSpawnPlatform : MonoBehaviour
                 }
 
                 PlatformList.Add(go);
-                if(OnPlatformSpawn)
+                if (OnPlatformSpawn)
                 {
                     OnPlatformSpawn.Location = go.transform;
                     OnPlatformSpawn.Raise();
@@ -53,7 +54,8 @@ public class NewSpawnPlatform : MonoBehaviour
             //powerUp
             else
             {
-                GameObject go = Instantiate(PlatformPrefabWithPowerUp, newPos, Quaternion.identity);
+                int nullObj;
+                GameObject go = PlatformWithPowerUpPool.Get(null, newPos, Quaternion.identity, out nullObj, true);
                 if (Material != null)
                     go.GetComponentInChildren<Renderer>().material = Material;
 
@@ -62,7 +64,7 @@ public class NewSpawnPlatform : MonoBehaviour
                 PowerUp pw = go.GetComponentInChildren<PowerUp>(true);
                 pw.ResetState();
 
-                if(OnPlatformSpawn)
+                if (OnPlatformSpawn)
                 {
                     OnPlatformSpawn.Location = go.transform;
                     OnPlatformSpawn.Raise();

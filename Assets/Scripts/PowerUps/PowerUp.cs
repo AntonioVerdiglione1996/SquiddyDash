@@ -24,7 +24,7 @@ public class PowerUp : MonoBehaviour
 
     private void Awake()
     {
-        //rifattorizzare?
+        //TODO: rifattorizzare?
         AudioSourceFinder finder = FindObjectOfType<AudioSourceFinder>();
         if (finder)
         {
@@ -79,8 +79,9 @@ public class PowerUp : MonoBehaviour
             {
                 currentLogic.PowerUpCollected(other, this);
                 //instantiate tigger particle after squiddy pick up PU
-                if (currentLogic.ParticleAfterTrigger != null)
-                    Instantiate(currentLogic.ParticleAfterTrigger, transform.position, Quaternion.identity);
+                int nullObj;
+                if (currentLogic.ParticleAfterTriggerPool != null)
+                    currentLogic.ParticleAfterTriggerPool.Get(null, transform.position, Quaternion.identity, out nullObj, true);
             }
             //activate sound
             if (currentLogic.TriggerSound != null)

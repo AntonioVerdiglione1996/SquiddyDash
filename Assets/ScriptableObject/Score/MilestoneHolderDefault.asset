@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: MilestoneHolderDefault
   m_EditorClassIdentifier: 
   Milestones:
-  - Score: 10
+  - Score: 2
     ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
+    ScaleMultiplier: {x: 0.7, y: 1, z: 1}
     SpeedMultiplier: 1.05
   - Score: 25
     ScoreAsRewardMultiplier: 0

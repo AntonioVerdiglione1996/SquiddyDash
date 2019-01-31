@@ -17,7 +17,7 @@ public class ScoreGoal : MonoBehaviour
     }
     void OnScoreGoal()
     {
-        if (milestones == null || milestones.Milestones.Length == 0 || currentMilestone >= milestones.Milestones.Length)
+        if (milestones == null || milestones.Milestones == null || milestones.Milestones.Length == 0 || currentMilestone >= milestones.Milestones.Length)
         {
             return;
         }

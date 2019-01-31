@@ -2,11 +2,11 @@
 using System;
 public static class Spawner
 {
-    public static bool SpawnPrefabs(int count, GameObject prefab, Transform parent = null, BasicEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null)
+    public static bool SpawnPrefabs(int count, SOPool pool, Transform parent = null, BasicEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null)
     {
         for (int i = 0; i < count; i++)
         {
-            if (!SpawnPrefab(OnSpawn, i, prefab, parent))
+            if (!SpawnPrefab(OnSpawn, i, pool, parent))
             {
                 return false;
             }
@@ -17,13 +17,15 @@ public static class Spawner
         }
         return true;
     }
-    private static bool SpawnPrefab(Action<GameObject, int> OnSpawn, int index, GameObject prefab, Transform parent)
+    private static bool SpawnPrefab(Action<GameObject, int> OnSpawn, int index, SOPool pool, Transform parent)
     {
-        if (!prefab)
+        if (!pool)
         {
             return false;
         }
-        GameObject go = GameObject.Instantiate(prefab, parent);
+        int nullObj;
+        bool parented;
+        GameObject go = pool.DirectGet(parent, out nullObj, out parented);
         if (!go)
         {
             return false;
