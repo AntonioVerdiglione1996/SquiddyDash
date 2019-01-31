@@ -7,106 +7,96 @@ public class NewSpawnPlatform : MonoBehaviour
     public Transform Squiddy;
     public SOPool PlatformPool;
     public SOPool PlatformWithPowerUpPool;
-    [System.NonSerialized]
-    public List<GameObject> PlatformList = new List<GameObject>();
     public Material Material;
 
     public PositionalEvent OnPlatformSpawn;
 
-    public int PlatformListLength { get { return PlatformList.Count; } }
-    public int numberOfObject = 9;
+    public uint NumberOfPlatformsToSpawn = 4;
 
     public Vector3 VectorToAdd = new Vector3(0f, 11f, 0f);
     public int treshHold = 25;
+
+    public float CurrentSpeedMultiplier = 1f;
+    public Vector3 CurrentScaleMultiplier = Vector3.one;
+
+    public uint SpawnedPlatformCount { get; private set; }
+    public uint SpecialPlatformSpawnIntervall = 9;
+
+    public BasicEvent OnPlatformRecycle;
+
     private Vector3 newPos;
-    private int index;
 
     private void Awake()
     {
-        index = 0;
-
+        SpawnedPlatformCount = 1;
         newPos = VectorToAdd;
+        if(OnPlatformRecycle)
+        {
+            OnPlatformRecycle.OnEventRaised += SpawnPlatforms;
+        }
 
-        for (int i = 0; i < numberOfObject; i++)
+        SpawnPlatforms(NumberOfPlatformsToSpawn, true);
+
+    }
+    private void OnDestroy()
+    {
+        if (OnPlatformRecycle)
+        {
+            OnPlatformRecycle.OnEventRaised -= SpawnPlatforms;
+        }
+    }
+    public void SpawnPlatforms()
+    {
+        SpawnPlatforms(1, false);
+    }
+    public void SpawnPlatforms(uint count, bool setMaterial = false)
+    {
+        for (int i = 0; i < count; i++)
         {
             //normal platform spawn
-            if (i != numberOfObject - 1)
+            if (SpawnedPlatformCount > 0 && (SpawnedPlatformCount % SpecialPlatformSpawnIntervall == 0))
             {
-                int nullObj;
-                GameObject go = PlatformPool.Get(null, newPos, Quaternion.identity, out nullObj, true);
-                if (Material != null)
-                {
-                    Renderer[] go_renderers = go.GetComponentsInChildren<Renderer>();
-                    for (int j = 0; j < go_renderers.Length; j++)
-                    {
-                        go_renderers[j].material = Material;
-                    }
-
-                }
-
-                PlatformList.Add(go);
-                if (OnPlatformSpawn)
-                {
-                    OnPlatformSpawn.Location = go.transform;
-                    OnPlatformSpawn.Raise();
-                }
+                SpawnPlatform(PlatformWithPowerUpPool, setMaterial);
             }
             //powerUp
             else
             {
-                int nullObj;
-                GameObject go = PlatformWithPowerUpPool.Get(null, newPos, Quaternion.identity, out nullObj, true);
-                if (Material != null)
-                    go.GetComponentInChildren<Renderer>().material = Material;
-
-                PlatformList.Add(go);
-
-                PowerUp pw = go.GetComponentInChildren<PowerUp>(true);
-                pw.ResetState();
-
-                if (OnPlatformSpawn)
-                {
-                    OnPlatformSpawn.Location = go.transform;
-                    OnPlatformSpawn.Raise();
-                }
+                SpawnPlatform(PlatformPool, setMaterial);
             }
-            //this will happend even the last cycle. we want that this happend only until the cicle before the last so we do it manually.
-            if (i < numberOfObject - 1)
-                newPos += VectorToAdd;
         }
     }
-    private void Update()
+    private GameObject SpawnPlatform(SOPool pool, bool setMaterials = false)
     {
-        //resetting part: se squiddy va oltre il treshhold, la piattaforma all'indice corrente si sposta
-        if (index <= PlatformList.Count)
+        int nullObj;
+        GameObject go = pool.Get(null, newPos, out nullObj, true);
+
+        Transform root = go.transform.root;
+        root.localScale = CurrentScaleMultiplier;
+
+        NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
+        if(mover)
         {
-            GameObject currentPlatform = PlatformList[index];
-            if (currentPlatform.transform.position.y + treshHold < Squiddy.position.y)
+            mover.Speed = mover.InitialSpeed * CurrentSpeedMultiplier;
+        }
+
+        if (setMaterials && Material != null)
+        {
+            Platform plat = go.GetComponentInChildren<Platform>();
+            if (plat)
             {
-                currentPlatform.transform.position += newPos;
-
-                currentPlatform.GetComponentInChildren(typeof(ActivateCollidersOnPlatforms), true).gameObject.SetActive(true);
-                //re actiave powerUp on platform 
-
-                //...
-
-                //
-
-                //resetting this bool for perform again the score update for 1 frame after recycle
-                currentPlatform.GetComponentInChildren<Platform>().IsAlreadyUpdatedScore = false;
-                index++;
-
-                PowerUp pw = currentPlatform.GetComponentInChildren<PowerUp>(true);
-                if (pw)
-                {
-                    pw.ResetState();
-                }
-
-                if (index == numberOfObject)
-                {
-                    index = 0;
-                }
+                plat.SetMaterial(Material);
             }
         }
+
+        newPos += VectorToAdd;
+        SpawnedPlatformCount++;
+
+        if (OnPlatformSpawn)
+        {
+            OnPlatformSpawn.Location = go.transform;
+            OnPlatformSpawn.Raise();
+        }
+
+        return go;
     }
 }

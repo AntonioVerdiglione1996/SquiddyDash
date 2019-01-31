@@ -22,6 +22,8 @@ public class PowerUp : MonoBehaviour
 
     private PowerUpLogic currentLogic;
 
+    private GameObject powerupInstantiatedObject;
+
     private void Awake()
     {
         //TODO: rifattorizzare?
@@ -30,6 +32,25 @@ public class PowerUp : MonoBehaviour
         {
             aSourceForTrigger = finder.SourceForTrigger;
             aSourceForVocal = finder.SourceForVocalSayNameOfPowerUp;
+        }
+    }
+    private void OnDisable()
+    {
+        if (currentLogic)
+        {
+            currentLogic.ResetPowerup(powerupInstantiatedObject);
+        }
+        if (SpawnPoints != null && SpawnPoints.Length > 0)
+        {
+            int random = Random.Range(0, SpawnPoints.Length);
+            transform.position = SpawnPoints[random].position;
+        }
+        if (PowerUps != null && PowerUps.Length > 0)
+        {
+            int random = Random.Range(0, PowerUps.Length);
+            currentLogic = PowerUps[random];
+            powMeshFilter.mesh = currentLogic.Mesh;
+            powRenderer.materials = currentLogic.Materials;
         }
     }
     private void OnValidate()
@@ -45,29 +66,20 @@ public class PowerUp : MonoBehaviour
             powRenderer.materials = null;
         }
     }
-    public void ResetState()
+    public void OnEnable()
     {
-        if (currentLogic)
+        if (!currentLogic)
         {
-            currentLogic.ResetPowerup();
-        }
-        if (SpawnPoints != null && SpawnPoints.Length > 0)
-        {
-            int random = Random.Range(0, SpawnPoints.Length);
-            transform.position = SpawnPoints[random].position;
-        }
-        if (PowerUps != null && PowerUps.Length > 0)
-        {
-            int random = Random.Range(0, PowerUps.Length);
-            currentLogic = PowerUps[random];
-            powMeshFilter.mesh = currentLogic.Mesh;
-            powRenderer.materials = currentLogic.Materials;
+            OnDisable();
         }
         if (currentLogic)
         {
-            currentLogic.InitPowerup(this);
+            powerupInstantiatedObject = currentLogic.InitPowerup(this);
         }
-        gameObject.SetActive(true);
+        if(powRenderer)
+        {
+            powRenderer.enabled = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,7 +103,15 @@ public class PowerUp : MonoBehaviour
                 //vocal trigger sound
                 currentLogic.VocalSound.Play(aSourceForVocal);
             }
-            gameObject.SetActive(false);
+
+            if(powerupInstantiatedObject)
+            {
+                powerupInstantiatedObject.SetActive(false);
+            }
+            if(powRenderer)
+            {
+                powRenderer.enabled = false;
+            }
         }
     }
 }

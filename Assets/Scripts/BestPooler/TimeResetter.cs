@@ -20,6 +20,7 @@ public class TimeResetter : MonoBehaviour
     }
     public void RecycleObj()
     {
+        TimeHelper.RemoveTimer(timer);
         if (!Obj)
         {
             Obj = gameObject;

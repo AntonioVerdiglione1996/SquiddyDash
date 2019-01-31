@@ -13,44 +13,34 @@ public abstract class PowerUpLogic : ScriptableObject
     public AudioEvent VocalSound;
 
     [SerializeField]
-    protected GlobalEvents GlobalEvents;
-
-    [SerializeField]
     private SOPool prefabPool;
-    private GameObject instanciatedPrefab;
 
-    public GameObject GetInstanciatedPrefab()
+    public GameObject SpawnPrefab()
     {
-        return GetInstanciatedPrefab(null);
+        return SpawnPrefab(null);
     }
-    public GameObject GetInstanciatedPrefab(Transform parent)
+    public GameObject SpawnPrefab(Transform parent)
     {
         if (!prefabPool)
         {
             return null;
         }
-        if (!instanciatedPrefab)
-        {
-            int nullObj;
-            instanciatedPrefab = prefabPool.Get(parent, out nullObj, true);
-            return instanciatedPrefab;
-        }
 
-        GlobalEvents.ParentToTarget(parent, instanciatedPrefab.transform);
-
-        return instanciatedPrefab;
+        int nullObj;
+        GameObject go = prefabPool.Get(parent, out nullObj, true);
+        go.transform.localPosition = Vector3.zero;
+        return go;
     }
     public abstract void PowerUpCollected(Collider player, PowerUp powUp);
-    public virtual void ResetPowerup()
+    public virtual void ResetPowerup(GameObject instantiatedPowerUp = null)
     {
-        if (instanciatedPrefab)
+        if (instantiatedPowerUp)
         {
-            prefabPool.Recycle(instanciatedPrefab);
-            instanciatedPrefab = null;
+            prefabPool.Recycle(instantiatedPowerUp);
         }
     }
-    public virtual void InitPowerup(PowerUp powUp)
+    public virtual GameObject InitPowerup(PowerUp powUp)
     {
-        GetInstanciatedPrefab(powUp.transform);
+        return SpawnPrefab(powUp.transform);
     }
 }

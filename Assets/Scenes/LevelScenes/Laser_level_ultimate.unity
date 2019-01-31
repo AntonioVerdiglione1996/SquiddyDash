@@ -1550,9 +1550,13 @@ MonoBehaviour:
     type: 2}
   Material: {fileID: 2100000, guid: 296f55138b80ff74da1182859ba547f4, type: 2}
   OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
-  numberOfObject: 9
+  NumberOfPlatformsToSpawn: 4
   VectorToAdd: {x: 0, y: 11, z: 0}
   treshHold: 25
+  CurrentSpeedMultiplier: 1
+  CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
+  SpecialPlatformSpawnIntervall: 9
+  OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1346226271
 Transform:
   m_ObjectHideFlags: 0

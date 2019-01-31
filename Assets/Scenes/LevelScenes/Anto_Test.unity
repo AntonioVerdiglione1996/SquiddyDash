@@ -2313,10 +2313,14 @@ MonoBehaviour:
   PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
     type: 2}
   Material: {fileID: 2100000, guid: 1024c759097bcf949a2ec73bc9542e07, type: 2}
-  OnPlatformSpawn: {fileID: 0}
-  numberOfObject: 9
+  OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
+  NumberOfPlatformsToSpawn: 4
   VectorToAdd: {x: 0, y: 11, z: 0}
   treshHold: 25
+  CurrentSpeedMultiplier: 1
+  CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
+  SpecialPlatformSpawnIntervall: 9
+  OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1951949694
 Transform:
   m_ObjectHideFlags: 0

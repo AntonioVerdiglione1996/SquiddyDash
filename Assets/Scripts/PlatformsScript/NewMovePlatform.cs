@@ -6,6 +6,7 @@ using UnityEngine;
 public class NewMovePlatform : MonoBehaviour
 {
     public float Speed;
+    public float InitialSpeed { get; private set; }
 
     private Camera MainCamera;
 
@@ -24,6 +25,7 @@ public class NewMovePlatform : MonoBehaviour
         possibleDirections = new Vector3[] { Vector3.right, -Vector3.right };
         dir = DirectionVector();
         Speed = Random.Range(5f, 9f);
+        InitialSpeed = Speed;
     }
 
 

@@ -15,13 +15,45 @@ public class Platform : MonoBehaviour
     public BasicEvent PlatformClaimed;
     public ScoreSystem ScoreSystem;
 
+    public SOPool Pool;
+    public BasicEvent PlatformRecycled;
+    public GameObject Poolable;
+
     public int ScoreValue = 1;
 
     public bool IsAlreadyUpdatedScore = false;
 
     public Collider PlatCollider;
 
+    public Renderer[] ModifiableRenderers;
 
+    private Transform squiddy;
+
+    public void SetMaterial(Material NewMat)
+    {
+        if (ModifiableRenderers != null)
+        {
+            for (int i = 0; i < ModifiableRenderers.Length; i++)
+            {
+                ModifiableRenderers[i].material = NewMat;
+            }
+        }
+    }
+    private void Start()
+    {
+        if (!squiddy)
+        {
+            SquiddyController controller = FindObjectOfType<SquiddyController>();
+            if (controller)
+            {
+                squiddy = controller.transform;
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        IsAlreadyUpdatedScore = false;
+    }
     public void ActivateCollisions()
     {
         if (PlatCollider)
@@ -34,6 +66,22 @@ public class Platform : MonoBehaviour
         if (!IsLanded && PlatCollider)
         {
             PlatCollider.enabled = false;
+        }
+    }
+    private void OnBecameInvisible()
+    {
+        if (!Poolable)
+        {
+            Poolable = gameObject;
+        }
+        Start();
+        if (squiddy && Pool && squiddy.position.y > transform.position.y)
+        {
+            Pool.Recycle(Poolable);
+            if (PlatformRecycled)
+            {
+                PlatformRecycled.Raise();
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)

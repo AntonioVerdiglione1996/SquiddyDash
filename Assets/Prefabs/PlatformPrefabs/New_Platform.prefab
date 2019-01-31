@@ -335,9 +335,16 @@ MonoBehaviour:
   PerformLerp: {fileID: 0}
   PlatformClaimed: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  Pool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
+  PlatformRecycled: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
+  Poolable: {fileID: 1884989431584500}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0
   PlatCollider: {fileID: 65943413340217694}
+  ModifiableRenderers:
+  - {fileID: 23237077283447038}
+  - {fileID: 23598495265059472}
+  - {fileID: 23578944845425338}
 --- !u!114 &114584955432200696
 MonoBehaviour:
   m_ObjectHideFlags: 1
