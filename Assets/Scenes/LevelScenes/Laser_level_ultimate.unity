@@ -1709,6 +1709,7 @@ MonoBehaviour:
   Offset: {x: 0, y: 5.5, z: 0}
   Pool: {fileID: 11400000, guid: 433f55ec953eb9445b94ecbba389a2f5, type: 2}
   MainCamera: {fileID: 0}
+  SpawnChance: 1
 --- !u!4 &1423505584
 Transform:
   m_ObjectHideFlags: 0

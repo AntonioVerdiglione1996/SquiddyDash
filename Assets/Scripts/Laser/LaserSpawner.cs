@@ -15,10 +15,10 @@ public class LaserSpawner : MonoBehaviour
         if (!MainCamera)
         {
             MainCamera = Camera.main;
-            if (MainCamera)
-            {
-                Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect;
-            }
+        }
+        if (MainCamera)
+        {
+            Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect;
         }
         if (OnPlatformMoved)
         {
