@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e586779606660e4fa441832f8816af3, type: 3}
-  m_Name: OnPlatformMoved
+  m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
+  m_Name: EndEffectScoreIncreasePool
   m_EditorClassIdentifier: 
-  LocalDebugActive: 1
-  Location: {fileID: 0}
+  Prefab: {fileID: 1165987183446902, guid: 5d9656c85a953a449a79e1bdd2dbddc1, type: 2}
+  PersistentPoolInScenes: 1

@@ -13,6 +13,6 @@ public class WindZoneBodyAffector : MonoBehaviour {
             this.enabled = false;
             return;
         }
-        AffectedBody.AddForce(Windzone.WindVelocity3, Mode);
+        AffectedBody.AddForce(Windzone.WindVelocity, Mode);
     }
 }

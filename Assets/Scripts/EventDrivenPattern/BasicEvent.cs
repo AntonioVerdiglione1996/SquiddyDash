@@ -7,7 +7,7 @@ public class BasicEvent : ScriptableObject {
 
 #if UNITY_EDITOR
     public static bool AllDebugActive { get; set; }
-    public bool LocalDebugActive = true;
+    public bool LocalDebugActive = false;
     static BasicEvent()
     {
         AllDebugActive = true;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ Prefab:
       objectReference: {fileID: 589688054}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -510.57553
+      value: -509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1574,7 +1574,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 510.57553
+      value: 509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1634,11 +1634,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 23897767768512578, guid: ea9e6bdda74366c4282703e0ba12c9ee,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 26266f9c00b7a0845ba623ec5b5577de, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
   m_IsPrefabParent: 0
@@ -1923,15 +1918,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Squiddy: {fileID: 617022351}
-  PlatformPrefab: {fileID: 1064548950936320, guid: ca94c88dd6a52d24fb21c298395225cf,
-    type: 2}
-  PlatformPrefabWithPowerUp: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca,
+  PlatformPool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
+  PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
     type: 2}
   Material: {fileID: 2100000, guid: 638b42389afba28499f0e4d8e1ad3f98, type: 2}
-  OnPlatformSpawn: {fileID: 0}
-  numberOfObject: 9
+  OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
+  NumberOfPlatformsToSpawn: 4
   VectorToAdd: {x: 0, y: 11, z: 0}
   treshHold: 25
+  CurrentSpeedMultiplier: 1
+  CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
+  SpecialPlatformSpawnIntervall: 9
+  OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1510182581
 Transform:
   m_ObjectHideFlags: 0

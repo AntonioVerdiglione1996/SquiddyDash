@@ -25,7 +25,7 @@ public class ExtendedWindParticleAffector : MonoBehaviour
 
     void Update()
     {
-        if (!Particles || !Windzone || ParticlesList == null || Mathf.Approximately(Windzone.WindVelocity3.sqrMagnitude, 0.0f))
+        if (!Particles || !Windzone || ParticlesList == null || Mathf.Approximately(Windzone.WindVelocity.sqrMagnitude, 0.0f))
         {
             return;
         }
@@ -34,7 +34,7 @@ public class ExtendedWindParticleAffector : MonoBehaviour
 
         int particleCount = Mathf.Min(particlesGettedCount, ParticlesList.Length);
 
-        Vector3 velocityChange = Windzone.WindVelocity3 * Time.deltaTime;
+        Vector3 velocityChange = Windzone.WindVelocity * Time.deltaTime;
 
         for (int i = 0; i < particleCount; i++)
         {

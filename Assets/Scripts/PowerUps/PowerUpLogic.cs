@@ -5,7 +5,7 @@ public abstract class PowerUpLogic : ScriptableObject
     public Material[] Materials;
     public Mesh Mesh;
     //particle to instantiate after squiddy take the pu
-    public GameObject ParticleAfterTrigger;
+    public SOPool ParticleAfterTriggerPool;
 
     //audio of trigger
     public AudioEvent TriggerSound;
@@ -13,70 +13,34 @@ public abstract class PowerUpLogic : ScriptableObject
     public AudioEvent VocalSound;
 
     [SerializeField]
-    protected GlobalEvents GlobalEvents;
+    private SOPool prefabPool;
 
-    [SerializeField]
-    private GameObject prefab;
-    private GameObject instanciatedPrefab;
-
-    public GameObject GetInstanciatedPrefab()
+    public GameObject SpawnPrefab()
     {
-        if (!prefab)
+        return SpawnPrefab(null);
+    }
+    public GameObject SpawnPrefab(Transform parent)
+    {
+        if (!prefabPool)
         {
             return null;
         }
-        if (!instanciatedPrefab)
-        {
-            instanciatedPrefab = Instantiate<GameObject>(prefab);
-            return instanciatedPrefab;
-        }
 
-        return instanciatedPrefab;
-    }
-    public GameObject DeactivateAndActivateInstancedPrefab(Transform parent)
-    {
-        GameObject go = GetInstanciatedPrefab(parent);
-        go.SetActive(false);
-        go.SetActive(true);
+        int nullObj;
+        GameObject go = prefabPool.Get(parent, out nullObj, true);
+        go.transform.localPosition = Vector3.zero;
         return go;
-    }
-    public GameObject DeactivateAndActivateInstancedPrefab()
-    {
-        GameObject go = GetInstanciatedPrefab();
-        go.SetActive(false);
-        go.SetActive(true);
-        return go;
-    }
-    public GameObject GetInstanciatedPrefab(Transform parent)
-    {
-        if (!prefab)
-        {
-            return null;
-        }
-        if (!instanciatedPrefab)
-        {
-            instanciatedPrefab = Instantiate<GameObject>(prefab, parent);
-            return instanciatedPrefab;
-        }
-
-        GlobalEvents.ParentToTarget(parent, instanciatedPrefab.transform);
-
-        return instanciatedPrefab;
     }
     public abstract void PowerUpCollected(Collider player, PowerUp powUp);
-    public virtual void ResetPowerup()
+    public virtual void ResetPowerup(GameObject instantiatedPowerUp = null)
     {
-        if (instanciatedPrefab)
+        if (instantiatedPowerUp)
         {
-            instanciatedPrefab.SetActive(false);
+            prefabPool.Recycle(instantiatedPowerUp);
         }
     }
-    public virtual void InitPowerup(PowerUp powUp)
+    public virtual GameObject InitPowerup(PowerUp powUp)
     {
-        GetInstanciatedPrefab(powUp.transform);
-        if (instanciatedPrefab)
-        {
-            instanciatedPrefab.SetActive(true);
-        }
+        return SpawnPrefab(powUp.transform);
     }
 }

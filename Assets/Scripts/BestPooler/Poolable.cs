@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class Poolable : MonoBehaviour, ObjectPooler.IPoolable
 {
-    public GameObject prefab { get; set; }
+    public GameObject Prefab { get; set; }
 }
