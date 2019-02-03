@@ -7,22 +7,7 @@ public class TimeHelper : ScriptableObject
 {
     private LinkedList<TimerData> timers = new LinkedList<TimerData>();
 
-    public LinkedListNode<TimerData> AddTimer(TimerData data)
-    {
-        return timers.AddLast(data);
-    }
-
-    public LinkedListNode<TimerData> AddTimer(BasicEvent callback, float duration)
-    {
-        return timers.AddLast(new TimerData(callback, duration));
-    }
-
-    public LinkedListNode<TimerData> AddTimer(Action callback, float duration)
-    {
-        return timers.AddLast(new TimerData(callback, duration));
-    }
-
-    public LinkedListNode<TimerData> AddTimer(Action callbackAction, BasicEvent callbackEvent, float duration)
+    private LinkedListNode<TimerData> AddTimer(Action callbackAction, BasicEvent callbackEvent, float duration)
     {
         return timers.AddLast(new TimerData(callbackAction, callbackEvent, duration));
     }
@@ -68,7 +53,6 @@ public class TimeHelper : ScriptableObject
                 {
                     timer.Enabled = false;
                     currentNode.Value = timer;
-                    timers.Remove(currentNode);
                     if (timer.CallbackEvent != null)
                     {
                         timer.CallbackEvent.Raise();
@@ -79,7 +63,6 @@ public class TimeHelper : ScriptableObject
                     }
                 }
             }
-
             currentNode = nextNode;
         }
     }

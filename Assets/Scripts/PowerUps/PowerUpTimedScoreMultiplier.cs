@@ -20,7 +20,7 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
         {
             TimeOver();
         }
-        timer = TimeHelper.AddTimer(TimeOver, Duration);
+        timer = TimeHelper.RestartTimer(TimeOver, null, timer, Duration);
         ScoreSystem.ScoreMultiplier += AdditiveScoreMultiplier;
         usedMultiplier = AdditiveScoreMultiplier;
     }

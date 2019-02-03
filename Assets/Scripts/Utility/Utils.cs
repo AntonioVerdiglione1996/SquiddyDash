@@ -1,6 +1,63 @@
 ﻿using UnityEngine;
 public static class Utils
 {
+    public static float LinearConversion(byte value, byte oldMin, byte oldMax, float newMin, float newMax)
+    {
+        int denom = (oldMax - oldMin);
+        if (denom == 0)
+        {
+            throw new UnityException("Invalid linear conversion parameters", new System.ArgumentException("Invalid arguments: oldMin and oldMax cannot be equal", "oldMax"));
+        }
+        return (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    }
+    public static float LinearConversion(int value, int oldMin, int oldMax, float newMin, float newMax)
+    {
+        int denom = (oldMax - oldMin);
+        if (denom == 0)
+        {
+            throw new UnityException("Invalid linear conversion parameters", new System.ArgumentException("Invalid arguments: oldMin and oldMax cannot be equal", "oldMax"));
+        }
+        return (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    }
+    public static int LinearConversion(int value, int oldMin, int oldMax, int newMin, int newMax)
+    {
+        int denom = (oldMax - oldMin);
+        if (denom == 0)
+        {
+            throw new UnityException("Invalid linear conversion parameters", new System.ArgumentException("Invalid arguments: oldMin and oldMax cannot be equal", "oldMax"));
+        }
+        return (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    }
+    public static double LinearConversion(double value, double oldMin, double oldMax, double newMin, double newMax)
+    {
+        double denom = (oldMax - oldMin);
+        if (denom == 0)
+        {
+            throw new UnityException("Invalid linear conversion parameters", new System.ArgumentException("Invalid arguments: oldMin and oldMax cannot be equal", "oldMax"));
+        }
+        return (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    }
+    public static float LinearConversion(float value, float oldMin, float oldMax, float newMin, float newMax)
+    {
+        float denom = (oldMax - oldMin);
+        if (denom == 0f)
+        {
+            throw new UnityException("Invalid linear conversion parameters", new System.ArgumentException("Invalid arguments: oldMin and oldMax cannot be equal", "oldMax"));
+        }
+        return (value - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
+    }
+    public static Vector3 LinearConversion(Vector3 value, Vector3 oldMin, Vector3 oldMax, Vector3 newMin, Vector3 newMax)
+    {
+        return new Vector3(LinearConversion(value.x, oldMin.x, oldMax.x, newMin.x, newMax.x), LinearConversion(value.y, oldMin.y, oldMax.y, newMin.y, newMax.y), LinearConversion(value.z, oldMin.z, oldMax.z, newMin.z, newMax.z));
+    }
+    public static Vector2 LinearConversion(Vector2 value, Vector2 oldMin, Vector2 oldMax, Vector2 newMin, Vector2 newMax)
+    {
+        return new Vector2(LinearConversion(value.x, oldMin.x, oldMax.x, newMin.x, newMax.x), LinearConversion(value.y, oldMin.y, oldMax.y, newMin.y, newMax.y));
+    }
+    public static Vector4 LinearConversion(Vector4 value, Vector4 oldMin, Vector4 oldMax, Vector4 newMin, Vector4 newMax)
+    {
+        return new Vector4(LinearConversion(value.x, oldMin.x, oldMax.x, newMin.x, newMax.x), LinearConversion(value.y, oldMin.y, oldMax.y, newMin.y, newMax.y), LinearConversion(value.z, oldMin.z, oldMax.z, newMin.z, newMax.z), LinearConversion(value.w, oldMin.w, oldMax.w, newMin.w, newMax.w));
+    }
     public static bool ApproximatelyCheck(Vector3 First, Vector3 Second)
     {
         return First.Approximately(Second);
