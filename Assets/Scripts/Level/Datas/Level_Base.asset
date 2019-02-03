@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
-  m_Name: Level_Anto
+  m_Name: Level_Base
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   Color: {r: 0.33088234, g: 0.49264705, b: 0, a: 1}
