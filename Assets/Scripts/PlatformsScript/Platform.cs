@@ -95,6 +95,7 @@ public class Platform : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //is squiddy 
+        //TODO: rework for this oncollisionstay, for some reason it allocates memory for contacts
 #if UNITY_EDITOR
         if (!IsLanded)
         {
@@ -103,7 +104,6 @@ public class Platform : MonoBehaviour
 #endif
         if (collision.gameObject.layer == 8 && IsLanded)
         {
-            //TODO: rework for deparenting maybe
             if (GlobalEvents.ParentToTarget(transform.root, collision.transform.root))
             {
                 CurrentPlatformForSquiddy.CurrentPlatform = this;

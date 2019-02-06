@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 272952916}
   - component: {fileID: 272952913}
   - component: {fileID: 272952915}
-  - component: {fileID: 272952914}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -219,22 +218,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &272952914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 272952912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &272952915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,10 +685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 796439045}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 796439045}
   input: {fileID: 1466943933}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -955,10 +938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1025003399}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1025003399}
   input: {fileID: 1466943933}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -1088,10 +1071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1048131234}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1048131234}
   input: {fileID: 1466943933}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -1921,7 +1904,6 @@ GameObject:
   - component: {fileID: 1703123446}
   - component: {fileID: 1703123443}
   - component: {fileID: 1703123445}
-  - component: {fileID: 1703123444}
   m_Layer: 5
   m_Name: Main_HUD
   m_TagString: Untagged
@@ -1949,22 +1931,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1703123444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1703123442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1703123445
 MonoBehaviour:
   m_ObjectHideFlags: 0

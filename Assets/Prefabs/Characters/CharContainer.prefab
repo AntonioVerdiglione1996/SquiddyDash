@@ -632,10 +632,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 224138893972500106}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 224138893972500106}
   input: {fileID: 0}
   OnClickDownEvent:
     m_PersistentCalls:

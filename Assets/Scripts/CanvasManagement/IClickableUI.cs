@@ -9,7 +9,17 @@ public enum EConsumeInput
 }
 public abstract class IClickableUI : MonoBehaviour
 {
-    public RectTransform Self;
+    public RectTransform Self
+    {
+        get
+        {
+            if (!self)
+            {
+                self = GetComponent<RectTransform>();
+            }
+            return self;
+        }
+    }
 
     public CustomClickInput Input
     {
@@ -17,7 +27,7 @@ public abstract class IClickableUI : MonoBehaviour
         {
             if(!input)
             {
-                FindObjectOfType<CustomClickInput>();
+                input = FindObjectOfType<CustomClickInput>();
             }
             return input;
         }
@@ -29,6 +39,8 @@ public abstract class IClickableUI : MonoBehaviour
 
     protected LinkedListNode<IClickableUI> selfNode;
     [SerializeField]
+    private RectTransform self;
+    [SerializeField]
     private CustomClickInput input;
     public abstract void OnClickPressed();
     public abstract void OnClickDown();
@@ -39,16 +51,16 @@ public abstract class IClickableUI : MonoBehaviour
     }
     protected virtual void OnDisable()
     {
-        if (selfNode != null)
+        if (selfNode != null && Input && Input.Ui != null)
         {
             Input.Ui.Remove(selfNode);
         }
     }
     protected virtual void OnValidate()
     {
-        if(Self == null)
+        if(self == null)
         {
-            Self = GetComponent<RectTransform>();
+            self = GetComponent<RectTransform>();
         }
         if(input == null)
         {
