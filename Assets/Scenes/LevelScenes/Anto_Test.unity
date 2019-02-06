@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -942,10 +942,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 944373065}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 944373065}
   input: {fileID: 846212338}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -1393,7 +1393,6 @@ GameObject:
   - component: {fileID: 1265399177}
   - component: {fileID: 1265399174}
   - component: {fileID: 1265399176}
-  - component: {fileID: 1265399175}
   m_Layer: 5
   m_Name: Main_HUD
   m_TagString: Untagged
@@ -1421,22 +1420,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1265399175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1265399173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1265399176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1471,6 @@ GameObject:
   - component: {fileID: 1269245927}
   - component: {fileID: 1269245924}
   - component: {fileID: 1269245926}
-  - component: {fileID: 1269245925}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -1516,22 +1498,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1269245925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1269245923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1269245926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,10 +1714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1445158377}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1445158377}
   input: {fileID: 846212338}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -2767,10 +2733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1988979700}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1988979700}
   input: {fileID: 846212338}
   OnClickDownEvent:
     m_PersistentCalls:

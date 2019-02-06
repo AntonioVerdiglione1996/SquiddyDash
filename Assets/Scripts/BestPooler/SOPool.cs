@@ -25,7 +25,10 @@ public class SOPool : ScriptableObject
     public void Recycle(GameObject toRecycle)
     {
         elements.Enqueue(toRecycle);
-        toRecycle.SetActive(false);
+        if (toRecycle.activeSelf)
+        {
+            toRecycle.SetActive(false);
+        }
     }
     /// <summary>
     /// Recycles the given instance. The object will not be disabled
@@ -43,7 +46,10 @@ public class SOPool : ScriptableObject
     public void Recycle(GameObject toRecycle, Action<GameObject> onRecycle)
     {
         elements.Enqueue(toRecycle);
-        toRecycle.SetActive(false);
+        if (toRecycle.activeSelf)
+        {
+            toRecycle.SetActive(false);
+        }
 
         onRecycle(toRecycle);
     }
@@ -59,7 +65,10 @@ public class SOPool : ScriptableObject
         bool instantiated;
         GameObject res = elements.Count == 0 ? GameObject.Instantiate(Prefab) : (PersistentPoolInScenes ? GetRemoveNullRefs(out nullObjsRemoved, out instantiated) : elements.Dequeue());
         onGet(res);
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -72,7 +81,10 @@ public class SOPool : ScriptableObject
         nullObjsRemoved = 0;
         bool instantiated;
         GameObject res = elements.Count == 0 ? GameObject.Instantiate(Prefab) : (PersistentPoolInScenes ? GetRemoveNullRefs(out nullObjsRemoved, out instantiated) : elements.Dequeue());
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -154,7 +166,10 @@ public class SOPool : ScriptableObject
                 res.transform.parent = parent;
         }
         onGet(res);
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -179,7 +194,10 @@ public class SOPool : ScriptableObject
             if (!instantiated && parentAlways)
                 res.transform.parent = parent;
         }
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -212,7 +230,10 @@ public class SOPool : ScriptableObject
             }
         }
         onGet(res);
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -243,7 +264,10 @@ public class SOPool : ScriptableObject
                     res.transform.parent = parent;
             }
         }
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
 
@@ -274,7 +298,10 @@ public class SOPool : ScriptableObject
                     res.transform.parent = parent;
             }
         }
-        res.SetActive(true);
+        if (!res.activeSelf)
+        {
+            res.SetActive(true);
+        }
         return res;
     }
     /// <summary>
@@ -329,7 +356,10 @@ public class SOPool : ScriptableObject
         while (elements.Count < value)
         {
             GameObject obj = GameObject.Instantiate(Prefab, position, rotation, parent);
-            obj.SetActive(false);
+            if (obj.activeSelf)
+            {
+                obj.SetActive(false);
+            }
             if (onRecycle != null)
                 onRecycle.Invoke(obj);
             elements.Enqueue(obj);

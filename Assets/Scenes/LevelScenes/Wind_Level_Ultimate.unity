@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 263696895}
   - component: {fileID: 263696892}
   - component: {fileID: 263696894}
-  - component: {fileID: 263696893}
   m_Layer: 5
   m_Name: Main_HUD
   m_TagString: Untagged
@@ -439,22 +438,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &263696893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 263696891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &263696894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,7 +1296,6 @@ GameObject:
   - component: {fileID: 781972739}
   - component: {fileID: 781972736}
   - component: {fileID: 781972738}
-  - component: {fileID: 781972737}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -1341,22 +1323,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &781972737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 781972735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &781972738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,11 +1852,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1745474082}
-  Input: {fileID: 790111207}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1745474082}
+  input: {fileID: 790111207}
   OnClickDownEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2019,11 +1985,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1789044754}
-  Input: {fileID: 790111207}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1789044754}
+  input: {fileID: 790111207}
   OnClickDownEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2407,11 +2373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 1907615195}
-  Input: {fileID: 790111207}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 1907615195}
+  input: {fileID: 790111207}
   OnClickDownEvent:
     m_PersistentCalls:
       m_Calls:

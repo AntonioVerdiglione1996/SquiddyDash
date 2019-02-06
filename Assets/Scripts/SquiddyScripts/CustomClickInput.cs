@@ -10,6 +10,7 @@ public enum EClickState
 }
 public class CustomClickInput : MonoBehaviour
 {
+    public const float DefaultBoundsSizeZ = 10f;
     public BasicEvent OnClickDown;
     public BasicEvent OnClickUp;
     public BasicEvent OnClickPressed;
@@ -34,17 +35,17 @@ public class CustomClickInput : MonoBehaviour
 
         if (!UpdateUI())
         {
-            if (ClickState == EClickState.Down)
+            if (ClickState == EClickState.Pressed)
+            {
+                OnClickPressed.Raise();
+            }
+            else if (ClickState == EClickState.Down)
             {
                 OnClickDown.Raise();
             }
             else if (ClickState == EClickState.Up)
             {
                 OnClickUp.Raise();
-            }
-            else
-            {
-                OnClickPressed.Raise();
             }
         }
     }
@@ -65,24 +66,24 @@ public class CustomClickInput : MonoBehaviour
             {
                 if (IsUiClicked(ScreenPosition, currentUi))
                 {
+                    EConsumeInput consumeType = EConsumeInput.None;
                     if (ClickState == EClickState.Down)
                     {
                         currentUi.OnClickDown();
-                        inputConsumed = currentUi.ConsumeClickDown == EConsumeInput.Consume;
-                        inputUiConsumed = inputConsumed || currentUi.ConsumeClickDown == EConsumeInput.ConsumeUIOnly;
+                        consumeType = currentUi.ConsumeClickDown;
                     }
                     else if (ClickState == EClickState.Up)
                     {
                         currentUi.OnClickUp();
-                        inputConsumed = currentUi.ConsumeClickUp == EConsumeInput.Consume;
-                        inputUiConsumed = inputConsumed || currentUi.ConsumeClickUp == EConsumeInput.ConsumeUIOnly;
+                        consumeType = currentUi.ConsumeClickUp;
                     }
                     else
                     {
                         currentUi.OnClickPressed();
-                        inputConsumed = currentUi.ConsumeClickPressed == EConsumeInput.Consume;
-                        inputUiConsumed = inputConsumed || currentUi.ConsumeClickPressed == EConsumeInput.ConsumeUIOnly;
+                        consumeType = currentUi.ConsumeClickPressed;
                     }
+                    inputConsumed = consumeType == EConsumeInput.Consume;
+                    inputUiConsumed = inputConsumed || consumeType == EConsumeInput.ConsumeUIOnly;
                 }
             }
             else
@@ -96,6 +97,7 @@ public class CustomClickInput : MonoBehaviour
     }
     private void UpdateInput()
     {
+        PreviousScreenPosition = ScreenPosition;
 #if UNITY_STANDALONE
         if (Input.GetMouseButtonDown(MouseButtonKey))
         {
@@ -107,13 +109,11 @@ public class CustomClickInput : MonoBehaviour
         else if (Input.GetMouseButtonUp(MouseButtonKey))
         {
             ClickState = EClickState.Up;
-            PreviousScreenPosition = ScreenPosition;
             ScreenPosition = Input.mousePosition;
         }
         else if (Input.GetMouseButton(MouseButtonKey))
         {
             ClickState = EClickState.Pressed;
-            PreviousScreenPosition = ScreenPosition;
             ScreenPosition = Input.mousePosition;
         }
         else
@@ -132,13 +132,11 @@ public class CustomClickInput : MonoBehaviour
         else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
         {
             ClickState = EClickState.Up;
-            PreviousScreenPosition = ScreenPosition;
             ScreenPosition = touch.position;
         }
         else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
         {
             ClickState = EClickState.Pressed;
-            PreviousScreenPosition = ScreenPosition;
             ScreenPosition = touch.position;
         }
         else
@@ -152,8 +150,8 @@ public class CustomClickInput : MonoBehaviour
     private bool IsUiClicked(Vector2 screenPosition, IClickableUI ui)
     {
         Vector3 size = ui.Self.rect.size;
+        size.z = DefaultBoundsSizeZ;
         Vector2 pivot = ui.Self.pivot;
-        size.z = 10f;
         Vector3 position = ui.Self.transform.position;
         position.x += size.x * (0.5f - pivot.x);
         position.y += size.y * (0.5f - pivot.y);

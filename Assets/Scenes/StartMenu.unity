@@ -2053,11 +2053,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3685,7 +3685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1352291605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5153,7 +5153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelSelection: {fileID: 1714342317}
   ContainerParentTransform: {fileID: 45346523}
-  LevelUIPrefabPool: {fileID: 11400000, guid: 6e69268e4d6995049b717cfc6b181ba2, type: 2}
+  LevelUIPrefabPool: {fileID: 11400000, guid: df7943c2f0474614aa0554cdacf64697, type: 2}
   Container: {fileID: 11400000, guid: 50921a9f4c31bf14c86ddc41ebf25300, type: 2}
 --- !u!223 &1751424237
 Canvas:
