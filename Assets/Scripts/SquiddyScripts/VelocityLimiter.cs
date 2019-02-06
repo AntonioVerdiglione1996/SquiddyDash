@@ -6,7 +6,7 @@ public class VelocityLimiter : MonoBehaviour
 {
 
     public Rigidbody Body;
-    public float MaxVelocity = 30f;
+    public float MaxVelocity = 60f;
     public ForceMode SlowingForceMode = ForceMode.VelocityChange;
 
     private void OnValidate()
