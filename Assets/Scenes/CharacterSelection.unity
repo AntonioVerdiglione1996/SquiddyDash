@@ -3005,8 +3005,10 @@ MonoBehaviour:
   ylimit: {fileID: 1712205970}
   target: {fileID: 1886690779}
   distance: 5
-  xSpeed: 30
-  ySpeed: 30
+  xSpeed: 240
+  ySpeed: 120
+  xSpeedMobile: 240
+  ySpeedMobile: 120
   scrollrate: 3
   yMinLimit: -20
   yMaxLimit: 80
