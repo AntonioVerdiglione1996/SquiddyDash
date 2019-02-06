@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 224027322764999624}
   - component: {fileID: 223730323317729876}
   - component: {fileID: 114026561470307492}
-  - component: {fileID: 114960618993640598}
   m_Layer: 5
   m_Name: CanvasOptimisationPS
   m_TagString: Untagged
@@ -107,7 +106,7 @@ GameObject:
   - component: {fileID: 222278981519738698}
   - component: {fileID: 114631385591136622}
   - component: {fileID: 114156650123403284}
-  - component: {fileID: 114050602432253084}
+  - component: {fileID: 114796510996935004}
   m_Layer: 8
   m_Name: UltimateSkill
   m_TagString: Untagged
@@ -158,7 +157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224741894998638068}
   - component: {fileID: 223936107094973272}
-  - component: {fileID: 114897862962290558}
   m_Layer: 8
   m_Name: SkillUI
   m_TagString: Untagged
@@ -403,47 +401,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114050602432253084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1474082317027100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114835219694571498}
-          m_MethodName: ConsumeInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 114156650123403284}
-          m_MethodName: InvokeSkill
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!114 &114055114282891858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,8 +428,8 @@ MonoBehaviour:
   EmissionAngle: 360
   ColorOverLifetime:
     serializedVersion: 2
-    key0: {r: 1, g: 0.93103445, b: 0, a: 0.7254902}
-    key1: {r: 0.32413793, g: 1, b: 0, a: 0}
+    key0: {r: 1, g: 0.6431373, b: 0, a: 1}
+    key1: {r: 1, g: 0.6431373, b: 0, a: 0.46666667}
     key2: {r: 1, g: 1, b: 1, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -480,14 +437,14 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 41056
+    ctime1: 65150
     ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
-    atime0: 42020
+    atime0: 0
     atime1: 65535
     atime2: 0
     atime3: 0
@@ -623,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -649,8 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32413793, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5411765}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -664,6 +621,48 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114796510996935004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474082317027100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Self: {fileID: 224138893972500106}
+  ConsumeClickDown: 2
+  ConsumeClickUp: 0
+  ConsumeClickPressed: 0
+  input: {fileID: 0}
+  OnClickDownEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114156650123403284}
+        m_MethodName: InvokeSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClickUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClickPressedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114835219694571498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,6 +686,9 @@ MonoBehaviour:
   UltimateSkill: {fileID: 114075871032493104}
   SquiddyStats: {fileID: 11400000, guid: 0dbb727b1c6be0b49bb0ad91450a9401, type: 2}
   StartPlatform: {fileID: 0}
+  OnClickDown: {fileID: 11400000, guid: 107b0777af64a1f40a779f8b19f26422, type: 2}
+  OnClickUp: {fileID: 11400000, guid: 95590cbdab998b8429d2b998d0155e29, type: 2}
+  OnClickPressed: {fileID: 11400000, guid: 0f37b51e17c1d6744b9349ceb7fe43e2, type: 2}
   ultimateActivator: {fileID: 114156650123403284}
   OnBorderCollisionEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee,
     type: 2}
@@ -704,38 +706,6 @@ MonoBehaviour:
   Body: {fileID: 54785306299008804}
   MaxVelocity: 60
   SlowingForceMode: 2
---- !u!114 &114897862962290558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695491476463804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &114960618993640598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1337799408234050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &114974407072716316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,7 +781,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1117832505
+  randomSeed: -657460042
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4217,7 +4187,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1859536862
+  randomSeed: -2122643146
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7623,7 +7593,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1978045525
+  randomSeed: -1372965125
   InitialModule:
     serializedVersion: 3
     enabled: 1

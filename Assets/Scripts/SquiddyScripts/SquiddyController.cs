@@ -28,6 +28,10 @@ public class SquiddyController : MonoBehaviour
     public Platform StartPlatform;
     public Rigidbody Rb { get; private set; }
 
+    public BasicEvent OnClickDown;
+    public BasicEvent OnClickUp;
+    public BasicEvent OnClickPressed;
+
     public bool IsJumping { get { return !(transform.parent); } }
 
     [SerializeField]
@@ -38,7 +42,6 @@ public class SquiddyController : MonoBehaviour
 
     public BasicEvent OnBorderCollisionEvent;
 
-    public bool InputConsumed { get; private set; }
     private void Start()
     {
         Splash splash = transform.root.GetComponentInChildren<Splash>(true);
@@ -62,7 +65,6 @@ public class SquiddyController : MonoBehaviour
     }
     private void Awake()
     {
-        InputConsumed = false;
         if (OnBorderCollisionEvent)
         {
             OnBorderCollisionEvent.OnEventRaised += BorderCollided;
@@ -105,6 +107,11 @@ public class SquiddyController : MonoBehaviour
             GameOverEvent.OnEventRaised += DisableRoot;
         }
 
+        if (OnClickDown)
+        {
+            OnClickDown.OnEventRaised += OnClicked;
+        }
+
     }
     private void DisableRoot()
     {
@@ -112,6 +119,10 @@ public class SquiddyController : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if(OnClickDown)
+        {
+            OnClickDown.OnEventRaised -= OnClicked;
+        }
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised -= DisableRoot;
@@ -120,10 +131,6 @@ public class SquiddyController : MonoBehaviour
         {
             OnBorderCollisionEvent.OnEventRaised += BorderCollided;
         }
-    }
-    public void ConsumeInput()
-    {
-        InputConsumed = true;
     }
     private void OnValidate()
     {
@@ -150,48 +157,22 @@ public class SquiddyController : MonoBehaviour
             bd.freezeRotation = true;
         }
     }
-    void Update()
+    public void OnClicked()
     {
-        if (!InputConsumed)
+        if (!IsJumping)
         {
-#if (UNITY_IOS || UNITY_ANDROID)
-        if (Input.touchCount != 0)
+            CircleLowToBig.Play();
+            Jump();
+        }
+        else
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                if (!IsJumping)
-                {
-                    Jump();
-                }
-                else
-                {
-                    LandParticle.Play();
-                    Land();
-                }
-            }
+            CircleBigToLow.Play();
+            LandParticle.Play();
+            Land();
         }
-#elif UNITY_STANDALONE
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                if (!IsJumping)
-                {
-                    CircleLowToBig.Play();
-                    Jump();
-                }
-                else
-                {
-                    CircleBigToLow.Play();
-                    LandParticle.Play();
-                    Land();
-                }
-            }
-#else
-        throw new Exception("Input not supported for the current platform");
-#endif
-        }
-
-        InputConsumed = false;
-
+    }
+    void Update()
+    { 
         if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {
             UltimateSkill.InvokeSkill(false);

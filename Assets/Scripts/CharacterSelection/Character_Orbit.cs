@@ -56,7 +56,7 @@ public class Character_Orbit : MonoBehaviour
             y -= Input.GetTouch(0).deltaPosition.y * ySpeedMobile * Time.deltaTime;
         }
 #else
-        throw new Exception("Input not handled for current platform");
+        throw new UnityException("Input not handled for current platform");
 #endif
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 

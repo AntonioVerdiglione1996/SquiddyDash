@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class GameEventListener : MonoBehaviour
 {
     //--------REMOVE AFTER-----------
-//#if UNITY_EDITOR
+    //#if UNITY_EDITOR
     public string Name = null;
     public string Explain;
-//#endif
+    //#endif
     //-------------------------------
     public GameEvent Event;
     public UnityEvent Response;
@@ -21,11 +21,28 @@ public class GameEventListener : MonoBehaviour
     {
         if (Name == null || Name.Length == 0)
         {
-            Name = Event.name + "Listener";
+            if (Event)
+            {
+                Name = Event.name + "Listener";
+            }
         }
+    }
+    public void RefreshListener()
+    {
+        if(this.enabled)
+        {
+            OnDisable();
+            OnEnable();
+            return;
+        }
+        this.enabled = true;
     }
     private void OnEnable()
     {
+        if(!Event)
+        {
+            return;
+        }
         Event.RegisterListener(this);
         if (firstTime && InvokeFirstTime)
         {
@@ -41,13 +58,16 @@ public class GameEventListener : MonoBehaviour
     }
     private void OnDisable()
     {
-        Event.UnregisterListener(this);
+        if (Event)
+        {
+            Event.UnregisterListener(this);
+        }
     }
     public void OnEventRaised()
     {
         Response.Invoke();
 #if UNITY_EDITOR
-        if (BasicEvent.AllDebugActive && Event.LocalDebugActive)
+        if (BasicEvent.AllDebugActive && Event && Event.LocalDebugActive)
         {
             Debug.LogFormat("\t\tEventListener {0} invoked with {1} number of persistent methods registered.", Name, Response.GetPersistentEventCount());
             for (int i = 0; i < Response.GetPersistentEventCount(); i++)
