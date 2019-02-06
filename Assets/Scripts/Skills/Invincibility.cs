@@ -30,7 +30,7 @@ public class Invincibility : TimedSkill
         base.OnDisable();
         if (WallsModifier && WallsModifier.Walls)
         {
-            WallsModifier.Walls.BotWall.isTrigger = true;
+            WallsModifier.Walls.SetCollisionTrigger(true, EWallType.Down);
             if (wallsRepulsionState.IsValid)
             {
                 WallsModifier.ResetRepulsion();
@@ -43,7 +43,7 @@ public class Invincibility : TimedSkill
 
         durationTimer = TimeHelper.RestartTimer(OnInvincibilityOver, null, durationTimer, Duration);
 
-        WallsModifier.Walls.BotWall.isTrigger = false;
+        WallsModifier.Walls.SetCollisionTrigger(false, EWallType.Down);
         WallsModifier.SetNewRepulsion(wallsRepulsionState);
     }
 
