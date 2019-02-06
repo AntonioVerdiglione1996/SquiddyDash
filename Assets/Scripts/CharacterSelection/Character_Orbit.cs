@@ -8,14 +8,10 @@ public class Character_Orbit : MonoBehaviour
 
     public Transform target;
     public float distance = 5.0f;
-#if UNITY_STANDALONE
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
-#elif (UNITY_IOS || UNITY_ANDROID)
-    public float xSpeed = 2.0f;
-    public float ySpeed = 2.0f;
-#else
-#endif
+    public float xSpeedMobile = 120.0f;
+    public float ySpeedMobile = 120.0f;
     public float scrollrate = 3.0f;
     public float yMinLimit = -20f;
     public float yMaxLimit = 80f;
@@ -50,14 +46,14 @@ public class Character_Orbit : MonoBehaviour
 #if UNITY_STANDALONE
         if (Input.GetMouseButton(0) && Input.mousePosition.y > ylimit.position.y)
         {
-            x += Input.GetAxis("Mouse X") * xSpeed/* * distance */ * 0.04f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+            x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
+            y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
         }
 #elif (UNITY_IOS || UNITY_ANDROID)
         if (Input.touchCount > 0 && Input.GetTouch(0).position.y > ylimit.position.y)
         {
-            x += Input.GetTouch(0).deltaPosition.x * xSpeed/* * distance */ * 0.04f;
-            y -= Input.GetTouch(0).deltaPosition.y * ySpeed * 0.02f;
+            x += Input.GetTouch(0).deltaPosition.x * xSpeedMobile * Time.deltaTime;
+            y -= Input.GetTouch(0).deltaPosition.y * ySpeedMobile * Time.deltaTime;
         }
 #else
         throw new Exception("Input not handled for current platform");
