@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class LaserSpawner : MonoBehaviour
 {
+    public BasicEvent OnGameOver;
     public PositionalEvent OnPlatformMoved;
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
     public SOPool Pool;
     public Camera MainCamera;
     public float SpawnChance = 0.1f;
+
+    private bool spawn = true;
     // Use this for initialization
     void OnEnable()
     {
+        spawn = true;
         if (!MainCamera)
         {
             MainCamera = Camera.main;
@@ -24,6 +28,18 @@ public class LaserSpawner : MonoBehaviour
         {
             OnPlatformMoved.OnPositionalRaised += SpawnLaser;
         }
+        if (OnGameOver)
+        {
+            OnGameOver.OnEventRaised += DisableSpawn;
+        }
+    }
+    public void DisableSpawn()
+    {
+        spawn = false;
+    }
+    public void EnableSpawn()
+    {
+        spawn = true;
     }
     private void OnDisable()
     {
@@ -31,9 +47,17 @@ public class LaserSpawner : MonoBehaviour
         {
             OnPlatformMoved.OnPositionalRaised -= SpawnLaser;
         }
+        if (OnGameOver)
+        {
+            OnGameOver.OnEventRaised -= DisableSpawn;
+        }
     }
     public void SpawnLaser(Transform ReferenceLocation)
     {
+        if (!spawn)
+        {
+            return;
+        }
         if (Pool && ReferenceLocation)
         {
             if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance)

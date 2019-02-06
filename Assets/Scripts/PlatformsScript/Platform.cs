@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    public const float HeightTolleranceForDespawn = 2f;
+
     public bool DirRight;
 
     public bool DirLeft;
@@ -75,7 +77,7 @@ public class Platform : MonoBehaviour
             Poolable = gameObject;
         }
         Start();
-        if (squiddy && Pool && squiddy.position.y > transform.position.y)
+        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn)
         {
             Pool.Recycle(Poolable);
             if (PlatformRecycled)
