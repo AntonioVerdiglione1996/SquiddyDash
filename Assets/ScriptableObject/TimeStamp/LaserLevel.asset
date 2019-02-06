@@ -14,38 +14,10 @@ MonoBehaviour:
   Clip: {fileID: 8300000, guid: a37caf94ce58c534996d028d5dc5290e, type: 3}
   Timestamps:
   - Timestamp: 1
-    Strenght: 0
-  - Timestamp: 2
-    Strenght: 0
-  - Timestamp: 3
-    Strenght: 0
-  - Timestamp: 4
-    Strenght: 0
+    Strenght: 15
   - Timestamp: 5
-    Strenght: 0
-  - Timestamp: 6
-    Strenght: 0
-  - Timestamp: 7
-    Strenght: 0
-  - Timestamp: 8
-    Strenght: 0
-  - Timestamp: 9
-    Strenght: 0
+    Strenght: 15
   - Timestamp: 10
-    Strenght: 0
-  - Timestamp: 11
-    Strenght: 0
-  - Timestamp: 12
-    Strenght: 0
-  - Timestamp: 13
-    Strenght: 0
-  - Timestamp: 14
-    Strenght: 0
-  - Timestamp: 15
-    Strenght: 0
+    Strenght: 15
   - Timestamp: 16
-    Strenght: 0
-  - Timestamp: 17
-    Strenght: 0
-  - Timestamp: 18
-    Strenght: 0
+    Strenght: 20
