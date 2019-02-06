@@ -7,6 +7,9 @@ public class AudioReactiveSource : MonoBehaviour
     public AudioReactiveClip ClipData;
     public AudioSource Source;
     public SoundEvent SoundEvent;
+#if UNITY_EDITOR
+    public bool DebugActive = false;
+#endif
 
     private int currentTimestampIndex;
     private float lastTimeStamp;
@@ -57,7 +60,10 @@ public class AudioReactiveSource : MonoBehaviour
                     SoundEvent.Raise();
                 }
 #if UNITY_EDITOR
-                Debug.LogFormat("Soundevent for the {0} timestamp at {1} game time, {2} clip time!", currentTimestampIndex, Time.time, Source.time);
+                if (DebugActive)
+                {
+                    Debug.LogFormat("Soundevent for the {0} timestamp at {1} game time, {2} clip time!", currentTimestampIndex, Time.time, Source.time);
+                }
 #endif
                 currentTimestampIndex++;
             }

@@ -69,7 +69,7 @@ public abstract class TimedSkill : Skill
     /// </summary>
     protected override void OnDisable()
     {
-        coolDownTimer = TimeHelper.AddTimer(null, null, CoolDownDuration);
+        coolDownTimer = TimeHelper.RestartTimer(null, null, coolDownTimer, CoolDownDuration);
     }
     /// <summary>
     /// Ends cooldown phase

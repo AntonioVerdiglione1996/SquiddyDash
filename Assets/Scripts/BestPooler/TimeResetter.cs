@@ -9,6 +9,8 @@ public class TimeResetter : MonoBehaviour
     public GameObject Obj;
     public TimeHelper TimeHelper;
 
+    public bool UseObjectPoolerIfPoolIsNotDefined = false;
+
     private LinkedListNode<TimerData> timer;
     private void OnEnable()
     {
@@ -30,7 +32,10 @@ public class TimeResetter : MonoBehaviour
             Pool.Recycle(Obj);
             return;
         }
-        ObjectPooler.Recycle(Obj);
+        if (UseObjectPoolerIfPoolIsNotDefined)
+        {
+            ObjectPooler.Recycle(Obj);
+        }
     }
 
 }

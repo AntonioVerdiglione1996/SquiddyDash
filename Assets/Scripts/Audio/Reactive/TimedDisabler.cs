@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimedDisabler : MonoBehaviour {
+public class TimedDisabler : MonoBehaviour
+{
     public BasicEvent DisablerEvent;
     public BasicEvent EnablerEvent;
     public float DisableDuration = 0.3f;
@@ -10,10 +11,9 @@ public class TimedDisabler : MonoBehaviour {
     public TimeHelper TimeHelper;
 
     private LinkedListNode<TimerData> timer;
-    private void Awake()
+    public void BindToEvents()
     {
-        //TODO: si devono levare eventi dopo recycler
-        if(DisablerEvent)
+        if (DisablerEvent)
         {
             DisablerEvent.OnEventRaised += Disable;
         }
@@ -22,7 +22,7 @@ public class TimedDisabler : MonoBehaviour {
             EnablerEvent.OnEventRaised += Enable;
         }
     }
-    private void OnDestroy()
+    public void UnbindFromEvents()
     {
         if (DisablerEvent)
         {
@@ -42,7 +42,6 @@ public class TimedDisabler : MonoBehaviour {
     public void Disable()
     {
         Target.SetActive(false);
-        TimeHelper.RemoveTimer(timer);
-        timer = TimeHelper.AddTimer(EnablerEvent, DisableDuration);
+        timer = TimeHelper.RestartTimer(null, EnablerEvent, timer, DisableDuration);
     }
 }

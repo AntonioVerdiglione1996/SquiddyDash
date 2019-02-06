@@ -24,8 +24,7 @@ public class ContinuousAscension : MonoBehaviour
 
     public void RestartTimer()
     {
-        TimeHelper.RemoveTimer(timer);
-        timer = TimeHelper.AddTimer(StartAscension, null, TimerDurationBeforeAscension);
+        timer = TimeHelper.RestartTimer(StartAscension, null, timer, TimerDurationBeforeAscension);
     }
     public void StopAscension()
     {
@@ -81,7 +80,7 @@ public class ContinuousAscension : MonoBehaviour
     {
         myTransform = transform;
         enabled = StartsAsEnabled;
-        if(RestartTimerEvent)
+        if (RestartTimerEvent)
         {
             RestartTimerEvent.OnEventRaised += StopAndRestartTimer;
         }

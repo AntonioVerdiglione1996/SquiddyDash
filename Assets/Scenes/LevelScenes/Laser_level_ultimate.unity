@@ -1512,6 +1512,7 @@ GameObject:
   - component: {fileID: 1346226271}
   - component: {fileID: 1346226270}
   - component: {fileID: 1346226269}
+  - component: {fileID: 1346226272}
   m_Layer: 0
   m_Name: PlatformSpawner
   m_TagString: Untagged
@@ -1570,6 +1571,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346226272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346226268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820f41804b66030408715b6542f03620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlatformMoved: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
+  Offset: {x: 0, y: 5.5, z: 0}
+  Pool: {fileID: 11400000, guid: 433f55ec953eb9445b94ecbba389a2f5, type: 2}
+  MainCamera: {fileID: 1259412789}
+  SpawnChance: 0.1
 --- !u!1001 &1418583786
 Prefab:
   m_ObjectHideFlags: 0
@@ -1681,51 +1698,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1423505582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1423505584}
-  - component: {fileID: 1423505583}
-  m_Layer: 0
-  m_Name: LaserSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1423505583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423505582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820f41804b66030408715b6542f03620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPlatformMoved: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
-  Offset: {x: 0, y: 5.5, z: 0}
-  Pool: {fileID: 11400000, guid: 433f55ec953eb9445b94ecbba389a2f5, type: 2}
-  MainCamera: {fileID: 0}
-  SpawnChance: 1
---- !u!4 &1423505584
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423505582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1890208, y: 64.05349, z: -0.30174527}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1474178105
 Prefab:
   m_ObjectHideFlags: 0

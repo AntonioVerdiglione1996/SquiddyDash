@@ -41,8 +41,7 @@ public class Invincibility : TimedSkill
     {
         base.OnEnable();
 
-        TimeHelper.RemoveTimer(durationTimer);
-        durationTimer = TimeHelper.AddTimer(OnInvincibilityOver, Duration);
+        durationTimer = TimeHelper.RestartTimer(OnInvincibilityOver, null, durationTimer, Duration);
 
         WallsModifier.Walls.BotWall.isTrigger = false;
         WallsModifier.SetNewRepulsion(wallsRepulsionState);
