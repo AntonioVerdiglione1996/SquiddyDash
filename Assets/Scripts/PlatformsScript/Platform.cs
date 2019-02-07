@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    public const float HeightTolleranceForDespawn = 1f;
+
     public bool DirRight;
 
     public bool DirLeft;
@@ -18,6 +20,8 @@ public class Platform : MonoBehaviour
     public SOPool Pool;
     public BasicEvent PlatformRecycled;
     public GameObject Poolable;
+
+    public bool IsVisible { get; private set; }
 
     public int ScoreValue = 1;
 
@@ -50,6 +54,13 @@ public class Platform : MonoBehaviour
             }
         }
     }
+    private void Update()
+    {
+        if(!IsVisible)
+        {
+            OnBecameInvisible();
+        }
+    }
     private void OnDisable()
     {
         IsAlreadyUpdatedScore = false;
@@ -68,14 +79,19 @@ public class Platform : MonoBehaviour
             PlatCollider.enabled = false;
         }
     }
+    private void OnBecameVisible()
+    {
+        IsVisible = true;
+    }
     private void OnBecameInvisible()
     {
+        IsVisible = false;
         if (!Poolable)
         {
             Poolable = gameObject;
         }
         Start();
-        if (squiddy && Pool && squiddy.position.y > transform.position.y)
+        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn)
         {
             Pool.Recycle(Poolable);
             if (PlatformRecycled)

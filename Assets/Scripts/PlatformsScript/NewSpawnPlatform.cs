@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NewSpawnPlatform : MonoBehaviour
 {
+    public BasicEvent OnGameOver;
     public Transform Squiddy;
     public SOPool PlatformPool;
     public SOPool PlatformWithPowerUpPool;
@@ -26,7 +27,8 @@ public class NewSpawnPlatform : MonoBehaviour
 
     private Vector3 newPos;
 
-    private void Awake()
+    private bool spawn = true;
+    private void OnEnable()
     {
         SpawnedPlatformCount = 1;
         newPos = VectorToAdd;
@@ -34,15 +36,30 @@ public class NewSpawnPlatform : MonoBehaviour
         {
             OnPlatformRecycle.OnEventRaised += SpawnPlatforms;
         }
-
+        if (OnGameOver)
+        {
+            OnGameOver.OnEventRaised += DisableSpawn;
+        }
         SpawnPlatforms(NumberOfPlatformsToSpawn, true);
 
     }
-    private void OnDestroy()
+    public void EnableSpawn()
+    {
+        spawn = true;
+    }
+    public void DisableSpawn()
+    {
+        spawn = false;
+    }
+    private void OnDisable()
     {
         if (OnPlatformRecycle)
         {
             OnPlatformRecycle.OnEventRaised -= SpawnPlatforms;
+        }
+        if (OnGameOver)
+        {
+            OnGameOver.OnEventRaised -= DisableSpawn;
         }
     }
     public void SpawnPlatforms()
@@ -51,6 +68,10 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     public void SpawnPlatforms(uint count, bool setMaterial = false)
     {
+        if(!spawn)
+        {
+            return;
+        }
         for (int i = 0; i < count; i++)
         {
             //normal platform spawn

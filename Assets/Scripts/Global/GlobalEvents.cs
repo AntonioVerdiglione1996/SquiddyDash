@@ -10,6 +10,7 @@ public class GlobalEvents : ScriptableObject
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
     public BasicEvent GameOverEvent;
+
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
 #endif
@@ -19,7 +20,7 @@ public class GlobalEvents : ScriptableObject
 
     private void OnEnable()
     {
-        if(GameOverEvent)
+        if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised += IncreaseGameCurrency;
             GameOverEvent.OnEventRaised += GameOverTrigger;
@@ -27,7 +28,7 @@ public class GlobalEvents : ScriptableObject
     }
     private void OnDisable()
     {
-        if(GameOverEvent)
+        if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised -= IncreaseGameCurrency;
             GameOverEvent.OnEventRaised -= GameOverTrigger;
@@ -103,6 +104,10 @@ public class GlobalEvents : ScriptableObject
 #endif
     }
     public void ChangeTimeScale(int value)
+    {
+        ChangeTimeScale((float)value);
+    }
+    public void ChangeTimeScale(float value)
     {
 #if UNITY_EDITOR
         float previousTimeScale = Time.timeScale;
