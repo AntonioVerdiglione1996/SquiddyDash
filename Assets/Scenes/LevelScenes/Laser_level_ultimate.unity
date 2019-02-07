@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1312,19 +1312,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color1:
     serializedVersion: 2
-    key0: {r: 0.25, g: 0.16911764, b: 0.16911764, a: 1}
-    key1: {r: 0.9044118, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 1}
-    key3: {r: 1, g: 0, b: 0, a: 0}
-    key4: {r: 0.2352941, g: 0.20761244, b: 0.20761244, a: 0}
+    key0: {r: 0.22794116, g: 0.16089964, b: 0.16089964, a: 1}
+    key1: {r: 0.2352941, g: 0.08823529, b: 0.08823529, a: 1}
+    key2: {r: 0.008530992, g: 0.007527346, b: 0.007527346, a: 1}
+    key3: {r: 0.2352941, g: 0.20761244, b: 0.20761244, a: 0}
+    key4: {r: 1, g: 0, b: 0, a: 0}
     key5: {r: 0.27205884, g: 0.042009093, b: 0.2657127, a: 0}
     key6: {r: 0.27205884, g: 0.042009093, b: 0.2657127, a: 0}
     key7: {r: 0.27205884, g: 0.042009093, b: 0.2657127, a: 0}
     ctime0: 0
-    ctime1: 11951
-    ctime2: 28142
-    ctime3: 49730
-    ctime4: 65342
+    ctime1: 28142
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 65535
     ctime5: 65535
     ctime6: 65535
     ctime7: 65535
@@ -1337,9 +1337,9 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 5
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  multiplier: 2
+  multiplier: 0.2
   duration: 3
 --- !u!114 &1259412785
 MonoBehaviour:
@@ -1598,7 +1598,7 @@ Prefab:
       objectReference: {fileID: 1259412789}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -509.375
+      value: -511.3582
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1618,7 +1618,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 509.375
+      value: 511.3582
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -956,7 +956,7 @@ Prefab:
     - target: {fileID: 114858104057557516, guid: ce77bcb46c2ce774381b64847d34d9d0,
         type: 2}
       propertyPath: MaxWindVelocity.y
-      value: 90
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce77bcb46c2ce774381b64847d34d9d0, type: 2}
@@ -1206,6 +1206,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114796510996935004, guid: 6d66d5f6fabc0d8409000df996001fa4,
+        type: 2}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 790111207}
+    - target: {fileID: 114835219694571498, guid: 6d66d5f6fabc0d8409000df996001fa4,
+        type: 2}
+      propertyPath: StartPlatform
+      value: 
+      objectReference: {fileID: 1215832080}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
   m_IsPrefabParent: 0
@@ -1484,7 +1494,7 @@ Prefab:
       objectReference: {fileID: 589688054}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -511.43884
+      value: -511.25
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1504,7 +1514,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 511.43884
+      value: 511.25
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1567,6 +1577,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1215832080 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114466032024727906, guid: ea9e6bdda74366c4282703e0ba12c9ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1215832079}
+  m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
 --- !u!1 &1299669073
 GameObject:
   m_ObjectHideFlags: 0
