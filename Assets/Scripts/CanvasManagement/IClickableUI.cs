@@ -5,7 +5,8 @@ public enum EConsumeInput
 {
     None,
     ConsumeUIOnly,
-    Consume
+    Consume,
+    ConsumePlayerOnly,
 }
 public abstract class IClickableUI : MonoBehaviour
 {

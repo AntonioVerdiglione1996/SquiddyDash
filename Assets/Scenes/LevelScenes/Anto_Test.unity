@@ -1411,9 +1411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConsumeClickDown: 2
-  ConsumeClickUp: 2
-  ConsumeClickPressed: 2
+  ConsumeClickDown: 3
+  ConsumeClickUp: 3
+  ConsumeClickPressed: 3
   self: {fileID: 1243831710}
   input: {fileID: 846212338}
   OnClickDownEvent:

@@ -193,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConsumeClickDown: 2
-  ConsumeClickUp: 2
-  ConsumeClickPressed: 2
+  ConsumeClickDown: 3
+  ConsumeClickUp: 3
+  ConsumeClickPressed: 3
   self: {fileID: 8309536}
   input: {fileID: 790111207}
   OnClickDownEvent:
@@ -1516,7 +1516,7 @@ Prefab:
       objectReference: {fileID: 589688054}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -511.43884
+      value: -509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1536,7 +1536,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 511.43884
+      value: 509.375
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y

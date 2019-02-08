@@ -56,6 +56,7 @@ public class CustomClickInput : MonoBehaviour
 
         bool inputConsumed = false;
         bool inputUiConsumed = false;
+        bool inputPlayerConsumed = false;
 
         while (currentNode != null && !inputUiConsumed)
         {
@@ -82,8 +83,10 @@ public class CustomClickInput : MonoBehaviour
                         currentUi.OnClickPressed();
                         consumeType = currentUi.ConsumeClickPressed;
                     }
-                    inputConsumed = consumeType == EConsumeInput.Consume;
-                    inputUiConsumed = inputConsumed || consumeType == EConsumeInput.ConsumeUIOnly;
+                    //if the following booleans are ever set to true they will remain true no matter what the consume type is
+                    inputConsumed = inputConsumed || consumeType == EConsumeInput.Consume;
+                    inputPlayerConsumed = inputPlayerConsumed || inputConsumed || consumeType == EConsumeInput.ConsumePlayerOnly;
+                    inputUiConsumed = inputUiConsumed || inputConsumed || consumeType == EConsumeInput.ConsumeUIOnly;
                 }
             }
             else
@@ -93,7 +96,7 @@ public class CustomClickInput : MonoBehaviour
             currentNode = nextNode;
         }
 
-        return inputConsumed;
+        return inputPlayerConsumed;
     }
     private void UpdateInput()
     {
