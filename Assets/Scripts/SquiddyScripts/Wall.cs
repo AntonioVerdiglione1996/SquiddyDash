@@ -17,11 +17,11 @@ public class Wall : MonoBehaviour
     public Walls Walls;
     private void OnValidate()
     {
-        if(!Walls)
+        if (!Walls)
         {
             Walls = GetComponentInParent<Walls>();
         }
-        if(!Collider)
+        if (!Collider)
         {
             Collider = GetComponent<BoxCollider>();
         }
@@ -29,9 +29,15 @@ public class Wall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Walls.OnCollisionEntered(collision, this);
+#if UNITY_EDITOR
+        Debug.LogWarningFormat("{0} of type {1} called oncollisionenter at {2} with {3}", this, Type, Time.time, collision.gameObject);
+#endif
     }
     private void OnTriggerStay(Collider other)
-    {    
+    {
         Walls.OnTriggerStaying(other, this);
+#if UNITY_EDITOR
+        Debug.LogWarningFormat("{0} of type {1} called ontriggerstay at {2} with {3}", this, Type, Time.time, other.gameObject);
+#endif
     }
 }

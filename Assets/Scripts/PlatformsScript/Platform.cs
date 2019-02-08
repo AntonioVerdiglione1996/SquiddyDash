@@ -91,7 +91,7 @@ public class Platform : MonoBehaviour
             Poolable = gameObject;
         }
         Start();
-        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn)
+        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn && CurrentPlatformForSquiddy.CurrentPlatform != this)
         {
             Pool.Recycle(Poolable);
             if (PlatformRecycled)
