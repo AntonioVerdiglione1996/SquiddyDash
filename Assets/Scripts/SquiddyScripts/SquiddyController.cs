@@ -39,30 +39,11 @@ public class SquiddyController : MonoBehaviour
 
     private Platform currentPlatform;
     private Camera MainCamera;
+    [SerializeField]
+    private Animator animator;
 
     public BasicEvent OnBorderCollisionEvent;
 
-    private void Start()
-    {
-        Splash splash = transform.root.GetComponentInChildren<Splash>(true);
-        if (splash)
-        {
-            Splash = splash.GetComponent<ParticleSystem>();
-        }
-#if UNITY_EDITOR
-        if (!Splash)
-        {
-            if (!splash)
-            {
-                Debug.LogWarning("Splash component not found!!");
-            }
-            else
-            {
-                Debug.LogWarning("Splash particle system not found!!");
-            }
-        }
-#endif
-    }
     private void Awake()
     {
         if (OnBorderCollisionEvent)
@@ -78,6 +59,9 @@ public class SquiddyController : MonoBehaviour
         {
             MainCamera = Camera.main;
         }
+
+        animator = GetComponentInChildren<Animator>();
+
         if (!StartPlatform)
         {
             StartPlatform = FindObjectOfType<StartPlatform>().GetComponent<Platform>();
@@ -113,13 +97,35 @@ public class SquiddyController : MonoBehaviour
         }
 
     }
+    private void Start()
+    {
+        Splash splash = transform.root.GetComponentInChildren<Splash>(true);
+        if (splash)
+        {
+            Splash = splash.GetComponent<ParticleSystem>();
+        }
+#if UNITY_EDITOR
+        if (!Splash)
+        {
+            if (!splash)
+            {
+                Debug.LogWarning("Splash component not found!!");
+            }
+            else
+            {
+                Debug.LogWarning("Splash particle system not found!!");
+            }
+        }
+#endif
+    }
+
     private void DisableRoot()
     {
         this.transform.root.gameObject.SetActive(false);
     }
     private void OnDestroy()
     {
-        if(OnClickDown)
+        if (OnClickDown)
         {
             OnClickDown.OnEventRaised -= OnClicked;
         }
@@ -161,18 +167,16 @@ public class SquiddyController : MonoBehaviour
     {
         if (!IsJumping)
         {
-            CircleLowToBig.Play();
             Jump();
         }
         else
         {
-            CircleBigToLow.Play();
-            LandParticle.Play();
+
             Land();
         }
     }
     void Update()
-    { 
+    {
         if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
         {
             UltimateSkill.InvokeSkill(false);
@@ -204,19 +208,30 @@ public class SquiddyController : MonoBehaviour
     }
     public void Jump()
     {
+
+        if (CircleLowToBig != null)
+            CircleLowToBig.Play();
         if (PlayJumpSound && ASource)
             PlayJumpSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
+        if (animator != null)
+            animator.SetBool("IsJumping", true);
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
     }
     public void Land()
     {
+        if (CircleBigToLow != null)
+            CircleBigToLow.Play();
+        if (LandParticle != null)
+            LandParticle.Play();
         if (PlayLandSound && ASource)
             PlayLandSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
+        if (animator != null)
+            animator.SetBool("IsJumping", false);
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
         if (OnLanding)
         {

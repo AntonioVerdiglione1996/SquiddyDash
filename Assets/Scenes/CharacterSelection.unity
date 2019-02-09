@@ -1655,6 +1655,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d824e080f277a54a9cb94897e355028, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &726638952 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799,
+    type: 2}
+  m_PrefabInternal: {fileID: 1665672785}
 --- !u!1001 &765328826
 Prefab:
   m_ObjectHideFlags: 0
@@ -2302,26 +2307,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 896228688}
---- !u!1 &924303316 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1645599302651164, guid: 32bf0b96ec5399040b29713eb5a90926,
-    type: 2}
-  m_PrefabInternal: {fileID: 2113102527}
---- !u!114 &924303317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 924303316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1696299f64052424e9637cfe604a7bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 1
-  duration: 1
-  minY: -0.5
-  maxY: 0.5
 --- !u!1 &985626305 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1688942623524902, guid: 3d824e080f277a54a9cb94897e355028,
@@ -3486,6 +3471,48 @@ MonoBehaviour:
   duration: 1
   minY: -0.5
   maxY: 0.5
+--- !u!1001 &1665672785
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1886690779}
+    m_Modifications:
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244480226259906, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1674555304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,16 +3818,11 @@ Transform:
   - {fileID: 1132763962}
   - {fileID: 549044310}
   - {fileID: 1437410674}
-  - {fileID: 1938910633}
+  - {fileID: 726638952}
   - {fileID: 407129766}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1938910633 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926,
-    type: 2}
-  m_PrefabInternal: {fileID: 2113102527}
 --- !u!1 &1972068902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,59 +4037,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2056537964}
---- !u!1001 &2113102527
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1886690779}
-    m_Modifications:
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800772871955446, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114431102520009064, guid: 32bf0b96ec5399040b29713eb5a90926,
-        type: 2}
-      propertyPath: Icon
-      value: 
-      objectReference: {fileID: 21300000, guid: b0d9910b4f8fab64b8aa6e5f63d11d34,
-        type: 3}
-    - target: {fileID: 114431102520009064, guid: 32bf0b96ec5399040b29713eb5a90926,
-        type: 2}
-      propertyPath: Name
-      value: Vulkan
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 32bf0b96ec5399040b29713eb5a90926, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2113639645 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1367804727374798, guid: a5a0addab2686c9468091a2d809abd00,
