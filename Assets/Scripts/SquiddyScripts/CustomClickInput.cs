@@ -20,6 +20,8 @@ public class CustomClickInput : MonoBehaviour
     public EClickState ClickState { get; private set; }
     public Vector2 ScreenPosition { get; private set; }
     public Vector2 PreviousScreenPosition { get; private set; }
+    public bool DebugEnabled = true;
+    public Color DebugColor = Color.green;
     private void Awake()
     {
         ClickState = EClickState.None;
@@ -48,6 +50,38 @@ public class CustomClickInput : MonoBehaviour
                 OnClickUp.Raise();
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        if (!DebugEnabled)
+        {
+            return;
+        }
+        LinkedListNode<IClickableUI> currentNode = Ui.First;
+        LinkedListNode<IClickableUI> nextNode = null;
+
+        while (currentNode != null)
+        {
+            nextNode = currentNode.Next;
+            IClickableUI currentUi = currentNode.Value;
+
+            if (currentUi)
+            {
+                Vector3 size = currentUi.Self.rect.size;
+                size.z = DefaultBoundsSizeZ;
+                Vector2 pivot = currentUi.Self.pivot;
+                Vector3 position = currentUi.Self.transform.position;
+                position.x += size.x * (0.5f - pivot.x);
+                position.y += size.y * (0.5f - pivot.y);
+                position.z = 0f;
+                Bounds bound = new Bounds(position, size);
+
+                Gizmos.DrawWireCube(bound.center, bound.size);
+            }
+            currentNode = nextNode;
+        }
+#endif
     }
     private void UpdateInput()
     {
