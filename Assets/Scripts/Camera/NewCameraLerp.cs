@@ -45,6 +45,13 @@ public class NewCameraLerp : MonoBehaviour
             StartLerpEvent2.OnEventRaised -= SetEndPoint;
         }
     }
+    private void OnValidate()
+    {
+        if (!DefaultTarget)
+        {
+            DefaultTarget = FindObjectOfType<SquiddyController>().transform.root;
+        }
+    }
     void Start()
     {
         cameraArm = new Vector3(0f, 9f, -20f);
@@ -56,7 +63,7 @@ public class NewCameraLerp : MonoBehaviour
     {
         if(!DefaultTarget)
         {
-            DefaultTarget = FindObjectOfType<CharacterController>().transform.root;
+            DefaultTarget = FindObjectOfType<SquiddyController>().transform.root;
         }
         SetEndPoint(DefaultTarget);
     }

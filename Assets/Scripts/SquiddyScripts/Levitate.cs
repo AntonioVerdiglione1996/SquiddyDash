@@ -11,10 +11,10 @@ public class Levitate : MonoBehaviour
     private float duration = 1f;
 
     [SerializeField]
-    private float minY = 0f;
+    private float minY = -0.5f;
 
     [SerializeField]
-    private float maxY = 2f;
+    private float maxY = 1f;
     void Update()
     {
         float t = Mathf.PingPong(Time.time * multiplier, duration) / duration;
