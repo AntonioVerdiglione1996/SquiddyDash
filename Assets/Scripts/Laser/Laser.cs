@@ -21,6 +21,8 @@ public class Laser : MonoBehaviour
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
 
+    public GameObject OnPlayerDeathParticle;
+
     private LinkedListNode<TimerData> timer;
     private void OnValidate()
     {
@@ -81,6 +83,10 @@ public class Laser : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             this.enabled = false;
+            if (OnPlayerDeathParticle)
+            {
+                Instantiate(OnPlayerDeathParticle, CharacterTransform.position, CharacterTransform.rotation);
+            }
             if (GameOver)
             {
                 GameOver.Raise();

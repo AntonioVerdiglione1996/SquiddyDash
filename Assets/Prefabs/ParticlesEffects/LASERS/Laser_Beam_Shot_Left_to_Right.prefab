@@ -137,6 +137,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  OnPlayerDeathParticle: {fileID: 1365656158052374, guid: 2a2af400d0ea3af41b3e2bf783d48961,
+    type: 2}
 --- !u!136 &136607432525946888
 CapsuleCollider:
   m_ObjectHideFlags: 1

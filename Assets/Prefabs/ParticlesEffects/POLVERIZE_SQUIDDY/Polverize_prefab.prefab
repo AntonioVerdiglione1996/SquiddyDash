@@ -40,8 +40,6 @@ GameObject:
   - component: {fileID: 4906259362477950}
   - component: {fileID: 198434024902490514}
   - component: {fileID: 199579637184024164}
-  - component: {fileID: 114092487662849996}
-  - component: {fileID: 114686890657411622}
   m_Layer: 15
   m_Name: Polverize_prefab
   m_TagString: Untagged
@@ -76,17 +74,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114092487662849996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365656158052374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4adbe9e7cf47f0c40a0b517ce71ff3ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114434676024023958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,18 +86,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeTime: 1
---- !u!114 &114686890657411622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365656158052374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a6aaa017034ab4eac294492b9028c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LifeTime: 1
+  Pool: {fileID: 0}
+  Obj: {fileID: 0}
+  TimeHelper: {fileID: 0}
+  UseObjectPoolerIfPoolIsNotDefined: 0
 --- !u!114 &114906728470632878
 MonoBehaviour:
   m_ObjectHideFlags: 1
