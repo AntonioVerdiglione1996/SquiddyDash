@@ -366,6 +366,8 @@ MonoBehaviour:
   OnClickDown: {fileID: 11400000, guid: 107b0777af64a1f40a779f8b19f26422, type: 2}
   OnClickUp: {fileID: 11400000, guid: 95590cbdab998b8429d2b998d0155e29, type: 2}
   OnClickPressed: {fileID: 11400000, guid: 0f37b51e17c1d6744b9349ceb7fe43e2, type: 2}
+  JumpForceMultiplier: 1
+  LandForceMultiplier: 1
   animator: {fileID: 0}
   OnBorderCollisionEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee,
     type: 2}

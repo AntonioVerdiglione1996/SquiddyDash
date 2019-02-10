@@ -31,6 +31,9 @@ public class SquiddyController : MonoBehaviour
     public BasicEvent OnClickUp;
     public BasicEvent OnClickPressed;
 
+    public float JumpForceMultiplier = 1f;
+    public float LandForceMultiplier = 1f;
+
     public bool IsJumping { get { return !(transform.parent); } }
 
     private Platform currentPlatform;
@@ -176,7 +179,6 @@ public class SquiddyController : MonoBehaviour
     }
     public void Jump()
     {
-
         if (CircleLowToBig != null)
             CircleLowToBig.Play();
         if (PlayJumpSound && ASource)
@@ -186,7 +188,7 @@ public class SquiddyController : MonoBehaviour
         if (animator != null)
             animator.SetBool("IsJumping", true);
         Vector3 dir = directionSwitcher();
-        Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
+        Rb.AddForce(dir * SquiddyStats.JumpPower * JumpForceMultiplier, ForceMode.Impulse);
     }
     public void Land()
     {
@@ -200,7 +202,7 @@ public class SquiddyController : MonoBehaviour
             CameraShake.Raise();
         if (animator != null)
             animator.SetBool("IsJumping", false);
-        Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
+        Rb.AddForce(-Vector3.up * SquiddyStats.LandForce * LandForceMultiplier, ForceMode.VelocityChange);
         if (OnLanding)
         {
             OnLanding.Raise();
