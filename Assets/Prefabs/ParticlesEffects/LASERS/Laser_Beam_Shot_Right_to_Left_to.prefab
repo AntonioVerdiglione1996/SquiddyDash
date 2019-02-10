@@ -126,8 +126,9 @@ MonoBehaviour:
   - {fileID: 199579989651407768}
   - {fileID: 199184075341208460}
   - {fileID: 199301390441770088}
-  DisablerEvent: {fileID: 0}
+  DisablerEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
   EnablerEvent: {fileID: 11400000, guid: b5396a3f988217f40ae093aa9566668b, type: 2}
+  GameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   DisableDuration: 0.3
   AdditiveStrenghtCurve:
     serializedVersion: 2

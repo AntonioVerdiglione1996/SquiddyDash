@@ -5,32 +5,39 @@ using UnityEngine.UI;
 
 public class UI_ParticleSystemActivator : MonoBehaviour
 {
-    public GameObject UI_PS;
-    public Image SkillImage;
+    public UIParticleSystem UI_PS;
+    public ButtonSkillActivator SkillActivator;
 
     private void Awake()
     {
-        //always initialize the UI particle system of the skill at false
-        if (UI_PS != null)
+        DisableParticles();
+        if (SkillActivator)
         {
-            UI_PS.SetActive(false);
+            SkillActivator.OnSkillInvoked += DisableParticles;
+            SkillActivator.OnSkillReady += ActivateParticles;
         }
+#if UNITY_EDITOR
+        else
+        {
+            Debug.LogErrorFormat("{0} does not have a valid reference to a skill activator!", this);
+        }
+#endif
     }
-    private void Update()
+    private void OnDestroy()
     {
-        if (SkillImage != null)
+        if (SkillActivator)
         {
-            if (SkillImage.fillAmount >= 1)
-            {
-
-                UI_PS.SetActive(true);
-                UI_PS.GetComponent<UIParticleSystem>().Play();
-            }
-            else
-            {
-                UI_PS.SetActive(false);
-            }
+            SkillActivator.OnSkillInvoked -= DisableParticles;
+            SkillActivator.OnSkillReady -= ActivateParticles;
         }
     }
-    
+    public void ActivateParticles()
+    {
+        UI_PS.enabled = true;
+        UI_PS.Play();
+    }
+    public void DisableParticles()
+    {
+        UI_PS.enabled = false;
+    }
 }

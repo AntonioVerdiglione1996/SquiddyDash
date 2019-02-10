@@ -16,6 +16,7 @@ public class Laser : MonoBehaviour
 
     public SoundEvent DisablerEvent;
     public BasicEvent EnablerEvent;
+    public BasicEvent GameOver;
     public float DisableDuration = 0.3f;
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
@@ -31,7 +32,7 @@ public class Laser : MonoBehaviour
                 CharacterTransform = controller.transform;
             }
         }
-        if(!LaserTransform)
+        if (!LaserTransform)
         {
             LaserTransform = transform;
         }
@@ -68,7 +69,7 @@ public class Laser : MonoBehaviour
     }
     private void Update()
     {
-        if(CharacterTransform && CharacterTransform.position.y > LaserTransform.position.y + HeightTollerance)
+        if (CharacterTransform && CharacterTransform.position.y > LaserTransform.position.y + HeightTollerance)
         {
             TimeHelper.RemoveTimer(timer);
             Pool.Recycle(LaserTransform.gameObject);
@@ -77,11 +78,13 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8)
         {
-#if UNITY_EDITOR
-            Debug.Log("Dead by lasers.");
-#endif
+            this.enabled = false;
+            if (GameOver)
+            {
+                GameOver.Raise();
+            }
         }
     }
 
