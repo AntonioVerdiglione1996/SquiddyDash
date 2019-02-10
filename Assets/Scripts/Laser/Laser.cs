@@ -21,6 +21,21 @@ public class Laser : MonoBehaviour
     public TimeHelper TimeHelper;
 
     private LinkedListNode<TimerData> timer;
+    private void OnValidate()
+    {
+        if (!CharacterTransform)
+        {
+            SquiddyController controller = FindObjectOfType<SquiddyController>();
+            if (controller)
+            {
+                CharacterTransform = controller.transform;
+            }
+        }
+        if(!LaserTransform)
+        {
+            LaserTransform = transform;
+        }
+    }
     public void OnEnable()
     {
         if (!CharacterTransform)

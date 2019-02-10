@@ -9,7 +9,10 @@ public class LaserSpawner : MonoBehaviour
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
     public SOPool Pool;
     public Camera MainCamera;
-    public float SpawnChance = 0.1f;
+    public float SpawnChance = 0.2f;
+    public float ScoreMultiplierAddedToSpawnChance = 0.001f;
+    public ScoreSystem Score;
+    public float LeftOffset = -3f;
 
     private bool spawn = true;
     // Use this for initialization
@@ -22,7 +25,7 @@ public class LaserSpawner : MonoBehaviour
         }
         if (MainCamera)
         {
-            Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect;
+            Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect + LeftOffset;
         }
         if (OnPlatformMoved)
         {
@@ -60,7 +63,7 @@ public class LaserSpawner : MonoBehaviour
         }
         if (Pool && ReferenceLocation)
         {
-            if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance)
+            if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance + ScoreMultiplierAddedToSpawnChance * Score.Score)
             {
                 int nullObj;
                 Pool.Get(null, ReferenceLocation.position + Offset, out nullObj);

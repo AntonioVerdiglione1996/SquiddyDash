@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Character : MonoBehaviour
 {
-#if UNITY_EDITOR
     public bool DebugActive = true;
-#endif
     public string Name;
     public Color colorName;
     public Sprite Icon;
@@ -19,6 +17,7 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     private Skill[] Skills = null;
+    private List<Skill> updatingSkills = null;
 
     public float DefaultIconsHeightDistance = 128.0f;
 
@@ -74,7 +73,7 @@ public class Character : MonoBehaviour
     }
     private void StartRot()
     {
-        if (rotator)
+        if (rotator && !CurrentPlatformForSquiddy.CurrentPlatform)
         {
             rotator.ChangeCurrentState(DynamicRotatorState.Rotating);
         }
@@ -85,7 +84,7 @@ public class Character : MonoBehaviour
     }
     private void RestartRot()
     {
-        if (rotator)
+        if (rotator && !CurrentPlatformForSquiddy.CurrentPlatform)
         {
             rotator.TryCalculateNewRotationValues();
         }
@@ -158,7 +157,7 @@ public class Character : MonoBehaviour
                     RectTransform rect = skillIcon.GetComponent<RectTransform>();
                     if (rect)
                     {
-                        rect.position += new Vector3(0f,rect.rect.height * i, 0f);
+                        rect.position += new Vector3(0f, rect.rect.height * i, 0f);
                     }
                     else
                     {
@@ -167,21 +166,25 @@ public class Character : MonoBehaviour
                     skillIcon.gameObject.SetActive(true);
                     uiSpawnedCount++;
                 }
+                else if (skill.IsSkillAutoActivating)
+                {
+                    if (updatingSkills == null)
+                    {
+                        updatingSkills = new List<Skill>();
+                    }
+                    updatingSkills.Add(skill);
+                }
             }
         }
     }
 
     private void Update()
     {
-        if (Skills != null)
+        if (updatingSkills != null)
         {
-            for (int i = 0; i < Skills.Length; i++)
+            for (int i = 0; i < updatingSkills.Count; i++)
             {
-                Skill skill = Skills[i];
-                if (skill.IsSkillAutoActivating)
-                {
-                    skill.InvokeSkill();
-                }
+                updatingSkills[i].InvokeSkill();
             }
         }
     }

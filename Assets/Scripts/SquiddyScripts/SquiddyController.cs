@@ -122,7 +122,7 @@ public class SquiddyController : MonoBehaviour
         }
         if (OnBorderCollisionEvent)
         {
-            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+            OnBorderCollisionEvent.OnEventRaised -= BorderCollided;
         }
     }
     private void OnValidate()

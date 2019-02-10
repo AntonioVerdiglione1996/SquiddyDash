@@ -36,7 +36,7 @@ public class AssetBundleRootFolder : ScriptableObject
     public string GetManifestBundlePath()
     {
         //the manifest container will be automatically called like our platform folder name
-        return getAssetBundlePath(getPlatformPath());
+        return getAssetBundlePath(null);
     }
     /// <summary>
     /// Get AssetBundle folder path. Were our platforms folder will be.
@@ -56,7 +56,11 @@ public class AssetBundleRootFolder : ScriptableObject
     private string getAssetBundlePath(string assetBundleName)
     {
         string directory = Path.Combine(getRootPath(), BundlesDirectoryPath);
-        return Path.Combine(directory, Path.Combine(getPlatformPath(), assetBundleName));
+        if (assetBundleName != null)
+        {
+            return Path.Combine(directory, Path.Combine(getPlatformPath(), assetBundleName));
+        }
+        return Path.Combine(directory, getPlatformPath());
     }
     private string getRootPath()
     {

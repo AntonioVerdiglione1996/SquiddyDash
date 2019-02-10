@@ -19,7 +19,10 @@ public class CameraLerpBackgroundColor : MonoBehaviour
 
     void Update()
     {
-
+        if(duration <= 0f)
+        {
+            return;
+        }
         float t = Mathf.PingPong(Time.time * multiplier, duration) / duration;
         cam.backgroundColor = color1.Evaluate(t);
     }

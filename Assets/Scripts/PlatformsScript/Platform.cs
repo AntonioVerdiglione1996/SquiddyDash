@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public const float HeightTolleranceForDespawn = 1f;
+    public const float HeightTolleranceForDespawn = 5f;
 
     public bool DirRight;
 
@@ -102,10 +102,6 @@ public class Platform : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (PerformLerp)
-        {
-            PerformLerp.Raise();
-        }
         IsLanded = true;
     }
     private void OnCollisionStay(Collision collision)
@@ -133,6 +129,10 @@ public class Platform : MonoBehaviour
                 if (PlatformClaimed)
                 {
                     PlatformClaimed.Raise();
+                }
+                if (PerformLerp)
+                {
+                    PerformLerp.Raise();
                 }
             }
         }

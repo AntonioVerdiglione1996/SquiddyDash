@@ -778,8 +778,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd868d6df2b91145981baf922080587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceForTrigger: {fileID: 536914900}
-  SourceForVocalSayNameOfPowerUp: {fileID: 536914898}
+  AddLocalSourcesAtStartup: 1
+  AddChildSourcesAtStartup: 0
+  AddParentSourcesAtStartup: 0
+  AddSourcesInOnValidate: 1
+  Sources:
+  - {fileID: 536914900}
+  - {fileID: 536914898}
 --- !u!82 &536914900
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1012,8 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LerpSpeed: 2
   DefaultTarget: {fileID: 617022351}
-  StartLerpEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  StartLerpEvent2: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  StartLerpEvent: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
 --- !u!114 &589688051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,8 +1033,8 @@ MonoBehaviour:
   shakeDuration: 0.1
   shakeAmount: 20
   decreaseFactor: 1
-  BorderShakeEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
-  CameraShakeEvent: {fileID: 0}
+  ShakeEvent: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
+  StopShakeEvent: {fileID: 11400000, guid: 58a2808199dfe6443afae6ac79047c93, type: 2}
   DefaultShakeDuration: 0.25
   shakeY: 1
 --- !u!81 &589688052
@@ -1113,6 +1117,7 @@ MonoBehaviour:
   Windzone: {fileID: 587503768}
   Particles: {fileID: 279233178}
   MaxNumberOfParticlesAffected: 45
+  SingleParticleMass: 2
 --- !u!1001 &617022350
 Prefab:
   m_ObjectHideFlags: 0

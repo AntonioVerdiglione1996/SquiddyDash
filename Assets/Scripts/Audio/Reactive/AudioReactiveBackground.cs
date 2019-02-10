@@ -52,9 +52,13 @@ public class AudioReactiveBackground : MonoBehaviour
         for (int i = 0; i < numberOfObjects; i++)
         {
             Transform cube = reactiveCubes[i].transform;
-            Vector3 previusScale = cube.localScale;
-            previusScale.y = soundData[i] * ScaleMultiplier;
-            cube.localScale = Vector3.Lerp(cube.localScale, previusScale, LerpSmooth * deltaTime);
+
+            Vector3 targetScale, originalScale;
+            targetScale = originalScale = cube.localScale;
+
+            targetScale.y = soundData[i] * ScaleMultiplier;
+
+            cube.localScale = Vector3.Lerp(originalScale, targetScale, LerpSmooth * deltaTime);
         }
     }
 }

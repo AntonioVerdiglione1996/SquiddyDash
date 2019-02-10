@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4510566386131134}
   - component: {fileID: 198749607289334836}
   - component: {fileID: 199579989651407768}
+  - component: {fileID: 114182252377275600}
+  - component: {fileID: 136557731458096120}
   m_Layer: 0
   m_Name: Laser_Beam_Shot_Right_to_Left_to
   m_TagString: Untagged
@@ -82,8 +84,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778695132352672}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.527481, y: 0.74, z: -0.731573}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
   - {fileID: 4391774633543020}
   - {fileID: 4798378674037280}
@@ -103,6 +105,50 @@ Transform:
   m_Father: {fileID: 4510566386131134}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114182252377275600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778695132352672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4eb24b10e3a184ca745b5149ee1690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterTransform: {fileID: 0}
+  LaserTransform: {fileID: 4510566386131134}
+  HeightTollerance: 10
+  Pool: {fileID: 11400000, guid: 001dc7b0dfc1c184494cd4ae96c4c057, type: 2}
+  Colliders:
+  - {fileID: 136557731458096120}
+  Renderers:
+  - {fileID: 199579989651407768}
+  - {fileID: 199184075341208460}
+  - {fileID: 199301390441770088}
+  DisablerEvent: {fileID: 0}
+  EnablerEvent: {fileID: 11400000, guid: b5396a3f988217f40ae093aa9566668b, type: 2}
+  DisableDuration: 0.3
+  AdditiveStrenghtCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+--- !u!136 &136557731458096120
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778695132352672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 12
+  m_Direction: 0
+  m_Center: {x: 5.5, y: 0, z: 0}
 --- !u!198 &198236013680681192
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -163,7 +209,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1072116857
+  randomSeed: 740322027
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3543,7 +3589,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1484910479
+  randomSeed: -712759120
   InitialModule:
     serializedVersion: 3
     enabled: 1

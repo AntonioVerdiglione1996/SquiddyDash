@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 26266f9c00b7a0845ba623ec5b5577de, type: 2}
+  - {fileID: 2100000, guid: f1b0fea076fb0574d868f6e3d9523f52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,10 +145,12 @@ MonoBehaviour:
   PlatformClaimed: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Pool: {fileID: 0}
+  PlatformRecycled: {fileID: 0}
   Poolable: {fileID: 0}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 1
   PlatCollider: {fileID: 0}
+  ModifiableRenderers: []
 --- !u!114 &114539530126699110
 MonoBehaviour:
   m_ObjectHideFlags: 1
