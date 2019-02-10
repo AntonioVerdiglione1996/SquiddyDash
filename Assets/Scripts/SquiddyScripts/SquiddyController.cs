@@ -22,8 +22,6 @@ public class SquiddyController : MonoBehaviour
     public ParticleSystem CircleLowToBig;
     public ParticleSystem CircleBigToLow;
 
-    public Skill UltimateSkill;
-
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
     public Rigidbody Rb { get; private set; }
@@ -33,9 +31,6 @@ public class SquiddyController : MonoBehaviour
     public BasicEvent OnClickPressed;
 
     public bool IsJumping { get { return !(transform.parent); } }
-
-    [SerializeField]
-    private ButtonSkillActivator ultimateActivator;
 
     private Platform currentPlatform;
     private Camera MainCamera;
@@ -90,18 +85,6 @@ public class SquiddyController : MonoBehaviour
             CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
         }
 
-
-
-        if (UltimateSkill)
-        {
-            UltimateSkill.Initialize(this);
-            if (!UltimateSkill.IsSkillAutoActivating)
-            {
-                ultimateActivator.ActivableSkill = UltimateSkill;
-                ultimateActivator.gameObject.SetActive(true);
-            }
-        }
-
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised += DisableRoot;
@@ -134,11 +117,6 @@ public class SquiddyController : MonoBehaviour
     }
     private void OnValidate()
     {
-        if (!ultimateActivator)
-        {
-            ultimateActivator = GetComponentInChildren<ButtonSkillActivator>();
-        }
-
         if (!StartPlatform)
         {
             StartPlatform startP = FindObjectOfType<StartPlatform>();
@@ -146,10 +124,6 @@ public class SquiddyController : MonoBehaviour
             {
                 StartPlatform = startP.GetComponentInChildren<Platform>();
             }
-        }
-        if (!UltimateSkill)
-        {
-            UltimateSkill = GetComponentInChildren<UltimateSkill>();
         }
         Rigidbody bd = GetComponent<Rigidbody>();
         if (bd)
@@ -169,13 +143,6 @@ public class SquiddyController : MonoBehaviour
             CircleBigToLow.Play();
             LandParticle.Play();
             Land();
-        }
-    }
-    void Update()
-    { 
-        if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
-        {
-            UltimateSkill.InvokeSkill(false);
         }
     }
     public void BorderCollided()

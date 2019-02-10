@@ -7,6 +7,11 @@ public struct ReactiveClipData
 {
     public float Timestamp;
     public byte Strenght;
+    public ReactiveClipData(float time, byte strenght)
+    {
+        Timestamp = time;
+        Strenght = strenght;
+    }
 }
 [CreateAssetMenu(menuName = "Audio/ReactiveClip")]
 public class AudioReactiveClip : ScriptableObject

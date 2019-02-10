@@ -306,6 +306,7 @@ MonoBehaviour:
   Type: 2
   Collider: {fileID: 65491317342298662}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114302384429223266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +321,7 @@ MonoBehaviour:
   Type: 1
   Collider: {fileID: 65099040822710264}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114863664970351206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +336,7 @@ MonoBehaviour:
   Type: 4
   Collider: {fileID: 65663369609172076}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114912249470452374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,6 +351,7 @@ MonoBehaviour:
   Type: 3
   Collider: {fileID: 65093191831608884}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114929375991889300
 MonoBehaviour:
   m_ObjectHideFlags: 1

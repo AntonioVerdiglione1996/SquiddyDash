@@ -110,8 +110,8 @@ MonoBehaviour:
     m_RotationOrder: 0
   IntervallToDefaultIntensity: 1
   WindVelocity: {x: 0, y: 0, z: 0}
-  MaxWindVelocity: {x: 255, y: 125, z: 0}
-  MinWindVelocity: {x: -255, y: -4, z: 0}
+  MaxWindVelocity: {x: 125, y: 50, z: 0}
+  MinWindVelocity: {x: -125, y: -4, z: 0}
   DefaultDirection: {x: 0, y: 1, z: 0}
 --- !u!114 &114990299907481676
 MonoBehaviour:

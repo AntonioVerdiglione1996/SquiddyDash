@@ -21,7 +21,6 @@ public class CustomClickInput : MonoBehaviour
     public Vector2 ScreenPosition { get; private set; }
     public Vector2 PreviousScreenPosition { get; private set; }
     public bool DebugEnabled = true;
-    public Color DebugColor = Color.green;
     private void Awake()
     {
         ClickState = EClickState.None;

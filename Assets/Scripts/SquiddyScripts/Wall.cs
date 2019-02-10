@@ -15,6 +15,7 @@ public class Wall : MonoBehaviour
     public EWallType Type;
     public BoxCollider Collider;
     public Walls Walls;
+    public bool DebugEnabled = false;
     private void OnValidate()
     {
         if (!Walls)
@@ -30,14 +31,20 @@ public class Wall : MonoBehaviour
     {
         Walls.OnCollisionEntered(collision, this);
 #if UNITY_EDITOR
-        Debug.LogWarningFormat("{0} of type {1} called oncollisionenter at {2} with {3}", this, Type, Time.time, collision.gameObject);
+        if (DebugEnabled)
+        {
+            Debug.LogWarningFormat("{0} of type {1} called oncollisionenter at {2} with {3}", this, Type, Time.time, collision.gameObject);
+        }
 #endif
     }
     private void OnTriggerStay(Collider other)
     {
         Walls.OnTriggerStaying(other, this);
 #if UNITY_EDITOR
-        Debug.LogWarningFormat("{0} of type {1} called ontriggerstay at {2} with {3}", this, Type, Time.time, other.gameObject);
+        if (DebugEnabled)
+        {
+            Debug.LogWarningFormat("{0} of type {1} called ontriggerstay at {2} with {3}", this, Type, Time.time, other.gameObject);
+        }
 #endif
     }
 }

@@ -7,6 +7,7 @@ public class ExtendedWindParticleAffector : MonoBehaviour
     public ExtendedWindZone Windzone;
     public ParticleSystem Particles;
     public uint MaxNumberOfParticlesAffected = 100;
+    public float SingleParticleMass = 2f;
 
     public ParticleSystem.Particle[] ParticlesList { get; private set; }
     private void Awake()
@@ -34,11 +35,13 @@ public class ExtendedWindParticleAffector : MonoBehaviour
 
         int particleCount = Mathf.Min(particlesGettedCount, ParticlesList.Length);
 
-        Vector3 velocityChange = Windzone.WindVelocity * Time.deltaTime;
+        float massMultiplier = SingleParticleMass <= 0f ? 0f : 1f / SingleParticleMass;
+
+        Vector3 velocityChange = Windzone.WindVelocity * Time.deltaTime * massMultiplier;
 
         for (int i = 0; i < particleCount; i++)
         {
-            ParticlesList[i].velocity = ParticlesList[i].totalVelocity + velocityChange;
+            ParticlesList[i].velocity = velocityChange;
         }
 
         Particles.SetParticles(ParticlesList, particleCount);
