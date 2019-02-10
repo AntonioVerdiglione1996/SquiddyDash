@@ -99,7 +99,7 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        Skills = GetComponentsInChildren<Skill>();
+        Skills = transform.root.GetComponentsInChildren<Skill>();
     }
 
     private void Awake()
