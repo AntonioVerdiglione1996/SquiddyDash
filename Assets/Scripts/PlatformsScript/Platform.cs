@@ -58,7 +58,7 @@ public class Platform : MonoBehaviour
     }
     private void Update()
     {
-        if(!IsVisible)
+        if (!IsVisible)
         {
             OnBecameInvisible();
         }
@@ -118,12 +118,12 @@ public class Platform : MonoBehaviour
 #endif
         if (collision.gameObject.layer == 8 && IsLanded)
         {
-            if(OnLanded)
-            {
-                OnLanded.Raise();
-            }
             if (GlobalEvents.ParentToTarget(transform.root, collision.transform.root))
             {
+                if (OnLanded)
+                {
+                    OnLanded.Raise();
+                }
                 CurrentPlatformForSquiddy.CurrentPlatform = this;
             }
 
