@@ -108,7 +108,8 @@ public class SquiddyController : MonoBehaviour
 
     private void DisableRoot()
     {
-        this.transform.root.gameObject.SetActive(false);
+        this.transform.parent = null;
+        this.transform.gameObject.SetActive(false);
     }
     private void OnDestroy()
     {
