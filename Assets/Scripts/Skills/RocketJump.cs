@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UltimateSkill : Skill
+public class RocketJump : Skill
 {
     public ScoreSystem ScoreSystem;
 

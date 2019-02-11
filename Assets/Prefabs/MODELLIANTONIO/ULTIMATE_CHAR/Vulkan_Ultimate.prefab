@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23df0027b37b9694fa792a18780279f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  Describer: {fileID: 11400000, guid: e7d9a51e141713d4da9b9889a6a2f8f7, type: 2}
   IsAutoActivating: 0
   CoolDownDuration: 10
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1280,6 +1280,11 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: acbe7b0a0084649439771526600f6b61, type: 3}
+    - target: {fileID: 82985325945469966, guid: 42eb2682355553449a7abbb301cdb470,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
   m_IsPrefabParent: 0
@@ -1560,11 +1565,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnGameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   OnPlatformMoved: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
-  Offset: {x: 0, y: 5.5, z: 0}
+  Offset: {x: 0, y: 7, z: 0}
   Pool: {fileID: 11400000, guid: a1f10caacc35b1c4db2b63136ab9da1a, type: 2}
   MainCamera: {fileID: 1259412789}
   SpawnChance: 0.2
-  ScoreMultiplierAddedToSpawnChance: 0.001
+  ScoreMultiplierAddedToSpawnChance: 0.002
   Score: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   LeftOffset: -3
 --- !u!1001 &1418583786

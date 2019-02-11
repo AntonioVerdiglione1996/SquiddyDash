@@ -41,10 +41,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7807dd7f01c120b4aa7fb22bbcab404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Self: {fileID: 224674534371099904}
   ConsumeClickDown: 2
   ConsumeClickUp: 0
   ConsumeClickPressed: 0
+  self: {fileID: 224674534371099904}
   input: {fileID: 0}
   OnClickDownEvent:
     m_PersistentCalls:
@@ -134,8 +134,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.06415167}
-  m_AnchorMax: {x: 1, y: 0.21300001}
-  m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 60, y: -3}
+  m_AnchorMin: {x: 0.40625003, y: 0}
+  m_AnchorMax: {x: 0.5825, y: 0.11050001}
+  m_AnchoredPosition: {x: 1.5, y: 1.499999}
+  m_SizeDelta: {x: -6, y: 2}
   m_Pivot: {x: 1, y: 0.5}
