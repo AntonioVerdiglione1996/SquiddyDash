@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public abstract class Upgrade : ScriptableObject
 {
-    public SkillDescriber Describer;
+    public Describer Describer;
     public bool OverrideSkill = false;
     public bool OverridePowerup = false;
 

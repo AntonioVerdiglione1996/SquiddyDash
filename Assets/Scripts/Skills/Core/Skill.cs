@@ -8,7 +8,7 @@ public abstract class Skill : MonoBehaviour
     /// <summary>
     /// Object holding informations about this skill (no gameplay effect)
     /// </summary>
-    public SkillDescriber Describer;
+    public Describer Describer;
 
     public bool IsSkillAutoActivating { get { return IsAutoActivating; } }
 
@@ -104,13 +104,17 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = 0; i < Upgrades.Count; i++)
+            for (int i = Upgrades.Count - 1; i > 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)
                 {
                     isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
                     up.SkillUpdate(this);
+                }
+                else
+                {
+                    Upgrades.RemoveAt(i);
                 }
             }
         }
@@ -131,13 +135,17 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = 0; i < Upgrades.Count; i++)
+            for (int i = Upgrades.Count - 1; i > 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)
                 {
                     isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
                     up.SkillStop(this);
+                }
+                else
+                {
+                    Upgrades.RemoveAt(i);
                 }
             }
         }
@@ -167,13 +175,17 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = 0; i < Upgrades.Count; i++)
+            for (int i = Upgrades.Count - 1; i > 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)
                 {
                     isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
                     up.SkillStart(this);
+                }
+                else
+                {
+                    Upgrades.RemoveAt(i);
                 }
             }
         }

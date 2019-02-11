@@ -39,7 +39,7 @@ public class ShowModelUI : MonoBehaviour
         Sprite iconcur = null;
         if(charcur != null)
         {
-            iconcur = charcur.Icon;
+            iconcur = charcur.Describer.Image;
         }
      
         button.Initialize(Model, CharacterManager.EnableModel, iconcur);

@@ -1254,15 +1254,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Name: Void
-  colorName: {r: 0, g: 0, b: 0, a: 1}
-  Icon: {fileID: 21300000, guid: b16bfbf49643c65448f31f342423e159, type: 3}
+  Describer: {fileID: 11400000, guid: fbd7691145493b14f92aac49289247b5, type: 2}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
+  Locators: []
   Skills:
   - {fileID: 114650899932544834}
   DefaultIconsHeightDistance: 128

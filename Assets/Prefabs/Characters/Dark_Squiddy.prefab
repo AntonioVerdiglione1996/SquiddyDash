@@ -845,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
   IsAutoActivating: 1
+  Upgrades: []
   PercentageAverageToScore: 1.5
   AwardIntervall: 5
   MinAverageForReward: 5
@@ -860,8 +861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b5d8fefd636a349a8b258d4a4fba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
+  Describer: {fileID: 0}
   IsAutoActivating: 0
+  Upgrades: []
   CoolDownDuration: 30
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   Duration: 3
@@ -878,8 +880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d88480e02c8ee74ab385380d8bf70d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
+  Describer: {fileID: 0}
   IsAutoActivating: 0
+  Upgrades: []
   CoolDownDuration: 2
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   SlowTimePercentage: 0.5
@@ -896,15 +899,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Name: Void
-  colorName: {r: 0, g: 0, b: 0, a: 1}
-  Icon: {fileID: 21300004, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  Describer: {fileID: 0}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
+  Locators: []
   Skills:
   - {fileID: 114680239691414964}
   - {fileID: 114550726581504850}

@@ -49,13 +49,17 @@ public class PowerUp : MonoBehaviour
 
             if (Upgrades != null)
             {
-                for (int i = 0; i < Upgrades.Count; i++)
+                for (int i = Upgrades.Count - 1; i > 0; i--)
                 {
                     Upgrade up = Upgrades[i];
                     if (up)
                     {
                         isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                         up.ResetPowerup(this, currentLogic);
+                    }
+                    else
+                    {
+                        Upgrades.RemoveAt(i);
                     }
                 }
             }
@@ -126,13 +130,17 @@ public class PowerUp : MonoBehaviour
 
             if (Upgrades != null)
             {
-                for (int i = 0; i < Upgrades.Count; i++)
+                for (int i = Upgrades.Count - 1; i > 0; i--)
                 {
                     Upgrade up = Upgrades[i];
                     if (up)
                     {
                         isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                         up.InitPowerup(this, currentLogic);
+                    }
+                    else
+                    {
+                        Upgrades.RemoveAt(i);
                     }
                 }
             }
@@ -163,13 +171,17 @@ public class PowerUp : MonoBehaviour
 
                 if (Upgrades != null)
                 {
-                    for (int i = 0; i < Upgrades.Count; i++)
+                    for (int i = Upgrades.Count - 1; i > 0; i--)
                     {
                         Upgrade up = Upgrades[i];
                         if (up)
                         {
                             isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                             up.PowerUpCollected(other, this, currentLogic);
+                        }
+                        else
+                        {
+                            Upgrades.RemoveAt(i);
                         }
                     }
                 }

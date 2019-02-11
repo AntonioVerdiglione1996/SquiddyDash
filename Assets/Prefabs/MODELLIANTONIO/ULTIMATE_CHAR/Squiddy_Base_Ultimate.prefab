@@ -112,6 +112,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1488839252773812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4460858802801514}
+  - component: {fileID: 114814207873589936}
+  m_Layer: 8
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1500600287662920
 GameObject:
   m_ObjectHideFlags: 1
@@ -318,6 +334,19 @@ Transform:
   m_Father: {fileID: 4901918713578440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4460858802801514
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488839252773812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4596366207468806}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4465743232897564
 Transform:
   m_ObjectHideFlags: 1
@@ -381,6 +410,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4901918713578440}
+  - {fileID: 4460858802801514}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1003,15 +1033,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Name: Squiddy
-  colorName: {r: 0, g: 1, b: 0, a: 1}
-  Icon: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  Describer: {fileID: 11400000, guid: 510b3d97d5ab29d428bfec22cb8e0cba, type: 2}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
+  Locators:
+  - {fileID: 114814207873589936}
   Skills:
   - {fileID: 114500233823821174}
   DefaultIconsHeightDistance: 128
@@ -1068,3 +1098,15 @@ MonoBehaviour:
   MinMaxRotDuration: {x: 0.5, y: 2}
   DefaultRotation: {x: -0, y: -0, z: -0, w: 1}
   LerpSpeed: 10
+--- !u!114 &114814207873589936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488839252773812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfec7f054e572c4d9055fd609fb2680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocatorType: 2

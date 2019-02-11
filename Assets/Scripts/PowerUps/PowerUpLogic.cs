@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public abstract class PowerUpLogic : ScriptableObject
 {
-    public SkillDescriber Describer;
+    public Describer Describer;
     public Material[] Materials;
     public Mesh Mesh;
     //particle to instantiate after squiddy take the pu

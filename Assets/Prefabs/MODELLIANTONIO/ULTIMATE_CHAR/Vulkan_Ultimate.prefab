@@ -1221,15 +1221,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Name: Vulkan
-  colorName: {r: 1, g: 0.43448272, b: 0, a: 1}
-  Icon: {fileID: 21300000, guid: b0d9910b4f8fab64b8aa6e5f63d11d34, type: 3}
+  Describer: {fileID: 11400000, guid: 4fcb9b1dff28c984f884957d8006794f, type: 2}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
+  Locators: []
   Skills:
   - {fileID: 114535648387064572}
   DefaultIconsHeightDistance: 128

@@ -4,9 +4,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public bool DebugActive = true;
-    public string Name;
-    public Color colorName;
-    public Sprite Icon;
+    public Describer Describer;
 
     public BasicEvent StartRotation;
     public BasicEvent StopRotation;
@@ -14,6 +12,8 @@ public class Character : MonoBehaviour
     public BasicEvent StartLerpRotation;
 
     public ButtonSkillActivator SkillIconUIPrefab;
+
+    public AccessoryLocator[] Locators = new AccessoryLocator[0];
 
     [SerializeField]
     private Skill[] Skills = null;
@@ -98,7 +98,37 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        Skills = transform.root.GetComponentsInChildren<Skill>();
+        Skills = transform.root.GetComponentsInChildren<Skill>(true);
+        Locators = transform.root.GetComponentsInChildren<AccessoryLocator>(true);
+#if UNITY_EDITOR
+        if (Locators != null && DebugActive)
+        {
+            Dictionary<EAccessoryType, uint> appearences = new Dictionary<EAccessoryType, uint>();
+            for (int i = 0; i < Locators.Length; i++)
+            {
+                EAccessoryType type = Locators[i].LocatorType;
+                if (appearences.ContainsKey(type))
+                {
+                    appearences[type]++;
+                }
+                else
+                {
+                    appearences.Add(type, 1);
+                }
+            }
+            foreach (var item in appearences)
+            {
+                if (item.Key == EAccessoryType.None)
+                {
+                    Debug.LogWarningFormat("{0} found {1} invalid accessory locators! Make sure to mark all accessory locators with a valid type!", this, item.Value);
+                }
+                else if (item.Value > 1)
+                {
+                    Debug.LogWarningFormat("{0} found {1} duplicates of {2} accessory locator! only the first one will be considered", this, (item.Value - 1), item.Key);
+                }
+            }
+        }
+#endif
     }
 
     private void Awake()
