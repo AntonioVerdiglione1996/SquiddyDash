@@ -21,16 +21,11 @@ public class NewCameraLerp : MonoBehaviour
     private float lerp;
 
     public BasicEvent StartLerpEvent;
-    public BasicEvent StartLerpEvent2;
     private void Awake()
     {
         if (StartLerpEvent)
         {
             StartLerpEvent.OnEventRaised += SetEndPoint;
-        }
-        if (StartLerpEvent2)
-        {
-            StartLerpEvent2.OnEventRaised += SetEndPoint;
         }
         SetEndPoint();
     }
@@ -40,9 +35,12 @@ public class NewCameraLerp : MonoBehaviour
         {
             StartLerpEvent.OnEventRaised -= SetEndPoint;
         }
-        if (StartLerpEvent2)
+    }
+    private void OnValidate()
+    {
+        if (!DefaultTarget)
         {
-            StartLerpEvent2.OnEventRaised -= SetEndPoint;
+            DefaultTarget = FindObjectOfType<SquiddyController>().transform.root;
         }
     }
     void Start()
@@ -56,7 +54,7 @@ public class NewCameraLerp : MonoBehaviour
     {
         if(!DefaultTarget)
         {
-            DefaultTarget = FindObjectOfType<CharacterController>().transform.root;
+            DefaultTarget = FindObjectOfType<SquiddyController>().transform.root;
         }
         SetEndPoint(DefaultTarget);
     }

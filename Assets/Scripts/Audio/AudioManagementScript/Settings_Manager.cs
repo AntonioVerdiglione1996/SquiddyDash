@@ -6,17 +6,20 @@ using UnityEngine.Audio;
 [CreateAssetMenu(menuName = "Audio/SettingsManager")]
 public class Settings_Manager : ScriptableObject
 {
+    public const string MusicVolume = "Music_Volume";
+    public const string EffectsVolume = "Effects_Volume";
+    public const string SFXVolume = "Sfx_Volume";
     public AudioMixer AudioMixer;
     public void SetMusicVolume(float volume)
     {
-        AudioMixer.SetFloat("Music_Volume", volume);
+        AudioMixer.SetFloat(MusicVolume, volume);
     }
     public void SetEffectsVolume(float volume)
     {
-        AudioMixer.SetFloat("Effects_Volume", volume);
+        AudioMixer.SetFloat(EffectsVolume, volume);
     }
     public void SetSFXVolume(float volume)
     {
-        AudioMixer.SetFloat("Sfx_Volume", volume);
+        AudioMixer.SetFloat(SFXVolume, volume);
     }
 }

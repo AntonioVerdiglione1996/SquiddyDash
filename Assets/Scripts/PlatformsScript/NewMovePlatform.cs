@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Platform))]
 public class NewMovePlatform : MonoBehaviour
 {
+    public static float SpeedMultiplier = 1f;
+
     public float Speed;
     public float InitialSpeed { get; private set; }
 
@@ -32,7 +34,7 @@ public class NewMovePlatform : MonoBehaviour
     private void Update()
     {
 
-        root.position += dir * Speed * Time.deltaTime;
+        root.position += dir * Speed * Time.deltaTime * SpeedMultiplier;
         //la piattaforma sta toccando con il lato destro il muro destro
         if (root.position.x + (myTransform.localScale.x * 0.5f) >= MainCamera.orthographicSize * MainCamera.aspect)
         {

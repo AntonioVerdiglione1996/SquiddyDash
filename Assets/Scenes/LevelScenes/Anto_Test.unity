@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2191,7 +2191,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2215,8 +2215,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd868d6df2b91145981baf922080587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceForTrigger: {fileID: 1607499804}
-  SourceForVocalSayNameOfPowerUp: {fileID: 1607499806}
+  AddLocalSourcesAtStartup: 1
+  AddChildSourcesAtStartup: 0
+  AddParentSourcesAtStartup: 0
+  AddSourcesInOnValidate: 1
+  Sources:
+  - {fileID: 1607499804}
+  - {fileID: 1607499806}
 --- !u!82 &1607499806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2284,7 +2289,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2549,8 +2554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LerpSpeed: 2
   DefaultTarget: {fileID: 1647906374}
-  StartLerpEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  StartLerpEvent2: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  StartLerpEvent: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
 --- !u!114 &1911044049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,8 +2570,8 @@ MonoBehaviour:
   shakeDuration: 0.1
   shakeAmount: 20
   decreaseFactor: 1
-  BorderShakeEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
-  CameraShakeEvent: {fileID: 0}
+  ShakeEvent: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
+  StopShakeEvent: {fileID: 11400000, guid: 58a2808199dfe6443afae6ac79047c93, type: 2}
   DefaultShakeDuration: 0.2
   shakeY: 1
 --- !u!20 &1911044050

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public const float HeightTolleranceForDespawn = 1f;
+    public const float HeightTolleranceForDespawn = 5f;
 
     public bool DirRight;
 
@@ -15,6 +15,8 @@ public class Platform : MonoBehaviour
     public GlobalEvents GlobalEvents;
     public BasicEvent PerformLerp;
     public BasicEvent PlatformClaimed;
+    public BasicEvent OnLanded;
+    public BasicEvent OnLeft;
     public ScoreSystem ScoreSystem;
 
     public SOPool Pool;
@@ -56,7 +58,7 @@ public class Platform : MonoBehaviour
     }
     private void Update()
     {
-        if(!IsVisible)
+        if (!IsVisible)
         {
             OnBecameInvisible();
         }
@@ -102,10 +104,6 @@ public class Platform : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (PerformLerp)
-        {
-            PerformLerp.Raise();
-        }
         IsLanded = true;
     }
     private void OnCollisionStay(Collision collision)
@@ -122,6 +120,10 @@ public class Platform : MonoBehaviour
         {
             if (GlobalEvents.ParentToTarget(transform.root, collision.transform.root))
             {
+                if (OnLanded)
+                {
+                    OnLanded.Raise();
+                }
                 CurrentPlatformForSquiddy.CurrentPlatform = this;
             }
 
@@ -134,6 +136,10 @@ public class Platform : MonoBehaviour
                 {
                     PlatformClaimed.Raise();
                 }
+                if (PerformLerp)
+                {
+                    PerformLerp.Raise();
+                }
             }
         }
     }
@@ -145,6 +151,10 @@ public class Platform : MonoBehaviour
             GlobalEvents.ParentToTarget(null, collision.transform);
             CurrentPlatformForSquiddy.CurrentPlatform = null;
             DeactivateCollisions();
+            if (OnLeft)
+            {
+                OnLeft.Raise();
+            }
         }
     }
 }

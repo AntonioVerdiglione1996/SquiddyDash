@@ -332,8 +332,10 @@ MonoBehaviour:
   DirLeft: 0
   IsLanded: 0
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
-  PerformLerp: {fileID: 0}
+  PerformLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
   PlatformClaimed: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  OnLanded: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  OnLeft: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   Pool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
   PlatformRecycled: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}

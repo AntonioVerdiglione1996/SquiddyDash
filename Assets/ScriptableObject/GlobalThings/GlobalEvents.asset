@@ -14,6 +14,8 @@ MonoBehaviour:
   GameCurrency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
   Calculator: {fileID: 11400000, guid: 05f3973eae1b38749a29904d4e03acfc, type: 2}
   System: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  GameoverDelay: 1
   LocalDebugActive: 0
   currentLevel: {fileID: 0}

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286858955006290}
   - component: {fileID: 95622332587677318}
+  - component: {fileID: 114548386149469330}
   m_Layer: 8
   m_Name: AnimatorContainer
   m_TagString: Untagged
@@ -241,6 +242,7 @@ GameObject:
   - component: {fileID: 23431497194541498}
   - component: {fileID: 114788839173389414}
   - component: {fileID: 114333159869430594}
+  - component: {fileID: 114535648387064572}
   m_Layer: 8
   m_Name: Vulkan_Ultimate
   m_TagString: Untagged
@@ -1174,6 +1176,37 @@ MonoBehaviour:
   MinMaxRotDuration: {x: 0.5, y: 2}
   DefaultRotation: {x: 0, y: 0, z: 0, w: 1}
   LerpSpeed: 10
+--- !u!114 &114535648387064572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606466732025966}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23df0027b37b9694fa792a18780279f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  IsAutoActivating: 0
+  CoolDownDuration: 10
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  JumpForceMultiplier: 2
+  Duration: 5
+--- !u!114 &114548386149469330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080759455031326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0781a5e7a95bb434d99d11ca5333541c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLand: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  OnJump: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  AnimJumpName: IsJumping
 --- !u!114 &114788839173389414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1195,7 +1228,8 @@ MonoBehaviour:
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
-  Skills: []
+  Skills:
+  - {fileID: 114535648387064572}
   DefaultIconsHeightDistance: 128
 --- !u!114 &114850507537007830
 MonoBehaviour:

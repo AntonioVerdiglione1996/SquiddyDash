@@ -22,7 +22,6 @@ public class SquiddyController : MonoBehaviour
     public ParticleSystem CircleLowToBig;
     public ParticleSystem CircleBigToLow;
 
-    public Skill UltimateSkill;
 
     public SquiddyStats SquiddyStats;
     public Platform StartPlatform;
@@ -32,15 +31,13 @@ public class SquiddyController : MonoBehaviour
     public BasicEvent OnClickUp;
     public BasicEvent OnClickPressed;
 
-    public bool IsJumping { get { return !(transform.parent); } }
+    public float JumpForceMultiplier = 1f;
+    public float LandForceMultiplier = 1f;
 
-    [SerializeField]
-    private ButtonSkillActivator ultimateActivator;
+    public bool IsJumping { get { return !(transform.parent); } }
 
     private Platform currentPlatform;
     private Camera MainCamera;
-    [SerializeField]
-    private Animator animator;
 
     public BasicEvent OnBorderCollisionEvent;
 
@@ -60,8 +57,6 @@ public class SquiddyController : MonoBehaviour
             MainCamera = Camera.main;
         }
 
-        animator = GetComponentInChildren<Animator>();
-
         if (!StartPlatform)
         {
             StartPlatform = FindObjectOfType<StartPlatform>().GetComponent<Platform>();
@@ -72,18 +67,6 @@ public class SquiddyController : MonoBehaviour
         {
             CurrentPlatformForSquiddy.CurrentPlatform = StartPlatform;
             CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
-        }
-
-
-
-        if (UltimateSkill)
-        {
-            UltimateSkill.Initialize(this);
-            if (!UltimateSkill.IsSkillAutoActivating)
-            {
-                ultimateActivator.ActivableSkill = UltimateSkill;
-                ultimateActivator.gameObject.SetActive(true);
-            }
         }
 
         if (GameOverEvent)
@@ -121,7 +104,8 @@ public class SquiddyController : MonoBehaviour
 
     private void DisableRoot()
     {
-        this.transform.root.gameObject.SetActive(false);
+        this.transform.parent = null;
+        this.transform.gameObject.SetActive(false);
     }
     private void OnDestroy()
     {
@@ -135,16 +119,11 @@ public class SquiddyController : MonoBehaviour
         }
         if (OnBorderCollisionEvent)
         {
-            OnBorderCollisionEvent.OnEventRaised += BorderCollided;
+            OnBorderCollisionEvent.OnEventRaised -= BorderCollided;
         }
     }
     private void OnValidate()
     {
-        if (!ultimateActivator)
-        {
-            ultimateActivator = GetComponentInChildren<ButtonSkillActivator>();
-        }
-
         if (!StartPlatform)
         {
             StartPlatform startP = FindObjectOfType<StartPlatform>();
@@ -153,10 +132,7 @@ public class SquiddyController : MonoBehaviour
                 StartPlatform = startP.GetComponentInChildren<Platform>();
             }
         }
-        if (!UltimateSkill)
-        {
-            UltimateSkill = GetComponentInChildren<UltimateSkill>();
-        }
+
         Rigidbody bd = GetComponent<Rigidbody>();
         if (bd)
         {
@@ -171,15 +147,7 @@ public class SquiddyController : MonoBehaviour
         }
         else
         {
-
             Land();
-        }
-    }
-    void Update()
-    {
-        if (UltimateSkill && UltimateSkill.IsSkillAutoActivating)
-        {
-            UltimateSkill.InvokeSkill(false);
         }
     }
     public void BorderCollided()
@@ -208,17 +176,14 @@ public class SquiddyController : MonoBehaviour
     }
     public void Jump()
     {
-
         if (CircleLowToBig != null)
             CircleLowToBig.Play();
         if (PlayJumpSound && ASource)
             PlayJumpSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
-        if (animator != null)
-            animator.SetBool("IsJumping", true);
         Vector3 dir = directionSwitcher();
-        Rb.AddForce(dir * SquiddyStats.JumpPower, ForceMode.Impulse);
+        Rb.AddForce(dir * SquiddyStats.JumpPower * JumpForceMultiplier, ForceMode.Impulse);
     }
     public void Land()
     {
@@ -230,9 +195,7 @@ public class SquiddyController : MonoBehaviour
             PlayLandSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
-        if (animator != null)
-            animator.SetBool("IsJumping", false);
-        Rb.AddForce(-Vector3.up * SquiddyStats.LandForce, ForceMode.VelocityChange);
+        Rb.AddForce(-Vector3.up * SquiddyStats.LandForce * LandForceMultiplier, ForceMode.VelocityChange);
         if (OnLanding)
         {
             OnLanding.Raise();

@@ -306,6 +306,7 @@ MonoBehaviour:
   Type: 2
   Collider: {fileID: 65491317342298662}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114302384429223266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +321,7 @@ MonoBehaviour:
   Type: 1
   Collider: {fileID: 65099040822710264}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114863664970351206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +336,7 @@ MonoBehaviour:
   Type: 4
   Collider: {fileID: 65663369609172076}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114912249470452374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,6 +351,7 @@ MonoBehaviour:
   Type: 3
   Collider: {fileID: 65093191831608884}
   Walls: {fileID: 114929375991889300}
+  DebugEnabled: 0
 --- !u!114 &114929375991889300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,6 +370,8 @@ MonoBehaviour:
   - {fileID: 114863664970351206}
   MainCamera: {fileID: 0}
   BorderCollision: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
+  CameraShake: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
+  CameraLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
   TopCollision: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
   GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   RepulsionMultiplier: {x: 0.6, y: 0.8, z: 0}

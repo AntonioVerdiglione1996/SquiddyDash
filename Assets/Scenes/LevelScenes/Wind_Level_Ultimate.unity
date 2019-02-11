@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -685,6 +685,17 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114830152049273746, guid: 42eb2682355553449a7abbb301cdb470,
+        type: 2}
+      propertyPath: ClipData
+      value: 
+      objectReference: {fileID: 11400000, guid: d2e703d849dc74c498a50441fbf982e6,
+        type: 2}
+    - target: {fileID: 82985325945469966, guid: 42eb2682355553449a7abbb301cdb470,
+        type: 2}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42eb2682355553449a7abbb301cdb470, type: 2}
   m_IsPrefabParent: 0
@@ -830,7 +841,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -854,8 +865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd868d6df2b91145981baf922080587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceForTrigger: {fileID: 536914900}
-  SourceForVocalSayNameOfPowerUp: {fileID: 536914898}
+  AddLocalSourcesAtStartup: 1
+  AddChildSourcesAtStartup: 0
+  AddParentSourcesAtStartup: 0
+  AddSourcesInOnValidate: 1
+  Sources:
+  - {fileID: 536914900}
+  - {fileID: 536914898}
 --- !u!82 &536914900
 AudioSource:
   m_ObjectHideFlags: 0
@@ -923,7 +939,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -979,16 +995,6 @@ Prefab:
         type: 2}
       propertyPath: AffectedBody
       value: 
-      objectReference: {fileID: 617022352}
-    - target: {fileID: 114990299907481676, guid: ce77bcb46c2ce774381b64847d34d9d0,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114858104057557516, guid: ce77bcb46c2ce774381b64847d34d9d0,
-        type: 2}
-      propertyPath: MaxWindVelocity.y
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce77bcb46c2ce774381b64847d34d9d0, type: 2}
@@ -1097,9 +1103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LerpSpeed: 2
-  DefaultTarget: {fileID: 617022351}
-  StartLerpEvent: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  StartLerpEvent2: {fileID: 11400000, guid: a2e5986f25359ee4c9d65075bf789fff, type: 2}
+  DefaultTarget: {fileID: 1034365228}
+  StartLerpEvent: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
 --- !u!114 &589688051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,8 +1120,8 @@ MonoBehaviour:
   shakeDuration: 0.1
   shakeAmount: 20
   decreaseFactor: 1
-  BorderShakeEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
-  CameraShakeEvent: {fileID: 0}
+  ShakeEvent: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
+  StopShakeEvent: {fileID: 11400000, guid: 58a2808199dfe6443afae6ac79047c93, type: 2}
   DefaultShakeDuration: 0.25
   shakeY: 1
 --- !u!81 &589688052
@@ -1199,6 +1204,7 @@ MonoBehaviour:
   Windzone: {fileID: 587503768}
   Particles: {fileID: 279233178}
   MaxNumberOfParticlesAffected: 45
+  SingleParticleMass: 2
 --- !u!1001 &617022350
 Prefab:
   m_ObjectHideFlags: 0
@@ -1238,29 +1244,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114796510996935004, guid: 6d66d5f6fabc0d8409000df996001fa4,
-        type: 2}
-      propertyPath: input
-      value: 
-      objectReference: {fileID: 790111207}
-    - target: {fileID: 114835219694571498, guid: 6d66d5f6fabc0d8409000df996001fa4,
-        type: 2}
-      propertyPath: StartPlatform
-      value: 
-      objectReference: {fileID: 1215832080}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &617022351 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4,
-    type: 2}
-  m_PrefabInternal: {fileID: 617022350}
---- !u!54 &617022352 stripped
-Rigidbody:
-  m_PrefabParentObject: {fileID: 54785306299008804, guid: 6d66d5f6fabc0d8409000df996001fa4,
-    type: 2}
-  m_PrefabInternal: {fileID: 617022350}
 --- !u!1001 &759402359
 Prefab:
   m_ObjectHideFlags: 0
@@ -1526,7 +1512,7 @@ Prefab:
       objectReference: {fileID: 589688054}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -509.375
+      value: -508.4333
       objectReference: {fileID: 0}
     - target: {fileID: 4485484594348968, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1546,7 +1532,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 509.375
+      value: 508.4333
       objectReference: {fileID: 0}
     - target: {fileID: 4604125231961842, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1567,6 +1553,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2215432d06378cd449b4fc080a6a1838, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1034365228 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4,
+    type: 2}
+  m_PrefabInternal: {fileID: 617022350}
 --- !u!1001 &1215832079
 Prefab:
   m_ObjectHideFlags: 0
@@ -1609,12 +1600,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1215832080 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114466032024727906, guid: ea9e6bdda74366c4282703e0ba12c9ee,
-    type: 2}
-  m_PrefabInternal: {fileID: 1215832079}
-  m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
 --- !u!1 &1299669073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnGameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
-  Squiddy: {fileID: 617022351}
+  Squiddy: {fileID: 0}
   PlatformPool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
   PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
     type: 2}

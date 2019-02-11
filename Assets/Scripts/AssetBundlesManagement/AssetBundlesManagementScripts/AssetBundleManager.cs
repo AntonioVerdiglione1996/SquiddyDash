@@ -31,15 +31,18 @@ public class AssetBundleManager : ScriptableObject
     public void Initialise()
     {
         if (isInitialised) { return; }
-        isInitialised = true;
 
         string manifestBundlePath = AssetBundleRootFolder.GetManifestBundlePath();
         AssetBundle manifestBundle = AssetBundle.LoadFromFile(manifestBundlePath);
-        manifest = manifestBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+        if (manifestBundle)
+        {
+            manifest = manifestBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+            isInitialised = manifest;
 
 #if UNITY_EDITOR
-        Debug.LogFormat("AssetBundleManager initialised. AssetBundleManifest: '{0}'.", manifest);
+            Debug.LogFormat("AssetBundleManager initialised: {1}. AssetBundleManifest: '{0}'.", manifest, isInitialised);
 #endif
+        }
     }
     public void LoadAssetBundle(string assetBundleName)
     {

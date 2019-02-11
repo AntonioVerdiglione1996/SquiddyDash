@@ -1651,7 +1651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8062501, y: 0}
   m_AnchorMax: {x: 0.97625, y: 0.128}
-  m_AnchoredPosition: {x: 1.0000305, y: 1.3045044}
+  m_AnchoredPosition: {x: 1.0000305, y: 1.3045654}
   m_SizeDelta: {x: -2, y: 1.5299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520291301
@@ -4333,7 +4333,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1

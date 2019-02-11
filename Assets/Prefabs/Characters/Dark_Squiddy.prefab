@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 23783842198829110}
   - component: {fileID: 114833711474533468}
   - component: {fileID: 114065378254048996}
+  - component: {fileID: 114680239691414964}
   m_Layer: 8
   m_Name: Dark_Squiddy
   m_TagString: Untagged
@@ -866,6 +867,23 @@ MonoBehaviour:
   Duration: 3
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
   NewRepulsionMultiplier: {x: 0.8, y: 0.8, z: 0.8}
+--- !u!114 &114680239691414964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862803101919830}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d88480e02c8ee74ab385380d8bf70d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 11400000, guid: e7531043d6dc2ea40a205d0bc818b49e, type: 2}
+  IsAutoActivating: 0
+  CoolDownDuration: 2
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  SlowTimePercentage: 0.5
+  Duration: 1
 --- !u!114 &114833711474533468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -888,6 +906,7 @@ MonoBehaviour:
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
   Skills:
+  - {fileID: 114680239691414964}
   - {fileID: 114550726581504850}
   - {fileID: 114373228997915840}
   DefaultIconsHeightDistance: 128

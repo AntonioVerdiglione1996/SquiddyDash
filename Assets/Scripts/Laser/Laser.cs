@@ -16,11 +16,29 @@ public class Laser : MonoBehaviour
 
     public SoundEvent DisablerEvent;
     public BasicEvent EnablerEvent;
+    public BasicEvent GameOver;
     public float DisableDuration = 0.3f;
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
 
+    public GameObject OnPlayerDeathParticle;
+
     private LinkedListNode<TimerData> timer;
+    private void OnValidate()
+    {
+        if (!CharacterTransform)
+        {
+            SquiddyController controller = FindObjectOfType<SquiddyController>();
+            if (controller)
+            {
+                CharacterTransform = controller.transform;
+            }
+        }
+        if (!LaserTransform)
+        {
+            LaserTransform = transform;
+        }
+    }
     public void OnEnable()
     {
         if (!CharacterTransform)
@@ -53,7 +71,7 @@ public class Laser : MonoBehaviour
     }
     private void Update()
     {
-        if(CharacterTransform && CharacterTransform.position.y > LaserTransform.position.y + HeightTollerance)
+        if (CharacterTransform && CharacterTransform.position.y > LaserTransform.position.y + HeightTollerance)
         {
             TimeHelper.RemoveTimer(timer);
             Pool.Recycle(LaserTransform.gameObject);
@@ -62,11 +80,17 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8)
         {
-#if UNITY_EDITOR
-            Debug.Log("Dead by lasers.");
-#endif
+            this.enabled = false;
+            if (OnPlayerDeathParticle)
+            {
+                Instantiate(OnPlayerDeathParticle, CharacterTransform.position, CharacterTransform.rotation);
+            }
+            if (GameOver)
+            {
+                GameOver.Raise();
+            }
         }
     }
 

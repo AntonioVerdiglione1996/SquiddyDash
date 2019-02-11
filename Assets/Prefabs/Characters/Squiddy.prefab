@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 23069349663680190}
   - component: {fileID: 114452154529207922}
   - component: {fileID: 114120577311248660}
+  - component: {fileID: 114344574997368368}
   m_Layer: 8
   m_Name: Squiddy
   m_TagString: Untagged
@@ -540,6 +541,27 @@ MonoBehaviour:
   MinMaxRotDuration: {x: 0.5, y: 2}
   DefaultRotation: {x: -0, y: -0, z: -0, w: 1}
   LerpSpeed: 10
+--- !u!114 &114344574997368368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892560137250106}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c562ac569541146a66082aae533340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  IsAutoActivating: 0
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  ForceApplied: {x: 0, y: 50, z: 0}
+  Mode: 1
+  defaultScoreRequirement: 10
+  ScoreRequirementMultIncrementPerInvokation: 1.500001
+  WallsCustomRepulsion: {x: 0.8, y: 0.8, z: 0.8}
+  WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
 --- !u!114 &114452154529207922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,4 +583,6 @@ MonoBehaviour:
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
-  Skills: []
+  Skills:
+  - {fileID: 114344574997368368}
+  DefaultIconsHeightDistance: 128

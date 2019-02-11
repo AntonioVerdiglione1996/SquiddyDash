@@ -7,9 +7,7 @@ public class AudioReactiveSource : MonoBehaviour
     public AudioReactiveClip ClipData;
     public AudioSource Source;
     public SoundEvent SoundEvent;
-#if UNITY_EDITOR
     public bool DebugActive = false;
-#endif
 
     private int currentTimestampIndex;
     private float lastTimeStamp;
@@ -49,7 +47,7 @@ public class AudioReactiveSource : MonoBehaviour
         }
 
         float time = Source.time;
-        if (time > lastTimeStamp)
+        if (time >= lastTimeStamp)
         {
             ReactiveClipData data = ClipData.Timestamps[currentTimestampIndex];
             if (!waitingForLoop && time > data.Timestamp)
@@ -68,7 +66,7 @@ public class AudioReactiveSource : MonoBehaviour
                 currentTimestampIndex++;
             }
         }
-        else if (!Mathf.Approximately(time, lastTimeStamp))
+        else
         {
             waitingForLoop = false;
         }

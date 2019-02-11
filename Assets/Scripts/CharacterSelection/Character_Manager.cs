@@ -58,6 +58,6 @@ public class Character_Manager : MonoBehaviour
  
     public List<Transform> GetModels()
     {
-        return new List<Transform>(models);
+        return models;
     }
 }

@@ -9,7 +9,10 @@ public class GlobalEvents : ScriptableObject
     public InGameCurrency GameCurrency;
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
+    public TimeHelper TimeHelper;
     public BasicEvent GameOverEvent;
+
+    public float GameoverDelay = 1f;
 
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
@@ -18,6 +21,7 @@ public class GlobalEvents : ScriptableObject
     [SerializeField]
     private LevelData currentLevel;
 
+    private LinkedListNode<TimerData> timer;
     private void OnEnable()
     {
         if (GameOverEvent)
@@ -73,7 +77,7 @@ public class GlobalEvents : ScriptableObject
     }
     public void GameOverTrigger()
     {
-        SelectLevelByString("GameOver");
+        timer = TimeHelper.RestartTimer(() => SelectLevelByString("GameOver"), null, timer, GameoverDelay);
     }
     public void ClickMenuGameOverButton()
     {

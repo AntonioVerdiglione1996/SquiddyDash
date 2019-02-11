@@ -10,6 +10,8 @@ public class Walls : MonoBehaviour
     public Camera MainCamera;
 
     public BasicEvent BorderCollision;
+    public BasicEvent CameraShake;
+    public BasicEvent CameraLerp;
     public BasicEvent TopCollision;
     public BasicEvent GameOverEvent;
 
@@ -184,6 +186,10 @@ public class Walls : MonoBehaviour
         {
             TopCollision.Raise();
         }
+        if(CameraLerp != null)
+        {
+            CameraLerp.Raise();
+        }
     }
 
     private void PlayerBorderCollision(Collision collision, Vector3 normal, Vector3 MinimumRepulsionForce = new Vector3())
@@ -213,6 +219,10 @@ public class Walls : MonoBehaviour
         if (BorderCollision != null)
         {
             BorderCollision.Raise();
+        }
+        if(CameraShake != null)
+        {
+            CameraShake.Raise();
         }
     }
 }

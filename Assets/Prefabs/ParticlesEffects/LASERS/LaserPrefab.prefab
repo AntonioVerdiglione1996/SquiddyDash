@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 120623607756920292}
   DisablerEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
   EnablerEvent: {fileID: 11400000, guid: b5396a3f988217f40ae093aa9566668b, type: 2}
+  GameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   DisableDuration: 0.7
   AdditiveStrenghtCurve:
     serializedVersion: 2
@@ -99,6 +100,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  OnPlayerDeathParticle: {fileID: 1365656158052374, guid: 2a2af400d0ea3af41b3e2bf783d48961,
+    type: 2}
 --- !u!120 &120623607756920292
 LineRenderer:
   m_ObjectHideFlags: 1

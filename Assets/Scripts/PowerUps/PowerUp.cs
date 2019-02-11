@@ -15,6 +15,10 @@ public class PowerUp : MonoBehaviour
 
     public GameObject ParticleTrigger;
 
+    public int TriggerAudioSourceIndex = 0;
+
+    public int VocalAudioSourceIndex = 1;
+
     [SerializeField]
     private MeshRenderer powRenderer;
     [SerializeField]
@@ -26,12 +30,11 @@ public class PowerUp : MonoBehaviour
 
     private void Awake()
     {
-        //TODO: rifattorizzare?
         AudioSourceFinder finder = FindObjectOfType<AudioSourceFinder>();
         if (finder)
         {
-            aSourceForTrigger = finder.SourceForTrigger;
-            aSourceForVocal = finder.SourceForVocalSayNameOfPowerUp;
+            aSourceForTrigger = finder.Sources[TriggerAudioSourceIndex];
+            aSourceForVocal = finder.Sources[VocalAudioSourceIndex];
         }
     }
     private void OnDisable()
