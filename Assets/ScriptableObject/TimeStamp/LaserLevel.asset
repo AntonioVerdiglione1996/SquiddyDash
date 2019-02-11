@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcc10926660dc94abf4fb204c7506be, type: 3}
   m_Name: LaserLevel
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: a37caf94ce58c534996d028d5dc5290e, type: 3}
+  Clip: {fileID: 8300000, guid: acbe7b0a0084649439771526600f6b61, type: 3}
   Timestamps:
   - Timestamp: 1
     Strenght: 15

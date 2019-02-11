@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fe4f33d7b33bc48831238eb7d82d75, type: 3}
   m_Name: StoreForCharacter
   m_EditorClassIdentifier: 
-  index: 0
+  index: 8
   Characters:
   - {fileID: 1470708830993974, guid: 7009f848c0153894db9c9c118a2094c6, type: 2}
   - {fileID: 1367804727374798, guid: ab833dd9409966d478842356b9f223bf, type: 2}

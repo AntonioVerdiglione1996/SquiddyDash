@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Level_Laser
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  Color: {r: 0.9411765, g: 0.9044118, b: 0, a: 1}
+  Color: {r: 0.9411765, g: 0, b: 0, a: 1}
   Material: {fileID: 0}
   levelIndex: 4
-  isUnlocked: 0
+  isUnlocked: 1
   unlockCost: 22
   bestScore: 198
   fileNameFull: LevelData4Level_Laser

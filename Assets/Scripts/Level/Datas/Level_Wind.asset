@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Level_Wind
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 0, g: 1, b: 1, a: 1}
   Material: {fileID: 0}
   levelIndex: 5
-  isUnlocked: 0
+  isUnlocked: 1
   unlockCost: 10
-  bestScore: 0
+  bestScore: 192
   fileNameFull: LevelData5Level_Wind
