@@ -361,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4490466398831696}
   - component: {fileID: 95623043261792286}
+  - component: {fileID: 114678120114137972}
   m_Layer: 8
   m_Name: Animator_container
   m_TagString: Untagged
@@ -1263,6 +1264,20 @@ MonoBehaviour:
   Skills:
   - {fileID: 114650899932544834}
   DefaultIconsHeightDistance: 128
+--- !u!114 &114678120114137972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938220389613116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0781a5e7a95bb434d99d11ca5333541c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLand: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  OnJump: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  AnimJumpName: IsJumping
 --- !u!198 &198154411250785686
 ParticleSystem:
   m_ObjectHideFlags: 1

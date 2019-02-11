@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 54785306299008804}
   - component: {fileID: 114835219694571498}
   - component: {fileID: 114884507819233278}
-  - component: {fileID: 114322603737358726}
   - component: {fileID: 114974407072716316}
   m_Layer: 8
   m_Name: CharContainer
@@ -294,20 +293,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114322603737358726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948740379086476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c21e651ce6b3e48b318b2376312895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsJumping: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
-  IsNotJumping: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
-  RaiseAtStart: 1
 --- !u!114 &114446529115914972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,7 +353,6 @@ MonoBehaviour:
   OnClickPressed: {fileID: 11400000, guid: 0f37b51e17c1d6744b9349ceb7fe43e2, type: 2}
   JumpForceMultiplier: 1
   LandForceMultiplier: 1
-  animator: {fileID: 0}
   OnBorderCollisionEvent: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee,
     type: 2}
 --- !u!114 &114884507819233278

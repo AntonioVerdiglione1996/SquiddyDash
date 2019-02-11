@@ -38,8 +38,6 @@ public class SquiddyController : MonoBehaviour
 
     private Platform currentPlatform;
     private Camera MainCamera;
-    [SerializeField]
-    private Animator animator;
 
     public BasicEvent OnBorderCollisionEvent;
 
@@ -58,8 +56,6 @@ public class SquiddyController : MonoBehaviour
         {
             MainCamera = Camera.main;
         }
-
-        animator = GetComponentInChildren<Animator>();
 
         if (!StartPlatform)
         {
@@ -186,8 +182,6 @@ public class SquiddyController : MonoBehaviour
             PlayJumpSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
-        if (animator != null)
-            animator.SetBool("IsJumping", true);
         Vector3 dir = directionSwitcher();
         Rb.AddForce(dir * SquiddyStats.JumpPower * JumpForceMultiplier, ForceMode.Impulse);
     }
@@ -201,8 +195,6 @@ public class SquiddyController : MonoBehaviour
             PlayLandSound.Play(ASource);
         if (CameraShake != null)
             CameraShake.Raise();
-        if (animator != null)
-            animator.SetBool("IsJumping", false);
         Rb.AddForce(-Vector3.up * SquiddyStats.LandForce * LandForceMultiplier, ForceMode.VelocityChange);
         if (OnLanding)
         {

@@ -15,6 +15,8 @@ public class Platform : MonoBehaviour
     public GlobalEvents GlobalEvents;
     public BasicEvent PerformLerp;
     public BasicEvent PlatformClaimed;
+    public BasicEvent OnLanded;
+    public BasicEvent OnLeft;
     public ScoreSystem ScoreSystem;
 
     public SOPool Pool;
@@ -116,6 +118,10 @@ public class Platform : MonoBehaviour
 #endif
         if (collision.gameObject.layer == 8 && IsLanded)
         {
+            if(OnLanded)
+            {
+                OnLanded.Raise();
+            }
             if (GlobalEvents.ParentToTarget(transform.root, collision.transform.root))
             {
                 CurrentPlatformForSquiddy.CurrentPlatform = this;
@@ -145,6 +151,10 @@ public class Platform : MonoBehaviour
             GlobalEvents.ParentToTarget(null, collision.transform);
             CurrentPlatformForSquiddy.CurrentPlatform = null;
             DeactivateCollisions();
+            if (OnLeft)
+            {
+                OnLeft.Raise();
+            }
         }
     }
 }

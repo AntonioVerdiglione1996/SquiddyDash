@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4901918713578440}
   - component: {fileID: 95828535410931526}
+  - component: {fileID: 114676582980658600}
   m_Layer: 8
   m_Name: AnimatorContainer
   m_TagString: Untagged
@@ -1035,6 +1036,20 @@ MonoBehaviour:
   ScoreRequirementMultIncrementPerInvokation: 1.500001
   WallsCustomRepulsion: {x: 0.8, y: 0.8, z: 0.8}
   WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
+--- !u!114 &114676582980658600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319641429729130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0781a5e7a95bb434d99d11ca5333541c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLand: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  OnJump: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  AnimJumpName: IsJumping
 --- !u!114 &114784077490009546
 MonoBehaviour:
   m_ObjectHideFlags: 1

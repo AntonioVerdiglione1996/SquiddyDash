@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286858955006290}
   - component: {fileID: 95622332587677318}
+  - component: {fileID: 114548386149469330}
   m_Layer: 8
   m_Name: AnimatorContainer
   m_TagString: Untagged
@@ -1192,6 +1193,20 @@ MonoBehaviour:
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   JumpForceMultiplier: 2
   Duration: 5
+--- !u!114 &114548386149469330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080759455031326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0781a5e7a95bb434d99d11ca5333541c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLand: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
+  OnJump: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
+  AnimJumpName: IsJumping
 --- !u!114 &114788839173389414
 MonoBehaviour:
   m_ObjectHideFlags: 1
