@@ -43,7 +43,7 @@ public class RocketJump : Skill
         wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
     }
 
-    protected override void OnDisable()
+    protected override void OnStopSkill()
     {
     }
 
@@ -54,7 +54,7 @@ public class RocketJump : Skill
 
         WallsModifier.SetNewRepulsion(wallsRepulsionStatus);
     }
-    protected override void OnEnable()
+    protected override void OnStartSkill()
     {
         lastScoreInvoke = ScoreSystem.Score;
 
@@ -63,7 +63,7 @@ public class RocketJump : Skill
         SkillLogic();
     }
 
-    protected virtual void Update()
+    protected override void UpdateBehaviour()
     {
         if (!Controller)
         {

@@ -368,6 +368,8 @@ MonoBehaviour:
   VocalAudioSourceIndex: 1
   powRenderer: {fileID: 23895109886719494}
   powMeshFilter: {fileID: 33565568263609326}
+  coll: {fileID: 135817882334816762}
+  Upgrades: []
 --- !u!114 &114741969028539820
 MonoBehaviour:
   m_ObjectHideFlags: 1

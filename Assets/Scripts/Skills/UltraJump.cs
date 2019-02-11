@@ -9,7 +9,7 @@ public class UltraJump : TimedSkill
 
     private float timer;
 
-    private void Update()
+    protected override void UpdateBehaviour()
     {
         Controller.JumpForceMultiplier = JumpForceMultiplier;
         timer += Time.deltaTime;
@@ -18,9 +18,9 @@ public class UltraJump : TimedSkill
             this.enabled = false;
         }
     }
-    protected override void OnDisable()
+    protected override void OnStopSkill()
     {
-        base.OnDisable();
+        base.OnStopSkill();
         Controller.JumpForceMultiplier = 1f;
         timer = 0f;
     }
