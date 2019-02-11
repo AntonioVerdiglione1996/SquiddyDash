@@ -1028,6 +1028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
   IsAutoActivating: 0
+  Upgrades:
+  - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   ForceApplied: {x: 0, y: 50, z: 0}

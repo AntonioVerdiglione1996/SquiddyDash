@@ -1236,6 +1236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Describer: {fileID: 11400000, guid: 5f7a56a82e0c9ab499fd2ae37e19a737, type: 2}
   IsAutoActivating: 0
+  Upgrades:
+  - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
   CoolDownDuration: 5
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   SlowTimePercentage: 0.5

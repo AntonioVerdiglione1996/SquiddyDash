@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Powerup/TimedScoreMultiplier")]
+[CreateAssetMenu(menuName = "Gameplay/Powerup/TimedScoreMultiplier")]
 public class PowerUpTimedScoreMultiplier : PowerUpLogic
 {
     public ScoreSystem ScoreSystem;
