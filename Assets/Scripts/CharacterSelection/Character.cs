@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     public BasicEvent StartLerpRotation;
 
     public ButtonSkillActivator SkillIconUIPrefab;
+    public EDirectionType UiSpawnDirection = EDirectionType.Up;
 
     public AccessoryLocator[] Locators = new AccessoryLocator[0];
 
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
     private List<Skill> updatingSkills = null;
 
     public float DefaultIconsHeightDistance = 128.0f;
+    public float DefaultIconsWidthDistance = 128.0f;
 
     private SquiddyController controller = null;
 
@@ -27,6 +29,178 @@ public class Character : MonoBehaviour
 
     private Canvas SkillUIHolder;
 
+    public Transform GetAccessoryTransform(EAccessoryType type)
+    {
+        if (Locators != null)
+        {
+            for (int i = 0; i < Locators.Length; i++)
+            {
+                AccessoryLocator locator = Locators[i];
+                if (locator.LocatorType == type)
+                {
+                    return locator.transform;
+                }
+            }
+        }
+
+        return transform;
+    }
+    public bool CollectAndSpawnSkills(bool spawnIcons = true)
+    {
+        Skills = transform.root.GetComponentsInChildren<Skill>(true);
+        Accessory[] accessories = transform.root.GetComponentsInChildren<Accessory>(true);
+        Skill mainSkill = null;
+        if (accessories != null && accessories.Length > 0 && Skills != null)
+        {
+            for (int i = 0; i < Skills.Length; i++)
+            {
+                Skill skill = Skills[i];
+                if (skill.IsMainSkill)
+                {
+                    mainSkill = skill;
+                    break;
+                }
+            }
+
+            if (mainSkill)
+            {
+                for (int i = 0; i < accessories.Length; i++)
+                {
+                    Accessory accessory = accessories[i];
+                    if (accessory.Upgrades != null && accessory.Upgrades.Count > 0)
+                    {
+                        for (int j = 0; j < accessory.Upgrades.Count; j++)
+                        {
+                            Upgrade up = accessory.Upgrades[i];
+                            if (up.IsSkillUpgradable(mainSkill.GetType(), mainSkill))
+                            {
+                                mainSkill.Upgrades.Add(up);
+                            }
+                            else
+                            {
+                                Skill localSkill = accessory.GetComponent<Skill>();
+                                if (!localSkill)
+                                {
+                                    localSkill = accessory.GetComponentInChildren<Skill>(true);
+                                }
+                                if (localSkill && up.IsSkillUpgradable(localSkill.GetType(), localSkill))
+                                {
+                                    localSkill.Upgrades.Add(up);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (spawnIcons)
+        {
+            controller = transform.root.GetComponentInChildren<SquiddyController>();
+            if (!controller)
+            {
+#if UNITY_EDITOR
+                if (DebugActive)
+                {
+                    Debug.LogWarningFormat("{0} could not find a valid controller reference!", this);
+                }
+#endif
+                return false;
+            }
+
+            SkillUIHolder = transform.root.GetComponentInChildren<Canvas>();
+            if (!SkillUIHolder)
+            {
+#if UNITY_EDITOR
+                if (DebugActive)
+                {
+                    Debug.LogErrorFormat("{0} could not find a valid Canvas reference to hold the skill icons!", this);
+                }
+#endif
+                return false;
+            }
+
+            if (!SkillIconUIPrefab)
+            {
+#if UNITY_EDITOR
+                if (DebugActive)
+                {
+                    Debug.LogErrorFormat("SkillIconUIPrefab needs to be a valid prefab!!!", this);
+                }
+#endif
+                return false;
+            }
+
+            if (Skills != null)
+            {
+                int uiSpawnedCount = 0;
+                for (int i = 0; i < Skills.Length; i++)
+                {
+                    Skill skill = Skills[i];
+                    skill.Initialize(controller);
+                    if (!skill.IsSkillAutoActivating && SkillIconUIPrefab && SkillUIHolder)
+                    {
+                        ButtonSkillActivator skillIcon = Instantiate<ButtonSkillActivator>(SkillIconUIPrefab, SkillUIHolder.transform);
+                        skillIcon.ActivableSkill = skill;
+                        RectTransform rect = skillIcon.GetComponent<RectTransform>();
+                        if (rect)
+                        {
+                            switch (UiSpawnDirection)
+                            {
+                                case EDirectionType.None:
+                                case EDirectionType.Up:
+                                    rect.position += new Vector3(0f, rect.rect.height * i, 0f);
+                                    break;
+                                case EDirectionType.Down:
+                                    rect.position -= new Vector3(0f, rect.rect.height * i, 0f);
+                                    break;
+                                case EDirectionType.Left:
+                                    rect.position -= new Vector3(rect.rect.width * i, 0f, 0f);
+                                    break;
+                                case EDirectionType.Right:
+                                    rect.position += new Vector3(rect.rect.width * i, 0f, 0f);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            switch (UiSpawnDirection)
+                            {
+                                case EDirectionType.None:
+                                case EDirectionType.Up:
+                                    rect.position += new Vector3(0f, i * DefaultIconsHeightDistance, 0f);
+                                    break;
+                                case EDirectionType.Down:
+                                    rect.position -= new Vector3(0f, i * DefaultIconsHeightDistance, 0f);
+                                    break;
+                                case EDirectionType.Left:
+                                    rect.position -= new Vector3(DefaultIconsWidthDistance * i, 0f, 0f);
+                                    break;
+                                case EDirectionType.Right:
+                                    rect.position += new Vector3(DefaultIconsWidthDistance * i, 0f, 0f);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        skillIcon.gameObject.SetActive(true);
+                        uiSpawnedCount++;
+                    }
+                    else if (skill.IsSkillAutoActivating)
+                    {
+                        if (updatingSkills == null)
+                        {
+                            updatingSkills = new List<Skill>();
+                        }
+                        updatingSkills.Add(skill);
+                    }
+                }
+            }
+        }
+        return true;
+    }
     private void OnEnable()
     {
         if (rotator)
@@ -98,7 +272,7 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        Skills = transform.root.GetComponentsInChildren<Skill>(true);
+        CollectAndSpawnSkills(false);
         Locators = transform.root.GetComponentsInChildren<AccessoryLocator>(true);
 #if UNITY_EDITOR
         if (Locators != null && DebugActive)
@@ -136,78 +310,6 @@ public class Character : MonoBehaviour
         rotator = GetComponent<DynamicRotator>();
     }
 
-    private void Start()
-    {
-        controller = transform.root.GetComponentInChildren<SquiddyController>();
-        if (!controller)
-        {
-#if UNITY_EDITOR
-            if (DebugActive)
-            {
-                Debug.LogWarningFormat("{0} could not find a valid controller reference!", this);
-            }
-#endif
-            return;
-        }
-
-        SkillUIHolder = transform.root.GetComponentInChildren<Canvas>();
-        if (!SkillUIHolder)
-        {
-#if UNITY_EDITOR
-            if (DebugActive)
-            {
-                Debug.LogErrorFormat("{0} could not find a valid Canvas reference to hold the skill icons!", this);
-            }
-#endif
-            return;
-        }
-
-        if (!SkillIconUIPrefab)
-        {
-#if UNITY_EDITOR
-            if (DebugActive)
-            {
-                Debug.LogErrorFormat("SkillIconUIPrefab needs to be a valid prefab!!!", this);
-            }
-#endif
-            return;
-        }
-
-        if (Skills != null)
-        {
-            int uiSpawnedCount = 0;
-            for (int i = 0; i < Skills.Length; i++)
-            {
-                Skill skill = Skills[i];
-                skill.Initialize(controller);
-                if (!skill.IsSkillAutoActivating && SkillIconUIPrefab && SkillUIHolder)
-                {
-                    ButtonSkillActivator skillIcon = Instantiate<ButtonSkillActivator>(SkillIconUIPrefab, SkillUIHolder.transform);
-                    skillIcon.ActivableSkill = skill;
-                    RectTransform rect = skillIcon.GetComponent<RectTransform>();
-                    if (rect)
-                    {
-                        rect.position += new Vector3(0f, rect.rect.height * i, 0f);
-                    }
-                    else
-                    {
-                        skillIcon.transform.position += new Vector3(0f, i * DefaultIconsHeightDistance, 0f);
-                    }
-                    skillIcon.gameObject.SetActive(true);
-                    uiSpawnedCount++;
-                }
-                else if (skill.IsSkillAutoActivating)
-                {
-                    if (updatingSkills == null)
-                    {
-                        updatingSkills = new List<Skill>();
-                    }
-                    updatingSkills.Add(skill);
-                }
-            }
-        }
-    }
-
     private void Update()
     {
         if (updatingSkills != null)
@@ -215,6 +317,12 @@ public class Character : MonoBehaviour
             for (int i = 0; i < updatingSkills.Count; i++)
             {
                 updatingSkills[i].InvokeSkill();
+#if UNITY_EDITOR
+                if (DebugActive)
+                {
+                    Debug.LogFormat("{0} is invoking {1} automatically", this, updatingSkills[i]);
+                }
+#endif
             }
         }
     }

@@ -12,7 +12,7 @@ public class Accessory : MonoBehaviour
     {
         get
         {
-            EAccessoryRarity type = EAccessoryRarity.Common;
+            EAccessoryRarity type = EAccessoryRarity.None;
             if (Skill)
             {
                 if (Skill is PassiveSkill)
@@ -28,6 +28,10 @@ public class Accessory : MonoBehaviour
             {
                 type |= EAccessoryRarity.Special;
             }
+            if((type | EAccessoryRarity.Special) == EAccessoryRarity.Special)
+            {
+                type |= EAccessoryRarity.Common;
+            }
             return type;
         }
     }
@@ -35,6 +39,9 @@ public class Accessory : MonoBehaviour
     {
         OnValidate();
         Root.SetParent(parent, worldPositionStays);
+#if UNITY_EDITOR
+        Debug.LogFormat("{0} of type {1} and rarity {2} has been parented to {3}", this, Type, Rarity, parent);
+#endif
     }
     public void SetParent(Transform parent, Vector3 localPosition)
     {
@@ -65,7 +72,7 @@ public class Accessory : MonoBehaviour
         OnValidate();
         if (Upgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i > 0; i--)
+            for (int i = Upgrades.Count - 1; i >= 0; i--)
             {
                 if (!Upgrades[i])
                 {

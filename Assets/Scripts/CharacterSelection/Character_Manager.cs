@@ -32,8 +32,11 @@ public class Character_Manager : MonoBehaviour
                 Model.gameObject.SetActive(true);
                 Character character = Model.GetComponent<Character>();
                 //first iteration//name and color of the first model
-                Text.text = character.Describer.Name;
-                Text.color = character.Describer.Color;
+                if (character.Describer)
+                {
+                    Text.text = character.Describer.Name;
+                    Text.color = character.Describer.Color;
+                }
                 SpawnerCharacter.SetIndex(i);
             }
         }
@@ -51,11 +54,14 @@ public class Character_Manager : MonoBehaviour
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
             Character character = modelToActivate.GetComponent<Character>();
-            Text.text = character.Describer.Name;
-            Text.color = character.Describer.Color;
+            if (character.Describer)
+            {
+                Text.text = character.Describer.Name;
+                Text.color = character.Describer.Color;
+            }
         }
     }
- 
+
     public List<Transform> GetModels()
     {
         return models;

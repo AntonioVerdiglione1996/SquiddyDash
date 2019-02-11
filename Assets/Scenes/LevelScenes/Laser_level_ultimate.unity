@@ -1611,13 +1611,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
-        type: 2}
-    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
         type: 2}
       propertyPath: m_Material
       value: 
@@ -1629,7 +1623,13 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
         type: 2}
-    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
+    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
         type: 2}
       propertyPath: m_Material
       value: 

@@ -6,6 +6,10 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     /// <summary>
+    /// Property that indicates if this skill instance is used as a Main Skill
+    /// </summary>
+    public bool IsMainSkill = false;
+    /// <summary>
     /// Object holding informations about this skill (no gameplay effect)
     /// </summary>
     public Describer Describer;
@@ -104,7 +108,7 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i > 0; i--)
+            for (int i = Upgrades.Count - 1; i >= 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)
@@ -135,7 +139,7 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i > 0; i--)
+            for (int i = Upgrades.Count - 1; i >= 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)
@@ -175,7 +179,7 @@ public abstract class Skill : MonoBehaviour
 
         if (Upgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i > 0; i--)
+            for (int i = Upgrades.Count - 1; i >= 0; i--)
             {
                 Upgrade up = Upgrades[i];
                 if (up)

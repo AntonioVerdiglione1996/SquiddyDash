@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class DebugPosCancel : MonoBehaviour
 {
-
+    public bool EnableDebug = false;
     public Transform Gui;
 
     private void Update()
     {
 #if UNITY_EDITOR
-        Debug.Log(Gui.position);
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.height);
+        if (EnableDebug)
+        {
+            Debug.Log(Gui.position);
+            Debug.Log(Screen.width);
+            Debug.Log(Screen.height);
+        }
 #endif
     }
 }

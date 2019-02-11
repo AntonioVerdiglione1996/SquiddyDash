@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4316900429932186}
   - component: {fileID: 114598646492888398}
+  - component: {fileID: 114805459314882794}
   m_Layer: 8
   m_Name: Glass
   m_TagString: Untagged
@@ -986,8 +987,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ad93dac3665b14cac0e7eb04c1df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 0}
+  Describer: {fileID: 11400000, guid: 024e92f4a6d915e40a0f4d2be66987a1, type: 2}
   Root: {fileID: 4316900429932186}
-  Skill: {fileID: 0}
-  Upgrades: []
+  Skill: {fileID: 114805459314882794}
+  Upgrades:
+  - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
   Type: 2
+--- !u!114 &114805459314882794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515208257119844}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b5d8fefd636a349a8b258d4a4fba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMainSkill: 0
+  Describer: {fileID: 11400000, guid: b7ac7432032796941b7c01b20e2f84ad, type: 2}
+  IsAutoActivating: 0
+  Upgrades: []
+  CoolDownDuration: 5
+  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  Duration: 1
+  WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
+  NewRepulsionMultiplier: {x: 0.8, y: 0.8, z: 0.8}

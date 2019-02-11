@@ -49,7 +49,7 @@ public class PowerUp : MonoBehaviour
 
             if (Upgrades != null)
             {
-                for (int i = Upgrades.Count - 1; i > 0; i--)
+                for (int i = Upgrades.Count - 1; i >= 0; i--)
                 {
                     Upgrade up = Upgrades[i];
                     if (up)
@@ -130,7 +130,7 @@ public class PowerUp : MonoBehaviour
 
             if (Upgrades != null)
             {
-                for (int i = Upgrades.Count - 1; i > 0; i--)
+                for (int i = Upgrades.Count - 1; i >= 0; i--)
                 {
                     Upgrade up = Upgrades[i];
                     if (up)
@@ -171,7 +171,7 @@ public class PowerUp : MonoBehaviour
 
                 if (Upgrades != null)
                 {
-                    for (int i = Upgrades.Count - 1; i > 0; i--)
+                    for (int i = Upgrades.Count - 1; i >= 0; i--)
                     {
                         Upgrade up = Upgrades[i];
                         if (up)

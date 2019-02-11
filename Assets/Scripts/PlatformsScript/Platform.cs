@@ -113,7 +113,7 @@ public class Platform : MonoBehaviour
 #if UNITY_EDITOR
         if (!IsLanded)
         {
-            Debug.LogFormat("{0} oncollisionstay called after the oncollisionexit");
+            Debug.LogFormat("{0} oncollisionstay called after the oncollisionexit", this);
         }
 #endif
         if (collision.gameObject.layer == 8 && IsLanded)
