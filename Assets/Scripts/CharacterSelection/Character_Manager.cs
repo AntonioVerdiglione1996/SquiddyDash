@@ -37,7 +37,7 @@ public class Character_Manager : MonoBehaviour
                     Text.text = character.Describer.Name;
                     Text.color = character.Describer.Color;
                 }
-                SpawnerCharacter.SetIndex(i);
+                SpawnerCharacter.SetIndexAndAccessories(i, null);
             }
         }
     }
@@ -50,7 +50,7 @@ public class Character_Manager : MonoBehaviour
             var transformToActivate = transform.GetChild(i);
             bool shouldBeActive = transformToActivate == modelToActivate;
             if (shouldBeActive)
-                SpawnerCharacter.SetIndex(i);
+                SpawnerCharacter.SetIndexAndAccessories(i, null);
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
             Character character = modelToActivate.GetComponent<Character>();

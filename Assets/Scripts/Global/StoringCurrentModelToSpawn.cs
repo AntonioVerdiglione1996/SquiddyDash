@@ -12,6 +12,8 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     public List<Character> Characters;
     public List<Accessory> Accessories;
 
+    private Queue<Accessory> tempQueue = new Queue<Accessory>();
+
     public int GetIndex()
     {
         return index;
@@ -24,16 +26,30 @@ public class StoringCurrentModelToSpawn : ScriptableObject
             SaveToFile();
         }
     }
-    public void SetIndex(int index)
+    public void SetIndexAndAccessories(int index, List<Accessory> accessories)
     {
         this.index = Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
+        tempQueue.Clear();
+        for (int i = 0; i < accessories.Count; i++)
+        {
+            Accessory acc = accessories[i];
+            if (acc)
+            {
+                tempQueue.Enqueue(acc);
+            }
+        }
+        Accessories.Clear();
+        while (tempQueue.Count > 0)
+        {
+            Accessories.Add(tempQueue.Dequeue());
+        }
         //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
         //with the new value
         SaveToFile();
     }
     public void OnValidate()
     {
-        SetIndex(this.index);
+        SetIndexAndAccessories(this.index, Accessories);
     }
     public void SaveToFile()
     {

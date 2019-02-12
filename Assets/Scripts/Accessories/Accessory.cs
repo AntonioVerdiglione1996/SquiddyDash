@@ -24,13 +24,13 @@ public class Accessory : MonoBehaviour
                     type |= EAccessoryRarity.Legendary;
                 }
             }
+            else
+            {
+                type |= EAccessoryRarity.Common;
+            }
             if (Upgrades != null && Upgrades.Count > 0)
             {
                 type |= EAccessoryRarity.Special;
-            }
-            if((type | EAccessoryRarity.Special) == EAccessoryRarity.Special)
-            {
-                type |= EAccessoryRarity.Common;
             }
             return type;
         }
