@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-[CreateAssetMenu(menuName = "Powerup/Score Increase")]
+[CreateAssetMenu(menuName = "Gameplay/Powerup/Score Increase")]
 public class PowerUpScoreIncrease : PowerUpLogic
 {
     public ScoreSystem ScoreSystem;

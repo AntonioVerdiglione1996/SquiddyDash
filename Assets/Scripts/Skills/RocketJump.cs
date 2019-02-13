@@ -21,29 +21,10 @@ public class RocketJump : Skill
 
     public float ScoreRequirementMultIncrementPerInvokation = 1.500001f;
 
-    public Vector3 WallsCustomRepulsion = new Vector3(0.8f, 0.8f, 0.8f);
-
-    public WallsModifier WallsModifier;
-
     private int lastScoreInvoke = 0;
 
-    private RepulsionModificationStatus wallsRepulsionStatus;
 
-    protected virtual void Awake()
-    {
-        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
-    }
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-        if (WallsModifier && wallsRepulsionStatus != null && wallsRepulsionStatus.IsValid)
-        {
-            WallsModifier.ResetRepulsion();
-        }
-        wallsRepulsionStatus = new RepulsionModificationStatus(WallsModifier, false, false, WallsCustomRepulsion);
-    }
-
-    protected override void OnDisable()
+    protected override void OnStopSkill()
     {
     }
 
@@ -51,10 +32,8 @@ public class RocketJump : Skill
     {
         GlobalEvent.ParentToTarget(null, Controller.transform);
         Controller.Rb.AddForce(ForceApplied, Mode);
-
-        WallsModifier.SetNewRepulsion(wallsRepulsionStatus);
     }
-    protected override void OnEnable()
+    protected override void OnStartSkill()
     {
         lastScoreInvoke = ScoreSystem.Score;
 
@@ -63,7 +42,7 @@ public class RocketJump : Skill
         SkillLogic();
     }
 
-    protected virtual void Update()
+    protected override void UpdateBehaviour()
     {
         if (!Controller)
         {
@@ -75,11 +54,6 @@ public class RocketJump : Skill
         enabled = Controller.IsJumping;
 
         lastScoreInvoke = ScoreSystem.Score;
-
-        if (!enabled && wallsRepulsionStatus.IsValid)
-        {
-            WallsModifier.ResetRepulsion();
-        }
     }
     /// <summary>
     /// Returns how much is left before a new skill invokation is available. Some skills may not fully support this
@@ -101,10 +75,6 @@ public class RocketJump : Skill
 
     protected override void ResetSkill()
     {
-        if (wallsRepulsionStatus.IsValid)
-        {
-            WallsModifier.ResetRepulsion();
-        }
         enabled = false;
         lastScoreInvoke = 0;
         ScoreRequirement = defaultScoreRequirement;

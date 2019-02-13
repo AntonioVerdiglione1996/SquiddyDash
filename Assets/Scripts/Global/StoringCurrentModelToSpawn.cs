@@ -7,9 +7,17 @@ using UnityEngine;
 public class StoringCurrentModelToSpawn : ScriptableObject
 {
     public const string Filename = "CurrentModel.json";
-    public int index;
-    public List<GameObject> Characters;
+    [SerializeField]
+    private int index;
+    public List<Character> Characters;
+    public List<Accessory> Accessories;
 
+    private Queue<Accessory> tempQueue = new Queue<Accessory>();
+
+    public int GetIndex()
+    {
+        return index;
+    }
     private void OnEnable()
     {
         //if the file does not exist we serialize this object for the first time.
@@ -18,25 +26,39 @@ public class StoringCurrentModelToSpawn : ScriptableObject
             SaveToFile();
         }
     }
-    public void SetIndex(int index)
+    public void SetIndexAndAccessories(int index, List<Accessory> accessories)
     {
-        this.index = index;
+        this.index = Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
+        tempQueue.Clear();
+        for (int i = 0; i < accessories.Count; i++)
+        {
+            Accessory acc = accessories[i];
+            if (acc)
+            {
+                tempQueue.Enqueue(acc);
+            }
+        }
+        Accessories.Clear();
+        while (tempQueue.Count > 0)
+        {
+            Accessories.Add(tempQueue.Dequeue());
+        }
         //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
         //with the new value
         SaveToFile();
     }
     public void OnValidate()
     {
-        SaveToFile();
+        SetIndexAndAccessories(this.index, Accessories);
     }
     public void SaveToFile()
     {
         SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
     }
-    public GameObject DownloadCurrentCharacter()
+    public Character DownloadCurrentCharacter()
     {
-        GameObject go = null;
-        if(Characters == null)
+        Character go = null;
+        if (Characters == null)
         {
             return go;
         }

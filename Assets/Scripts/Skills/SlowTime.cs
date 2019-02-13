@@ -8,7 +8,7 @@ public class SlowTime : TimedSkill
     public float Duration = 1f;
 
     private float timer = 0f;
-    private void Update()
+    protected override void UpdateBehaviour()
     {
         NewMovePlatform.SpeedMultiplier = SlowTimePercentage;
         timer += Time.deltaTime;
@@ -17,9 +17,9 @@ public class SlowTime : TimedSkill
             this.enabled = false;
         }
     }
-    protected override void OnDisable()
+    protected override void OnStopSkill()
     {
-        base.OnDisable();
+        base.OnStopSkill();
         NewMovePlatform.SpeedMultiplier = 1f;
         timer = 0f;
     }

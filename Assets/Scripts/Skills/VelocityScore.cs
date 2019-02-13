@@ -12,14 +12,11 @@ public class VelocityScore : PassiveSkill
 
     private float timer;
     private int previousScore;
-    protected override void OnDisable()
-    {
-    }
-    protected override void OnEnable()
+    protected override void OnStartSkill()
     {
         ResetTempVars();
     }
-    private void Update()
+    protected override void UpdateBehaviour()
     {
         timer += Time.deltaTime;
         if (timer >= AwardIntervall)
@@ -41,5 +38,9 @@ public class VelocityScore : PassiveSkill
     {
         timer = 0f;
         previousScore = Score.Score;
+    }
+
+    protected override void OnStopSkill()
+    {
     }
 }

@@ -25,9 +25,9 @@ public class Invincibility : TimedSkill
         wallsRepulsionState = new RepulsionModificationStatus(WallsModifier, true, true, NewRepulsionMultiplier);
     }
 
-    protected override void OnDisable()
+    protected override void OnStopSkill()
     {
-        base.OnDisable();
+        base.OnStopSkill();
         if (WallsModifier && WallsModifier.Walls)
         {
             WallsModifier.Walls.SetCollisionTrigger(true, EWallType.Down);
@@ -37,9 +37,9 @@ public class Invincibility : TimedSkill
             }
         }
     }
-    protected override void OnEnable()
+    protected override void OnStartSkill()
     {
-        base.OnEnable();
+        base.OnStartSkill();
 
         durationTimer = TimeHelper.RestartTimer(OnInvincibilityOver, null, durationTimer, Duration);
 
@@ -67,5 +67,9 @@ public class Invincibility : TimedSkill
     {
         wallsRepulsionState = new RepulsionModificationStatus(WallsModifier, true, true, NewRepulsionMultiplier);
         OnInvincibilityOver = InvincibilityOver;
+    }
+
+    protected override void UpdateBehaviour()
+    {
     }
 }

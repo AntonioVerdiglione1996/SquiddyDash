@@ -23,6 +23,10 @@ public class PowerUp : MonoBehaviour
     private MeshRenderer powRenderer;
     [SerializeField]
     private MeshFilter powMeshFilter;
+    [SerializeField]
+    private Collider coll;
+
+    public List<Upgrade> Upgrades = new List<Upgrade>();
 
     private PowerUpLogic currentLogic;
 
@@ -41,7 +45,29 @@ public class PowerUp : MonoBehaviour
     {
         if (currentLogic)
         {
-            currentLogic.ResetPowerup(powerupInstantiatedObject);
+            bool isPowerupOverrided = false;
+
+            if (Upgrades != null)
+            {
+                for (int i = Upgrades.Count - 1; i >= 0; i--)
+                {
+                    Upgrade up = Upgrades[i];
+                    if (up)
+                    {
+                        isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                        up.ResetPowerup(this, currentLogic);
+                    }
+                    else
+                    {
+                        Upgrades.RemoveAt(i);
+                    }
+                }
+            }
+
+            if (!isPowerupOverrided)
+            {
+                currentLogic.ResetPowerup(powerupInstantiatedObject);
+            }
         }
         if (SpawnPoints != null && SpawnPoints.Length > 0)
         {
@@ -68,6 +94,29 @@ public class PowerUp : MonoBehaviour
             powRenderer = GetComponent<MeshRenderer>();
             powRenderer.materials = null;
         }
+        if (!coll)
+        {
+            coll = GetComponent<Collider>();
+        }
+#if UNITY_EDITOR
+        if (Upgrades == null || Upgrades.Count == 0)
+        {
+            return;
+        }
+        List<Upgrade> overriders = new List<Upgrade>();
+        for (int i = 0; i < Upgrades.Count; i++)
+        {
+            Upgrade up = Upgrades[i];
+            if (up && up.OverrideSkill)
+            {
+                overriders.Add(up);
+            }
+        }
+        if (overriders.Count > 1)
+        {
+            Debug.LogErrorFormat("{0} contains {1} overriding upgrades, this may be an undesired state", this, overriders.Count);
+        }
+#endif
     }
     public void OnEnable()
     {
@@ -77,11 +126,37 @@ public class PowerUp : MonoBehaviour
         }
         if (currentLogic)
         {
-            powerupInstantiatedObject = currentLogic.InitPowerup(this);
+            bool isPowerupOverrided = false;
+
+            if (Upgrades != null)
+            {
+                for (int i = Upgrades.Count - 1; i >= 0; i--)
+                {
+                    Upgrade up = Upgrades[i];
+                    if (up)
+                    {
+                        isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                        up.InitPowerup(this, currentLogic);
+                    }
+                    else
+                    {
+                        Upgrades.RemoveAt(i);
+                    }
+                }
+            }
+
+            if (!isPowerupOverrided)
+            {
+                powerupInstantiatedObject = currentLogic.InitPowerup(this);
+            }
         }
-        if(powRenderer)
+        if (powRenderer)
         {
             powRenderer.enabled = true;
+        }
+        if (coll)
+        {
+            coll.enabled = true;
         }
     }
 
@@ -92,28 +167,54 @@ public class PowerUp : MonoBehaviour
         {
             if (currentLogic)
             {
-                currentLogic.PowerUpCollected(other, this);
+                bool isPowerupOverrided = false;
+
+                if (Upgrades != null)
+                {
+                    for (int i = Upgrades.Count - 1; i >= 0; i--)
+                    {
+                        Upgrade up = Upgrades[i];
+                        if (up)
+                        {
+                            isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                            up.PowerUpCollected(other, this, currentLogic);
+                        }
+                        else
+                        {
+                            Upgrades.RemoveAt(i);
+                        }
+                    }
+                }
+
+                if (!isPowerupOverrided)
+                {
+                    currentLogic.PowerUpCollected(other, this);
+                }
                 //instantiate tigger particle after squiddy pick up PU
                 int nullObj;
                 if (currentLogic.ParticleAfterTriggerPool != null)
                     currentLogic.ParticleAfterTriggerPool.Get(null, transform.position, Quaternion.identity, out nullObj, true);
-            }
-            //activate sound
-            if (currentLogic.TriggerSound != null)
-            {
-                //trigger sound
-                currentLogic.TriggerSound.Play(aSourceForTrigger);
-                //vocal trigger sound
-                currentLogic.VocalSound.Play(aSourceForVocal);
+                //activate sound
+                if (currentLogic.TriggerSound != null)
+                {
+                    //trigger sound
+                    currentLogic.TriggerSound.Play(aSourceForTrigger);
+                    //vocal trigger sound
+                    currentLogic.VocalSound.Play(aSourceForVocal);
+                }
             }
 
-            if(powerupInstantiatedObject)
+            if (powerupInstantiatedObject)
             {
                 powerupInstantiatedObject.SetActive(false);
             }
-            if(powRenderer)
+            if (powRenderer)
             {
                 powRenderer.enabled = false;
+            }
+            if (coll)
+            {
+                coll.enabled = false;
             }
         }
     }

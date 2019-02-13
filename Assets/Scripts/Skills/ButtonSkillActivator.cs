@@ -61,6 +61,9 @@ public class ButtonSkillActivator : MonoBehaviour
         }
         if (ActivableSkill.InvokeSkill())
         {
+#if UNITY_EDITOR
+            Debug.LogFormat("{0} invoked", this);
+#endif
             skillReady = false;
             if (OnSkillInvoked != null)
             {
