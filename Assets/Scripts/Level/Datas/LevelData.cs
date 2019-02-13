@@ -68,6 +68,12 @@ public class LevelData : ScriptableObject
     private int bestScore;
     [SerializeField]
     private string fileNameFull;
+
+    [SerializeField]
+    private uint leaderboardTotalEntries = 10;
+
+    [SerializeField]
+    private List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
     void OnValidate()
     {
         fileNameFull = Filename + levelIndex + name;
@@ -82,6 +88,10 @@ public class LevelData : ScriptableObject
         if (!Restore())
         {
             SaveToFile();
+        }
+        if(entries == null)
+        {
+
         }
     }
     public void SetValuesAndSave(bool isUnlocked, long unlockCost, int bestScore)

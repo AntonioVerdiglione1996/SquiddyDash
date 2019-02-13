@@ -45,8 +45,22 @@ public class Character : MonoBehaviour
 
         return transform;
     }
-    public bool CollectAndSpawnSkills(bool spawnIcons = true)
+    public bool CollectAndSpawnSkills(List<Accessory> accessoriesToSpawn = null, bool spawnIcons = true)
     {
+        if (accessoriesToSpawn != null)
+        {
+            for (int i = 0; i < accessoriesToSpawn.Count; i++)
+            {
+                if (accessoriesToSpawn[i])
+                {
+                    Accessory accessory = Instantiate(accessoriesToSpawn[i]);
+                    if (accessory)
+                    {
+                        accessory.SetParent(GetAccessoryTransform(accessory.Type));
+                    }
+                }
+            }
+        }
         Skills = transform.root.GetComponentsInChildren<Skill>(true);
         Accessory[] accessories = transform.root.GetComponentsInChildren<Accessory>(true);
         Skill mainSkill = null;
@@ -272,7 +286,7 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        CollectAndSpawnSkills(false);
+        CollectAndSpawnSkills(null, false);
         Locators = transform.root.GetComponentsInChildren<AccessoryLocator>(true);
 #if UNITY_EDITOR
         if (Locators != null && DebugActive)
