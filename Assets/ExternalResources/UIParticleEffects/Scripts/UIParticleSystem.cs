@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIParticleSystem : MonoBehaviour
 {
-
-
     public Sprite Particle;
 
     public float Duration = 5f;
@@ -46,12 +44,6 @@ public class UIParticleSystem : MonoBehaviour
     protected Image[] ParticlePool;
     protected int ParticlePoolPointer;
 
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
     void Awake()
     {
         if (ParticlePool == null)
@@ -77,12 +69,6 @@ public class UIParticleSystem : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Play()
     {
         IsPlaying = true;
@@ -105,7 +91,6 @@ public class UIParticleSystem : MonoBehaviour
                 if (!ParticlePool[ParticlePool.Length - 1 - ParticlePoolPointer].gameObject.activeSelf)
                     StartCoroutine(CoParticleFly(ParticlePool[ParticlePool.Length - 1 - ParticlePoolPointer]));
             }
-
             yield return wf;
         }
         IsPlaying = false;

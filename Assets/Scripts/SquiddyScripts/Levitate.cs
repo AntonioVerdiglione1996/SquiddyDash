@@ -15,10 +15,17 @@ public class Levitate : MonoBehaviour
 
     [SerializeField]
     private float maxY = 1f;
+
+    private float initialY;
+
+    private void Start()
+    {
+        initialY = transform.position.y;
+    }
     void Update()
     {
         float t = Mathf.PingPong(Time.time * multiplier, duration) / duration;
-        transform.position = new Vector3(0, Mathf.Lerp(minY, maxY, t), 0);
+        transform.position = new Vector3(transform.position.x, initialY + Mathf.Lerp(minY, maxY, t), transform.position.z);
 
     }
 }

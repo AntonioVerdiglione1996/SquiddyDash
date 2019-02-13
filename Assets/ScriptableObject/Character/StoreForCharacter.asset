@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fe4f33d7b33bc48831238eb7d82d75, type: 3}
   m_Name: StoreForCharacter
   m_EditorClassIdentifier: 
-  index: 0
+  index: 2
   Characters:
   - {fileID: 114016532896683028, guid: 7009f848c0153894db9c9c118a2094c6, type: 2}
   - {fileID: 114656531778918838, guid: ca09777b42df5ad448bbe83cafc74fc0, type: 2}
   - {fileID: 114788839173389414, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
-  Accessories:
-  - {fileID: 114598646492888398, guid: 4c7a838cb64513443a2b98584853a250, type: 2}
+  Accessories: []
