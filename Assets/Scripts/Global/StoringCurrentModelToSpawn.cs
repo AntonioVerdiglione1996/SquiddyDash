@@ -10,13 +10,18 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     [SerializeField]
     private int index;
     public List<Character> Characters;
-    public List<Accessory> Accessories;
+    [SerializeField]
+    private List<Accessory> accessories;
 
     private Queue<Accessory> tempQueue = new Queue<Accessory>();
 
     public int GetIndex()
     {
         return index;
+    }
+    public List<Accessory> GetAccessories()
+    {
+        return accessories;
     }
     private void OnEnable()
     {
@@ -30,18 +35,21 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     {
         this.index = Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
         tempQueue.Clear();
-        for (int i = 0; i < accessories.Count; i++)
+        if (accessories != null)
         {
-            Accessory acc = accessories[i];
-            if (acc)
+            for (int i = 0; i < accessories.Count; i++)
             {
-                tempQueue.Enqueue(acc);
+                Accessory acc = accessories[i];
+                if (acc)
+                {
+                    tempQueue.Enqueue(acc);
+                }
             }
         }
-        Accessories.Clear();
+        this.accessories.Clear();
         while (tempQueue.Count > 0)
         {
-            Accessories.Add(tempQueue.Dequeue());
+            this.accessories.Add(tempQueue.Dequeue());
         }
         //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
         //with the new value
@@ -49,7 +57,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     }
     public void OnValidate()
     {
-        SetIndexAndAccessories(this.index, Accessories);
+        SetIndexAndAccessories(this.index, accessories);
     }
     public void SaveToFile()
     {
