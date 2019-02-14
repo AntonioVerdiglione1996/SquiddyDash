@@ -9,7 +9,7 @@ public class LevelScoreTextHandler : MonoBehaviour {
 
     public TextMeshProUGUI Text;
 
-    private int lastScore = 0;
+    private uint lastScore = 0;
 
     private void OnEnable()
     {
@@ -26,7 +26,7 @@ public class LevelScoreTextHandler : MonoBehaviour {
             return;
         }
 
-        int score = GlobalStats.CurrentLevel.BestScore;
+        uint score = GlobalStats.CurrentLevel.BestScore;
 
         if (score != lastScore)
         {

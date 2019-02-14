@@ -19,15 +19,21 @@ public class Character_Manager : MonoBehaviour
 
         models = new List<Transform>();
 
-        for (int i = 0; i < transform.childCount; i++)
+        if (SpawnerCharacter.Characters == null || SpawnerCharacter.Characters.Count <= 0)
         {
-            Transform Model = transform.GetChild(i);
+            return;
+        }
+
+        for (int i = 0; i < SpawnerCharacter.Characters.Count; i++)
+        {
+            Transform Model = Instantiate(SpawnerCharacter.Characters[i], transform).transform;
+
             //every model is off as default
             Model.gameObject.SetActive(false);
 
             models.Add(Model);
             //set always the first active
-            if (i == 0)
+            if (i == SpawnerCharacter.GetIndex())
             {
                 Model.gameObject.SetActive(true);
                 Character character = Model.GetComponent<Character>();
@@ -37,7 +43,7 @@ public class Character_Manager : MonoBehaviour
                     Text.text = character.Describer.Name;
                     Text.color = character.Describer.Color;
                 }
-                SpawnerCharacter.SetIndexAndAccessories(i, null);
+                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessories());
             }
         }
     }
@@ -45,12 +51,14 @@ public class Character_Manager : MonoBehaviour
     //Callback activation of Model ->  SetActive
     public void EnableModel(Transform modelToActivate)
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < models.Count - 1; i++)
         {
-            var transformToActivate = transform.GetChild(i);
+            Transform transformToActivate = models[i];
             bool shouldBeActive = transformToActivate == modelToActivate;
             if (shouldBeActive)
-                SpawnerCharacter.SetIndexAndAccessories(i, null);
+            {
+                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessories());
+            }
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
             Character character = modelToActivate.GetComponent<Character>();

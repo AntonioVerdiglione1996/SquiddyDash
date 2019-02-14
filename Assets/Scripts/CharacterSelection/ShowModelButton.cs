@@ -22,10 +22,14 @@ public class ShowModelButton : MonoBehaviour
             this.GetComponent<Image>().sprite = Icon;
         }
     }
-    private void Start()
+    private void Awake()
     {
         //register to the onclick events
         GetComponent<Button>().onClick.AddListener(HandleButtonClick);
+    }
+    private void OnDestroy()
+    {
+        GetComponent<Button>().onClick.RemoveListener(HandleButtonClick);
     }
 
     //this is only a wrapper

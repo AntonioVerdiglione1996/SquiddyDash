@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 [CreateAssetMenu(menuName = "Utility/Events/Global")]
 public class GlobalEvents : ScriptableObject
 {
@@ -69,10 +69,9 @@ public class GlobalEvents : ScriptableObject
             }
 #endif
         }
-        if (CurrentLevel && System && CurrentLevel.BestScore < System.Score)
+        if (CurrentLevel && System)
         {
-            CurrentLevel.BestScore = System.Score;
-            CurrentLevel.SaveToFile();
+            CurrentLevel.TryAddEntry((uint)System.Score, DateTime.Now.ToShortDateString());
         }
     }
     public void GameOverTrigger()

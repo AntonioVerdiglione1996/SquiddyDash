@@ -17,7 +17,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
 
     public int GetIndex()
     {
-        return index;
+        return Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
     }
     public List<Accessory> GetAccessories()
     {
@@ -33,7 +33,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     }
     public void SetIndexAndAccessories(int index, List<Accessory> accessories)
     {
-        this.index = Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
+        this.index = GetIndex();
         tempQueue.Clear();
         if (accessories != null)
         {

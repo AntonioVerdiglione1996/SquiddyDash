@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [CreateAssetMenu(menuName = "Gameplay/Levels/Data")]
 public class LevelData : ScriptableObject
 {
     public const string Filename = "LevelData";
 
     public Sprite Image;
-    public Color Color = new Color(1f,1f,1f,1f);
+    public Color Color = new Color(1f, 1f, 1f, 1f);
     public Material Material;
 
     public bool IsUnlocked
@@ -19,11 +18,18 @@ public class LevelData : ScriptableObject
         }
         set
         {
-            if(value != isUnlocked)
+            if (value != isUnlocked)
             {
                 isUnlocked = value;
                 SaveToFile();
             }
+        }
+    }
+    public uint BestScore
+    {
+        get
+        {
+            return entries == null || entries.Length <= 0 ? 0 : entries[0].Score;
         }
     }
     public long UnlockCost
@@ -34,38 +40,25 @@ public class LevelData : ScriptableObject
         }
         set
         {
-            if(unlockCost != value)
+            if (unlockCost != value)
             {
                 unlockCost = value;
                 SaveToFile();
             }
         }
     }
-    public int BestScore
-    {
-        get
-        {
-            return bestScore;
-        }
-        set
-        {
-            if (bestScore != value)
-            {
-                bestScore = value;
-                SaveToFile();
-            }
-        }
-    }
     public int LevelIndex { get { return levelIndex; } }
+    public string LevelName { get { return levelName; } }
+    public LeaderboardEntry[] Entries { get { return this.entries; } }
 
     [SerializeField]
     private int levelIndex;
     [SerializeField]
+    private string levelName;
+    [SerializeField]
     private bool isUnlocked;
     [SerializeField]
     private long unlockCost = 10;
-    [SerializeField]
-    private int bestScore;
     [SerializeField]
     private string fileNameFull;
 
@@ -73,10 +66,19 @@ public class LevelData : ScriptableObject
     private uint leaderboardTotalEntries = 10;
 
     [SerializeField]
-    private List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
+    private LeaderboardEntry[] entries;
     void OnValidate()
     {
-        fileNameFull = Filename + levelIndex + name;
+        fileNameFull = Filename + levelIndex + levelName;
+        if(leaderboardTotalEntries <= 0)
+        {
+            leaderboardTotalEntries = 1;
+        }
+        if(entries.Length != leaderboardTotalEntries)
+        {
+            SetEntries(entries);
+            SaveToFile();
+        }
     }
     private void Awake()
     {
@@ -89,22 +91,82 @@ public class LevelData : ScriptableObject
         {
             SaveToFile();
         }
-        if(entries == null)
+        if (entries == null)
         {
-
+            entries = new LeaderboardEntry[leaderboardTotalEntries];
+        }
+        if (entries.Length != leaderboardTotalEntries)
+        {
+            SetEntries(this.entries);
+            SaveToFile();
         }
     }
-    public void SetValuesAndSave(bool isUnlocked, long unlockCost, int bestScore)
+    public bool IsLeaderboardScore(uint score)
     {
-        bool anyChanges = (this.isUnlocked != isUnlocked) || (this.unlockCost != unlockCost) || (this.bestScore != bestScore);
+        return entries == null || leaderboardTotalEntries <= 0 ? false : (entries.Length <= 0 ? true : score > entries[entries.Length - 1].Score);
+    }
+    public int TryAddEntry(uint Score, string Name)
+    {
+        return TryAddEntry(new LeaderboardEntry(Score, Name));
+    }
+    public int TryAddEntry(LeaderboardEntry entry)
+    {
+        if (entry == null || !IsLeaderboardScore(entry.Score))
+        {
+            return -1;
+        }
+
+        int i;
+        for (i = 0; i < entries.Length; i++)
+        {
+            LeaderboardEntry current = entries[i];
+            if(entry.Score > current.Score)
+            {
+                entries[i] = entry;
+                for (int j = i + 1; j < entries.Length; j++)
+                {
+                    LeaderboardEntry temp = entries[j];
+                    entries[j] = current;
+                    current = temp;
+                }
+
+                break;
+            }
+        }
+
+        SaveToFile();
+
+        return i;
+    }
+    public void SetValuesAndSave(bool isUnlocked, long unlockCost, LeaderboardEntry[] entries)
+    {
+        bool anyChanges = (this.isUnlocked != isUnlocked) || (this.unlockCost != unlockCost) || (entries != this.entries);
 
         if (anyChanges)
         {
             this.isUnlocked = isUnlocked;
-            this.bestScore = bestScore;
+            if (entries != this.entries)
+            {
+                SetEntries(entries);
+            }
             this.unlockCost = unlockCost;
             SaveToFile();
         }
+    }
+    public void SetEntries(LeaderboardEntry[] entries)
+    {
+        LeaderboardEntry[] temp = new LeaderboardEntry[leaderboardTotalEntries];
+        int size = Mathf.Min(this.entries.Length, entries.Length, (int)leaderboardTotalEntries);
+        for (int i = 0; i < size; i++)
+        {
+            temp[i] = entries[i];
+        }
+        for (int i = size; i < temp.Length; i++)
+        {
+            temp[i] = new LeaderboardEntry();
+        }
+        this.entries = temp;
+        ReorderDescendingEntries();
     }
     public bool Restore()
     {
@@ -112,6 +174,28 @@ public class LevelData : ScriptableObject
     }
     public void SaveToFile()
     {
+        if(entries.Length != leaderboardTotalEntries)
+        {
+            SetEntries(entries);
+        }
         SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, fileNameFull, this, true);
+    }
+    public void ReorderDescendingEntries()
+    {
+        if (entries == null)
+        {
+            return;
+        }
+        for (int i = 0; i < entries.Length - 1; i++)
+        {
+            LeaderboardEntry entry = entries[i];
+            LeaderboardEntry next = entries[i + 1];
+            if(next.Score > entry.Score)
+            {
+                entries[i] = next;
+                entries[i + 1] = entry;
+                i = Mathf.Max(-1, i - 2);
+            }
+        }
     }
 }

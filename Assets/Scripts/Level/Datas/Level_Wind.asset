@@ -15,7 +15,29 @@ MonoBehaviour:
   Color: {r: 0, g: 1, b: 1, a: 1}
   Material: {fileID: 0}
   levelIndex: 5
-  isUnlocked: 1
+  levelName: Wind_Level_Ultimate
+  isUnlocked: 0
   unlockCost: 10
-  bestScore: 192
-  fileNameFull: LevelData5Level_Wind
+  fileNameFull: LevelData5Wind_Level_Ultimate
+  leaderboardTotalEntries: 10
+  entries:
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
+  - Name: 
+    Score: 0
