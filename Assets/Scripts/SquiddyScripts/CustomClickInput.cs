@@ -108,20 +108,25 @@ public class CustomClickInput : MonoBehaviour
             ClickState = EClickState.None;
         }
 #elif (UNITY_IOS || UNITY_ANDROID)
-        Touch touch = Input.GetTouch(InputTouchId);
-        if (touch.phase == TouchPhase.Began)
+        int touches = Input.touchCount;
+        Touch touch = new Touch();
+        if (touches > 0)
+        {
+            touch = Input.GetTouch(InputTouchClickId);
+        }
+        if (touches > 0 && touch.phase == TouchPhase.Began)
         {
             ClickState = EClickState.Down;
             ScreenPosition = touch.position;
             //In this case screen position equals previous screen position
             PreviousScreenPosition = ScreenPosition;
         }
-        else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+        else if (touches > 0 && touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
         {
             ClickState = EClickState.Up;
             ScreenPosition = touch.position;
         }
-        else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+        else if (touches > 0 && touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
         {
             ClickState = EClickState.Pressed;
             ScreenPosition = touch.position;

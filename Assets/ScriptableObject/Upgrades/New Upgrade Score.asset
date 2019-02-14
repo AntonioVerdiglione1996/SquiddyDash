@@ -15,4 +15,4 @@ MonoBehaviour:
   OverrideSkill: 0
   OverridePowerup: 0
   Score: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  ScoreIncrease: 100
+  ScoreIncrease: 8

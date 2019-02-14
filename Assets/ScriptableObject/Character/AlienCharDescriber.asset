@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
-  m_Name: BasicCharDescriber
+  m_Name: AlienCharDescriber
   m_EditorClassIdentifier: 
   Name: Squiddy
   Descriptions: []
-  Image: {fileID: 21300000, guid: 46ae4301e6f12de4389a9caa0cc557d5, type: 3}
-  Color: {r: 0, g: 1, b: 0, a: 1}
+  Image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
+  Color: {r: 0.029158179, g: 0.8455882, b: 0, a: 1}

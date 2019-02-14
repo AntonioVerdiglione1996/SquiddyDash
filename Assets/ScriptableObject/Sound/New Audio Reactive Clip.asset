@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: acbe7b0a0084649439771526600f6b61, type: 3}
   Timestamps:
-  - Timestamp: 2
-    Strenght: 0
-  - Timestamp: 3
-    Strenght: 0
-  - Timestamp: 4
-    Strenght: 0
   - Timestamp: 5
-    Strenght: 0
+    Strenght: 10
+  - Timestamp: 15
+    Strenght: 10
+  - Timestamp: 25
+    Strenght: 10
+  - Timestamp: 40
+    Strenght: 10

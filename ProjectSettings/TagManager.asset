@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Walls
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,14 +13,14 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - WallDx
-  - WallSx
-  - Platform
-  - WallUp
-  - WallDown
-  - PowerUp
-  - Splash
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

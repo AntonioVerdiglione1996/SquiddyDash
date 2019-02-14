@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8e7ee90fff0843b81f82d2f15788b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClipData: {fileID: 11400000, guid: b26b06d1d02808240a665d48a4252392, type: 2}
+  ClipData: {fileID: 11400000, guid: d2e703d849dc74c498a50441fbf982e6, type: 2}
   Source: {fileID: 82985325945469966}
   SoundEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
+  DebugActive: 0
