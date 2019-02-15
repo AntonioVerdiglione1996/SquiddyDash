@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
   m_Name: SuperJump_describer
   m_EditorClassIdentifier: 
-  Description: 
+  Name: ONE JUUUUUUUMP!
+  Description: Tatatatata
   Image: {fileID: 21300000, guid: d0da9204dbe07d847864970f70a4ef0e, type: 3}
   Color: {r: 1, g: 0.43448272, b: 0, a: 1}

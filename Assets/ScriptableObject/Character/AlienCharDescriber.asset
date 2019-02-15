@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: AlienCharDescriber
   m_EditorClassIdentifier: 
   Name: Squiddy
-  Descriptions: []
+  Description: Alien
   Image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
   Color: {r: 0.029158179, g: 0.8455882, b: 0, a: 1}

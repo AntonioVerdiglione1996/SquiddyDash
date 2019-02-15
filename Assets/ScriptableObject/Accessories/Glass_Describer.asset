@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Glass_Describer
   m_EditorClassIdentifier: 
   Name: Common glass
-  Descriptions: []
+  Description: Common thing
   Image: {fileID: 21300000, guid: 7b899fc1594305743a3180f782aad953, type: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}

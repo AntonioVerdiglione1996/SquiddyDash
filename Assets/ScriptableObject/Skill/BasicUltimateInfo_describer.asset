@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
   m_Name: BasicUltimateInfo_describer
   m_EditorClassIdentifier: 
-  Description: 
+  Name: Random skill
+  Description: Super mega useless skill!
   Image: {fileID: 21300000, guid: 1af7184810cb2c749852bf0179956860, type: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}

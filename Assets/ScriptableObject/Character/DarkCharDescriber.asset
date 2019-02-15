@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: DarkCharDescriber
   m_EditorClassIdentifier: 
   Name: Void
-  Descriptions: []
+  Description: Darkness
   Image: {fileID: 21300000, guid: b16bfbf49643c65448f31f342423e159, type: 3}
   Color: {r: 0, g: 0, b: 0, a: 1}

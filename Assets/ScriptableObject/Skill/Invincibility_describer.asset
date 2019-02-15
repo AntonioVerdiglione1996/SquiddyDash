@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Invincibility_describer
   m_EditorClassIdentifier: 
   Name: Invincibility
-  Descriptions: []
+  Description: Not invincibility
   Image: {fileID: 21300000, guid: f4b424bb2c6dc7e4b871bb1149414342, type: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}

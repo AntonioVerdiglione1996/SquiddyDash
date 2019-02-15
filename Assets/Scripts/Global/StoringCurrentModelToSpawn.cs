@@ -76,6 +76,16 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     }
     public void SetIndexAndAccessories(int index, List<int> accessories)
     {
+        for (int i = Accessories.Count - 1; i > 0; i--)
+        {
+            for (int j = i - 1; j >= 0; j--)
+            {
+                if(Accessories[i] == Accessories[j])
+                {
+                    Accessories.RemoveAt(i);
+                }
+            }
+        }
         this.characterIndex = GetCharacterIndex(index);
         tempQueue.Clear();
         if (accessories != null)
