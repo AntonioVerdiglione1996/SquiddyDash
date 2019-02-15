@@ -43,20 +43,53 @@ public class Character : MonoBehaviour
             }
         }
 
-        return transform;
+        return null;
     }
-    public bool CollectAndSpawnSkills(List<Accessory> accessoriesToSpawn = null, bool spawnIcons = true)
+    public bool RemoveInvalidIndices(List<Accessory> accessoriesToSpawn, List<int> accessoriesIndices)
     {
-        if (accessoriesToSpawn != null)
+        bool removed = false;
+        if (accessoriesToSpawn != null && accessoriesIndices != null)
         {
-            for (int i = 0; i < accessoriesToSpawn.Count; i++)
+            for (int i = accessoriesIndices.Count - 1; i >= 0; i--)
             {
-                if (accessoriesToSpawn[i])
+                int currentAccessoryIndex = accessoriesIndices[i];
+                Accessory accessory = accessoriesToSpawn[currentAccessoryIndex];
+                if (currentAccessoryIndex < 0 || currentAccessoryIndex >= accessoriesToSpawn.Count || !accessory || !GetAccessoryTransform(accessory.Type))
                 {
-                    Accessory accessory = Instantiate(accessoriesToSpawn[i]);
-                    if (accessory)
+                    removed = true;
+                    accessoriesIndices.RemoveAt(i);
+                }
+            }
+        }
+        return removed;
+    }
+    public bool CollectAndSpawnSkills(List<Accessory> accessoriesToSpawn = null, List<int> accessoriesIndices = null, bool spawnIcons = true)
+    {
+        if (accessoriesToSpawn != null && accessoriesIndices != null)
+        {
+            for (int i = 0; i < accessoriesIndices.Count; i++)
+            {
+                int currentAccessoryIndex = accessoriesIndices[i];
+                if (currentAccessoryIndex >= 0 && currentAccessoryIndex < accessoriesToSpawn.Count)
+                {
+                    Accessory toSpawn = accessoriesToSpawn[currentAccessoryIndex];
+                    if (toSpawn)
                     {
-                        accessory.SetParent(GetAccessoryTransform(accessory.Type));
+                        Accessory accessory = Instantiate(toSpawn);
+                        if (accessory)
+                        {
+                            Transform parent = GetAccessoryTransform(accessory.Type);
+                            if (parent)
+                            {
+                                accessory.SetParent(parent);
+                            }
+#if UNITY_EDITOR
+                            else
+                            {
+                                Debug.LogErrorFormat("{0} could not find an accessory locator of type {1} for {2}! The accessory will not be spawned", this, accessory.Type, accessory);
+                            }
+#endif
+                        }
                     }
                 }
             }
@@ -286,7 +319,7 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        CollectAndSpawnSkills(null, false);
+        CollectAndSpawnSkills(null, null, false);
         Locators = transform.root.GetComponentsInChildren<AccessoryLocator>(true);
 #if UNITY_EDITOR
         if (Locators != null && DebugActive)

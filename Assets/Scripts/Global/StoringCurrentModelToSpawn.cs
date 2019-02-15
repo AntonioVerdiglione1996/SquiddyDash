@@ -8,48 +8,59 @@ public class StoringCurrentModelToSpawn : ScriptableObject
 {
     public const string Filename = "CurrentModel.json";
     [SerializeField]
-    private int index;
-    public List<Character> Characters;
+    private int characterIndex;
+    public List<Character> Characters = new List<Character>();
     [SerializeField]
-    private List<Accessory> accessories;
+    private List<int> accessoriesIndices;
+    public List<Accessory> Accessories = new List<Accessory>();
 
-    private Queue<Accessory> tempQueue = new Queue<Accessory>();
+    private Queue<int> tempQueue = new Queue<int>();
 
-    public int GetIndex()
+    public int GetCharacterIndex()
     {
-        return Mathf.Clamp(index, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
+        return Mathf.Clamp(characterIndex, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
     }
-    public List<Accessory> GetAccessories()
+    public int GetCharacterIndex(int newIndex)
     {
-        return accessories;
+        return Mathf.Clamp(newIndex, 0, (Characters == null || Characters.Count <= 0) ? 0 : (Characters.Count - 1));
+    }
+    public List<int> GetAccessoriesIndices()
+    {
+        return accessoriesIndices;
     }
     private void OnEnable()
     {
         //if the file does not exist we serialize this object for the first time.
         if (!Restore())
         {
-            SaveToFile();
+            SetIndexAndAccessories(characterIndex, accessoriesIndices);
         }
     }
-    public void SetIndexAndAccessories(int index, List<Accessory> accessories)
+    public void SetIndexAndAccessories(int index, List<int> accessories)
     {
-        this.index = GetIndex();
+        this.characterIndex = GetCharacterIndex(index);
         tempQueue.Clear();
         if (accessories != null)
         {
+            Character character = Characters[characterIndex];
             for (int i = 0; i < accessories.Count; i++)
             {
-                Accessory acc = accessories[i];
-                if (acc)
+                int currIndex = accessories[i];
+                Accessory accessory = Accessories[currIndex];
+                if (currIndex >= 0 && currIndex < Accessories.Count && character && accessory && character.GetAccessoryTransform(accessory.Type))
                 {
-                    tempQueue.Enqueue(acc);
+                    tempQueue.Enqueue(currIndex);
                 }
             }
         }
-        this.accessories.Clear();
+        this.accessoriesIndices.Clear();
         while (tempQueue.Count > 0)
         {
-            this.accessories.Add(tempQueue.Dequeue());
+            int indexToAdd = tempQueue.Dequeue();
+            if (!accessoriesIndices.Contains(indexToAdd))
+            {
+                this.accessoriesIndices.Add(indexToAdd);
+            }
         }
         //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
         //with the new value
@@ -57,7 +68,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     }
     public void OnValidate()
     {
-        SetIndexAndAccessories(this.index, accessories);
+        SetIndexAndAccessories(this.characterIndex, accessoriesIndices);
     }
     public void SaveToFile()
     {
@@ -72,7 +83,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         }
         for (int i = 0; i < Characters.Count; i++)
         {
-            if (i == index)
+            if (i == characterIndex)
             {
                 go = Characters[i];
             }

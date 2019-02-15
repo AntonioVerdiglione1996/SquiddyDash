@@ -33,7 +33,7 @@ public class Character_Manager : MonoBehaviour
 
             models.Add(Model);
             //set always the first active
-            if (i == SpawnerCharacter.GetIndex())
+            if (i == SpawnerCharacter.GetCharacterIndex())
             {
                 Model.gameObject.SetActive(true);
                 Character character = Model.GetComponent<Character>();
@@ -43,7 +43,7 @@ public class Character_Manager : MonoBehaviour
                     Text.text = character.Describer.Name;
                     Text.color = character.Describer.Color;
                 }
-                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessories());
+                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessoriesIndices());
             }
         }
     }
@@ -51,17 +51,17 @@ public class Character_Manager : MonoBehaviour
     //Callback activation of Model ->  SetActive
     public void EnableModel(Transform modelToActivate)
     {
-        for (int i = 0; i < models.Count - 1; i++)
+        Character character = modelToActivate.GetComponent<Character>();
+        for (int i = 0; i < models.Count; i++)
         {
             Transform transformToActivate = models[i];
             bool shouldBeActive = transformToActivate == modelToActivate;
             if (shouldBeActive)
             {
-                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessories());
+                SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessoriesIndices());
             }
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
-            Character character = modelToActivate.GetComponent<Character>();
             if (character.Describer)
             {
                 Text.text = character.Describer.Name;
