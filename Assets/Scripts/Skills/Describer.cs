@@ -3,7 +3,7 @@
 public class Describer : ScriptableObject
 {
     public string Name;
-    public string[] Descriptions = new string[0];
+    public string Description = string.Empty;
     public Sprite Image;
     public Color Color = Color.green;
 

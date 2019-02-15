@@ -1068,8 +1068,6 @@ MonoBehaviour:
   Mode: 1
   defaultScoreRequirement: 10
   ScoreRequirementMultIncrementPerInvokation: 1.500001
-  WallsCustomRepulsion: {x: 0.8, y: 0.8, z: 0.8}
-  WallsModifier: {fileID: 11400000, guid: c3c119c9700d1674780e9d2dabee92e4, type: 2}
 --- !u!114 &114676582980658600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1111,4 +1109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfec7f054e572c4d9055fd609fb2680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocatorType: 2
+  Type: 2

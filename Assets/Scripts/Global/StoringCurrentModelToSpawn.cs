@@ -36,6 +36,44 @@ public class StoringCurrentModelToSpawn : ScriptableObject
             SetIndexAndAccessories(characterIndex, accessoriesIndices);
         }
     }
+    public void RemoveAccessory(int accessoryIndex)
+    {
+        Character character = Characters[characterIndex];
+        bool modified = false;
+        if (character && accessoryIndex >= 0 && accessoryIndex < Accessories.Count)
+        {
+            for (int i = accessoriesIndices.Count - 1; i >= 0; i--)
+            {
+                if (accessoryIndex == accessoriesIndices[i])
+                {
+                    accessoriesIndices.RemoveAt(i);
+                    modified = true;
+                }
+            }
+        }
+        if (modified)
+        {
+            SetIndexAndAccessories(characterIndex, accessoriesIndices);
+        }
+    }
+    public void AddAccessory(int accessoryIndex)
+    {
+        Character character = Characters[characterIndex];
+        if (character && accessoryIndex >= 0 && accessoryIndex < Accessories.Count)
+        {
+            Accessory toAdd = Accessories[accessoryIndex];
+            for (int i = accessoriesIndices.Count - 1; i >= 0; i--)
+            {
+                Accessory accessory = Accessories[accessoriesIndices[i]];
+                if (!accessory || accessory.Type == toAdd.Type)
+                {
+                    accessoriesIndices.RemoveAt(i);
+                }
+            }
+            accessoriesIndices.Add(accessoryIndex);
+            SetIndexAndAccessories(characterIndex, accessoriesIndices);
+        }
+    }
     public void SetIndexAndAccessories(int index, List<int> accessories)
     {
         this.characterIndex = GetCharacterIndex(index);
@@ -46,10 +84,13 @@ public class StoringCurrentModelToSpawn : ScriptableObject
             for (int i = 0; i < accessories.Count; i++)
             {
                 int currIndex = accessories[i];
-                Accessory accessory = Accessories[currIndex];
-                if (currIndex >= 0 && currIndex < Accessories.Count && character && accessory && character.GetAccessoryTransform(accessory.Type))
+                if (currIndex >= 0 && currIndex < Accessories.Count && character)
                 {
-                    tempQueue.Enqueue(currIndex);
+                    Accessory accessory = Accessories[currIndex];
+                    if (accessory && character.GetAccessoryTransform(accessory.Type))
+                    {
+                        tempQueue.Enqueue(currIndex);
+                    }
                 }
             }
         }
@@ -57,7 +98,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         while (tempQueue.Count > 0)
         {
             int indexToAdd = tempQueue.Dequeue();
-            if (!accessoriesIndices.Contains(indexToAdd))
+            if (!accessoriesIndices.Contains(indexToAdd) && !Accessories.Find(acc => acc != Accessories[indexToAdd] && acc.Type == Accessories[indexToAdd].Type))
             {
                 this.accessoriesIndices.Add(indexToAdd);
             }

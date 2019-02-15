@@ -29,6 +29,10 @@ public class Character : MonoBehaviour
 
     private Canvas SkillUIHolder;
 
+    public Skill[] GetSkills()
+    {
+        return Skills;
+    }
     public Transform GetAccessoryTransform(EAccessoryType type)
     {
         if (Locators != null)
@@ -36,7 +40,7 @@ public class Character : MonoBehaviour
             for (int i = 0; i < Locators.Length; i++)
             {
                 AccessoryLocator locator = Locators[i];
-                if (locator.LocatorType == type)
+                if (locator && locator.Type == type)
                 {
                     return locator.transform;
                 }
@@ -53,8 +57,7 @@ public class Character : MonoBehaviour
             for (int i = accessoriesIndices.Count - 1; i >= 0; i--)
             {
                 int currentAccessoryIndex = accessoriesIndices[i];
-                Accessory accessory = accessoriesToSpawn[currentAccessoryIndex];
-                if (currentAccessoryIndex < 0 || currentAccessoryIndex >= accessoriesToSpawn.Count || !accessory || !GetAccessoryTransform(accessory.Type))
+                if (currentAccessoryIndex < 0 || currentAccessoryIndex >= accessoriesToSpawn.Count || !accessoriesToSpawn[currentAccessoryIndex] || !GetAccessoryTransform(accessoriesToSpawn[currentAccessoryIndex].Type))
                 {
                     removed = true;
                     accessoriesIndices.RemoveAt(i);
@@ -327,7 +330,7 @@ public class Character : MonoBehaviour
             Dictionary<EAccessoryType, uint> appearences = new Dictionary<EAccessoryType, uint>();
             for (int i = 0; i < Locators.Length; i++)
             {
-                EAccessoryType type = Locators[i].LocatorType;
+                EAccessoryType type = Locators[i].Type;
                 if (appearences.ContainsKey(type))
                 {
                     appearences[type]++;
