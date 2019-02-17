@@ -163,7 +163,7 @@ public class SOPool : ScriptableObject
             bool instantiated = false;
             res = PersistentPoolInScenes ? GetRemoveNullRefs(out nullObjsRemoved, out instantiated, parent) : elements.Dequeue();
             if (!instantiated && parentAlways)
-                res.transform.parent = parent;
+                res.transform.SetParent(parent);
         }
         onGet(res);
         if (!res.activeSelf)
@@ -192,7 +192,7 @@ public class SOPool : ScriptableObject
             bool instantiated = false;
             res = PersistentPoolInScenes ? GetRemoveNullRefs(out nullObjsRemoved, out instantiated, parent) : elements.Dequeue();
             if (!instantiated && parentAlways)
-                res.transform.parent = parent;
+                res.transform.SetParent(parent);
         }
         if (!res.activeSelf)
         {
@@ -226,7 +226,7 @@ public class SOPool : ScriptableObject
             {
                 res.transform.SetPositionAndRotation(position, rotation);
                 if (parentAlways)
-                    res.transform.parent = parent;
+                    res.transform.SetParent(parent);
             }
         }
         onGet(res);
@@ -261,7 +261,7 @@ public class SOPool : ScriptableObject
             {
                 res.transform.SetPositionAndRotation(position, rotation);
                 if (parentAlways)
-                    res.transform.parent = parent;
+                    res.transform.SetParent(parent);
             }
         }
         if (!res.activeSelf)
@@ -295,7 +295,7 @@ public class SOPool : ScriptableObject
             {
                 res.transform.SetPositionAndRotation(position, Prefab.transform.rotation);
                 if (parentAlways)
-                    res.transform.parent = parent;
+                    res.transform.SetParent(parent);
             }
         }
         if (!res.activeSelf)

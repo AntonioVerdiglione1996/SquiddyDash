@@ -30,7 +30,7 @@ namespace TMPro.Examples
 
             GameObject frameCounter = new GameObject("Frame Counter");
             m_frameCounter_transform = frameCounter.transform;
-            m_frameCounter_transform.parent = m_camera.transform;
+            m_frameCounter_transform.SetParent(m_camera.transform);
             m_frameCounter_transform.localRotation = Quaternion.identity;
 
 
