@@ -38,6 +38,18 @@ public class StoringCurrentModelToSpawn : ScriptableObject
             VerifyAndSave();
         }
     }
+    public void RemoveAccessory(EAccessoryType Type)
+    {
+        for (int i = 0; i < accessoriesIndices.Count; i++)
+        {
+            int index = accessoriesIndices[i];
+            if (Accessories[index].Type == Type)
+            {
+                RemoveAccessory(index);
+                return;
+            }
+        }
+    }
     public void RemoveAccessory(int accessoryIndex)
     {
         Character character = Characters[characterIndex];
@@ -86,7 +98,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         {
             for (int j = i - 1; j >= 0; j--)
             {
-                if(Accessories[i] == Accessories[j])
+                if (Accessories[i] == Accessories[j])
                 {
                     Accessories.RemoveAt(i);
                 }
@@ -123,7 +135,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         //with the new value
         SaveToFile();
 
-        if(OnAccessoryUpdated != null)
+        if (OnAccessoryUpdated != null)
         {
             OnAccessoryUpdated();
         }

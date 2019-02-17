@@ -11,6 +11,7 @@ public class AccessoryUICategory : MonoBehaviour
     public void SpawnType(EAccessoryType type)
     {
         Type = type;
+
         if (scm.Accessories != null)
         {
             for (int i = 0; i < scm.Accessories.Count; i++)

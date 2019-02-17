@@ -10,7 +10,7 @@ public class AccessoryUiSpawner : MonoBehaviour
     public Dropdown Dropdown;
     public Dictionary<EAccessoryType, AccessoryUICategory> Categories = new Dictionary<EAccessoryType, AccessoryUICategory>();
 
-    private EAccessoryType previousType;
+    public EAccessoryType CurrentType { get; private set; }
     void Start()
     {
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
@@ -34,12 +34,12 @@ public class AccessoryUiSpawner : MonoBehaviour
             EAccessoryType type = (EAccessoryType)newValue;
             if (Categories.ContainsKey(type))
             {
-                if (Categories.ContainsKey(previousType))
+                if (Categories.ContainsKey(CurrentType))
                 {
-                    Categories[previousType].gameObject.SetActive(false);
+                    Categories[CurrentType].gameObject.SetActive(false);
                 }
                 Categories[type].gameObject.SetActive(true);
-                previousType = type;
+                CurrentType = type;
             }
         }
     }
