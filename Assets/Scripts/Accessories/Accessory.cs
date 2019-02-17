@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Accessory : MonoBehaviour
 {
+    public const string Filename = "Accessory";
+    public const string DefaultNoName = "Missing_Name";
     public Describer Describer;
     public Transform Root;
     public Skill Skill;
@@ -35,6 +37,8 @@ public class Accessory : MonoBehaviour
             return type;
         }
     }
+    [SerializeField]
+    private string fileNameFull;
     public void SetParent(Transform parent, bool worldPositionStays = false)
     {
         OnValidate();
@@ -83,6 +87,8 @@ public class Accessory : MonoBehaviour
     }
     private void OnValidate()
     {
+        fileNameFull = Filename + (this.Describer ? this.Describer.Name : DefaultNoName);
+
         if (!Skill)
         {
             Skill = GetComponent<Skill>();

@@ -14,7 +14,7 @@ public class AccessoryUI : DescriberUI
     {
         if (GetChildButtons)
         {
-            Buttons = GetComponentsInChildren<Button>();
+            Buttons = GetComponentsInChildren<Button>(true);
         }
     }
     public virtual void SetAccessory(int index)

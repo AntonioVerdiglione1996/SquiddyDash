@@ -12,6 +12,33 @@ public class Character_Manager : MonoBehaviour
     public Text Text;
     public StoringCurrentModelToSpawn SpawnerCharacter;
 
+    public Character GetCurrentModel
+    {
+        get
+        {
+            if (!SpawnerCharacter || models == null || SpawnerCharacter.GetCharacterIndex() >= models.Count)
+            {
+                return null;
+            }
+            return models[SpawnerCharacter.GetCharacterIndex()].GetComponent<Character>();
+        }
+    }
+    private void OnAccessoryUpdated()
+    {
+        Character character = GetCurrentModel;
+        if (character)
+        {
+            Accessory[] old_accessories = character.GetComponentsInChildren<Accessory>(true);
+            if (old_accessories != null)
+            {
+                for (int i = 0; i < old_accessories.Length; i++)
+                {
+                    GameObject.Destroy(old_accessories[i].gameObject);
+                }
+            }
+            character.CollectAndSpawnSkills(SpawnerCharacter.Accessories, SpawnerCharacter.GetAccessoriesIndices(), false);
+        }
+    }
     private void Awake()
     {
         if (Instance != null)
@@ -23,6 +50,8 @@ public class Character_Manager : MonoBehaviour
         {
             return;
         }
+
+        SpawnerCharacter.OnAccessoryUpdated += OnAccessoryUpdated;
 
         for (int i = 0; i < SpawnerCharacter.Characters.Count; i++)
         {
@@ -69,7 +98,10 @@ public class Character_Manager : MonoBehaviour
             }
         }
     }
-
+    private void OnDestroy()
+    {
+        SpawnerCharacter.OnAccessoryUpdated -= OnAccessoryUpdated;
+    }
     public List<Transform> GetModels()
     {
         return models;

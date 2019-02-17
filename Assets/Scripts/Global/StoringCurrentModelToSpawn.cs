@@ -14,6 +14,8 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     private List<int> accessoriesIndices;
     public List<Accessory> Accessories = new List<Accessory>();
 
+    public event System.Action OnAccessoryUpdated;
+
     private Queue<int> tempQueue = new Queue<int>();
 
     public int GetCharacterIndex()
@@ -120,6 +122,11 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
         //with the new value
         SaveToFile();
+
+        if(OnAccessoryUpdated != null)
+        {
+            OnAccessoryUpdated();
+        }
     }
     public void OnValidate()
     {
