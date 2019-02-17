@@ -33,7 +33,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         //if the file does not exist we serialize this object for the first time.
         if (!Restore())
         {
-            SetIndexAndAccessories(characterIndex, accessoriesIndices);
+            VerifyAndSave();
         }
     }
     public void RemoveAccessory(int accessoryIndex)
@@ -53,7 +53,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         }
         if (modified)
         {
-            SetIndexAndAccessories(characterIndex, accessoriesIndices);
+            VerifyAndSave();
         }
     }
     public void AddAccessory(int accessoryIndex)
@@ -71,8 +71,12 @@ public class StoringCurrentModelToSpawn : ScriptableObject
                 }
             }
             accessoriesIndices.Add(accessoryIndex);
-            SetIndexAndAccessories(characterIndex, accessoriesIndices);
+            VerifyAndSave();
         }
+    }
+    public void VerifyAndSave()
+    {
+        SetIndexAndAccessories(characterIndex, accessoriesIndices);
     }
     public void SetIndexAndAccessories(int index, List<int> accessories)
     {
@@ -119,7 +123,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
     }
     public void OnValidate()
     {
-        SetIndexAndAccessories(this.characterIndex, accessoriesIndices);
+        VerifyAndSave();
     }
     public void SaveToFile()
     {

@@ -36,7 +36,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224811288593505210}
-  - component: {fileID: 114637134059893800}
+  - component: {fileID: 114975305220626740}
+  - component: {fileID: 222778932813938582}
+  - component: {fileID: 114499612785995048}
+  - component: {fileID: 114274552135414088}
   m_Layer: 5
   m_Name: accessory_ui_prefab
   m_TagString: Untagged
@@ -105,6 +108,74 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114274552135414088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058815156677108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 114499612785995048}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114499612785995048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058815156677108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114595102982585236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,21 +209,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: GLASSES OF MIRACLE
---- !u!114 &114637134059893800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1058815156677108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab19e749012b2aa4a91aa71437be259a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Describer: {fileID: 0}
-  Name: {fileID: 114595102982585236}
-  Description: {fileID: 114816124996905884}
-  Image: {fileID: 114066284738652700}
 --- !u!114 &114816124996905884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +243,26 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: made by fairy of the Sylvenian country, this glasses will be the coolest
     thing u can possibly buy in here!
+--- !u!114 &114975305220626740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058815156677108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdc24c21c07228449683f84a7504222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 0}
+  Name: {fileID: 114595102982585236}
+  Description: {fileID: 114816124996905884}
+  Image: {fileID: 114066284738652700}
+  AccessoryIndex: 0
+  Scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
+  Buttons:
+  - {fileID: 114274552135414088}
+  GetChildButtons: 1
 --- !u!222 &222500311185418564
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -205,6 +281,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1846923865603222}
+--- !u!222 &222778932813938582
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058815156677108}
 --- !u!224 &224125848500265556
 RectTransform:
   m_ObjectHideFlags: 1

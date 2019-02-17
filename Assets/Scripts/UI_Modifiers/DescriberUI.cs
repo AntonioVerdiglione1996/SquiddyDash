@@ -19,7 +19,7 @@ public class DescriberUI : MonoBehaviour
             SetDescriber(Describer);
         }
     }
-    public void SetDescriber(Describer describer)
+    public virtual void SetDescriber(Describer describer)
     {
         Describer = describer;
         if (Image)
