@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 31034530}
   - component: {fileID: 31034529}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: RemoveAccessory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
   Spawner: {fileID: 833150303}
+  Manager: {fileID: 1886690778}
 --- !u!114 &31034530
 MonoBehaviour:
   m_ObjectHideFlags: 0
