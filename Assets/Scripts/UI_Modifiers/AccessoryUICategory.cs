@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AccessoryUICategory : MonoBehaviour
 {
     public AccessoryUI Prefab;
+    public Transform UiParent;
     public EAccessoryType Type;
     public StoringCurrentModelToSpawn scm;
     public void SpawnType(EAccessoryType type)
@@ -19,7 +20,7 @@ public class AccessoryUICategory : MonoBehaviour
                 Accessory accessory = scm.Accessories[i];
                 if (accessory && accessory.Type == Type)
                 {
-                    AccessoryUI describer = Instantiate(Prefab, transform);
+                    AccessoryUI describer = Instantiate(Prefab, UiParent);
                     describer.SetDescriber(accessory.Describer);
                     describer.SetAccessory(i);
                 }
