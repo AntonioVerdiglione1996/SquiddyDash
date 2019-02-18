@@ -6,6 +6,7 @@ public class ScoreGoal : MonoBehaviour
     public NewSpawnPlatform newSpawn;
 
     public ScoreSystem ScoreSystem;
+    public BasicEvent OnMilestoneReached;
     [SerializeField]
     private MilestoneHolder milestones;
 
@@ -28,6 +29,10 @@ public class ScoreGoal : MonoBehaviour
             currentMilestone++;
             ScoreSystem.UpdateScore((int)(milestone.ScoreAsRewardMultiplier * milestone.Score));
             Resize(milestone.ScaleMultiplier , milestone.SpeedMultiplier);
+            if (OnMilestoneReached)
+            {
+                OnMilestoneReached.Raise();
+            }
         }
     }
     void Resize(Vector3 ScaleMultiplier, float SpeedMultiplier)

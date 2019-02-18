@@ -33,6 +33,8 @@ public class Platform : MonoBehaviour
 
     public Renderer[] ModifiableRenderers;
 
+    public CheckVisibility Visibility;
+
     private Transform squiddy;
 
     public void SetMaterial(Material NewMat)
@@ -42,6 +44,17 @@ public class Platform : MonoBehaviour
             for (int i = 0; i < ModifiableRenderers.Length; i++)
             {
                 ModifiableRenderers[i].material = NewMat;
+            }
+        }
+    }
+    private void OnValidate()
+    {
+        if (!Visibility)
+        {
+            Visibility = GetComponent<CheckVisibility>();
+            if (!Visibility)
+            {
+                Visibility = GetComponentInChildren<CheckVisibility>(true);
             }
         }
     }
@@ -60,12 +73,19 @@ public class Platform : MonoBehaviour
     {
         if (!IsVisible)
         {
-            OnBecameInvisible();
+            OnInvisible();
         }
+    }
+    private void OnEnable()
+    {
+        Visibility.OnVisible += OnVisible;
+        Visibility.OnInvisible += OnInvisible;
     }
     private void OnDisable()
     {
         IsAlreadyUpdatedScore = false;
+        Visibility.OnVisible -= OnVisible;
+        Visibility.OnInvisible -= OnInvisible;
     }
     public void ActivateCollisions()
     {
@@ -81,12 +101,15 @@ public class Platform : MonoBehaviour
             PlatCollider.enabled = false;
         }
     }
-    private void OnBecameVisible()
+    private void OnVisible()
     {
         IsVisible = true;
     }
-    private void OnBecameInvisible()
+    private void OnInvisible()
     {
+#if UNITY_EDITOR
+        Debug.LogWarningFormat("{0} in invisible", this);
+#endif
         IsVisible = false;
         if (!Poolable)
         {

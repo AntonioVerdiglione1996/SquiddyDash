@@ -11,8 +11,10 @@ public class LaserSpawner : MonoBehaviour
     public Camera MainCamera;
     public float SpawnChance = 0.2f;
     public float ScoreMultiplierAddedToSpawnChance = 0.001f;
+    public bool DebugDisableSpawn = true;
     public ScoreSystem Score;
     public float LeftOffset = -3f;
+
 
     private bool spawn = true;
     // Use this for initialization
@@ -61,6 +63,12 @@ public class LaserSpawner : MonoBehaviour
         {
             return;
         }
+#if UNITY_EDITOR
+        if (DebugDisableSpawn)
+        {
+            return;
+        }
+#endif
         if (Pool && ReferenceLocation)
         {
             if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance + ScoreMultiplierAddedToSpawnChance * Score.Score)

@@ -32,7 +32,7 @@ public class NewSpawnPlatform : MonoBehaviour
     {
         SpawnedPlatformCount = 1;
         newPos = VectorToAdd;
-        if(OnPlatformRecycle)
+        if (OnPlatformRecycle)
         {
             OnPlatformRecycle.OnEventRaised += SpawnPlatforms;
         }
@@ -68,7 +68,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     public void SpawnPlatforms(uint count, bool setMaterial = false)
     {
-        if(!spawn)
+        if (!spawn)
         {
             return;
         }
@@ -91,11 +91,10 @@ public class NewSpawnPlatform : MonoBehaviour
         int nullObj;
         GameObject go = pool.Get(null, newPos, out nullObj, true);
 
-        Transform root = go.transform.root;
-        root.localScale = CurrentScaleMultiplier;
+        go.GetComponentInChildren<Platform>().transform.localScale = CurrentScaleMultiplier;
 
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
-        if(mover)
+        if (mover)
         {
             mover.Speed = mover.InitialSpeed * CurrentSpeedMultiplier;
         }

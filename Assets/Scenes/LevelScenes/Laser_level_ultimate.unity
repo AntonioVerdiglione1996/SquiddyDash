@@ -1555,6 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newSpawn: {fileID: 1346226270}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  OnMilestoneReached: {fileID: 11400000, guid: ec971f40fcfe4eb4daa6c8604fc44798, type: 2}
   milestones: {fileID: 11400000, guid: 989ef8c0110a25e4084cc4c0425cc271, type: 2}
 --- !u!114 &1346226270
 MonoBehaviour:
@@ -1612,6 +1613,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1259412789}
   SpawnChance: 0.2
   ScoreMultiplierAddedToSpawnChance: 0.002
+  DebugDisableSpawn: 1
   Score: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   LeftOffset: -3
 --- !u!1001 &1418583786
