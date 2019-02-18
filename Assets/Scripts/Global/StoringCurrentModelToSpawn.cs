@@ -126,7 +126,7 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         while (tempQueue.Count > 0)
         {
             int indexToAdd = tempQueue.Dequeue();
-            if (!accessoriesIndices.Contains(indexToAdd) && !Accessories.Find(acc => acc != Accessories[indexToAdd] && acc.Type == Accessories[indexToAdd].Type))
+            if (!accessoriesIndices.Contains(indexToAdd) /*&& !Accessories.Find(acc => acc != Accessories[indexToAdd] && acc.Type == Accessories[indexToAdd].Type)*/)
             {
                 this.accessoriesIndices.Add(indexToAdd);
             }
