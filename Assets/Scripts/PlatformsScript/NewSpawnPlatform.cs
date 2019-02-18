@@ -95,19 +95,15 @@ public class NewSpawnPlatform : MonoBehaviour
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
         if (plat)
         {
+            plat.transform.localScale = CurrentScaleMultiplier;
             if (setMaterials && Material != null)
             {
                 plat.SetMaterial(Material);
             }
             if (plat.PlatCollider && mover)
             {
-                //TODO: bounds size does not update immediatly, first cycle has old bounds
-                bool enabled = plat.PlatCollider.enabled;
-                plat.PlatCollider.enabled = true;
-                mover.CollisionBounds = plat.PlatCollider.bounds;
-                plat.PlatCollider.enabled = enabled;
+                mover.CollisionBounds = new Bounds(plat.transform.root.position, plat.PlatCollider.transform.lossyScale);
             }
-            plat.transform.localScale = CurrentScaleMultiplier;
         }
 
         if (mover)

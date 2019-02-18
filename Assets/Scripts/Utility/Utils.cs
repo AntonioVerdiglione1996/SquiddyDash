@@ -1,6 +1,19 @@
 ﻿using UnityEngine;
 public static class Utils
 {
+    public static Vector3 GetLinearWorldScale(Transform transform)
+    {
+        Vector3 worldScale = transform.localScale;
+        Transform parent = transform.parent;
+
+        while (parent)
+        {
+            worldScale = Vector3.Scale(worldScale, parent.localScale);
+            parent = parent.parent;
+        }
+
+        return worldScale;
+    }
     public static Bounds GetCameraBounds(Camera camera)
     {
         return new Bounds(camera.transform.position, new Vector3(camera.orthographicSize * camera.aspect * 2f, camera.orthographicSize * 2f, 0f));
