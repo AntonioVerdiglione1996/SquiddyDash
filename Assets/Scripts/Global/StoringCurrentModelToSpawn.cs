@@ -126,13 +126,26 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         while (tempQueue.Count > 0)
         {
             int indexToAdd = tempQueue.Dequeue();
-            if (!accessoriesIndices.Contains(indexToAdd) /*&& !Accessories.Find(acc => acc != Accessories[indexToAdd] && acc.Type == Accessories[indexToAdd].Type)*/)
+            if (!accessoriesIndices.Contains(indexToAdd))
             {
-                this.accessoriesIndices.Add(indexToAdd);
+                bool sameType = false;
+                Accessory toAdd = Accessories[indexToAdd];
+                for (int i = 0; i < accessoriesIndices.Count; i++)
+                {
+                    int selIndex = accessoriesIndices[i];
+                    if (Accessories[selIndex] == toAdd || Accessories[selIndex].Type == toAdd.Type)
+                    {
+                        sameType = true;
+                        break;
+                    }
+                }
+                if (!sameType)
+                {
+                    this.accessoriesIndices.Add(indexToAdd);
+                }
             }
         }
-        //every time i click one of the buttons in char selection my program overwrite the file CurrentModel.json
-        //with the new value
+
         SaveToFile();
 
         if (OnAccessoryUpdated != null)

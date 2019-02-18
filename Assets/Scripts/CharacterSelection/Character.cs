@@ -121,7 +121,7 @@ public class Character : MonoBehaviour
                     {
                         for (int j = 0; j < accessory.Upgrades.Count; j++)
                         {
-                            Upgrade up = accessory.Upgrades[i];
+                            Upgrade up = accessory.Upgrades[j];
                             if (up.IsSkillUpgradable(mainSkill.GetType(), mainSkill))
                             {
                                 mainSkill.Upgrades.Add(up);
