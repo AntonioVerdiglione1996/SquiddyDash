@@ -14,9 +14,13 @@ public static class Utils
 
         return worldScale;
     }
+    public static Bounds GetBounds(this Camera camera)
+    {
+        return GetCameraBounds(camera);
+    }
     public static Bounds GetCameraBounds(Camera camera)
     {
-        return new Bounds(camera.transform.position, new Vector3(camera.orthographicSize * camera.aspect * 2f, camera.orthographicSize * 2f, 0f));
+        return camera ? new Bounds(camera.transform.position, new Vector3(camera.orthographicSize * camera.aspect * 2f, camera.orthographicSize * 2f, 0f)) : new Bounds();
     }
     public static float LinearConversion(byte value, byte oldMin, byte oldMax, float newMin, float newMax)
     {

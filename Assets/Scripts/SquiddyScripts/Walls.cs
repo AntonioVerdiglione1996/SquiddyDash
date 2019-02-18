@@ -73,9 +73,9 @@ public class Walls : MonoBehaviour
         {
             AllWalls = GetComponentsInChildren<Wall>();
         }
-        if (AllWalls != null)
+        if (AllWalls != null && MainCamera)
         {
-            Bounds cameraBounds = Utils.GetCameraBounds(MainCamera);
+            Bounds cameraBounds = MainCamera.GetBounds();
             for (int i = 0; i < AllWalls.Length; i++)
             {
                 Wall wall = AllWalls[i];

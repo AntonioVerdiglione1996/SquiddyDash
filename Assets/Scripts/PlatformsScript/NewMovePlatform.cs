@@ -34,7 +34,7 @@ public class NewMovePlatform : MonoBehaviour
 
         root.position += dir * Speed * Time.deltaTime * SpeedMultiplier;
         //la piattaforma sta toccando con il lato destro il muro destro
-        Bounds cameraBounds = Utils.GetCameraBounds(MainCamera);
+        Bounds cameraBounds = MainCamera.GetBounds();
         Bounds platBounds = new Bounds(root.position, CollisionBounds.size);
         if (platBounds.center.x + platBounds.extents.x >= cameraBounds.center.x + cameraBounds.extents.x)
         {
