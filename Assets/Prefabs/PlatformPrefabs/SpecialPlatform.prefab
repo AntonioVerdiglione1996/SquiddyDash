@@ -392,6 +392,9 @@ MonoBehaviour:
   PowerUps:
   - {fileID: 11400000, guid: e62e47559c88a9a43bf7d87aec1a2e21, type: 2}
   - {fileID: 11400000, guid: 7678ca66c0c79c14da99c16a5fb3a07f, type: 2}
+  - {fileID: 11400000, guid: e601c844632b1754ea4c2edd6a8569b6, type: 2}
+  - {fileID: 11400000, guid: 9323c502cb5f6a149b7ecf35c83075e8, type: 2}
+  - {fileID: 11400000, guid: bde8aaeef249916499247bb82be57c7b, type: 2}
   ParticleTrigger: {fileID: 0}
   TriggerAudioSourceIndex: 0
   VocalAudioSourceIndex: 1

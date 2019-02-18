@@ -36,15 +36,15 @@ public class CustomClickInput : MonoBehaviour
 
         if (!UpdateUI())
         {
-            if (ClickState == EClickState.Pressed)
+            if (OnClickPressed && ClickState == EClickState.Pressed)
             {
                 OnClickPressed.Raise();
             }
-            else if (ClickState == EClickState.Down)
+            else if (OnClickDown && ClickState == EClickState.Down)
             {
                 OnClickDown.Raise();
             }
-            else if (ClickState == EClickState.Up)
+            else if (OnClickUp && ClickState == EClickState.Up)
             {
                 OnClickUp.Raise();
             }
