@@ -9,19 +9,18 @@ public class NewMovePlatform : MonoBehaviour
 
     public float Speed;
     public float InitialSpeed { get; private set; }
+    public Bounds CollisionBounds;
 
     private Camera MainCamera;
 
     private Vector3[] possibleDirections;
     private Platform platform;
 
-    Transform myTransform;
     Transform root;
     Vector3 dir;
     private void Awake()
     {
-        myTransform = transform;
-        root = myTransform.root;
+        root = transform.root;
         MainCamera = Camera.main;
         platform = GetComponent<Platform>();
         possibleDirections = new Vector3[] { Vector3.right, -Vector3.right };
@@ -30,13 +29,14 @@ public class NewMovePlatform : MonoBehaviour
         InitialSpeed = Speed;
     }
 
-
     private void Update()
     {
 
         root.position += dir * Speed * Time.deltaTime * SpeedMultiplier;
         //la piattaforma sta toccando con il lato destro il muro destro
-        if (root.position.x + (myTransform.localScale.x * 0.5f) >= MainCamera.orthographicSize * MainCamera.aspect)
+        Bounds cameraBounds = Utils.GetCameraBounds(MainCamera);
+        Bounds platBounds = new Bounds(root.position, CollisionBounds.size);
+        if (platBounds.center.x + platBounds.extents.x >= cameraBounds.center.x + cameraBounds.extents.x)
         {
             dir = -Vector3.right;
 
@@ -45,7 +45,7 @@ public class NewMovePlatform : MonoBehaviour
 
         }
         //la piattaforma sta toccando con il lato sinistro il muro sinistro
-        if (root.position.x - (myTransform.localScale.x * 0.5f) <= -MainCamera.orthographicSize * MainCamera.aspect)
+        if (platBounds.center.x - platBounds.extents.x <= cameraBounds.center.x - cameraBounds.extents.x)
         {
             dir = Vector3.right;
 

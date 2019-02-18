@@ -91,21 +91,28 @@ public class NewSpawnPlatform : MonoBehaviour
         int nullObj;
         GameObject go = pool.Get(null, newPos, out nullObj, true);
 
-        go.GetComponentInChildren<Platform>().transform.localScale = CurrentScaleMultiplier;
-
+        Platform plat = go.GetComponentInChildren<Platform>();
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
-        if (mover)
+        if (plat)
         {
-            mover.Speed = mover.InitialSpeed * CurrentSpeedMultiplier;
-        }
-
-        if (setMaterials && Material != null)
-        {
-            Platform plat = go.GetComponentInChildren<Platform>();
-            if (plat)
+            if (setMaterials && Material != null)
             {
                 plat.SetMaterial(Material);
             }
+            if (plat.PlatCollider && mover)
+            {
+                //TODO: bounds size does not update immediatly, first cycle has old bounds
+                bool enabled = plat.PlatCollider.enabled;
+                plat.PlatCollider.enabled = true;
+                mover.CollisionBounds = plat.PlatCollider.bounds;
+                plat.PlatCollider.enabled = enabled;
+            }
+            plat.transform.localScale = CurrentScaleMultiplier;
+        }
+
+        if (mover)
+        {
+            mover.Speed = mover.InitialSpeed * CurrentSpeedMultiplier;
         }
 
         newPos += VectorToAdd;

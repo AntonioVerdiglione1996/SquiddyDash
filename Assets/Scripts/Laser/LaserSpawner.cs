@@ -27,7 +27,8 @@ public class LaserSpawner : MonoBehaviour
         }
         if (MainCamera)
         {
-            Offset.x += MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect + LeftOffset;
+            Bounds cameraBound = Utils.GetCameraBounds(MainCamera);
+            Offset.x += cameraBound.center.x - cameraBound.extents.x + LeftOffset;
         }
         if (OnPlatformMoved)
         {

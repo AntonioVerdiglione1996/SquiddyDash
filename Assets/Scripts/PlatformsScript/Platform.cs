@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public const float HeightTolleranceForDespawn = 5f;
-
+    public bool DebugEnabled = false;
     public bool DirRight;
 
     public bool DirLeft;
@@ -108,7 +108,10 @@ public class Platform : MonoBehaviour
     private void OnInvisible()
     {
 #if UNITY_EDITOR
-        Debug.LogWarningFormat("{0} in invisible", this);
+        if (DebugEnabled)
+        {
+            Debug.LogWarningFormat("{0} in invisible", this);
+        }
 #endif
         IsVisible = false;
         if (!Poolable)

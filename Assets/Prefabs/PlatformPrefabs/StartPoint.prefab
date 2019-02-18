@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23897767768512578}
   - component: {fileID: 114539530126699110}
   - component: {fileID: 114466032024727906}
+  - component: {fileID: 114758733018170790}
   m_Layer: 0
   m_Name: StartPlatform
   m_TagString: Untagged
@@ -153,6 +154,7 @@ MonoBehaviour:
   IsAlreadyUpdatedScore: 1
   PlatCollider: {fileID: 0}
   ModifiableRenderers: []
+  Visibility: {fileID: 114758733018170790}
 --- !u!114 &114539530126699110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,5 +164,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3824156294d6a44eaa882a01546697f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114758733018170790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732698676250116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c0c2b2f4cd58944839ee62c2902dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

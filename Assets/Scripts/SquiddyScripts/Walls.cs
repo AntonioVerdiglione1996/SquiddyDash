@@ -75,6 +75,7 @@ public class Walls : MonoBehaviour
         }
         if (AllWalls != null)
         {
+            Bounds cameraBounds = Utils.GetCameraBounds(MainCamera);
             for (int i = 0; i < AllWalls.Length; i++)
             {
                 Wall wall = AllWalls[i];
@@ -87,28 +88,28 @@ public class Walls : MonoBehaviour
                         wall.Collider.isTrigger = false;
                         if (MainCamera)
                         {
-                            wall.transform.SetPositionAndRotation(new Vector3(MainCamera.transform.position.x - MainCamera.orthographicSize * MainCamera.aspect - wall.Collider.size.x * 0.5f, 0f, 0f), Quaternion.identity);
+                            wall.transform.SetPositionAndRotation(new Vector3(cameraBounds.center.x - cameraBounds.extents.x - wall.Collider.size.x * 0.5f, 0f, 0f), Quaternion.identity);
                         }
                         break;
                     case EWallType.Right:
                         wall.Collider.isTrigger = false;
                         if (MainCamera)
                         {
-                            wall.transform.SetPositionAndRotation(new Vector3(MainCamera.transform.position.x + MainCamera.orthographicSize * MainCamera.aspect + wall.Collider.size.x * 0.5f, 0f, 0f), Quaternion.identity);
+                            wall.transform.SetPositionAndRotation(new Vector3(cameraBounds.center.x + cameraBounds.extents.x + wall.Collider.size.x * 0.5f, 0f, 0f), Quaternion.identity);
                         }
                         break;
                     case EWallType.Up:
                         wall.Collider.isTrigger = true;
                         if (MainCamera)
                         {
-                            wall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y + MainCamera.orthographicSize + wall.Collider.size.y * 0.5f, 0f), Quaternion.identity);
+                            wall.transform.SetPositionAndRotation(new Vector3(0f, cameraBounds.center.y + cameraBounds.extents.y + wall.Collider.size.y * 0.5f, 0f), Quaternion.identity);
                         }
                         break;
                     case EWallType.Down:
                         wall.Collider.isTrigger = true;
                         if (MainCamera)
                         {
-                            wall.transform.SetPositionAndRotation(new Vector3(0f, MainCamera.transform.position.y - MainCamera.orthographicSize - wall.Collider.size.y * 0.5f, 0f), Quaternion.identity);
+                            wall.transform.SetPositionAndRotation(new Vector3(0f, cameraBounds.center.y - cameraBounds.extents.y - wall.Collider.size.y * 0.5f, 0f), Quaternion.identity);
                         }
                         break;
                     default:
