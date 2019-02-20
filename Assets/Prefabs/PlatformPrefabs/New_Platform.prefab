@@ -71,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4394100477696682}
   - component: {fileID: 65943413340217694}
-  - component: {fileID: 114640463089552060}
   m_Layer: 11
   m_Name: Platform_Reworked
   m_TagString: Untagged
@@ -107,6 +106,7 @@ GameObject:
   - component: {fileID: 4235495025599186}
   - component: {fileID: 33473867342328248}
   - component: {fileID: 23598495265059472}
+  - component: {fileID: 114319197904753926}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -391,6 +391,17 @@ MonoBehaviour:
   CollisionBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+--- !u!114 &114319197904753926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854382180364706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c0c2b2f4cd58944839ee62c2902dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114584955432200696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,17 +414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Platform: {fileID: 114932068192148860}
---- !u!114 &114640463089552060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674237460757622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c0c2b2f4cd58944839ee62c2902dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114932068192148860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,10 +442,10 @@ MonoBehaviour:
   IsAlreadyUpdatedScore: 0
   PlatCollider: {fileID: 65943413340217694}
   ModifiableRenderers:
-  - {fileID: 0}
+  - {fileID: 23598495265059472}
   - {fileID: 23491652921558500}
   - {fileID: 23578944845425338}
-  Visibility: {fileID: 114640463089552060}
+  Visibility: {fileID: 114319197904753926}
 --- !u!136 &136368136100792220
 CapsuleCollider:
   m_ObjectHideFlags: 1
