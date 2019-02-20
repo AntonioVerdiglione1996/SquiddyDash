@@ -1,10 +1,19 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 /// <summary>
 /// Base skill class. This monobehaviour is disabled by default, gets enabled when skill gets invoked successfully and should be disabled in child classes when skill is over
 /// </summary>
 public abstract class Skill : MonoBehaviour
 {
+    /// <summary>
+    /// Event launched when skill is enabled
+    /// </summary>
+    public event Action OnSkillActivated;
+    /// <summary>
+    /// Event launched when skill is disabled
+    /// </summary>
+    public event Action OnSkillDisabled;
     /// <summary>
     /// Property that indicates if this skill instance is used as a Main Skill
     /// </summary>
@@ -158,6 +167,10 @@ public abstract class Skill : MonoBehaviour
         {
             OnStopSkill();
         }
+        if (OnSkillDisabled != null)
+        {
+            OnSkillDisabled();
+        }
     }
     /// <summary>
     /// Skill is over
@@ -197,6 +210,11 @@ public abstract class Skill : MonoBehaviour
         if (!isBaseBehaviourOverrided)
         {
             OnStartSkill();
+        }
+
+        if (OnSkillActivated != null)
+        {
+            OnSkillActivated();
         }
     }
 }

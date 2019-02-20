@@ -76,7 +76,7 @@ public class RocketJump : Skill
     protected override void ResetSkill()
     {
         enabled = false;
-        lastScoreInvoke = 0;
+        lastScoreInvoke = ScoreSystem ? ScoreSystem.Score : 0;
         ScoreRequirement = defaultScoreRequirement;
     }
 }

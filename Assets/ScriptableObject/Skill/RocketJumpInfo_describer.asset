@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
-  m_Name: BasicUltimateInfo_describer
+  m_Name: RocketJumpInfo_describer
   m_EditorClassIdentifier: 
   Name: Random skill
   Description: Super mega useless skill!

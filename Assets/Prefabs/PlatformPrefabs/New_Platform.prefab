@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114311801909151602}
   - component: {fileID: 54296035709345762}
   m_Layer: 11
-  m_Name: GameObject
+  m_Name: Plat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 20
+  CollisionBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &114584955432200696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,6 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugEnabled: 0
   DirRight: 0
   DirLeft: 0
   IsLanded: 0

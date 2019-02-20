@@ -57,7 +57,10 @@ public abstract class TimedSkill : Skill
     /// </summary>
     protected override void ResetSkill()
     {
-        TimeHelper.RemoveTimer(coolDownTimer);
+        if (TimeHelper)
+        {
+            TimeHelper.RemoveTimer(coolDownTimer);
+        }
         coolDownTimer = null;
     }
 

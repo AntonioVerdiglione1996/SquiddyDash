@@ -8,6 +8,9 @@ public class PowerUp : MonoBehaviour
 
     public PowerUpLogic[] PowerUps;
 
+    public int DebugPowerupMinIndex = 0;
+    public int DebugPowerupMaxIndex = int.MaxValue;
+
     //audio source is needed for playing sound of trigger of each PU
     private AudioSource aSourceForTrigger;
     //audio source is needed for playing sound of vocal  saying name of pu
@@ -27,6 +30,7 @@ public class PowerUp : MonoBehaviour
     private Collider coll;
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
+
 
     private PowerUpLogic currentLogic;
 
@@ -54,8 +58,11 @@ public class PowerUp : MonoBehaviour
                     Upgrade up = Upgrades[i];
                     if (up)
                     {
-                        isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
-                        up.ResetPowerup(this, currentLogic);
+                        if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                        {
+                            isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                            up.ResetPowerup(this, currentLogic);
+                        }
                     }
                     else
                     {
@@ -76,7 +83,13 @@ public class PowerUp : MonoBehaviour
         }
         if (PowerUps != null && PowerUps.Length > 0)
         {
+#if UNITY_EDITOR
+            DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps.Length);
+            DebugPowerupMaxIndex = Mathf.Clamp(DebugPowerupMaxIndex, DebugPowerupMinIndex, PowerUps.Length);
+            int random = Random.Range(DebugPowerupMinIndex, DebugPowerupMaxIndex);
+#else
             int random = Random.Range(0, PowerUps.Length);
+#endif
             currentLogic = PowerUps[random];
             powMeshFilter.mesh = currentLogic.Mesh;
             powRenderer.materials = currentLogic.Materials;
@@ -84,6 +97,10 @@ public class PowerUp : MonoBehaviour
     }
     private void OnValidate()
     {
+#if UNITY_EDITOR
+        DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
+        DebugPowerupMaxIndex = Mathf.Clamp(DebugPowerupMaxIndex, DebugPowerupMinIndex, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
+#endif
         if (powMeshFilter == null)
         {
             powMeshFilter = GetComponent<MeshFilter>();
@@ -135,8 +152,11 @@ public class PowerUp : MonoBehaviour
                     Upgrade up = Upgrades[i];
                     if (up)
                     {
-                        isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
-                        up.InitPowerup(this, currentLogic);
+                        if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                        {
+                            isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                            up.InitPowerup(this, currentLogic);
+                        }
                     }
                     else
                     {
@@ -176,8 +196,11 @@ public class PowerUp : MonoBehaviour
                         Upgrade up = Upgrades[i];
                         if (up)
                         {
-                            isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
-                            up.PowerUpCollected(other, this, currentLogic);
+                            if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                            {
+                                isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
+                                up.PowerUpCollected(other, this, currentLogic);
+                            }
                         }
                         else
                         {

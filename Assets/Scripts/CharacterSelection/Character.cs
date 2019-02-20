@@ -128,10 +128,14 @@ public class Character : MonoBehaviour
                             }
                             else
                             {
-                                Skill localSkill = accessory.GetComponent<Skill>();
+                                Skill localSkill = accessory.Skill;
                                 if (!localSkill)
                                 {
-                                    localSkill = accessory.GetComponentInChildren<Skill>(true);
+                                    localSkill = accessory.GetComponent<Skill>();
+                                    if (!localSkill)
+                                    {
+                                        localSkill = accessory.GetComponentInChildren<Skill>(true);
+                                    }
                                 }
                                 if (localSkill && up.IsSkillUpgradable(localSkill.GetType(), localSkill))
                                 {

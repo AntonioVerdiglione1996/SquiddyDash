@@ -14,7 +14,11 @@ MonoBehaviour:
   Describer: {fileID: 0}
   Materials: []
   Mesh: {fileID: 0}
-  ParticleAfterTriggerPool: {fileID: 0}
-  TriggerSound: {fileID: 0}
-  VocalSound: {fileID: 0}
-  prefabPool: {fileID: 0}
+  ParticleAfterTriggerPool: {fileID: 11400000, guid: 397545d6c73b45a4c8b7fe439b072316,
+    type: 2}
+  TriggerSound: {fileID: 11400000, guid: 082a64ffb56d3c341ba6e08095b8847f, type: 2}
+  VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
+  prefabPool: {fileID: 11400000, guid: 93f5c64b4f90ee24999f79d7b406de3c, type: 2}
+  LimitedSkillPool: {fileID: 11400000, guid: 8de199a1fca01a74299c8a0d5485b713, type: 2}
+  OverrideMaxUsages: 1
+  MaxUsages: 1
