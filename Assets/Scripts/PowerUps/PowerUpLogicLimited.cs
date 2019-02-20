@@ -16,7 +16,10 @@ public class PowerUpLogicLimited : PowerUpLogic
         LimitedSkill limited = obj.GetComponentInChildren<LimitedSkill>(true);
         if (limited)
         {
-            limited.SetMaxUsages(MaxUsages);
+            if (OverrideMaxUsages)
+            {
+                limited.SetMaxUsages(MaxUsages);
+            }
             limited.Pool = LimitedSkillPool;
         }
     }

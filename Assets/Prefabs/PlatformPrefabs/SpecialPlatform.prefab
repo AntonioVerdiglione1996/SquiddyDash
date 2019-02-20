@@ -84,9 +84,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4159813358544292}
-  - component: {fileID: 33565568263609326}
   - component: {fileID: 135817882334816762}
-  - component: {fileID: 23895109886719494}
   - component: {fileID: 114666290941589760}
   m_Layer: 0
   m_Name: Sphere
@@ -318,39 +316,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23895109886719494
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327729189025446}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials: []
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &33547350063454730
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -358,13 +323,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457279156767718}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &33565568263609326
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327729189025446}
-  m_Mesh: {fileID: 0}
 --- !u!54 &54829666409404080
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -441,14 +399,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a68a7be770336f499782f5ccf157ac1, type: 2}
   DebugPowerupMinIndex: 0
   DebugPowerupMaxIndex: 5
-  ParticleTrigger: {fileID: 0}
   TriggerAudioSourceIndex: 0
   VocalAudioSourceIndex: 1
-  powRenderer: {fileID: 23895109886719494}
-  powMeshFilter: {fileID: 33565568263609326}
   coll: {fileID: 135817882334816762}
-  Upgrades:
-  - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
+  Upgrades: []
 --- !u!114 &114741969028539820
 MonoBehaviour:
   m_ObjectHideFlags: 1

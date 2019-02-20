@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class PowerUp : MonoBehaviour
 {
     public Transform[] SpawnPoints;
@@ -16,16 +15,10 @@ public class PowerUp : MonoBehaviour
     //audio source is needed for playing sound of vocal  saying name of pu
     private AudioSource aSourceForVocal;
 
-    public GameObject ParticleTrigger;
-
     public int TriggerAudioSourceIndex = 0;
 
     public int VocalAudioSourceIndex = 1;
 
-    [SerializeField]
-    private MeshRenderer powRenderer;
-    [SerializeField]
-    private MeshFilter powMeshFilter;
     [SerializeField]
     private Collider coll;
 
@@ -91,8 +84,6 @@ public class PowerUp : MonoBehaviour
             int random = Random.Range(0, PowerUps.Length);
 #endif
             currentLogic = PowerUps[random];
-            powMeshFilter.mesh = currentLogic.Mesh;
-            powRenderer.materials = currentLogic.Materials;
         }
     }
     private void OnValidate()
@@ -101,16 +92,6 @@ public class PowerUp : MonoBehaviour
         DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
         DebugPowerupMaxIndex = Mathf.Clamp(DebugPowerupMaxIndex, DebugPowerupMinIndex, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
 #endif
-        if (powMeshFilter == null)
-        {
-            powMeshFilter = GetComponent<MeshFilter>();
-            powMeshFilter.mesh = null;
-        }
-        if (powRenderer == null)
-        {
-            powRenderer = GetComponent<MeshRenderer>();
-            powRenderer.materials = null;
-        }
         if (!coll)
         {
             coll = GetComponent<Collider>();
@@ -169,10 +150,6 @@ public class PowerUp : MonoBehaviour
             {
                 powerupInstantiatedObject = currentLogic.InitPowerup(this);
             }
-        }
-        if (powRenderer)
-        {
-            powRenderer.enabled = true;
         }
         if (coll)
         {
@@ -237,10 +214,6 @@ public class PowerUp : MonoBehaviour
             if (powerupInstantiatedObject)
             {
                 powerupInstantiatedObject.SetActive(false);
-            }
-            if (powRenderer)
-            {
-                powRenderer.enabled = false;
             }
             if (coll)
             {
