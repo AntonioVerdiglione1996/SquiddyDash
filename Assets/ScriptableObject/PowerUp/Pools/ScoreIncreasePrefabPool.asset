@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: ScoreIncreasePrefabPool
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1794114656575980, guid: 51127e5387572c64f990bb3d75c895db, type: 2}
+  Prefab: {fileID: 1127349514385800, guid: f7afb5b7be82d5b4da3e2e6a6db22306, type: 2}
   PersistentPoolInScenes: 1
