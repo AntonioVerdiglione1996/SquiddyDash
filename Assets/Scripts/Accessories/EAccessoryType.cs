@@ -4,7 +4,6 @@ public enum EAccessoryType
     None = 0,
     Hat,
     Googles,
-    Pants,
+    Wings,
     Shoes,
-    Headphones,
 }
