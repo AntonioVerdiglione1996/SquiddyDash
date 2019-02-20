@@ -12,6 +12,8 @@ public class Platform : MonoBehaviour
 
     public bool IsLanded = false;
 
+    public LinkedListNode<Platform> Node;
+
     public GlobalEvents GlobalEvents;
     public BasicEvent PerformLerp;
     public BasicEvent PlatformClaimed;
@@ -37,6 +39,12 @@ public class Platform : MonoBehaviour
 
     private Transform squiddy;
 
+    private NewMovePlatform mover;
+
+    public Bounds GetBounds()
+    {
+        return !mover ? new Bounds(transform.position, transform.lossyScale) : mover.CollisionBounds;
+    }
     public void SetMaterial(Material NewMat)
     {
         if (ModifiableRenderers != null)
@@ -68,6 +76,10 @@ public class Platform : MonoBehaviour
                 squiddy = controller.transform;
             }
         }
+        if (!mover)
+        {
+            mover = GetComponentInChildren<NewMovePlatform>(true);
+        }
     }
     private void Update()
     {
@@ -86,6 +98,11 @@ public class Platform : MonoBehaviour
         IsAlreadyUpdatedScore = false;
         Visibility.OnVisible -= OnVisible;
         Visibility.OnInvisible -= OnInvisible;
+        if (Node != null && Node.List != null)
+        {
+            Node.List.Remove(Node);
+        }
+        Node = null;
     }
     public void ActivateCollisions()
     {

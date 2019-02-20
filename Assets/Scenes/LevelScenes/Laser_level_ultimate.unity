@@ -1580,7 +1580,7 @@ MonoBehaviour:
   treshHold: 25
   CurrentSpeedMultiplier: 1
   CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
-  SpecialPlatformSpawnIntervall: 9
+  SpecialPlatformSpawnIntervall: 1
   OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1346226271
 Transform:
@@ -1720,6 +1720,10 @@ Prefab:
     - target: {fileID: 4127759449870802, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928859883107146, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea9e6bdda74366c4282703e0ba12c9ee, type: 2}

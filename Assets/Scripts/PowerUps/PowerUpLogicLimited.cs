@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PowerUpLogicLimited : PowerUpLogic {
+[CreateAssetMenu(menuName = "Gameplay/Powerup/LimitedSkill")]
+public class PowerUpLogicLimited : PowerUpLogic
+{
 
     public SOPool LimitedSkillPool;
     public bool OverrideMaxUsages = true;

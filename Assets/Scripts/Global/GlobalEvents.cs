@@ -6,13 +6,16 @@ using System;
 [CreateAssetMenu(menuName = "Utility/Events/Global")]
 public class GlobalEvents : ScriptableObject
 {
+    public bool IsGameoverDisabled = false;
     public InGameCurrency GameCurrency;
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
     public TimeHelper TimeHelper;
     public BasicEvent GameOverEvent;
+    public BasicEvent GameOverInterruptedEvent;
 
     public float GameoverDelay = 1f;
+    public bool IsGameoverOngoing { get; private set; }
 
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
@@ -24,6 +27,7 @@ public class GlobalEvents : ScriptableObject
     private LinkedListNode<TimerData> timer;
     private void OnEnable()
     {
+        IsGameoverOngoing = false;
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised += IncreaseGameCurrency;
@@ -76,7 +80,30 @@ public class GlobalEvents : ScriptableObject
     }
     public void GameOverTrigger()
     {
-        timer = TimeHelper.RestartTimer(() => SelectLevelByString("GameOver"), null, timer, GameoverDelay);
+        if (!IsGameoverDisabled)
+        {
+#if UNITY_EDITOR
+            if (LocalDebugActive)
+            {
+                Debug.Log("Gameover started");
+            }
+#endif
+            if (!IsGameoverOngoing)
+            {
+                IsGameoverOngoing = !IsGameoverOngoing;
+                timer = TimeHelper.RestartTimer(() => SelectLevelByString("GameOver"), null, timer, GameoverDelay);
+            }
+        }
+        else
+        {
+#if UNITY_EDITOR
+            if (LocalDebugActive)
+            {
+                Debug.Log("Gameover interrupted");
+            }
+#endif
+            GameOverInterruptedEvent.Raise();
+        }
     }
     public void ClickMenuGameOverButton()
     {
@@ -88,6 +115,7 @@ public class GlobalEvents : ScriptableObject
     }
     public void SelectLevelByString(string sceneName)
     {
+        IsGameoverOngoing = false;
         SceneManager.LoadScene(sceneName);
 #if UNITY_EDITOR
         if (LocalDebugActive)
@@ -98,6 +126,7 @@ public class GlobalEvents : ScriptableObject
     }
     public void SelectLevelByIndex(int index)
     {
+        IsGameoverOngoing = false;
         SceneManager.LoadScene(index);
 #if UNITY_EDITOR
         if (LocalDebugActive)

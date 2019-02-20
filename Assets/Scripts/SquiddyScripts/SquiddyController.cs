@@ -6,6 +6,7 @@ using System;
 public class SquiddyController : MonoBehaviour
 {
     public BasicEvent GameOverEvent;
+    public GlobalEvents GlobalEvents;
 
     public BasicEvent OnLanding;
 
@@ -104,7 +105,11 @@ public class SquiddyController : MonoBehaviour
 
     private void DisableRoot()
     {
-        this.transform.SetParent(null);
+        if (GlobalEvents.IsGameoverDisabled)
+        {
+            return;
+        }
+        GlobalEvents.ParentToTarget(null, transform);
         this.transform.gameObject.SetActive(false);
     }
     private void OnDestroy()
@@ -141,6 +146,10 @@ public class SquiddyController : MonoBehaviour
     }
     public void OnClicked()
     {
+        if (!isActiveAndEnabled)
+        {
+            return;
+        }
         if (!IsJumping)
         {
             Jump();

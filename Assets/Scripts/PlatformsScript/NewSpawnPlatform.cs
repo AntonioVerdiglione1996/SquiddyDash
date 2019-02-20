@@ -25,6 +25,8 @@ public class NewSpawnPlatform : MonoBehaviour
 
     public BasicEvent OnPlatformRecycle;
 
+    public LinkedList<Platform> ActivePlatforms = new LinkedList<Platform>();
+
     private Vector3 newPos;
 
     private bool spawn = true;
@@ -95,6 +97,7 @@ public class NewSpawnPlatform : MonoBehaviour
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
         if (plat)
         {
+            plat.Node = ActivePlatforms.AddLast(plat);
             plat.transform.localScale = CurrentScaleMultiplier;
             if (setMaterials && Material != null)
             {

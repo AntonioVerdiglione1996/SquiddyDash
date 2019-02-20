@@ -28,15 +28,18 @@ public class NewMovePlatform : MonoBehaviour
         Speed = Random.Range(5f, 9f);
         InitialSpeed = Speed;
     }
-
+    private void OnEnable()
+    {
+        CollisionBounds = platform.PlatCollider && platform.PlatCollider.enabled ? platform.PlatCollider.bounds : new Bounds(root.transform.position, CollisionBounds.size);
+    }
     private void Update()
     {
 
         root.position += dir * Speed * Time.deltaTime * SpeedMultiplier;
         //la piattaforma sta toccando con il lato destro il muro destro
         Bounds cameraBounds = MainCamera.GetBounds();
-        Bounds platBounds = new Bounds(root.position, CollisionBounds.size);
-        if (platBounds.center.x + platBounds.extents.x >= cameraBounds.center.x + cameraBounds.extents.x)
+        OnEnable();
+        if (CollisionBounds.center.x + CollisionBounds.extents.x >= cameraBounds.center.x + cameraBounds.extents.x)
         {
             dir = -Vector3.right;
 
@@ -45,7 +48,7 @@ public class NewMovePlatform : MonoBehaviour
 
         }
         //la piattaforma sta toccando con il lato sinistro il muro sinistro
-        if (platBounds.center.x - platBounds.extents.x <= cameraBounds.center.x - cameraBounds.extents.x)
+        if (CollisionBounds.center.x - CollisionBounds.extents.x <= cameraBounds.center.x - cameraBounds.extents.x)
         {
             dir = Vector3.right;
 

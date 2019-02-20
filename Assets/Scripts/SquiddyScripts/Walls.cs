@@ -176,7 +176,6 @@ public class Walls : MonoBehaviour
     {
         if (GameOverEvent != null)
         {
-            this.transform.root.gameObject.SetActive(false);
             GameOverEvent.Raise();
         }
     }
