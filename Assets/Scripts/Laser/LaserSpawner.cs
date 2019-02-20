@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserSpawner : MonoBehaviour
 {
     public BasicEvent OnGameOver;
+    public GlobalEvents GlobalEvents;
     public PositionalEvent OnPlatformMoved;
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
     public SOPool Pool;
@@ -41,7 +42,7 @@ public class LaserSpawner : MonoBehaviour
     }
     public void DisableSpawn()
     {
-        spawn = false;
+        spawn = GlobalEvents.IsGameoverDisabled;
     }
     public void EnableSpawn()
     {

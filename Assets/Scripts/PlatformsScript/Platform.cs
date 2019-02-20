@@ -95,6 +95,10 @@ public class Platform : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (PlatCollider)
+        {
+            PlatCollider.enabled = false;
+        }
         IsAlreadyUpdatedScore = false;
         Visibility.OnVisible -= OnVisible;
         Visibility.OnInvisible -= OnInvisible;

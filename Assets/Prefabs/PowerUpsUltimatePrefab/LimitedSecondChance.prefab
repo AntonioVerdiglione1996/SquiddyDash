@@ -61,7 +61,7 @@ MonoBehaviour:
   OnGameover: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   MinDistanceFromBotBorder: 1
-  SpawnOffset: {x: 0, y: 1, z: 0}
+  SpawnOffset: {x: 0, y: 1.5, z: 0}
   TeleportDelay: 0.5
   OnTeleportEvent: {fileID: 11400000, guid: 3835826e46abfe04d9a5600724c80f27, type: 2}
 --- !u!114 &114662951923810730

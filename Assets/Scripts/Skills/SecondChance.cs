@@ -29,9 +29,10 @@ public class SecondChance : TimedSkill
     public BasicEvent OnGameover;
     public GlobalEvents GlobalEvents;
     public float MinDistanceFromBotBorder = 1f;
-    public Vector3 SpawnOffset = new Vector3(0, 1, 0);
+    public Vector3 SpawnOffset = new Vector3(0, 1.5f, 0);
     public float TeleportDelay = 0.5f;
     public BasicEvent OnTeleportEvent;
+    public bool DebugEnabled = false;
     private NewSpawnPlatform platformSpawner;
     private Camera mainCamera;
     private LinkedListNode<TimerData> timer;
@@ -103,9 +104,13 @@ public class SecondChance : TimedSkill
         Bounds finalBounds = finalPlat.GetBounds();
         Vector3 location = new Vector3(0f, finalBounds.max.y, 0f) + SpawnOffset;
 #if UNITY_EDITOR
-        Debug.LogWarningFormat("{0} moved to {1} from {2}. Camera bounds: {3}", Controller, location, Controller.transform.position, cameraBounds);
+        if (DebugEnabled)
+        {
+            Debug.LogWarningFormat("{0} moved to {1} from {2}. Camera bounds: {3}", Controller, location, Controller.transform.position, cameraBounds);
+        }
 #endif
         //Controller.GetComponent<Rigidbody>().MovePosition(location);
+        Controller.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Controller.transform.position = location;
         Controller.gameObject.SetActive(true);
         this.enabled = false;
@@ -115,7 +120,10 @@ public class SecondChance : TimedSkill
         if (!PlatformSpawner || !MainCamera)
         {
 #if UNITY_EDITOR
-            Debug.LogErrorFormat("{0} requires a {1} type in scene to work", this, typeof(NewSpawnPlatform));
+            if (DebugEnabled)
+            {
+                Debug.LogErrorFormat("{0} requires a {1} type in scene to work", this, typeof(NewSpawnPlatform));
+            }
 #endif
             this.enabled = false;
             return;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewSpawnPlatform : MonoBehaviour
 {
     public BasicEvent OnGameOver;
+    public GlobalEvents GlobalEvents;
     public Transform Squiddy;
     public SOPool PlatformPool;
     public SOPool PlatformWithPowerUpPool;
@@ -51,7 +52,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     public void DisableSpawn()
     {
-        spawn = false;
+        spawn = GlobalEvents.IsGameoverDisabled;
     }
     private void OnDisable()
     {

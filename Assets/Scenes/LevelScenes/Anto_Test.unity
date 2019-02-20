@@ -2747,6 +2747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnGameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   Squiddy: {fileID: 1647906374}
   PlatformPool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
   PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
