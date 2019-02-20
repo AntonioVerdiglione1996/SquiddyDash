@@ -202,11 +202,12 @@ public class PowerUp : MonoBehaviour
                     }
                 } 
                 //activate sound
-                if (currentLogic.TriggerSound != null)
+                if (currentLogic.TriggerSound)
                 {
-                    //trigger sound
                     currentLogic.TriggerSound.Play(aSourceForTrigger);
-                    //vocal trigger sound
+                }
+                if (currentLogic.VocalSound)
+                {
                     currentLogic.VocalSound.Play(aSourceForVocal);
                 }
             }

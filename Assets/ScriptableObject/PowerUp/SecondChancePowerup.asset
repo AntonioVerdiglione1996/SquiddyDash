@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Name: SecondChancePowerup
   m_EditorClassIdentifier: 
   Describer: {fileID: 0}
-  Materials: []
-  Mesh: {fileID: 0}
   ParticleAfterTriggerPool: {fileID: 11400000, guid: 5be44dbb4a23d914d842c63fb0669111,
     type: 2}
   TriggerSound: {fileID: 11400000, guid: ce204a1172c340e43a5aeba345536b73, type: 2}
   VocalSound: {fileID: 11400000, guid: 6042c332b1a3e5e4c95ed0fdfcb6fdfa, type: 2}
-  prefabPool: {fileID: 11400000, guid: 1268cce7f514ac64e82b859f8672b206, type: 2}
+  renderingObjectPool: {fileID: 11400000, guid: 1268cce7f514ac64e82b859f8672b206,
+    type: 2}
   LimitedSkillPool: {fileID: 11400000, guid: 72f4361bb109c4c4fa996be80ecbadcd, type: 2}
   OverrideMaxUsages: 1
   MaxUsages: 1

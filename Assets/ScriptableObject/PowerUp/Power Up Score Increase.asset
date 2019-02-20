@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Name: Power Up Score Increase
   m_EditorClassIdentifier: 
   Describer: {fileID: 0}
-  Materials:
-  - {fileID: 2100000, guid: 638b42389afba28499f0e4d8e1ad3f98, type: 2}
-  Mesh: {fileID: 0}
   ParticleAfterTriggerPool: {fileID: 11400000, guid: 397545d6c73b45a4c8b7fe439b072316,
     type: 2}
   TriggerSound: {fileID: 11400000, guid: 082a64ffb56d3c341ba6e08095b8847f, type: 2}
   VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
-  prefabPool: {fileID: 11400000, guid: 200ce0042be9a6247883a1b383a061ef, type: 2}
+  renderingObjectPool: {fileID: 11400000, guid: 200ce0042be9a6247883a1b383a061ef,
+    type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   ScoreIncrease: 5
