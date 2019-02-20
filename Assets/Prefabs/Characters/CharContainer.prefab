@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   OnLanding: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
   ASource: {fileID: 82413609021436728}
   PlayJumpSound: {fileID: 11400000, guid: fcfe951d2fbd1f4409965b83933c6d43, type: 2}

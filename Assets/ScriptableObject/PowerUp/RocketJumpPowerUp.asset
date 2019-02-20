@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac924f7970e7d645b5a42be49e8ce0f, type: 3}
+  m_Name: RocketJumpPowerUp
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  Materials: []
+  Mesh: {fileID: 0}
+  ParticleAfterTriggerPool: {fileID: 11400000, guid: 397545d6c73b45a4c8b7fe439b072316,
+    type: 2}
+  TriggerSound: {fileID: 11400000, guid: 082a64ffb56d3c341ba6e08095b8847f, type: 2}
+  VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
+  prefabPool: {fileID: 11400000, guid: 200ce0042be9a6247883a1b383a061ef, type: 2}
+  LimitedSkillPool: {fileID: 11400000, guid: f33b5a1473038ce428503c626091aa47, type: 2}
+  OverrideMaxUsages: 1
+  MaxUsages: 1

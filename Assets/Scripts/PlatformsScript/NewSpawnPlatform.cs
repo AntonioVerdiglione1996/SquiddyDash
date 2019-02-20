@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewSpawnPlatform : MonoBehaviour
 {
     public BasicEvent OnGameOver;
+    public GlobalEvents GlobalEvents;
     public Transform Squiddy;
     public SOPool PlatformPool;
     public SOPool PlatformWithPowerUpPool;
@@ -24,6 +25,8 @@ public class NewSpawnPlatform : MonoBehaviour
     public uint SpecialPlatformSpawnIntervall = 9;
 
     public BasicEvent OnPlatformRecycle;
+
+    public LinkedList<Platform> ActivePlatforms = new LinkedList<Platform>();
 
     private Vector3 newPos;
 
@@ -49,7 +52,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     public void DisableSpawn()
     {
-        spawn = false;
+        spawn = GlobalEvents.IsGameoverDisabled;
     }
     private void OnDisable()
     {
@@ -95,6 +98,7 @@ public class NewSpawnPlatform : MonoBehaviour
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
         if (plat)
         {
+            plat.Node = ActivePlatforms.AddLast(plat);
             plat.transform.localScale = CurrentScaleMultiplier;
             if (setMaterials && Material != null)
             {

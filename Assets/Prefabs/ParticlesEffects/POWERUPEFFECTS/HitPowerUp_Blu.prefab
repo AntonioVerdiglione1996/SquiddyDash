@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4588136584119112}
   - component: {fileID: 198990428166451260}
   - component: {fileID: 199585220447594460}
+  - component: {fileID: 114284399321473590}
   m_Layer: 0
   m_Name: HitPowerUp_Blu
   m_TagString: Untagged
@@ -72,6 +73,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114284399321473590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1329843976426302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612a1466f5c56141a97e432904ecf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pool: {fileID: 0}
+  Root: {fileID: 1329843976426302}
+  playWithChildren: 1
+  system: {fileID: 198990428166451260}
+  systems:
+  - {fileID: 198990428166451260}
+  - {fileID: 198794881515050668}
 --- !u!198 &198794881515050668
 ParticleSystem:
   m_ObjectHideFlags: 1

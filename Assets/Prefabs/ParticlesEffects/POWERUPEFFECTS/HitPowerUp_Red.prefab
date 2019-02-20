@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4776353807237070}
   - component: {fileID: 198214099063479426}
   - component: {fileID: 199757355909437828}
+  - component: {fileID: 114658599840545736}
   m_Layer: 0
   m_Name: HitPowerUp_Red
   m_TagString: Untagged
@@ -72,6 +73,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114658599840545736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1165987183446902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612a1466f5c56141a97e432904ecf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pool: {fileID: 0}
+  Root: {fileID: 1165987183446902}
+  playWithChildren: 1
+  system: {fileID: 198214099063479426}
+  systems:
+  - {fileID: 198214099063479426}
+  - {fileID: 198014813236962306}
 --- !u!198 &198014813236962306
 ParticleSystem:
   m_ObjectHideFlags: 1
