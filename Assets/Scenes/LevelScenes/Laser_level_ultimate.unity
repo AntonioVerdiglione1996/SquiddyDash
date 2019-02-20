@@ -1581,7 +1581,7 @@ MonoBehaviour:
   treshHold: 25
   CurrentSpeedMultiplier: 1
   CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
-  SpecialPlatformSpawnIntervall: 1
+  SpecialPlatformSpawnIntervall: 9
   OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1346226271
 Transform:
