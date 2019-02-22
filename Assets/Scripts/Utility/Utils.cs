@@ -14,6 +14,18 @@ public static class Utils
 
         return worldScale;
     }
+    public static Vector3 GetRandomPoint(Vector3 min, Vector3 max)
+    {
+        return new Vector3(UnityEngine.Random.Range(min.x, max.x), UnityEngine.Random.Range(min.y, max.y), UnityEngine.Random.Range(min.z, max.z));
+    }
+    public static Vector3 GetRandomPoint(this Bounds bound)
+    {
+        return GetRandomBoundPoint(bound);
+    }
+    public static Vector3 GetRandomBoundPoint(Bounds bound)
+    {
+        return GetRandomPoint(bound.min, bound.max);
+    }
     public static Bounds GetBounds(this Camera camera)
     {
         return GetCameraBounds(camera);
