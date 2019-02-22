@@ -23,9 +23,13 @@ public class RocketJump : Skill
 
     private int lastScoreInvoke = 0;
 
+    private int bonusScore = 0;
 
     protected override void OnStopSkill()
     {
+        lastScoreInvoke = ScoreSystem.Score;
+        ScoreRequirement = (int)(ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
+        bonusScore = 0;
     }
 
     protected virtual void SkillLogic()
@@ -35,10 +39,6 @@ public class RocketJump : Skill
     }
     protected override void OnStartSkill()
     {
-        lastScoreInvoke = ScoreSystem.Score;
-
-        ScoreRequirement = (int)(ScoreRequirement * ScoreRequirementMultIncrementPerInvokation);
-
         SkillLogic();
     }
 
@@ -61,7 +61,7 @@ public class RocketJump : Skill
     /// <returns>0f if cooldown over, 1f if cooldown just started. Lerped value between 0 and 1 if supported by skill</returns>
     public override float GetCooldownPassedPercentage()
     {
-        float num = ScoreSystem.Score - lastScoreInvoke;
+        float num = ScoreSystem.Score - lastScoreInvoke + bonusScore;
         if (ScoreRequirement != 0f)
         {
             return Mathf.Clamp01(num / ScoreRequirement);
@@ -70,13 +70,19 @@ public class RocketJump : Skill
     }
     public override bool IsSkillInvokable()
     {
-        return !enabled && (ScoreSystem.Score - lastScoreInvoke >= ScoreRequirement);
+        return !enabled && (ScoreSystem.Score + bonusScore - lastScoreInvoke >= ScoreRequirement);
     }
 
     protected override void ResetSkill()
     {
+        bonusScore = 0;
         enabled = false;
         lastScoreInvoke = ScoreSystem ? ScoreSystem.Score : 0;
         ScoreRequirement = defaultScoreRequirement;
+    }
+
+    protected override void InternalImproveInvokability(float amount)
+    {
+        bonusScore += (int)amount;
     }
 }

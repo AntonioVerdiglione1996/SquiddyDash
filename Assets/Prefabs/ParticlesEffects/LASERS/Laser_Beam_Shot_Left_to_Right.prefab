@@ -116,10 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4eb24b10e3a184ca745b5149ee1690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterTransform: {fileID: 0}
-  LaserTransform: {fileID: 4441633524497374}
-  HeightTollerance: 10
   Pool: {fileID: 11400000, guid: a1f10caacc35b1c4db2b63136ab9da1a, type: 2}
+  Root: {fileID: 1178514347353688}
+  CharacterTransform: {fileID: 0}
+  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  HeightTollerance: 10
   Colliders:
   - {fileID: 136607432525946888}
   Renderers:
@@ -128,7 +129,7 @@ MonoBehaviour:
   - {fileID: 199982452670669586}
   DisablerEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
   EnablerEvent: {fileID: 11400000, guid: b5396a3f988217f40ae093aa9566668b, type: 2}
-  GameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  GameOverTrigger: {fileID: 11400000, guid: 9ecb9858df5a01c4b9071e13aa85ac0d, type: 2}
   DisableDuration: 0.7
   AdditiveStrenghtCurve:
     serializedVersion: 2

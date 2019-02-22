@@ -13,7 +13,7 @@ public class Walls : MonoBehaviour
     public BasicEvent CameraShake;
     public BasicEvent CameraLerp;
     public BasicEvent TopCollision;
-    public BasicEvent GameOverEvent;
+    public BasicEvent BotScreenCollEvent;
 
     public Vector3 RepulsionMultiplier = new Vector3(0.6f, 0.8f, 0.6f);
     public Vector3 BotWallMinimumRepulsionForce = new Vector3(0f, 15f, 0f);
@@ -174,9 +174,9 @@ public class Walls : MonoBehaviour
 
     private void PlayerBotScreenCollision(Collider other)
     {
-        if (GameOverEvent != null)
+        if (BotScreenCollEvent != null)
         {
-            GameOverEvent.Raise();
+            BotScreenCollEvent.Raise();
         }
     }
 

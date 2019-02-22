@@ -426,6 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce, type: 2}
+  Root: {fileID: 1455752135451080}
   DebugEnabled: 0
   DirRight: 0
   DirLeft: 0
@@ -436,9 +438,7 @@ MonoBehaviour:
   OnLanded: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   OnLeft: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  Pool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce, type: 2}
   PlatformRecycled: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
-  Poolable: {fileID: 1455752135451080}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0
   PlatCollider: {fileID: 65249556401990190}

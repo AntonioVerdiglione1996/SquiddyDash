@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimitedSkill : MonoBehaviour
+public class LimitedSkill : ISOPoolable
 {
     public Skill Skill;
-    public GameObject Root;
-    public SOPool Pool;
     public int MaxUsages = 1;
     public bool ActivateImmediatly = true;
     public bool DebugEnabled = true;
@@ -68,7 +66,7 @@ public class LimitedSkill : MonoBehaviour
 #endif
         if (usagesLeft <= 0)
         {
-            Pool.Recycle(Root);
+            Recycle();
         }
     }
     private void OnEnable()

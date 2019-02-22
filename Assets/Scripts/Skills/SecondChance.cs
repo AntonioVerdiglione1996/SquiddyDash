@@ -26,7 +26,7 @@ public class SecondChance : TimedSkill
             return mainCamera;
         }
     }
-    public BasicEvent OnGameover;
+    public BasicEvent OnGameoverInterrupted;
     public GlobalEvents GlobalEvents;
     public float MinDistanceFromBotBorder = 1f;
     public Vector3 SpawnOffset = new Vector3(0, 1.5f, 0);
@@ -49,13 +49,13 @@ public class SecondChance : TimedSkill
             TimeHelper.RemoveTimer(timer);
         }
         GlobalEvents.IsGameoverDisabled = true;
-        OnGameover.OnEventRaised += RepositionPlayerToFirstPlatform;
+        OnGameoverInterrupted.OnEventRaised += RepositionPlayerToFirstPlatform;
     }
     protected override void OnStopSkill()
     {
         base.OnStopSkill();
         GlobalEvents.IsGameoverDisabled = false;
-        OnGameover.OnEventRaised -= RepositionPlayerToFirstPlatform;
+        OnGameoverInterrupted.OnEventRaised -= RepositionPlayerToFirstPlatform;
     }
     public void RepositionPlayerToFirstPlatform()
     {
@@ -98,7 +98,7 @@ public class SecondChance : TimedSkill
         if (!finalPlat)
         {
             GlobalEvents.IsGameoverDisabled = false;
-            OnGameover.Raise();
+            OnGameoverInterrupted.Raise();
             return;
         }
         Bounds finalBounds = finalPlat.GetBounds();

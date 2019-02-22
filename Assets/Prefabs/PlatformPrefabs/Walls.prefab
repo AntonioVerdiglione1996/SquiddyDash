@@ -107,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454415133736958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -515, z: 12}
+  m_LocalPosition: {x: 0, y: -505, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4845043392773328}
@@ -120,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167063364265468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -508.4333, y: -9.3, z: 12}
+  m_LocalPosition: {x: -502.8111, y: -1, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4845043392773328}
@@ -133,7 +133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017542673644632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 508.4333, y: -9.3, z: 12}
+  m_LocalPosition: {x: 502.8111, y: -1, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4845043392773328}
@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309388286829454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 515, z: 12}
+  m_LocalPosition: {x: 0, y: 505, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4845043392773328}
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698048337442548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.3, z: -12}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4485484594348968}
@@ -373,7 +373,7 @@ MonoBehaviour:
   CameraShake: {fileID: 11400000, guid: c446577cd34c20042a91bd6d4cf04239, type: 2}
   CameraLerp: {fileID: 11400000, guid: 71aba1327eab10d46bc96e04a7138709, type: 2}
   TopCollision: {fileID: 11400000, guid: 9e38608c83e427340b42119109466c48, type: 2}
-  GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  BotScreenCollEvent: {fileID: 11400000, guid: 9ecb9858df5a01c4b9071e13aa85ac0d, type: 2}
   RepulsionMultiplier: {x: 0.6, y: 0.8, z: 0}
   BotWallMinimumRepulsionForce: {x: 0, y: 15, z: 0}
   MultiplyWhenFalling: 0

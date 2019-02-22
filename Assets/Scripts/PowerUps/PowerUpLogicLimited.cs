@@ -13,16 +13,11 @@ public class PowerUpLogicLimited : PowerUpLogic
     public int MaxUsages = 1;
     public override void PowerUpCollected(Collider player, PowerUp powUp)
     {
-        int nullObj;
-        GameObject obj = LimitedSkillPool.Get(player.transform, out nullObj, true);
+        GameObject obj = Spawner.SpawnPrefab(null, LimitedSkillPool, player.transform, false);
         LimitedSkill limited = obj.GetComponentInChildren<LimitedSkill>(true);
-        if (limited)
+        if (limited && OverrideMaxUsages)
         {
-            if (OverrideMaxUsages)
-            {
-                limited.SetMaxUsages(MaxUsages);
-            }
-            limited.Pool = LimitedSkillPool;
+            limited.SetMaxUsages(MaxUsages);
         }
     }
 }

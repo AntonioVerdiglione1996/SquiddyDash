@@ -191,16 +191,10 @@ public class PowerUp : MonoBehaviour
                     currentLogic.PowerUpCollected(other, this);
                 }
                 //instantiate tigger particle after squiddy pick up PU
-                int nullObj;
                 if (currentLogic.ParticleAfterTriggerPool != null)
                 {
-                    GameObject go = currentLogic.ParticleAfterTriggerPool.Get(null, transform.position, Quaternion.identity, out nullObj, true);
-                    ParticleSystemRecycler system = go.GetComponent<ParticleSystemRecycler>();
-                    if (system)
-                    {
-                        system.Pool = currentLogic.ParticleAfterTriggerPool;
-                    }
-                } 
+                    Spawner.SpawnPrefab(null, currentLogic.ParticleAfterTriggerPool, null, false, transform.position, Quaternion.identity);
+                }
                 //activate sound
                 if (currentLogic.TriggerSound)
                 {

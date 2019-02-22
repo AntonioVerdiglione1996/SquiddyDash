@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
-public class ParticleSystemRecycler : MonoBehaviour
+public class ParticleSystemRecycler : ISOPoolable
 {
-    public SOPool Pool;
-    public GameObject Root;
     [SerializeField]
     private bool playWithChildren = true;
     [SerializeField]
@@ -43,7 +41,7 @@ public class ParticleSystemRecycler : MonoBehaviour
     {
         if (!system.IsAlive(playWithChildren))
         {
-            Pool.Recycle(Root);
+            Recycle();
         }
     }
 }

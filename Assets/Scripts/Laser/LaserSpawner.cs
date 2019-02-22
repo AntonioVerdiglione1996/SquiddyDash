@@ -5,7 +5,6 @@ using UnityEngine;
 public class LaserSpawner : MonoBehaviour
 {
     public BasicEvent OnGameOver;
-    public GlobalEvents GlobalEvents;
     public PositionalEvent OnPlatformMoved;
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
     public SOPool Pool;
@@ -42,7 +41,7 @@ public class LaserSpawner : MonoBehaviour
     }
     public void DisableSpawn()
     {
-        spawn = GlobalEvents.IsGameoverDisabled;
+        spawn = false;
     }
     public void EnableSpawn()
     {
@@ -75,8 +74,7 @@ public class LaserSpawner : MonoBehaviour
         {
             if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance + ScoreMultiplierAddedToSpawnChance * Score.Score)
             {
-                int nullObj;
-                Pool.Get(null, ReferenceLocation.position + Offset, out nullObj);
+                Spawner.SpawnPrefab(null, Pool, null, false, ReferenceLocation.position + Offset);
             }
         }
     }

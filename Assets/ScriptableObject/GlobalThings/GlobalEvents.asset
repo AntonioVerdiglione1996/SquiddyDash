@@ -16,6 +16,8 @@ MonoBehaviour:
   Calculator: {fileID: 11400000, guid: 05f3973eae1b38749a29904d4e03acfc, type: 2}
   System: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
+  GameOverTriggerEvent: {fileID: 11400000, guid: 9ecb9858df5a01c4b9071e13aa85ac0d,
+    type: 2}
   GameOverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   GameOverInterruptedEvent: {fileID: 11400000, guid: cd629b79f61813548a8a45cc113d9863,
     type: 2}

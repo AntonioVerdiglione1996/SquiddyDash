@@ -11,6 +11,7 @@ public class GlobalEvents : ScriptableObject
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
     public TimeHelper TimeHelper;
+    public BasicEvent GameOverTriggerEvent;
     public BasicEvent GameOverEvent;
     public BasicEvent GameOverInterruptedEvent;
 
@@ -31,7 +32,10 @@ public class GlobalEvents : ScriptableObject
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised += IncreaseGameCurrency;
-            GameOverEvent.OnEventRaised += GameOverTrigger;
+        }
+        if (GameOverTriggerEvent)
+        {
+            GameOverTriggerEvent.OnEventRaised += GameOverTrigger;
         }
     }
     private void OnDisable()
@@ -39,7 +43,10 @@ public class GlobalEvents : ScriptableObject
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised -= IncreaseGameCurrency;
-            GameOverEvent.OnEventRaised -= GameOverTrigger;
+        }
+        if (GameOverTriggerEvent)
+        {
+            GameOverTriggerEvent.OnEventRaised -= GameOverTrigger;
         }
     }
     public void RemoveCurrentLevel()
@@ -90,6 +97,7 @@ public class GlobalEvents : ScriptableObject
 #endif
             if (!IsGameoverOngoing)
             {
+                GameOverEvent.Raise();
                 IsGameoverOngoing = !IsGameoverOngoing;
                 timer = TimeHelper.RestartTimer(() => SelectLevelByString("GameOver"), null, timer, GameoverDelay);
             }
