@@ -25,9 +25,14 @@ public class GlobalEvents : ScriptableObject
     [SerializeField]
     private LevelData currentLevel;
 
+    private int bonusScore;
+    private int bonusCurrency;
+
     private LinkedListNode<TimerData> timer;
     private void OnEnable()
     {
+        AddBonusCurrency(-bonusCurrency);
+        AddBonusScore(-bonusScore);
         IsGameoverOngoing = false;
         if (GameOverEvent)
         {
@@ -48,6 +53,34 @@ public class GlobalEvents : ScriptableObject
         {
             GameOverTriggerEvent.OnEventRaised -= GameOverTrigger;
         }
+    }
+    public void AddBonusScore(int score)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Modified current bonus score from {0} to {1}.", bonusScore, bonusScore + score);
+        }
+#endif
+        bonusScore += score;
+    }
+    public void AddBonusCurrency(int currency)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Modified current bonus currency from {0} to {1}.", bonusCurrency, bonusCurrency + currency);
+        }
+#endif
+        bonusCurrency += currency;
+    }
+    public int GetBonusScore()
+    {
+        return bonusScore;
+    }
+    public int GetBonusCurrency()
+    {
+        return bonusCurrency;
     }
     public void RemoveCurrentLevel()
     {
@@ -70,7 +103,7 @@ public class GlobalEvents : ScriptableObject
 #if UNITY_EDITOR
             long previousGC = GameCurrency.GameCurrency;
 #endif
-            long amount = Calculator.CalculateCurrencyIncreaseAmount(System);
+            long amount = Calculator.CalculateCurrencyIncreaseAmount(System) + GetBonusCurrency();
 
             bool result = GameCurrency.ModifyGameCurrencyAmount(amount);
 #if UNITY_EDITOR
@@ -82,8 +115,10 @@ public class GlobalEvents : ScriptableObject
         }
         if (CurrentLevel && System)
         {
-            CurrentLevel.TryAddEntry((uint)System.Score, DateTime.Now.ToShortDateString());
+            CurrentLevel.TryAddEntry((uint)(System.Score + GetBonusScore()), DateTime.Now.ToLocalTime().ToLongDateString());
         }
+        AddBonusCurrency(-bonusCurrency);
+        AddBonusScore(-bonusScore);
     }
     public void GameOverTrigger()
     {
