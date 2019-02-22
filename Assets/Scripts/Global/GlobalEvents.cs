@@ -29,6 +29,38 @@ public class GlobalEvents : ScriptableObject
     private int bonusCurrency;
 
     private LinkedListNode<TimerData> timer;
+    public List<MysteryBoxType> CollectedBoxes
+    {
+        get
+        {
+            if (collectedBoxes == null)
+            {
+                collectedBoxes = new List<MysteryBoxType>();
+            }
+            return collectedBoxes;
+        }
+    }
+    public List<MysteryBoxType> collectedBoxes;
+    public void AddCollectedBox(MysteryBoxType type)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Added {0} to collected mystery boxes.", type);
+        }
+#endif
+        CollectedBoxes.Add(type);
+    }
+    public void ClearCollectedBox()
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.Log("Collected mystery boxes cleared");
+        }
+#endif
+        CollectedBoxes.Clear();
+    }
     private void OnEnable()
     {
         AddBonusCurrency(-bonusCurrency);
