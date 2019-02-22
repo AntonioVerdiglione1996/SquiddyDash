@@ -65,7 +65,7 @@ public class DynamicSpawner : MonoBehaviour
         for (int i = 0; i < Info.Count; i++)
         {
             SpawnInfo info = Info[i];
-            if (info != null && info.Pool)
+            if (info != null && info.Pool && info.SpawnChance >= UnityEngine.Random.Range(0f, 1f))
             {
                 int spawnCount = UnityEngine.Random.Range(info.MinSpawnCount, info.MaxSpawnCount + 1);
                 for (int j = 0; j < spawnCount; j++)
