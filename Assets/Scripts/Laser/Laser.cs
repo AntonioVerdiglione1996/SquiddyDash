@@ -23,8 +23,9 @@ public class Laser : ISOPoolable
     public GameObject OnPlayerDeathParticle;
 
     private LinkedListNode<TimerData> timer;
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (!CharacterTransform)
         {
             SquiddyController controller = FindObjectOfType<SquiddyController>();
@@ -32,10 +33,6 @@ public class Laser : ISOPoolable
             {
                 CharacterTransform = controller.transform;
             }
-        }
-        if (!Root)
-        {
-            Root = gameObject;
         }
     }
     public void OnEnable()

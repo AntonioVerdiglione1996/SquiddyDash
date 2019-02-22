@@ -6,6 +6,8 @@ public abstract class Pickable : ISOPoolable
 {
     public event System.Action OnPickupCollected;
     public bool RecycleOnPickup = true;
+    public bool RecycleOnSafetyLayer = true;
+    public int SafetyLayerRecycler = 9;
     public Collider Collider { get { return myCollider; } }
     [SerializeField]
     private Collider myCollider;
@@ -23,16 +25,18 @@ public abstract class Pickable : ISOPoolable
     }
     private void OnTriggerEnter(Collider other)
     {
+        bool recycle = RecycleOnSafetyLayer && other.gameObject.layer == SafetyLayerRecycler;
         if (OnPicked(other))
         {
-            if(OnPickupCollected != null)
+            if (OnPickupCollected != null)
             {
                 OnPickupCollected();
             }
-            if (RecycleOnPickup)
-            {
-                Recycle();
-            }
+            recycle = recycle || RecycleOnPickup;
+        }
+        if (recycle)
+        {
+            Recycle();
         }
     }
     protected abstract bool OnPicked(Collider other);

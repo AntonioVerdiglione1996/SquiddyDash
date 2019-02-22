@@ -11,12 +11,9 @@ public class ParticleSystemRecycler : ISOPoolable
     [SerializeField]
     private ParticleSystem[] systems;
     // Use this for initialization
-    private void OnValidate()
+    protected override void OnValidate()
     {
-        if (!Root)
-        {
-            Root = transform.root.gameObject;
-        }
+        base.OnValidate();
         system = GetComponent<ParticleSystem>();
         if (playWithChildren)
         {

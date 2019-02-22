@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 65663369609172076}
   - component: {fileID: 54037873145757570}
   - component: {fileID: 114863664970351206}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: BotWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -30,13 +30,10 @@ public class LimitedSkill : ISOPoolable
     private int usagesLeft;
     private SquiddyController controller;
     private bool firstTime;
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         SetMaxUsages(MaxUsages);
-        if (!Root)
-        {
-            Root = transform.root.gameObject;
-        }
         if (!Skill)
         {
             Skill = GetComponent<Skill>();

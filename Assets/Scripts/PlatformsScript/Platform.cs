@@ -53,8 +53,9 @@ public class Platform : ISOPoolable
             }
         }
     }
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (!Visibility)
         {
             Visibility = GetComponent<CheckVisibility>();
