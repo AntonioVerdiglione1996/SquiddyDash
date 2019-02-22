@@ -70,7 +70,9 @@ public class DynamicSpawner : MonoBehaviour
                 int spawnCount = UnityEngine.Random.Range(info.MinSpawnCount, info.MaxSpawnCount + 1);
                 for (int j = 0; j < spawnCount; j++)
                 {
-                    Spawner.SpawnPrefab(null, info.Pool, null, false, spawnBound.GetRandomPoint());
+                    Vector3 spawnPos = spawnBound.GetRandomPoint();
+                    spawnPos.z = 0f;
+                    Spawner.SpawnPrefab(null, info.Pool, null, false, spawnPos);
                 }
             }
         }
