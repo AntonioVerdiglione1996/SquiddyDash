@@ -42,6 +42,8 @@ public class SquiddyController : MonoBehaviour
 
     public BasicEvent OnBorderCollisionEvent;
 
+    public Character OwnedCharacter { get; set; }
+
     private void Awake()
     {
         if (OnBorderCollisionEvent)

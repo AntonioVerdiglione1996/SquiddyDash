@@ -15,9 +15,17 @@ public abstract class Skill : MonoBehaviour
     /// </summary>
     public event Action OnSkillDisabled;
     /// <summary>
-    /// Multiplier usaed on the amount received from ImproveInvokability before its usage
+    /// Multiplier used on the amount received from ImproveInvokability before its usage
     /// </summary>
     public float ImproveInvokabilityMultiplier = 1f;
+    /// <summary>
+    /// Minimum value used in ImproveInvokability regardless of the original amount
+    /// </summary>
+    public float MinImproveInvokabilityValue = 1.0001f;
+    /// <summary>
+    /// Maximum value used in ImproveInvokability regardless of the original amount
+    /// </summary>
+    public float MaxImproveInvokabilityValue = float.MaxValue;
     /// <summary>
     /// Property that indicates if this skill instance is used as a Main Skill
     /// </summary>
@@ -35,7 +43,7 @@ public abstract class Skill : MonoBehaviour
     /// <param name="amount">Amount to use to improve</param>
     public void ImproveInvokability(float amount)
     {
-        InternalImproveInvokability(amount * ImproveInvokabilityMultiplier);
+        InternalImproveInvokability(Mathf.Clamp(amount * ImproveInvokabilityMultiplier, MinImproveInvokabilityValue, MaxImproveInvokabilityValue));
     }
 
     /// <summary>

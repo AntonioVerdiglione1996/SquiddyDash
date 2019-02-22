@@ -387,6 +387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e17c638e94e984996a03647779299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool: {fileID: 0}
+  Root: {fileID: 1455752135451080}
+  RecycleOnPickup: 0
+  myCollider: {fileID: 135817882334816762}
   SpawnPoints:
   - {fileID: 4865559553987288}
   - {fileID: 4295936897299264}
@@ -401,7 +405,6 @@ MonoBehaviour:
   DebugPowerupMaxIndex: 5
   TriggerAudioSourceIndex: 0
   VocalAudioSourceIndex: 1
-  coll: {fileID: 135817882334816762}
   Upgrades: []
 --- !u!114 &114741969028539820
 MonoBehaviour:

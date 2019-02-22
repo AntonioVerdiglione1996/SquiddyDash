@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PowerUp : MonoBehaviour
+public class PowerUp : Pickable
 {
     public Transform[] SpawnPoints;
 
@@ -19,11 +19,7 @@ public class PowerUp : MonoBehaviour
 
     public int VocalAudioSourceIndex = 1;
 
-    [SerializeField]
-    private Collider coll;
-
     public List<Upgrade> Upgrades = new List<Upgrade>();
-
 
     private PowerUpLogic currentLogic;
 
@@ -86,17 +82,13 @@ public class PowerUp : MonoBehaviour
             currentLogic = PowerUps[random];
         }
     }
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
 #if UNITY_EDITOR
         DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
         DebugPowerupMaxIndex = Mathf.Clamp(DebugPowerupMaxIndex, DebugPowerupMinIndex, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
-#endif
-        if (!coll)
-        {
-            coll = GetComponent<Collider>();
-        }
-#if UNITY_EDITOR
+
         if (Upgrades == null || Upgrades.Count == 0)
         {
             return;
@@ -151,13 +143,13 @@ public class PowerUp : MonoBehaviour
                 powerupInstantiatedObject = currentLogic.InitPowerup(this);
             }
         }
-        if (coll)
+        if (Collider)
         {
-            coll.enabled = true;
+            Collider.enabled = true;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override bool OnPicked(Collider other)
     {
         //squiddy layer
         if (other.gameObject.layer == 8)
@@ -210,10 +202,12 @@ public class PowerUp : MonoBehaviour
             {
                 powerupInstantiatedObject.SetActive(false);
             }
-            if (coll)
+            if (Collider)
             {
-                coll.enabled = false;
+                Collider.enabled = false;
             }
+            return true;
         }
+        return false;
     }
 }

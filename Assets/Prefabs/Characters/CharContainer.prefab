@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
+  Controller: {fileID: 114835219694571498}
 --- !u!114 &114806762003195536
 MonoBehaviour:
   m_ObjectHideFlags: 1
