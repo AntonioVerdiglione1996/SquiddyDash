@@ -32,7 +32,7 @@ public class LevelData : ScriptableObject
             return entries == null || entries.Length <= 0 ? 0 : entries[0].Score;
         }
     }
-    public long UnlockCost
+    public int UnlockCost
     {
         get
         {
@@ -58,7 +58,7 @@ public class LevelData : ScriptableObject
     [SerializeField]
     private bool isUnlocked;
     [SerializeField]
-    private long unlockCost = 10;
+    private int unlockCost = 10;
     [SerializeField]
     private string fileNameFull;
 
@@ -138,7 +138,7 @@ public class LevelData : ScriptableObject
 
         return i;
     }
-    public void SetValuesAndSave(bool isUnlocked, long unlockCost, LeaderboardEntry[] entries)
+    public void SetValuesAndSave(bool isUnlocked, int unlockCost, LeaderboardEntry[] entries)
     {
         bool anyChanges = (this.isUnlocked != isUnlocked) || (this.unlockCost != unlockCost) || (entries != this.entries);
 

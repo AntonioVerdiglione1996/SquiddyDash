@@ -133,9 +133,9 @@ public class GlobalEvents : ScriptableObject
         if (System && Calculator && GameCurrency)
         {
 #if UNITY_EDITOR
-            long previousGC = GameCurrency.GameCurrency;
+            int previousGC = GameCurrency.GameCurrency;
 #endif
-            long amount = Calculator.CalculateCurrencyIncreaseAmount(System) + GetBonusCurrency();
+            int amount = Calculator.CalculateCurrencyIncreaseAmount(System) + GetBonusCurrency();
 
             bool result = GameCurrency.ModifyGameCurrencyAmount(amount);
 #if UNITY_EDITOR

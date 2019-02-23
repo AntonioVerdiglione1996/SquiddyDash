@@ -7,20 +7,42 @@ using System;
 public class InGameCurrency : ScriptableObject
 {
     public const string Filename = "Currency.json";
-    public long GameCurrency { get { return gameCurrency; } }
+
+    public int GameCurrency { get { return gameCurrency; } }
+    public int AccessoryParts { get { return accessoryParts; } }
+    public int SkinParts { get { return skinParts; } }
+
+    public bool EnableDebug = true;
+
     [SerializeField]
-    private long gameCurrency = 0;
-    public bool ModifyGameCurrencyAmount(long toSum)
+    private int gameCurrency = 0;
+    [SerializeField]
+    private int accessoryParts = 0;
+    [SerializeField]
+    private int skinParts = 0;
+    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
     {
-        long result = gameCurrency + toSum;
-        if(result < 0)
+        int resultCurrency = gameCurrency + currencyToSum;
+        int resultSkins = skinParts + skinPartsToSum;
+        int resultAccessory = accessoryParts + accessoryPartsToSum;
+
+        if (resultCurrency < 0 || accessoryParts < 0 || skinParts < 0)
         {
             return false;
         }
+
 #if UNITY_EDITOR
-        Debug.LogFormat("{0} summed to current gamecurrency {1}. Final amount: {2}." , toSum , gameCurrency , result);
+        if (EnableDebug)
+        {
+            Debug.LogFormat("{0} summed to current gamecurrency {1}. Final amount: {2}.", currencyToSum, gameCurrency, resultCurrency);
+            Debug.LogFormat("{0} summed to current accessoryParts {1}. Final amount: {2}.", accessoryPartsToSum, accessoryParts, resultAccessory);
+            Debug.LogFormat("{0} summed to current skinParts {1}. Final amount: {2}.", skinPartsToSum, skinParts, resultSkins);
+        }
 #endif
-        gameCurrency = result;
+
+        accessoryParts = resultAccessory;
+        skinParts = resultSkins;
+        gameCurrency = resultCurrency;
 
         SaveToFile();
 
@@ -29,21 +51,6 @@ public class InGameCurrency : ScriptableObject
     public bool Restore()
     {
         return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
-    }
-    public long FetchUpdatedPremiumCurrencyFromServer()
-    {
-        //TODO: gestire premiumC lato server forse? (per evitare manomissioni lato client).Problema di questo approccio è che una persona offline non possa usare i suoi PremiumCurrency. Dovrebbe essere gestito come operazione asyncrona
-        return 0;
-    }
-    public bool UsePremiumCurrency(long amountUsed)
-    {
-        if(amountUsed <= 0)
-        {
-            return false;
-        }
-
-        //TODO: inform server of this operation. Dovrebbe essere gestito come operazione asyncrona
-        return false;
     }
     public void SaveToFile()
     {
@@ -54,6 +61,8 @@ public class InGameCurrency : ScriptableObject
         if (!Restore())
         {
             gameCurrency = 0;
+            accessoryParts = 0;
+            skinParts = 0;
             SaveToFile();
         }
     }
