@@ -8,7 +8,7 @@ public class DynamicSpawner : MonoBehaviour
     public BasicEvent OnDynamicSpawnEvent;
     public BasicEvent OnGameoverEvent;
 
-    public List<SpawnInfo> Info = new List<SpawnInfo>();
+    public InfoSpawnContainer Info;
 
     public Camera MainCamera;
 
@@ -57,7 +57,7 @@ public class DynamicSpawner : MonoBehaviour
     }
     public void DynamicSpawn()
     {
-        if (!spawn)
+        if (!spawn || !Info)
         {
             return;
         }
@@ -67,7 +67,7 @@ public class DynamicSpawner : MonoBehaviour
         }
         Bounds cameraBound = MainCamera.GetBounds();
         Bounds spawnBound = new Bounds(cameraBound.center + new Vector3(0f, cameraBound.size.y, 0f), cameraBound.size - SizePadding);
-        for (int i = 0; i < Info.Count; i++)
+        for (int i = 0; i < Info.Length; i++)
         {
             SpawnInfo info = Info[i];
             if (UseGrid)
@@ -160,24 +160,6 @@ public class DynamicSpawner : MonoBehaviour
         if (!MainCamera)
         {
             MainCamera = Camera.main;
-        }
-        if (Info == null)
-        {
-            Info = new List<SpawnInfo>();
-        }
-        for (int i = Info.Count - 1; i >= 0; i--)
-        {
-            SpawnInfo info = Info[i];
-            if (info == null)
-            {
-                Info.RemoveAt(i);
-            }
-            else
-            {
-                info.SpawnChance = Mathf.Clamp01(info.SpawnChance);
-                info.MinSpawnCount = Mathf.Max(info.MinSpawnCount, 0);
-                info.MaxSpawnCount = Mathf.Max(info.MinSpawnCount, info.MaxSpawnCount);
-            }
         }
     }
     private void Awake()

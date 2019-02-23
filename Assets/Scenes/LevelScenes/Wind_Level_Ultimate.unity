@@ -1846,6 +1846,12 @@ MonoBehaviour:
   OnDynamicSpawnEvent: {fileID: 11400000, guid: ec971f40fcfe4eb4daa6c8604fc44798,
     type: 2}
   OnGameoverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  Info: {fileID: 11400000, guid: a4f48ea4a25e76f42a37a4fd68102ad8, type: 2}
+  MainCamera: {fileID: 589688054}
+  SizePadding: {x: 1, y: 2, z: 0}
+  UseGrid: 1
+  GridWidthSize: 30
+  GridHeightSize: 30
 --- !u!1 &1745474081
 GameObject:
   m_ObjectHideFlags: 0

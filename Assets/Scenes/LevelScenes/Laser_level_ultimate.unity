@@ -1589,6 +1589,12 @@ MonoBehaviour:
   OnDynamicSpawnEvent: {fileID: 11400000, guid: ec971f40fcfe4eb4daa6c8604fc44798,
     type: 2}
   OnGameoverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  Info: {fileID: 11400000, guid: a4f48ea4a25e76f42a37a4fd68102ad8, type: 2}
+  MainCamera: {fileID: 1259412789}
+  SizePadding: {x: 1, y: 2, z: 0}
+  UseGrid: 1
+  GridWidthSize: 30
+  GridHeightSize: 30
 --- !u!1001 &1418583786
 Prefab:
   m_ObjectHideFlags: 0
@@ -1628,13 +1634,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
-        type: 2}
-    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
         type: 2}
       propertyPath: m_Material
       value: 
@@ -1646,7 +1646,13 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
         type: 2}
-    - target: {fileID: 65491317342298662, guid: 2215432d06378cd449b4fc080a6a1838,
+    - target: {fileID: 65663369609172076, guid: 2215432d06378cd449b4fc080a6a1838,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 9ab57e55ee26f164cb05da7961e1b761,
+        type: 2}
+    - target: {fileID: 65093191831608884, guid: 2215432d06378cd449b4fc080a6a1838,
         type: 2}
       propertyPath: m_Material
       value: 
@@ -2423,6 +2429,10 @@ Prefab:
     - target: {fileID: 4272207224775192, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984727565567038, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d66d5f6fabc0d8409000df996001fa4, type: 2}
