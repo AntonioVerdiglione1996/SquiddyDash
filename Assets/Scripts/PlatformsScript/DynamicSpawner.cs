@@ -166,12 +166,18 @@ public class DynamicSpawner : MonoBehaviour
     {
         EnableSpawn();
         OnGameoverEvent.OnEventRaised += DisableSpawn;
-        OnDynamicSpawnEvent.OnEventRaised += DynamicSpawn;
+        if (OnDynamicSpawnEvent)
+        {
+            OnDynamicSpawnEvent.OnEventRaised += DynamicSpawn;
+        }
     }
     private void OnDestroy()
     {
         OnGameoverEvent.OnEventRaised -= DisableSpawn;
-        OnDynamicSpawnEvent.OnEventRaised -= DynamicSpawn;
+        if (OnDynamicSpawnEvent)
+        {
+            OnDynamicSpawnEvent.OnEventRaised -= DynamicSpawn;
+        }
     }
 
 }
