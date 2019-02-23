@@ -22,6 +22,10 @@ public abstract class Pickable : ISOPoolable
                 myCollider = GetComponentInChildren<Collider>(true);
             }
         }
+        if (myCollider)
+        {
+            myCollider.isTrigger = true;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

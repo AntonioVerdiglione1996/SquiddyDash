@@ -11,7 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c063281e22c002449603bf1f3279a4b, type: 3}
   m_Name: MilestoneHolderDefault
   m_EditorClassIdentifier: 
+  Validate: 0
   Milestones:
+  - Score: 0
+    ScoreAsRewardMultiplier: 0
+    ScaleMultiplier: {x: 1, y: 1, z: 1}
+    SpeedMultiplier: 1
   - Score: 10
     ScoreAsRewardMultiplier: 0
     ScaleMultiplier: {x: 0.9, y: 1, z: 1}
@@ -40,3 +45,8 @@ MonoBehaviour:
     ScoreAsRewardMultiplier: 0
     ScaleMultiplier: {x: 0.9, y: 1, z: 1}
     SpeedMultiplier: 1.1
+  DefaultMilestone:
+    Score: 10
+    ScoreAsRewardMultiplier: 0
+    ScaleMultiplier: {x: 1, y: 1, z: 1}
+    SpeedMultiplier: 1

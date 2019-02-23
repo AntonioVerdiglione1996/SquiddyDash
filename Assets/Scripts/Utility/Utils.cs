@@ -1,6 +1,25 @@
 ﻿using UnityEngine;
 public static class Utils
 {
+    public static void Shuffle<T>(this T[] array)
+    {
+        int length = array.Length;
+        for (int i = 0; i < length; i++)
+        {
+            T temp = array[i];
+            int otherIndex = UnityEngine.Random.Range(0, length);
+            array[i] = array[otherIndex];
+            array[otherIndex] = temp;
+        }
+    }
+    public static Vector2Int GetBidimensionalIndex(int linearIndex, int width)
+    {
+        return new Vector2Int(linearIndex % width, linearIndex / width);
+    }
+    public static int GetLinearIndex(Vector2Int bidimensionalIndex, int width)
+    {
+        return bidimensionalIndex.x + (bidimensionalIndex.y * width);
+    }
     public static Vector3 GetLinearWorldScale(Transform transform)
     {
         Vector3 worldScale = transform.localScale;
