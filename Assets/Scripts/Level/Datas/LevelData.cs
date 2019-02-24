@@ -69,12 +69,16 @@ public class LevelData : ScriptableObject
     private LeaderboardEntry[] entries;
     void OnValidate()
     {
-        fileNameFull = Filename + levelIndex + levelName;
-        if(leaderboardTotalEntries <= 0)
+        Utils.Builder.Clear();
+        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", Filename, LevelIndex, LevelName, Utils.JSONExtension);
+        fileNameFull = Utils.Builder.ToString(0, Utils.Builder.Length);
+        Utils.Builder.Clear();
+
+        if (leaderboardTotalEntries <= 0)
         {
             leaderboardTotalEntries = 1;
         }
-        if(entries.Length != leaderboardTotalEntries)
+        if (entries.Length != leaderboardTotalEntries)
         {
             SetEntries(entries);
             SaveToFile();
@@ -120,7 +124,7 @@ public class LevelData : ScriptableObject
         for (i = 0; i < entries.Length; i++)
         {
             LeaderboardEntry current = entries[i];
-            if(entry.Score > current.Score)
+            if (entry.Score > current.Score)
             {
                 entries[i] = entry;
                 for (int j = i + 1; j < entries.Length; j++)
@@ -174,7 +178,7 @@ public class LevelData : ScriptableObject
     }
     public void SaveToFile()
     {
-        if(entries.Length != leaderboardTotalEntries)
+        if (entries.Length != leaderboardTotalEntries)
         {
             SetEntries(entries);
         }
@@ -190,7 +194,7 @@ public class LevelData : ScriptableObject
         {
             LeaderboardEntry entry = entries[i];
             LeaderboardEntry next = entries[i + 1];
-            if(next.Score > entry.Score)
+            if (next.Score > entry.Score)
             {
                 entries[i] = next;
                 entries[i + 1] = entry;

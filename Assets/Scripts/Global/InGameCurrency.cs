@@ -20,16 +20,24 @@ public class InGameCurrency : ScriptableObject
     private int accessoryParts = 0;
     [SerializeField]
     private int skinParts = 0;
-    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
+    public bool CanModifyGameCurrency(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
     {
         int resultCurrency = gameCurrency + currencyToSum;
         int resultSkins = skinParts + skinPartsToSum;
         int resultAccessory = accessoryParts + accessoryPartsToSum;
 
-        if (resultCurrency < 0 || accessoryParts < 0 || skinParts < 0)
+        return !(resultCurrency < 0 || resultAccessory < 0 || resultSkins < 0);
+    }
+    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
+    {
+        if (!CanModifyGameCurrency(currencyToSum, accessoryPartsToSum, skinPartsToSum))
         {
             return false;
         }
+
+        int resultCurrency = gameCurrency + currencyToSum;
+        int resultSkins = skinParts + skinPartsToSum;
+        int resultAccessory = accessoryParts + accessoryPartsToSum;
 
 #if UNITY_EDITOR
         if (EnableDebug)
@@ -50,19 +58,27 @@ public class InGameCurrency : ScriptableObject
     }
     public bool Restore()
     {
-        return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
+        bool res = SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
+        gameCurrency = Mathf.Max(gameCurrency, 0);
+        accessoryParts = Mathf.Max(accessoryParts, 0);
+        skinParts = Mathf.Max(skinParts, 0);
+        return res;
     }
     public void SaveToFile()
     {
+        gameCurrency = Mathf.Max(gameCurrency, 0);
+        accessoryParts = Mathf.Max(accessoryParts, 0);
+        skinParts = Mathf.Max(skinParts, 0);
         SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
+    }
+    void OnValidate()
+    {
+        SaveToFile();
     }
     private void OnEnable()
     {
         if (!Restore())
         {
-            gameCurrency = 0;
-            accessoryParts = 0;
-            skinParts = 0;
             SaveToFile();
         }
     }

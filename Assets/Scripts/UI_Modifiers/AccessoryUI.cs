@@ -9,6 +9,10 @@ public class AccessoryUI : DescriberUI
     public StoringCurrentModelToSpawn Scm;
     public Button[] Buttons = new Button[0];
     public bool GetChildButtons = true;
+    public Accessory Accessory { get; private set; }
+    public AccessoryUnlocker UnlockGO;
+    public GameObject LockedGO;
+    public InGameCurrency Currency;
     // Use this for initialization
     public void OnValidate()
     {
@@ -17,10 +21,13 @@ public class AccessoryUI : DescriberUI
             Buttons = GetComponentsInChildren<Button>(true);
         }
     }
-    public virtual void SetAccessory(int index)
+    public virtual void SetAccessory(Accessory accessory, int index)
     {
+        Accessory = accessory;
         AccessoryIndex = index;
-        if(Buttons != null)
+        UnlockGO.gameObject.SetActive(false);
+        LockedGO.SetActive(!Accessory.IsUnlocked);
+        if (Buttons != null)
         {
             for (int i = 0; i < Buttons.Length; i++)
             {
@@ -30,8 +37,32 @@ public class AccessoryUI : DescriberUI
             }
         }
     }
+    public bool TryUnlockWithCurrency()
+    {
+        Accessory.IsUnlocked = Currency.ModifyGameCurrencyAmount(-Accessory.UnlockCost);
+        LockedGO.SetActive(!Accessory.IsUnlocked);
+        return Accessory.IsUnlocked;
+    }
+    public bool TryUnlockWithAccessoryParts()
+    {
+        Accessory.IsUnlocked = Currency.ModifyGameCurrencyAmount(0, -Accessory.UnlockParts);
+        LockedGO.SetActive(!Accessory.IsUnlocked);
+        return Accessory.IsUnlocked;
+    }
     public void OnSetAccessory()
     {
-        Scm.AddAccessory(AccessoryIndex);
+        if(UnlockGO.gameObject.activeSelf)
+        {
+            return;
+        }
+        if (Accessory.IsUnlocked)
+        {
+            Scm.AddAccessory(AccessoryIndex);
+        }
+        else
+        {
+            UnlockGO.ActiveUI = this;
+            UnlockGO.gameObject.SetActive(true);
+        }
     }
 }

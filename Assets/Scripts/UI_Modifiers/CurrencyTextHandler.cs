@@ -2,37 +2,76 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class CurrencyTextHandler : MonoBehaviour
 {
     public InGameCurrency Currency;
 
-    public TextMeshProUGUI Text;
+    public TextMeshProUGUI CurrencyText;
+    public TextMeshProUGUI SkinPartsText;
+    public TextMeshProUGUI AccessoryPartsText;
 
-    private long lastCurrency = 0;
+    public Text NormalCurrencyText;
+    public Text NormalSkinPartsText;
+    public Text NormalAccessoryPartsText;
+
+    private int lastCurrency = 0;
+    private int lastSkinParts = 0;
+    private int lastAccessoryParts = 0;
 
     private void OnEnable()
     {
-        if (!Text)
-        {
-            Text = GetComponent<TextMeshProUGUI>();
-        }
         Update();
     }
     public void Update()
     {
-        if (!Text)
+        if (CurrencyText || NormalCurrencyText)
         {
-            return;
+            if (Currency.GameCurrency != lastCurrency)
+            {
+                lastCurrency = Currency.GameCurrency;
+                string txt = lastCurrency.ToString();
+                if (CurrencyText)
+                {
+                    CurrencyText.text = txt;
+                }
+                if (NormalCurrencyText)
+                {
+                    NormalCurrencyText.text = txt;
+                }
+            }
         }
-
-        long curr = Currency.GameCurrency;
-
-        if (curr != lastCurrency)
+        if (SkinPartsText || NormalSkinPartsText)
         {
-            lastCurrency = curr;
-            Text.text = lastCurrency.ToString();
-
+            if (Currency.SkinParts != lastSkinParts)
+            {
+                lastSkinParts = Currency.SkinParts;
+                string txt = lastSkinParts.ToString();
+                if (SkinPartsText)
+                {
+                    SkinPartsText.text = txt;
+                }
+                if (NormalSkinPartsText)
+                {
+                    NormalSkinPartsText.text = txt;
+                }
+            }
+        }
+        if (AccessoryPartsText || NormalAccessoryPartsText)
+        {
+            if (Currency.AccessoryParts != lastAccessoryParts)
+            {
+                lastAccessoryParts = Currency.AccessoryParts;
+                string txt = lastAccessoryParts.ToString();
+                if (AccessoryPartsText)
+                {
+                    AccessoryPartsText.text = txt;
+                }
+                if (NormalAccessoryPartsText)
+                {
+                    NormalAccessoryPartsText.text = txt;
+                }
+            }
         }
     }
 }

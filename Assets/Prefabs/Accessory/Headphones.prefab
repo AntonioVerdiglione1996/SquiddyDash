@@ -94,9 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ad93dac3665b14cac0e7eb04c1df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: b1f8b6b094e6c604fa48661fbb49483e, type: 2}
+  Describer: {fileID: 0}
   Root: {fileID: 4519141696835030}
   Skill: {fileID: 0}
   Upgrades: []
   Type: 2
-  fileNameFull: AccessorySquiddy
+  fileNameFull: Headphones_Common_Googles.json
+  unlockCost: 10
+  unlockParts: 2
+  isUnlocked: 0

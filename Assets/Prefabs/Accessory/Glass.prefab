@@ -850,6 +850,10 @@ MonoBehaviour:
   Upgrades:
   - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
   Type: 2
+  fileNameFull: Common_glass_Legendary_Special_Googles.json
+  unlockCost: 10
+  unlockParts: 2
+  isUnlocked: 0
 --- !u!114 &114805459314882794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,6 +865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b5d8fefd636a349a8b258d4a4fba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImproveInvokabilityMultiplier: 1
+  MinImproveInvokabilityValue: 1.0001
+  MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
   Describer: {fileID: 11400000, guid: b7ac7432032796941b7c01b20e2f84ad, type: 2}
   IsAutoActivating: 0

@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
+using System.Text;
 public static class Utils
 {
+    public const string JSONExtension = ".json";
+    public static StringBuilder Builder;
+    static Utils()
+    {
+        Builder = new StringBuilder();
+    }
+    public static void Clear(this System.Text.StringBuilder builder)
+    {
+        builder.Remove(0, builder.Length);
+    }
     public static void Shuffle<T>(this T[] array)
     {
         int length = array.Length;

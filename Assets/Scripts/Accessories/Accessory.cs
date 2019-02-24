@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 public class Accessory : MonoBehaviour
 {
-    public const string Filename = "Accessory";
-    public const string DefaultNoName = "Missing_Name";
+    public const string Dirname = "Accessory";
     public Describer Describer;
     public Transform Root;
     public Skill Skill;
@@ -37,11 +37,29 @@ public class Accessory : MonoBehaviour
             return type;
         }
     }
+    public string FileNameFull { get { return fileNameFull; } }
+    public int UnlockCost { get { return unlockCost; } }
+    public int UnlockParts { get { return unlockParts; } }
+    public bool IsUnlocked { get { return isUnlocked; } set { isUnlocked = value; SaveToFile(); } }
     [SerializeField]
     private string fileNameFull;
+    [SerializeField]
+    private int unlockCost = 10;
+    [SerializeField]
+    private int unlockParts = 2;
+    [SerializeField]
+    private bool isUnlocked = false;
+    public bool Restore()
+    {
+        return SerializerHandler.RestoreObjectFromJson(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this);
+    }
+    public void SaveToFile()
+    {
+        SerializerHandler.SaveJsonFromInstance(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this, true);
+    }
     public void SetParent(Transform parent, bool worldPositionStays = false)
     {
-        OnValidate();
+        Reset();
         Root.SetParent(parent, worldPositionStays);
 #if UNITY_EDITOR
         Debug.LogFormat("{0} of type {1} and rarity {2} has been parented to {3}", this, Type, Rarity, parent);
@@ -73,7 +91,7 @@ public class Accessory : MonoBehaviour
     }
     private void Awake()
     {
-        OnValidate();
+        Reset();
         if (Upgrades != null)
         {
             for (int i = Upgrades.Count - 1; i >= 0; i--)
@@ -85,9 +103,12 @@ public class Accessory : MonoBehaviour
             }
         }
     }
-    private void OnValidate()
+    private void Reset()
     {
-        fileNameFull = Filename + (this.Describer ? this.Describer.Name : DefaultNoName);
+        Utils.Builder.Clear();
+        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", (this.Describer ? this.Describer.Name : name), Rarity, Type, Utils.JSONExtension);
+        fileNameFull = Utils.Builder.ToString(0, Utils.Builder.Length).Replace(", ", "_");
+        Utils.Builder.Clear();
 
         if (!Skill)
         {
@@ -97,5 +118,10 @@ public class Accessory : MonoBehaviour
         {
             Root = transform;
         }
+    }
+    private void OnValidate()
+    {
+        Reset();
+        SaveToFile();
     }
 }
