@@ -84,6 +84,7 @@ public class PowerUp : Pickable
     }
     protected override void OnValidate()
     {
+        FindRigidbody = false;
         base.OnValidate();
 #if UNITY_EDITOR
         DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);

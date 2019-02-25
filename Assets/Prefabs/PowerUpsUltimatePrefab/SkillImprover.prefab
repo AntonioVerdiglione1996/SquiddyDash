@@ -118,7 +118,9 @@ MonoBehaviour:
   RecycleOnPickup: 1
   RecycleOnSafetyLayer: 1
   SafetyLayerRecycler: 9
+  FindRigidbody: 1
   myCollider: {fileID: 135052102630689572}
+  body: {fileID: 54467141971766470}
   ImproveAmount: 1.2
 --- !u!135 &135052102630689572
 SphereCollider:

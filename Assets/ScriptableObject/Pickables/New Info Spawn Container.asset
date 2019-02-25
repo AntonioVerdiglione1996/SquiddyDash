@@ -20,3 +20,7 @@ MonoBehaviour:
     SpawnChance: 1
     MinSpawnCount: 1
     MaxSpawnCount: 1
+  - Pool: {fileID: 11400000, guid: 1743af918226ead4581b7d3587a30ea1, type: 2}
+    SpawnChance: 1
+    MinSpawnCount: 100
+    MaxSpawnCount: 100

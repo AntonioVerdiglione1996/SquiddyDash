@@ -394,7 +394,9 @@ MonoBehaviour:
   RecycleOnPickup: 0
   RecycleOnSafetyLayer: 0
   SafetyLayerRecycler: 9
+  FindRigidbody: 0
   myCollider: {fileID: 135817882334816762}
+  body: {fileID: 0}
   SpawnPoints:
   - {fileID: 4865559553987288}
   - {fileID: 4295936897299264}

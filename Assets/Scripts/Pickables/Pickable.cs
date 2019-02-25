@@ -9,8 +9,12 @@ public abstract class Pickable : ISOPoolable
     public bool RecycleOnSafetyLayer = true;
     public int SafetyLayerRecycler = 9;
     public Collider Collider { get { return myCollider; } }
+    public Rigidbody Body { get { return body; } }
+    public bool FindRigidbody = true;
     [SerializeField]
     private Collider myCollider;
+    [SerializeField]
+    private Rigidbody body;
     protected override void OnValidate()
     {
         base.OnValidate();
@@ -22,9 +26,22 @@ public abstract class Pickable : ISOPoolable
                 myCollider = GetComponentInChildren<Collider>(true);
             }
         }
+        if (FindRigidbody && !body)
+        {
+            body = GetComponent<Rigidbody>();
+            if (!body)
+            {
+                body = GetComponentInChildren<Rigidbody>(true);
+            }
+        }
         if (myCollider)
         {
             myCollider.isTrigger = true;
+        }
+        if (body)
+        {
+            body.isKinematic = true;
+            body.useGravity = false;
         }
     }
     private void OnTriggerEnter(Collider other)
