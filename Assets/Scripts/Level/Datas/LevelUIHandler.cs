@@ -22,11 +22,17 @@ public class LevelUIHandler : IIndexable
 
     public BasicEvent DeactivateUnlockUIEvent;
 
+    public Button LeaderboardToggleButton;
+    public SOPool LeaderboardEntryUI;
+    public Transform LeaderboardEntryParent;
+
     private void DeactivateUnlockUI()
     {
+        UnshowLeaderboard();
         if (UnlockUI)
         {
             UnlockUI.SetActive(false);
+            LeaderboardToggleButton.gameObject.SetActive(true);
         }
     }
     public void OnEnable()
@@ -46,6 +52,7 @@ public class LevelUIHandler : IIndexable
     }
     public void OnClicked()
     {
+        UnshowLeaderboard();
         if (LevelData.IsUnlocked)
         {
             ScoreSystem.Reset();
@@ -56,7 +63,20 @@ public class LevelUIHandler : IIndexable
         if (UnlockUI)
         {
             UnlockUI.SetActive(true);
+            LeaderboardToggleButton.gameObject.SetActive(false);
         }
+    }
+    public void ShowLeaderboard()
+    {
+
+    }
+    public void UnshowLeaderboard()
+    {
+
+    }
+    public void ToggleLeaderboard()
+    {
+
     }
     public void UnlockLevel()
     {

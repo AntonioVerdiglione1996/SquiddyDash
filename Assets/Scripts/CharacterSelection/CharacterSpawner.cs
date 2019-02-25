@@ -8,8 +8,12 @@ public class CharacterSpawner : MonoBehaviour
     public SquiddyController Controller;
     public void Awake()
     {
-        Controller.OwnedCharacter = Instantiate(scm.DownloadCurrentCharacter(), transform);
-        Controller.OwnedCharacter.CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
+        Character character = Instantiate(scm.DownloadCurrentCharacter(), transform);
+        if (Controller)
+        {
+            Controller.OwnedCharacter = character;
+            Controller.OwnedCharacter.CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
+        }
         Destroy(this);
     }
 }
