@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: EndEffectScoreIncreasePool
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 1165987183446902, guid: 5d9656c85a953a449a79e1bdd2dbddc1, type: 2}
+    PersistentPoolInScenes: 1
   Prefab: {fileID: 1165987183446902, guid: 5d9656c85a953a449a79e1bdd2dbddc1, type: 2}
   PersistentPoolInScenes: 1

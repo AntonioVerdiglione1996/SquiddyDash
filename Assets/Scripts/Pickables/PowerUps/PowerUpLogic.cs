@@ -29,7 +29,7 @@ public abstract class PowerUpLogic : ScriptableObject
         }
 
         int nullObj;
-        GameObject go = renderingObjectPool.Get(parent, out nullObj, true);
+        GameObject go = renderingObjectPool.Pool.Get(parent, out nullObj, true);
         go.transform.localPosition = Vector3.zero;
         return go;
     }
@@ -38,7 +38,7 @@ public abstract class PowerUpLogic : ScriptableObject
     {
         if (instantiatedPowerUp)
         {
-            renderingObjectPool.Recycle(instantiatedPowerUp);
+            renderingObjectPool.Pool.Recycle(instantiatedPowerUp);
         }
     }
     public virtual GameObject InitPowerup(PowerUp powUp)

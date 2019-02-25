@@ -26,6 +26,8 @@ public class LevelUIHandler : IIndexable
     public SOPool LeaderboardEntryUI;
     public Transform LeaderboardEntryParent;
 
+    private List<LeaderboardEntryUI> leadEntries = new List<LeaderboardEntryUI>();
+
     private void DeactivateUnlockUI()
     {
         UnshowLeaderboard();
@@ -68,15 +70,32 @@ public class LevelUIHandler : IIndexable
     }
     public void ShowLeaderboard()
     {
-
+        for (int i = 0; i < LevelData.Entries.Length; i++)
+        {
+            LeaderboardEntry entry = LevelData.Entries[i];
+            LeaderboardEntryUI ui = Spawner.SpawnPrefab(null, LeaderboardEntryUI.Pool, LeaderboardEntryParent, false).GetComponentInChildren<LeaderboardEntryUI>(true);
+            ui.SetEntry(entry);
+            leadEntries.Add(ui);
+        }
     }
     public void UnshowLeaderboard()
     {
-
+        for (int i = 0; i < leadEntries.Count; i++)
+        {
+            leadEntries[i].Recycle();
+        }
+        leadEntries.Clear();
     }
     public void ToggleLeaderboard()
     {
-
+        if(leadEntries.Count == 0)
+        {
+            ShowLeaderboard();
+        }
+        else
+        {
+            UnshowLeaderboard();
+        }
     }
     public void UnlockLevel()
     {

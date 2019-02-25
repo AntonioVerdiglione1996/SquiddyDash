@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: SkillUIDescriberPool
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 1521365396056028, guid: 7b15a814add78b14d87af5b3c0a37d9f, type: 2}
+    PersistentPoolInScenes: 1
   Prefab: {fileID: 1521365396056028, guid: 7b15a814add78b14d87af5b3c0a37d9f, type: 2}
   PersistentPoolInScenes: 1

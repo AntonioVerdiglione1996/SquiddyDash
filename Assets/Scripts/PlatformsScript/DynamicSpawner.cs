@@ -150,7 +150,7 @@ public class DynamicSpawner : MonoBehaviour
     private void Spawn(SpawnInfo info, Vector3 position)
     {
         position.z = 0f;
-        Spawner.SpawnPrefab(null, info.Pool, null, false, position);
+        Spawner.SpawnPrefab(null, info.Pool.Pool, null, false, position);
     }
 
     private void OnValidate()

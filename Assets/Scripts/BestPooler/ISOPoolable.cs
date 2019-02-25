@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ISOPoolable : MonoBehaviour
 {
-    public SOPool Pool;
+    public BasicSOPool Pool;
     public GameObject Root;
     protected virtual void OnValidate()
     {
@@ -22,7 +22,7 @@ public class ISOPoolable : MonoBehaviour
 #endif
             return;
         }
-        if (!Pool)
+        if (Pool == null)
         {
 #if UNITY_EDITOR
             Debug.LogException(new System.NullReferenceException("ISOPoolable requires a valid reference to a Pool obj"));

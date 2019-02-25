@@ -2,7 +2,7 @@
 using System;
 public static class Spawner
 {
-    public static bool SpawnPrefabs(int count, SOPool pool, Transform parent = null, BasicEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null, bool directGet = false)
+    public static bool SpawnPrefabs(int count, BasicSOPool pool, Transform parent = null, BasicEvent finishedSpawn = null, Action<GameObject, int> OnSpawn = null, bool directGet = false)
     {
         for (int i = 0; i < count; i++)
         {
@@ -17,7 +17,7 @@ public static class Spawner
         }
         return true;
     }
-    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, SOPool pool, Transform parent, bool directGet, Vector3 position, Quaternion rotation)
+    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, BasicSOPool pool, Transform parent, bool directGet, Vector3 position, Quaternion rotation)
     {
         GameObject go = SpawnPrefab(OnSpawn, pool, parent, directGet);
         if (go)
@@ -26,7 +26,7 @@ public static class Spawner
         }
         return go;
     }
-    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, SOPool pool, Transform parent, bool directGet, Vector3 position)
+    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, BasicSOPool pool, Transform parent, bool directGet, Vector3 position)
     {
         GameObject go = SpawnPrefab(OnSpawn, pool, parent, directGet);
         if (go)
@@ -35,7 +35,7 @@ public static class Spawner
         }
         return go;
     }
-    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, SOPool pool, Transform parent, bool directGet)
+    public static GameObject SpawnPrefab(Action<GameObject> OnSpawn, BasicSOPool pool, Transform parent, bool directGet)
     {
         GameObject obj = SpawnPrefab(null, 0, pool, parent, directGet);
         if (obj && OnSpawn != null)
@@ -45,9 +45,9 @@ public static class Spawner
         return obj;
     }
 
-    private static GameObject SpawnPrefab(Action<GameObject, int> OnSpawn, int index, SOPool pool, Transform parent, bool directGet)
+    private static GameObject SpawnPrefab(Action<GameObject, int> OnSpawn, int index, BasicSOPool pool, Transform parent, bool directGet)
     {
-        if (!pool)
+        if (pool == null)
         {
             return null;
         }

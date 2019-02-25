@@ -135,7 +135,7 @@ public class Platform : ISOPoolable
 #endif
         IsVisible = false;
         Start();
-        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn && CurrentPlatformForSquiddy.CurrentPlatform != this)
+        if (squiddy && Pool != null && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn && CurrentPlatformForSquiddy.CurrentPlatform != this)
         {
             Recycle();
             if (PlatformRecycled)

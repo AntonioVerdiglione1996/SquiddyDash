@@ -387,7 +387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e17c638e94e984996a03647779299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 0}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1455752135451080}
   RecycleOnPickup: 0
   RecycleOnSafetyLayer: 0
@@ -431,7 +433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce, type: 2}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1455752135451080}
   DebugEnabled: 0
   DirRight: 0

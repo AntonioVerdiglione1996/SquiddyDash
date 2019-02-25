@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: UltraJumpRenderingPool
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 1018832359676456, guid: 09bc7500c140553449acf361564181df, type: 2}
+    PersistentPoolInScenes: 1
   Prefab: {fileID: 1018832359676456, guid: 09bc7500c140553449acf361564181df, type: 2}
   PersistentPoolInScenes: 1

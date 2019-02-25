@@ -111,7 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e874cc2051d9b45a6c14f900593afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool: {fileID: 0}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1232313538195260}
   RecycleOnPickup: 1
   RecycleOnSafetyLayer: 1

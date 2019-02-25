@@ -10,7 +10,7 @@ public class LevelSelectionSpawnHandler : MonoBehaviour
     public LevelContainer Container;
     void Start()
     {
-        if (Spawner.SpawnPrefabs(Container.Datas.Length, LevelUIPrefabPool, ContainerParentTransform, null, OnGOSpawned))
+        if (Spawner.SpawnPrefabs(Container.Datas.Length, LevelUIPrefabPool.Pool, ContainerParentTransform, null, OnGOSpawned))
         {
             LevelSelection.Initialize();
         }

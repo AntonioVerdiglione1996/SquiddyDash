@@ -74,7 +74,7 @@ public class LaserSpawner : MonoBehaviour
         {
             if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance + ScoreMultiplierAddedToSpawnChance * Score.Score)
             {
-                Spawner.SpawnPrefab(null, Pool, null, false, ReferenceLocation.position + Offset);
+                Spawner.SpawnPrefab(null, Pool.Pool, null, false, ReferenceLocation.position + Offset);
             }
         }
     }

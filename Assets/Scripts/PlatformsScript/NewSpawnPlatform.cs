@@ -90,7 +90,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     private GameObject SpawnPlatform(SOPool pool, bool setMaterials = false)
     {
-        GameObject go = Spawner.SpawnPrefab(null, pool, null, false, newPos);
+        GameObject go = Spawner.SpawnPrefab(null, pool.Pool, null, false, newPos);
 
         Platform plat = go.GetComponentInChildren<Platform>();
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();
