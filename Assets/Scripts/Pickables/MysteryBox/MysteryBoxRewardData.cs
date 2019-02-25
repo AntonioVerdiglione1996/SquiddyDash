@@ -15,7 +15,7 @@ public abstract class MysteryBoxRewardData : ScriptableObject
             Types = new List<MysteryRewardChances>(values.Length);
             foreach (MysteryBoxType item in values)
             {
-                Types.Add(new MysteryRewardChances(item));
+                Types.Add(new MysteryRewardChances(item, true));
             }
             return;
         }
@@ -23,13 +23,14 @@ public abstract class MysteryBoxRewardData : ScriptableObject
         {
             if (Types.All(x => x.Type != item))
             {
-                Types.Add(new MysteryRewardChances(item));
+                Types.Add(new MysteryRewardChances(item, true));
             }
         }
         for (int i = Types.Count - 1; i >= 0; i--)
         {
             MysteryRewardChances data = Types[i];
             data.Chance = Mathf.Clamp01(data.Chance);
+            data.ValidChance = !Mathf.Approximately(data.Chance, 0f);
             Types[i] = data;
             if (Types.Count(x => x.Type == data.Type) > 1)
             {

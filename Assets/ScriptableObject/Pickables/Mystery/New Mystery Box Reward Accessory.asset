@@ -8,29 +8,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce26cf42a0ce9084fa23ce1d255bf493, type: 3}
-  m_Name: New Mystery Box Reward Currency
+  m_Script: {fileID: 11500000, guid: ec141bf44e9ff84439456d4537a3a086, type: 3}
+  m_Name: New Mystery Box Reward Accessory
   m_EditorClassIdentifier: 
   Types:
   - Type: 0
-    Chance: 0.5
-    ValidChance: 1
+    Chance: 0
+    ValidChance: 0
   - Type: 1
-    Chance: 0.2
-    ValidChance: 1
+    Chance: 0
+    ValidChance: 0
   - Type: 2
+    Chance: 0
+    ValidChance: 0
+  - Type: 3
     Chance: 0.1
     ValidChance: 1
-  - Type: 3
-    Chance: 0
-    ValidChance: 0
   - Type: 4
-    Chance: 0
-    ValidChance: 0
+    Chance: 0.3
+    ValidChance: 1
   - Type: 5
-    Chance: 0
-    ValidChance: 0
-  Currency: 10
-  SkinParts: 2
-  AccessoryParts: 1
-  RarityAddMultiplier: 1
+    Chance: 0.5
+    ValidChance: 1
+  Rarity: 1
+  DefaultAccessoryParts: 50

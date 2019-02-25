@@ -28,7 +28,7 @@ public class InGameCurrency : ScriptableObject
 
         return !(resultCurrency < 0 || resultAccessory < 0 || resultSkins < 0);
     }
-    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
+    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0, bool save = true)
     {
         if (!CanModifyGameCurrency(currencyToSum, accessoryPartsToSum, skinPartsToSum))
         {
@@ -52,7 +52,10 @@ public class InGameCurrency : ScriptableObject
         skinParts = resultSkins;
         gameCurrency = resultCurrency;
 
-        SaveToFile();
+        if (save)
+        {
+            SaveToFile();
+        }
 
         return true;
     }

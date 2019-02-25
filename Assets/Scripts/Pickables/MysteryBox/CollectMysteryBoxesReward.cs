@@ -5,7 +5,6 @@ using UnityEngine;
 public class CollectMysteryBoxesReward : MonoBehaviour
 {
     public GlobalEvents GlobalEvents;
-    public InGameCurrency Currency;
     public StoringCurrentModelToSpawn Store;
     public MysteryBoxRewardContainer Container;
     public bool DebugEnabled = true;
@@ -26,7 +25,7 @@ public class CollectMysteryBoxesReward : MonoBehaviour
                         for (int x = 0; x < Data.Types.Count; x++)
                         {
                             MysteryRewardChances Chances = Data.Types[x];
-                            if (Chances.Type == type)
+                            if (Chances.ValidChance && Chances.Type == type)
                             {
                                 collected = UnityEngine.Random.Range(0f, 1f) <= Chances.Chance;
                                 if (collected)
@@ -47,6 +46,8 @@ public class CollectMysteryBoxesReward : MonoBehaviour
                 boxTypes.RemoveAt(i);
             }
         }
+        GlobalEvents.GameCurrency.SaveToFile();
+        Store.VerifyAndSave();
         GlobalEvents.ClearCollectedBox();
     }
 }

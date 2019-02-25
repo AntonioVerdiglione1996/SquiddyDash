@@ -18,7 +18,7 @@ public class MysteryBoxRewardCurrency : MysteryBoxRewardData
     }
     public override void Collect(MysteryBoxType type, CollectMysteryBoxesReward collector)
     {
-        collector.Currency.ModifyGameCurrencyAmount(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type));
+        collector.GlobalEvents.GameCurrency.ModifyGameCurrencyAmount(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type), false);
     }
     private int GetTotalValue(int value, MysteryBoxType type)
     {
