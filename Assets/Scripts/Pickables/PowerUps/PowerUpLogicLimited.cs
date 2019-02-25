@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Gameplay/Powerup/LimitedSkill")]
+[CreateAssetMenu(menuName = "Gameplay/Pickables/Powerup/LimitedSkill")]
 public class PowerUpLogicLimited : PowerUpLogic
 {
     [Tooltip("Pool used to spawn limited skills for the player")]

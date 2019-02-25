@@ -40,7 +40,7 @@ public class GlobalEvents : ScriptableObject
             return collectedBoxes;
         }
     }
-    public List<MysteryBoxType> collectedBoxes;
+    private List<MysteryBoxType> collectedBoxes;
     public void AddCollectedBox(MysteryBoxType type)
     {
 #if UNITY_EDITOR
@@ -127,6 +127,7 @@ public class GlobalEvents : ScriptableObject
         }
 #endif
         currentLevel = Level;
+        ClearCollectedBox();
     }
     public void IncreaseGameCurrency()
     {

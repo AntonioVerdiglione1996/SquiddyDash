@@ -24,4 +24,4 @@ MonoBehaviour:
     Chance: 0.15
   - Type: 5
     Chance: 0.1
-  DefaultType: 1
+  DefaultType: 0

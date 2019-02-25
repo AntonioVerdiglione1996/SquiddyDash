@@ -70,7 +70,7 @@ public class DynamicSpawner : MonoBehaviour
         for (int i = 0; i < Info.Length; i++)
         {
             SpawnInfo info = Info[i];
-            if (UseGrid)
+            if (!info.RandomSpawnLocation && UseGrid)
             {
                 if (!GridSpawn(info, spawnBound))
                 {

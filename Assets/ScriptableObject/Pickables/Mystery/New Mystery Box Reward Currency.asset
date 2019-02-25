@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce26cf42a0ce9084fa23ce1d255bf493, type: 3}
+  m_Name: New Mystery Box Reward Currency
+  m_EditorClassIdentifier: 
+  Types:
+  - Type: 0
+    Chance: 0.5
+  - Type: 1
+    Chance: 0.2
+  - Type: 2
+    Chance: 0.1
+  - Type: 3
+    Chance: 0
+  - Type: 4
+    Chance: 0
+  - Type: 5
+    Chance: 0
+  Currency: 10
+  SkinParts: 2
+  AccessoryParts: 1
+  RarityAddMultiplier: 1

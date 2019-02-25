@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-[CreateAssetMenu(menuName = "Gameplay/MysteryBoxChances")]
+[CreateAssetMenu(menuName = "Gameplay/Pickables/Mystery/Chances")]
 public class MysteryBoxChances : ScriptableObject
 {
     public List<MysteryBoxChancesData> Data;
