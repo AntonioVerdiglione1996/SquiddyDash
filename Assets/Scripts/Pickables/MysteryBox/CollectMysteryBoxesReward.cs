@@ -11,8 +11,12 @@ public class CollectMysteryBoxesReward : MonoBehaviour
     private void OnEnable()
     {
         var boxTypes = GlobalEvents.CollectedBoxes;
-        if (boxTypes != null)
+        if (boxTypes != null && boxTypes.Count > 0)
         {
+            for (int i = 0; i < Store.Accessories.Count; i++)
+            {
+                Store.Accessories[i].Restore();
+            }
             for (int i = boxTypes.Count - 1; i >= 0; i--)
             {
                 bool collected = false;

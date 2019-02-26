@@ -6,6 +6,7 @@ using System.Linq;
 public abstract class MysteryBoxRewardData : ScriptableObject
 {
     public List<MysteryRewardChances> Types;
+    public bool DebugEnabled = true;
     public abstract void Collect(MysteryBoxType type, CollectMysteryBoxesReward collector);
     protected virtual void OnValidate()
     {
