@@ -390,9 +390,9 @@ MonoBehaviour:
   Pool:
     Prefab: {fileID: 0}
     PersistentPoolInScenes: 1
-  Root: {fileID: 1455752135451080}
-  RecycleOnPickup: 1
-  RecycleOnSafetyLayer: 1
+  Root: {fileID: 1774952358720282}
+  RecycleOnPickup: 0
+  RecycleOnSafetyLayer: 0
   SafetyLayerRecycler: 9
   FindRigidbody: 0
   myCollider: {fileID: 135817882334816762}

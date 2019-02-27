@@ -99,10 +99,11 @@ public class Character : MonoBehaviour
                 }
             }
         }
+
         Skills = transform.root.GetComponentsInChildren<Skill>(true);
         Accessory[] accessories = transform.root.GetComponentsInChildren<Accessory>(true);
         MainSkill = null;
-        if (accessories != null && accessories.Length > 0 && Skills != null)
+        if (Skills != null)
         {
             for (int i = 0; i < Skills.Length; i++)
             {
