@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: LimitedSecondChancePool
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1516330385383864, guid: 2a1ae37771e9d5843b79426def66cee1, type: 2}
+  Prefab: {fileID: 1787684671219964, guid: 138f1aa893159c04e93f7642c0c7d205, type: 2}
   PersistentPoolInScenes: 1

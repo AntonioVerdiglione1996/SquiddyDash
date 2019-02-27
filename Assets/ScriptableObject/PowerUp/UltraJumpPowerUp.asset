@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 2}
   TriggerSound: {fileID: 11400000, guid: ce204a1172c340e43a5aeba345536b73, type: 2}
   VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
-  prefabPool: {fileID: 11400000, guid: 200ce0042be9a6247883a1b383a061ef, type: 2}
+  prefabPool: {fileID: 11400000, guid: 133a1f7f2014b6f4ab471707f503eab6, type: 2}
   LimitedSkillPool: {fileID: 11400000, guid: 8de199a1fca01a74299c8a0d5485b713, type: 2}
   OverrideMaxUsages: 1
   MaxUsages: 1

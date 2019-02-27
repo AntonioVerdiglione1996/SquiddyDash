@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: LimitedVulkanPool
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1783614295051722, guid: 73ee7552b2b844749b01aa4f97d9bb4c, type: 2}
+  Prefab: {fileID: 1872875767083828, guid: 78d5571a5cee6b34198bb8029acc5cf7, type: 2}
   PersistentPoolInScenes: 1
