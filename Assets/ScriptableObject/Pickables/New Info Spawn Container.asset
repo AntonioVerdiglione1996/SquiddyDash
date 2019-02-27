@@ -14,7 +14,7 @@ MonoBehaviour:
   Info:
   - Pool: {fileID: 11400000, guid: 06f7670aa4f818e4c840ddfbc5bee904, type: 2}
     RandomSpawnLocation: 0
-    SpawnChance: 0.5
+    SpawnChance: 0.4
     MinSpawnCount: 1
     MaxSpawnCount: 1
   - Pool: {fileID: 11400000, guid: 5e861587efcfc50408de73a4f2ff2ab8, type: 2}

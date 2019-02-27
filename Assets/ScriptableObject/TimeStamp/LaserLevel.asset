@@ -13,11 +13,155 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: acbe7b0a0084649439771526600f6b61, type: 3}
   Timestamps:
+  - Timestamp: 0
+    Strenght: 5
   - Timestamp: 1
+    Strenght: 7
+  - Timestamp: 2
+    Strenght: 0
+  - Timestamp: 3
+    Strenght: 11
+  - Timestamp: 4
     Strenght: 15
   - Timestamp: 5
-    Strenght: 15
+    Strenght: 16
+  - Timestamp: 6
+    Strenght: 3
+  - Timestamp: 7
+    Strenght: 10
+  - Timestamp: 8
+    Strenght: 4
+  - Timestamp: 9
+    Strenght: 3
   - Timestamp: 10
-    Strenght: 15
+    Strenght: 5
+  - Timestamp: 11
+    Strenght: 16
+  - Timestamp: 12
+    Strenght: 9
+  - Timestamp: 13
+    Strenght: 13
+  - Timestamp: 14
+    Strenght: 8
+  - Timestamp: 15
+    Strenght: 8
   - Timestamp: 16
-    Strenght: 20
+    Strenght: 10
+  - Timestamp: 17
+    Strenght: 5
+  - Timestamp: 18
+    Strenght: 12
+  - Timestamp: 19
+    Strenght: 12
+  - Timestamp: 20
+    Strenght: 6
+  - Timestamp: 21
+    Strenght: 8
+  - Timestamp: 22
+    Strenght: 0
+  - Timestamp: 23
+    Strenght: 0
+  - Timestamp: 24
+    Strenght: 14
+  - Timestamp: 25
+    Strenght: 9
+  - Timestamp: 26
+    Strenght: 16
+  - Timestamp: 27
+    Strenght: 16
+  - Timestamp: 28
+    Strenght: 7
+  - Timestamp: 29
+    Strenght: 4
+  - Timestamp: 30
+    Strenght: 0
+  - Timestamp: 31
+    Strenght: 1
+  - Timestamp: 32
+    Strenght: 5
+  - Timestamp: 33
+    Strenght: 2
+  - Timestamp: 34
+    Strenght: 3
+  - Timestamp: 35
+    Strenght: 4
+  - Timestamp: 36
+    Strenght: 5
+  - Timestamp: 37
+    Strenght: 7
+  - Timestamp: 38
+    Strenght: 4
+  - Timestamp: 39
+    Strenght: 6
+  - Timestamp: 40
+    Strenght: 3
+  - Timestamp: 41
+    Strenght: 4
+  - Timestamp: 42
+    Strenght: 3
+  - Timestamp: 43
+    Strenght: 3
+  - Timestamp: 44
+    Strenght: 3
+  - Timestamp: 45
+    Strenght: 2
+  - Timestamp: 46
+    Strenght: 1
+  - Timestamp: 47
+    Strenght: 0
+  - Timestamp: 48
+    Strenght: 3
+  - Timestamp: 49
+    Strenght: 14
+  - Timestamp: 50
+    Strenght: 6
+  - Timestamp: 51
+    Strenght: 12
+  - Timestamp: 52
+    Strenght: 2
+  - Timestamp: 53
+    Strenght: 2
+  - Timestamp: 54
+    Strenght: 7
+  - Timestamp: 55
+    Strenght: 6
+  - Timestamp: 56
+    Strenght: 11
+  - Timestamp: 57
+    Strenght: 14
+  - Timestamp: 58
+    Strenght: 10
+  - Timestamp: 59
+    Strenght: 9
+  - Timestamp: 60
+    Strenght: 13
+  - Timestamp: 61
+    Strenght: 10
+  - Timestamp: 62
+    Strenght: 5
+  - Timestamp: 63
+    Strenght: 5
+  - Timestamp: 64
+    Strenght: 9
+  - Timestamp: 65
+    Strenght: 5
+  - Timestamp: 66
+    Strenght: 9
+  - Timestamp: 67
+    Strenght: 0
+  - Timestamp: 68
+    Strenght: 16
+  - Timestamp: 69
+    Strenght: 7
+  - Timestamp: 70
+    Strenght: 16
+  - Timestamp: 71
+    Strenght: 7
+  - Timestamp: 72
+    Strenght: 0
+  - Timestamp: 73
+    Strenght: 10
+  - Timestamp: 74
+    Strenght: 4
+  - Timestamp: 75
+    Strenght: 14

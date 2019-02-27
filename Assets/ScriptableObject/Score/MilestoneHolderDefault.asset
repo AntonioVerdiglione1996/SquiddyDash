@@ -17,36 +17,8 @@ MonoBehaviour:
     ScoreAsRewardMultiplier: 0
     ScaleMultiplier: {x: 1, y: 1, z: 1}
     SpeedMultiplier: 1
-  - Score: 10
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.05
-  - Score: 25
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 45
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 65
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.15
-  - Score: 90
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.05
-  - Score: 110
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
-  - Score: 140
-    ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 0.9, y: 1, z: 1}
-    SpeedMultiplier: 1.1
   DefaultMilestone:
-    Score: 10
+    Score: 15
     ScoreAsRewardMultiplier: 0
-    ScaleMultiplier: {x: 1, y: 1, z: 1}
-    SpeedMultiplier: 1
+    ScaleMultiplier: {x: 0.95, y: 1, z: 1}
+    SpeedMultiplier: 1.05

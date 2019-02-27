@@ -11,15 +11,14 @@ public class Laser : ISOPoolable
     public float HeightTollerance = 10f;
 
     public Collider[] Colliders;
-    public Renderer[] Renderers;
 
     public SoundEvent DisablerEvent;
     public BasicEvent EnablerEvent;
     public BasicEvent GameOverTrigger;
-    public float DisableDuration = 0.3f;
+    public float DisableDuration = 0.7f;
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
-
+    public ParticleSystem LaserParticle;
     public GameObject OnPlayerDeathParticle;
 
     private LinkedListNode<TimerData> timer;
@@ -37,6 +36,7 @@ public class Laser : ISOPoolable
     }
     public void OnEnable()
     {
+
         if (!CharacterTransform)
         {
             SquiddyController controller = FindObjectOfType<SquiddyController>();
@@ -53,9 +53,11 @@ public class Laser : ISOPoolable
         {
             EnablerEvent.OnEventRaised += Enable;
         }
+        Enable();
     }
     public void OnDisable()
     {
+        Disable(0);
         if (DisablerEvent)
         {
             DisablerEvent.OnSoundEvent -= Disable;
@@ -102,21 +104,28 @@ public class Laser : ISOPoolable
                 Colliders[i].enabled = enabled;
             }
         }
-        if (Renderers != null)
-        {
-            for (int i = 0; i < Renderers.Length; i++)
-            {
-                Renderers[i].enabled = enabled;
-            }
-        }
     }
     public void Enable()
     {
+        if (LaserParticle)
+        {
+            LaserParticle.time = 0;
+            LaserParticle.Play(true);
+        }
         SetComponentsActivation(true);
         TimeHelper.RemoveTimer(timer);
     }
     public void Disable(byte Strenght)
     {
+        if(timer != null && timer.Value.Enabled)
+        {
+            return;
+        }
+        if (LaserParticle)
+        {
+            LaserParticle.time = 0;
+            LaserParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
         SetComponentsActivation(false);
         timer = TimeHelper.RestartTimer(null, EnablerEvent, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
     }
