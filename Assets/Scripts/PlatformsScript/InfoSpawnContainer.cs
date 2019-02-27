@@ -7,6 +7,7 @@ public class InfoSpawnContainer : ScriptableObject
 {
     public SpawnInfo[] Info;
     public int Length { get { return Info.Length; } }
+    public bool Validate = false;
     public SpawnInfo this[int index]
     {
         get { return Info[index]; }
@@ -19,21 +20,25 @@ public class InfoSpawnContainer : ScriptableObject
             Info = new SpawnInfo[0];
             return;
         }
-        List<SpawnInfo> infos = new List<SpawnInfo>(Info);
-        for (int i = infos.Count - 1; i >= 0; i--)
+        if (Validate)
         {
-            SpawnInfo info = infos[i];
-            if (info == null)
+            Validate = !Validate;
+            List<SpawnInfo> infos = new List<SpawnInfo>(Info);
+            for (int i = infos.Count - 1; i >= 0; i--)
             {
-                infos.RemoveAt(i);
+                SpawnInfo info = infos[i];
+                if (info == null)
+                {
+                    infos.RemoveAt(i);
+                }
+                else
+                {
+                    info.SpawnChance = Mathf.Clamp01(info.SpawnChance);
+                    info.MinSpawnCount = Mathf.Max(info.MinSpawnCount, 0);
+                    info.MaxSpawnCount = Mathf.Max(info.MinSpawnCount, info.MaxSpawnCount);
+                }
             }
-            else
-            {
-                info.SpawnChance = Mathf.Clamp01(info.SpawnChance);
-                info.MinSpawnCount = Mathf.Max(info.MinSpawnCount, 0);
-                info.MaxSpawnCount = Mathf.Max(info.MinSpawnCount, info.MaxSpawnCount);
-            }
+            Info = infos.OrderByDescending(x => x.SpawnChance).ToArray();
         }
-        Info = infos.OrderByDescending(x => x.SpawnChance).ToArray();
     }
 }
