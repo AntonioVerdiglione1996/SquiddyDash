@@ -24,4 +24,3 @@ MonoBehaviour:
   GameoverDelay: 1
   LocalDebugActive: 0
   currentLevel: {fileID: 0}
-  collectedBoxes: 

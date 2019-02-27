@@ -14,16 +14,17 @@ MonoBehaviour:
   Info:
   - Pool: {fileID: 11400000, guid: 06f7670aa4f818e4c840ddfbc5bee904, type: 2}
     RandomSpawnLocation: 0
-    SpawnChance: 1
+    SpawnChance: 0.5
     MinSpawnCount: 1
     MaxSpawnCount: 1
   - Pool: {fileID: 11400000, guid: 5e861587efcfc50408de73a4f2ff2ab8, type: 2}
     RandomSpawnLocation: 0
-    SpawnChance: 1
-    MinSpawnCount: 10
-    MaxSpawnCount: 10
-  - Pool: {fileID: 11400000, guid: 1743af918226ead4581b7d3587a30ea1, type: 2}
-    RandomSpawnLocation: 0
-    SpawnChance: 1
+    SpawnChance: 0.4
     MinSpawnCount: 1
     MaxSpawnCount: 1
+  - Pool: {fileID: 11400000, guid: 1743af918226ead4581b7d3587a30ea1, type: 2}
+    RandomSpawnLocation: 0
+    SpawnChance: 0.1
+    MinSpawnCount: 1
+    MaxSpawnCount: 1
+  Validate: 0

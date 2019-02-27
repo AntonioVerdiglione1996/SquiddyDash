@@ -14,5 +14,3 @@ MonoBehaviour:
   Pool:
     Prefab: {fileID: 1884989431584500, guid: 38a5e65d5fe0ab14baa495f0d8bc02c2, type: 2}
     PersistentPoolInScenes: 1
-  Prefab: {fileID: 1884989431584500, guid: 38a5e65d5fe0ab14baa495f0d8bc02c2, type: 2}
-  PersistentPoolInScenes: 1
