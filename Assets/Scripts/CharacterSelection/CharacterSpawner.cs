@@ -12,8 +12,8 @@ public class CharacterSpawner : MonoBehaviour
         if (Controller)
         {
             Controller.OwnedCharacter = character;
-            Controller.OwnedCharacter.CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
         }
+        character.CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
         Destroy(this);
     }
 }
