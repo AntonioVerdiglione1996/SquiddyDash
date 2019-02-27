@@ -11,6 +11,7 @@ public class GlobalEvents : ScriptableObject
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
     public TimeHelper TimeHelper;
+    public BasicEvent GameOverTriggerEvent;
     public BasicEvent GameOverEvent;
     public BasicEvent GameOverInterruptedEvent;
 
@@ -24,14 +25,54 @@ public class GlobalEvents : ScriptableObject
     [SerializeField]
     private LevelData currentLevel;
 
+    private int bonusScore;
+    private int bonusCurrency;
+
     private LinkedListNode<TimerData> timer;
+    public List<MysteryBoxType> CollectedBoxes
+    {
+        get
+        {
+            if (collectedBoxes == null)
+            {
+                collectedBoxes = new List<MysteryBoxType>();
+            }
+            return collectedBoxes;
+        }
+    }
+    private List<MysteryBoxType> collectedBoxes;
+    public void AddCollectedBox(MysteryBoxType type)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Added {0} to collected mystery boxes.", type);
+        }
+#endif
+        CollectedBoxes.Add(type);
+    }
+    public void ClearCollectedBox()
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.Log("Collected mystery boxes cleared");
+        }
+#endif
+        CollectedBoxes.Clear();
+    }
     private void OnEnable()
     {
+        AddBonusCurrency(-bonusCurrency);
+        AddBonusScore(-bonusScore);
         IsGameoverOngoing = false;
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised += IncreaseGameCurrency;
-            GameOverEvent.OnEventRaised += GameOverTrigger;
+        }
+        if (GameOverTriggerEvent)
+        {
+            GameOverTriggerEvent.OnEventRaised += GameOverTrigger;
         }
     }
     private void OnDisable()
@@ -39,8 +80,39 @@ public class GlobalEvents : ScriptableObject
         if (GameOverEvent)
         {
             GameOverEvent.OnEventRaised -= IncreaseGameCurrency;
-            GameOverEvent.OnEventRaised -= GameOverTrigger;
         }
+        if (GameOverTriggerEvent)
+        {
+            GameOverTriggerEvent.OnEventRaised -= GameOverTrigger;
+        }
+    }
+    public void AddBonusScore(int score)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Modified current bonus score from {0} to {1}.", bonusScore, bonusScore + score);
+        }
+#endif
+        bonusScore += score;
+    }
+    public void AddBonusCurrency(int currency)
+    {
+#if UNITY_EDITOR
+        if (LocalDebugActive)
+        {
+            Debug.LogFormat("Modified current bonus currency from {0} to {1}.", bonusCurrency, bonusCurrency + currency);
+        }
+#endif
+        bonusCurrency += currency;
+    }
+    public int GetBonusScore()
+    {
+        return bonusScore;
+    }
+    public int GetBonusCurrency()
+    {
+        return bonusCurrency;
     }
     public void RemoveCurrentLevel()
     {
@@ -55,15 +127,16 @@ public class GlobalEvents : ScriptableObject
         }
 #endif
         currentLevel = Level;
+        ClearCollectedBox();
     }
     public void IncreaseGameCurrency()
     {
         if (System && Calculator && GameCurrency)
         {
 #if UNITY_EDITOR
-            long previousGC = GameCurrency.GameCurrency;
+            int previousGC = GameCurrency.GameCurrency;
 #endif
-            long amount = Calculator.CalculateCurrencyIncreaseAmount(System);
+            int amount = Calculator.CalculateCurrencyIncreaseAmount(System) + GetBonusCurrency();
 
             bool result = GameCurrency.ModifyGameCurrencyAmount(amount);
 #if UNITY_EDITOR
@@ -75,8 +148,10 @@ public class GlobalEvents : ScriptableObject
         }
         if (CurrentLevel && System)
         {
-            CurrentLevel.TryAddEntry((uint)System.Score, DateTime.Now.ToShortDateString());
+            CurrentLevel.TryAddEntry((uint)(System.Score + GetBonusScore()), DateTime.Now.ToLocalTime().ToLongDateString());
         }
+        AddBonusCurrency(-bonusCurrency);
+        AddBonusScore(-bonusScore);
     }
     public void GameOverTrigger()
     {
@@ -90,6 +165,7 @@ public class GlobalEvents : ScriptableObject
 #endif
             if (!IsGameoverOngoing)
             {
+                GameOverEvent.Raise();
                 IsGameoverOngoing = !IsGameoverOngoing;
                 timer = TimeHelper.RestartTimer(() => SelectLevelByString("GameOver"), null, timer, GameoverDelay);
             }

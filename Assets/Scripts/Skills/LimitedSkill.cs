@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimitedSkill : MonoBehaviour
+public class LimitedSkill : ISOPoolable
 {
     public Skill Skill;
-    public GameObject Root;
-    public SOPool Pool;
     public int MaxUsages = 1;
     public bool ActivateImmediatly = true;
     public bool DebugEnabled = true;
@@ -32,13 +30,10 @@ public class LimitedSkill : MonoBehaviour
     private int usagesLeft;
     private SquiddyController controller;
     private bool firstTime;
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         SetMaxUsages(MaxUsages);
-        if (!Root)
-        {
-            Root = transform.root.gameObject;
-        }
         if (!Skill)
         {
             Skill = GetComponent<Skill>();
@@ -68,7 +63,7 @@ public class LimitedSkill : MonoBehaviour
 #endif
         if (usagesLeft <= 0)
         {
-            Pool.Recycle(Root);
+            Recycle();
         }
     }
     private void OnEnable()

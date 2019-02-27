@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: SpecialPlatPool
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca, type: 2}
+    PersistentPoolInScenes: 1
   Prefab: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca, type: 2}
   PersistentPoolInScenes: 1

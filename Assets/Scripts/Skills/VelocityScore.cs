@@ -43,4 +43,9 @@ public class VelocityScore : PassiveSkill
     protected override void OnStopSkill()
     {
     }
+
+    protected override void InternalImproveInvokability(float amount)
+    {
+        previousScore -= (int)amount;
+    }
 }

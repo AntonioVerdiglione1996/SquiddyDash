@@ -1,6 +1,36 @@
 ﻿using UnityEngine;
+using System.Text;
 public static class Utils
 {
+    public const string JSONExtension = ".json";
+    public static StringBuilder Builder;
+    static Utils()
+    {
+        Builder = new StringBuilder();
+    }
+    public static void Clear(this System.Text.StringBuilder builder)
+    {
+        builder.Remove(0, builder.Length);
+    }
+    public static void Shuffle<T>(this T[] array)
+    {
+        int length = array.Length;
+        for (int i = 0; i < length; i++)
+        {
+            T temp = array[i];
+            int otherIndex = UnityEngine.Random.Range(0, length);
+            array[i] = array[otherIndex];
+            array[otherIndex] = temp;
+        }
+    }
+    public static Vector2Int GetBidimensionalIndex(int linearIndex, int width)
+    {
+        return new Vector2Int(linearIndex % width, linearIndex / width);
+    }
+    public static int GetLinearIndex(Vector2Int bidimensionalIndex, int width)
+    {
+        return bidimensionalIndex.x + (bidimensionalIndex.y * width);
+    }
     public static Vector3 GetLinearWorldScale(Transform transform)
     {
         Vector3 worldScale = transform.localScale;
@@ -13,6 +43,18 @@ public static class Utils
         }
 
         return worldScale;
+    }
+    public static Vector3 GetRandomPoint(Vector3 min, Vector3 max)
+    {
+        return new Vector3(UnityEngine.Random.Range(min.x, max.x), UnityEngine.Random.Range(min.y, max.y), UnityEngine.Random.Range(min.z, max.z));
+    }
+    public static Vector3 GetRandomPoint(this Bounds bound)
+    {
+        return GetRandomBoundPoint(bound);
+    }
+    public static Vector3 GetRandomBoundPoint(Bounds bound)
+    {
+        return GetRandomPoint(bound.min, bound.max);
     }
     public static Bounds GetBounds(this Camera camera)
     {

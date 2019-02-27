@@ -5,7 +5,6 @@ using UnityEngine;
 public class NewSpawnPlatform : MonoBehaviour
 {
     public BasicEvent OnGameOver;
-    public GlobalEvents GlobalEvents;
     public Transform Squiddy;
     public SOPool PlatformPool;
     public SOPool PlatformWithPowerUpPool;
@@ -52,7 +51,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     public void DisableSpawn()
     {
-        spawn = GlobalEvents.IsGameoverDisabled;
+        spawn = false;
     }
     private void OnDisable()
     {
@@ -91,8 +90,7 @@ public class NewSpawnPlatform : MonoBehaviour
     }
     private GameObject SpawnPlatform(SOPool pool, bool setMaterials = false)
     {
-        int nullObj;
-        GameObject go = pool.Get(null, newPos, out nullObj, true);
+        GameObject go = Spawner.SpawnPrefab(null, pool.Pool, null, false, newPos);
 
         Platform plat = go.GetComponentInChildren<Platform>();
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();

@@ -12,27 +12,43 @@ public class ScoreGoal : MonoBehaviour
 
     private int currentMilestone = 0;
 
+    private int previousScore = 0;
+
     private void LateUpdate()
     {
         OnScoreGoal();
     }
     void OnScoreGoal()
     {
-        if (milestones == null || milestones.Milestones == null || milestones.Milestones.Length == 0 || currentMilestone >= milestones.Milestones.Length)
+        if (milestones == null)
         {
             return;
         }
 
-        ScoreMilestone milestone = milestones.Milestones[currentMilestone];
-        if (ScoreSystem.Score >= milestone.Score)
+        ScoreMilestone milestone;
+        int targetScore = 0;
+
+        if (milestones.Milestones == null || milestones.Milestones.Length == 0 || currentMilestone >= milestones.Milestones.Length)
+        {
+            milestone = milestones.DefaultMilestone;
+            targetScore += previousScore;
+        }
+        else
+        {
+            milestone = milestones.Milestones[currentMilestone];
+        }
+        targetScore += milestone.Score;
+
+        if (ScoreSystem.Score >= targetScore)
         {
             currentMilestone++;
             ScoreSystem.UpdateScore((int)(milestone.ScoreAsRewardMultiplier * milestone.Score));
-            Resize(milestone.ScaleMultiplier , milestone.SpeedMultiplier);
+            Resize(milestone.ScaleMultiplier, milestone.SpeedMultiplier);
             if (OnMilestoneReached)
             {
                 OnMilestoneReached.Raise();
             }
+            previousScore = ScoreSystem.Score;
         }
     }
     void Resize(Vector3 ScaleMultiplier, float SpeedMultiplier)

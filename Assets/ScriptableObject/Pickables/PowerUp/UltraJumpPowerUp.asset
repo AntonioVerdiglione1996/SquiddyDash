@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac924f7970e7d645b5a42be49e8ce0f, type: 3}
+  m_Name: UltraJumpPowerUp
+  m_EditorClassIdentifier: 
+  Describer: {fileID: 0}
+  ParticleAfterTriggerPool: {fileID: 11400000, guid: 397545d6c73b45a4c8b7fe439b072316,
+    type: 2}
+  TriggerSound: {fileID: 11400000, guid: ce204a1172c340e43a5aeba345536b73, type: 2}
+  VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
+  renderingObjectPool: {fileID: 11400000, guid: 133a1f7f2014b6f4ab471707f503eab6,
+    type: 2}
+  LimitedSkillPool: {fileID: 11400000, guid: 8de199a1fca01a74299c8a0d5485b713, type: 2}
+  OverrideMaxUsages: 1
+  MaxUsages: 1

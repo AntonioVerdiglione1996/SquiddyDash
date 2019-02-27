@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431602ba454bf043acab282f455f4fe, type: 3}
   m_Name: NewLaserPoolLeft
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 1778695132352672, guid: 9e3d015b83fce5743b221d163099cfea, type: 2}
+    PersistentPoolInScenes: 1
   Prefab: {fileID: 1778695132352672, guid: 9e3d015b83fce5743b221d163099cfea, type: 2}
   PersistentPoolInScenes: 1

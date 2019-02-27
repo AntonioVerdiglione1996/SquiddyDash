@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelRecycler : MonoBehaviour
+public class LevelRecycler : ISOPoolable
 {
     public Transform Character;
-    public Transform Obj;
-    public SOPool Pool;
 
     private void OnEnable()
     {
@@ -18,18 +16,14 @@ public class LevelRecycler : MonoBehaviour
                 Character = controller.transform;
             }
         }
-        if (!Obj)
-        {
-            Obj = transform.root;
-        }
     }
     private void Update()
     {
-        if (Character && Obj && Pool)
+        if (Character)
         {
-            if (Character.position.y > Obj.position.y)
+            if (Character.position.y > Root.transform.position.y)
             {
-                Pool.Recycle(Obj.gameObject);
+                Recycle();
             }
         }
     }

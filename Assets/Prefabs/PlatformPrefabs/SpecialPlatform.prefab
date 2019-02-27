@@ -84,9 +84,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4159813358544292}
-  - component: {fileID: 33565568263609326}
   - component: {fileID: 135817882334816762}
-  - component: {fileID: 23895109886719494}
   - component: {fileID: 114666290941589760}
   m_Layer: 0
   m_Name: Sphere
@@ -318,39 +316,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23895109886719494
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327729189025446}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials: []
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &33547350063454730
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -358,13 +323,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457279156767718}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &33565568263609326
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327729189025446}
-  m_Mesh: {fileID: 0}
 --- !u!54 &54829666409404080
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -429,6 +387,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e17c638e94e984996a03647779299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
+  Root: {fileID: 1455752135451080}
+  RecycleOnPickup: 0
+  RecycleOnSafetyLayer: 0
+  SafetyLayerRecycler: 9
+  FindRigidbody: 0
+  myCollider: {fileID: 135817882334816762}
+  body: {fileID: 0}
   SpawnPoints:
   - {fileID: 4865559553987288}
   - {fileID: 4295936897299264}
@@ -441,14 +409,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a68a7be770336f499782f5ccf157ac1, type: 2}
   DebugPowerupMinIndex: 0
   DebugPowerupMaxIndex: 5
-  ParticleTrigger: {fileID: 0}
   TriggerAudioSourceIndex: 0
   VocalAudioSourceIndex: 1
-  powRenderer: {fileID: 23895109886719494}
-  powMeshFilter: {fileID: 33565568263609326}
-  coll: {fileID: 135817882334816762}
-  Upgrades:
-  - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
+  Upgrades: []
 --- !u!114 &114741969028539820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -472,6 +435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b0a8ca75dba84facbd3d9a4f332fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
+  Root: {fileID: 1455752135451080}
   DebugEnabled: 0
   DirRight: 0
   DirLeft: 0
@@ -482,9 +449,7 @@ MonoBehaviour:
   OnLanded: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   OnLeft: {fileID: 11400000, guid: fd94a7eb50719dc49bfe3dc2149e8236, type: 2}
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
-  Pool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce, type: 2}
   PlatformRecycled: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
-  Poolable: {fileID: 1455752135451080}
   ScoreValue: 1
   IsAlreadyUpdatedScore: 0
   PlatCollider: {fileID: 65249556401990190}

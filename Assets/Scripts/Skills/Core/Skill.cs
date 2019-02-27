@@ -15,6 +15,18 @@ public abstract class Skill : MonoBehaviour
     /// </summary>
     public event Action OnSkillDisabled;
     /// <summary>
+    /// Multiplier used on the amount received from ImproveInvokability before its usage
+    /// </summary>
+    public float ImproveInvokabilityMultiplier = 1f;
+    /// <summary>
+    /// Minimum value used in ImproveInvokability regardless of the original amount
+    /// </summary>
+    public float MinImproveInvokabilityValue = 1.0001f;
+    /// <summary>
+    /// Maximum value used in ImproveInvokability regardless of the original amount
+    /// </summary>
+    public float MaxImproveInvokabilityValue = float.MaxValue;
+    /// <summary>
     /// Property that indicates if this skill instance is used as a Main Skill
     /// </summary>
     public bool IsMainSkill = false;
@@ -24,6 +36,22 @@ public abstract class Skill : MonoBehaviour
     public Describer Describer;
 
     public bool IsSkillAutoActivating { get { return IsAutoActivating; } }
+
+    /// <summary>
+    /// Enhances invokability of this skill by, for example, reducing the current cooldown remaining time, reducing the points required for the next invokation etc..
+    /// </summary>
+    /// <param name="amount">Amount to use to improve</param>
+    public void ImproveInvokability(float amount)
+    {
+        InternalImproveInvokability(Mathf.Clamp(amount * ImproveInvokabilityMultiplier, MinImproveInvokabilityValue, MaxImproveInvokabilityValue));
+    }
+
+    /// <summary>
+    /// Enhances invokability of this skill by, for example, reducing the current cooldown remaining time, reducing the points required for the next invokation etc..
+    /// </summary>
+    /// <param name="amount">Amount to use to improve</param>
+    protected abstract void InternalImproveInvokability(float amount);
+
 
     /// <summary>
     /// Controller associated with this skill when initialized

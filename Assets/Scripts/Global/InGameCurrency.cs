@@ -7,53 +7,81 @@ using System;
 public class InGameCurrency : ScriptableObject
 {
     public const string Filename = "Currency.json";
-    public long GameCurrency { get { return gameCurrency; } }
+
+    public int GameCurrency { get { return gameCurrency; } }
+    public int AccessoryParts { get { return accessoryParts; } }
+    public int SkinParts { get { return skinParts; } }
+
+    public bool EnableDebug = true;
+
     [SerializeField]
-    private long gameCurrency = 0;
-    public bool ModifyGameCurrencyAmount(long toSum)
+    private int gameCurrency = 0;
+    [SerializeField]
+    private int accessoryParts = 0;
+    [SerializeField]
+    private int skinParts = 0;
+    public bool CanModifyGameCurrency(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0)
     {
-        long result = gameCurrency + toSum;
-        if(result < 0)
+        int resultCurrency = gameCurrency + currencyToSum;
+        int resultSkins = skinParts + skinPartsToSum;
+        int resultAccessory = accessoryParts + accessoryPartsToSum;
+
+        return !(resultCurrency < 0 || resultAccessory < 0 || resultSkins < 0);
+    }
+    public bool ModifyGameCurrencyAmount(int currencyToSum, int accessoryPartsToSum = 0, int skinPartsToSum = 0, bool save = true)
+    {
+        if (!CanModifyGameCurrency(currencyToSum, accessoryPartsToSum, skinPartsToSum))
         {
             return false;
         }
-#if UNITY_EDITOR
-        Debug.LogFormat("{0} summed to current gamecurrency {1}. Final amount: {2}." , toSum , gameCurrency , result);
-#endif
-        gameCurrency = result;
 
-        SaveToFile();
+        int resultCurrency = gameCurrency + currencyToSum;
+        int resultSkins = skinParts + skinPartsToSum;
+        int resultAccessory = accessoryParts + accessoryPartsToSum;
+
+#if UNITY_EDITOR
+        if (EnableDebug)
+        {
+            Debug.LogFormat("{0} summed to current gamecurrency {1}. Final amount: {2}.", currencyToSum, gameCurrency, resultCurrency);
+            Debug.LogFormat("{0} summed to current accessoryParts {1}. Final amount: {2}.", accessoryPartsToSum, accessoryParts, resultAccessory);
+            Debug.LogFormat("{0} summed to current skinParts {1}. Final amount: {2}.", skinPartsToSum, skinParts, resultSkins);
+        }
+#endif
+
+        accessoryParts = resultAccessory;
+        skinParts = resultSkins;
+        gameCurrency = resultCurrency;
+
+        if (save)
+        {
+            SaveToFile();
+        }
 
         return true;
     }
     public bool Restore()
     {
-        return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
-    }
-    public long FetchUpdatedPremiumCurrencyFromServer()
-    {
-        //TODO: gestire premiumC lato server forse? (per evitare manomissioni lato client).Problema di questo approccio è che una persona offline non possa usare i suoi PremiumCurrency. Dovrebbe essere gestito come operazione asyncrona
-        return 0;
-    }
-    public bool UsePremiumCurrency(long amountUsed)
-    {
-        if(amountUsed <= 0)
-        {
-            return false;
-        }
-
-        //TODO: inform server of this operation. Dovrebbe essere gestito come operazione asyncrona
-        return false;
+        bool res = SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, Filename, this);
+        gameCurrency = Mathf.Max(gameCurrency, 0);
+        accessoryParts = Mathf.Max(accessoryParts, 0);
+        skinParts = Mathf.Max(skinParts, 0);
+        return res;
     }
     public void SaveToFile()
     {
+        gameCurrency = Mathf.Max(gameCurrency, 0);
+        accessoryParts = Mathf.Max(accessoryParts, 0);
+        skinParts = Mathf.Max(skinParts, 0);
         SerializerHandler.SaveJsonFromInstance(SerializerHandler.PersistentDataDirectoryPath, Filename, this, true);
+    }
+    void OnValidate()
+    {
+        SaveToFile();
     }
     private void OnEnable()
     {
         if (!Restore())
         {
-            gameCurrency = 0;
             SaveToFile();
         }
     }

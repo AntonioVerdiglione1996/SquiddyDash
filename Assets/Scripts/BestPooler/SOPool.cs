@@ -6,6 +6,11 @@ using UnityEngine;
 [Serializable]
 public class SOPool : ScriptableObject
 {
+    public BasicSOPool Pool = new BasicSOPool();
+}
+[Serializable]
+public class BasicSOPool
+{
     public int ElementsStored { get { return elements.Count; } }
 
     [Tooltip("Pool prefab instance")]
@@ -389,4 +394,3 @@ public class SOPool : ScriptableObject
         return obj;
     }
 }
-

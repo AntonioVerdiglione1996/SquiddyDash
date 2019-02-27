@@ -7,7 +7,7 @@ public class NormalAnimator : SquiddyAnimator
     public BasicEvent OnLand;
     public BasicEvent OnJump;
     public string AnimJumpName = "IsJumping";
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (OnLand)
         {
@@ -18,7 +18,7 @@ public class NormalAnimator : SquiddyAnimator
             OnJump.OnEventRaised += SetJumpAnimation;
         }
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if (OnLand)
         {

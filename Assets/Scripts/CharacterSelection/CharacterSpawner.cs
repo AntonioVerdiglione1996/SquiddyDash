@@ -5,9 +5,15 @@ using UnityEngine;
 public class CharacterSpawner : MonoBehaviour
 {
     public StoringCurrentModelToSpawn scm;
+    public SquiddyController Controller;
     public void Awake()
     {
-        Instantiate(scm.DownloadCurrentCharacter(), transform).CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
+        Character character = Instantiate(scm.DownloadCurrentCharacter(), transform);
+        if (Controller)
+        {
+            Controller.OwnedCharacter = character;
+            Controller.OwnedCharacter.CollectAndSpawnSkills(scm.Accessories, scm.GetAccessoriesIndices());
+        }
         Destroy(this);
     }
 }

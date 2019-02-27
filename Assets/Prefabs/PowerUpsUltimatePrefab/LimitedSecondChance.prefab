@@ -58,12 +58,14 @@ MonoBehaviour:
   Upgrades: []
   CoolDownDuration: 5
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
-  OnGameover: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
+  OnGameoverInterrupted: {fileID: 11400000, guid: cd629b79f61813548a8a45cc113d9863,
+    type: 2}
   GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   MinDistanceFromBotBorder: 1
   SpawnOffset: {x: 0, y: 1.5, z: 0}
   TeleportDelay: 0.5
   OnTeleportEvent: {fileID: 11400000, guid: 3835826e46abfe04d9a5600724c80f27, type: 2}
+  DebugEnabled: 0
 --- !u!114 &114662951923810730
 MonoBehaviour:
   m_ObjectHideFlags: 1

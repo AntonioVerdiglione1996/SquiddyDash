@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Platform : ISOPoolable
 {
     public const float HeightTolleranceForDespawn = 5f;
     public bool DebugEnabled = false;
@@ -21,9 +21,7 @@ public class Platform : MonoBehaviour
     public BasicEvent OnLeft;
     public ScoreSystem ScoreSystem;
 
-    public SOPool Pool;
     public BasicEvent PlatformRecycled;
-    public GameObject Poolable;
 
     public bool IsVisible { get; private set; }
 
@@ -55,8 +53,9 @@ public class Platform : MonoBehaviour
             }
         }
     }
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (!Visibility)
         {
             Visibility = GetComponent<CheckVisibility>();
@@ -135,14 +134,10 @@ public class Platform : MonoBehaviour
         }
 #endif
         IsVisible = false;
-        if (!Poolable)
-        {
-            Poolable = gameObject;
-        }
         Start();
-        if (squiddy && Pool && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn && CurrentPlatformForSquiddy.CurrentPlatform != this)
+        if (squiddy && Pool != null && squiddy.position.y > transform.position.y + HeightTolleranceForDespawn && CurrentPlatformForSquiddy.CurrentPlatform != this)
         {
-            Pool.Recycle(Poolable);
+            Recycle();
             if (PlatformRecycled)
             {
                 PlatformRecycled.Raise();

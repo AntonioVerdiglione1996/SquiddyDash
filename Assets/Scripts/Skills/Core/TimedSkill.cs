@@ -20,6 +20,11 @@ public abstract class TimedSkill : Skill
     /// </summary>
     protected LinkedListNode<TimerData> coolDownTimer = null;
 
+    protected override void InternalImproveInvokability(float amount)
+    {
+        SetCurrentCooldownElapsedTime(GetCurrentCooldownElapsedTime() + amount);
+    }
+
     /// <summary>
     /// Returns how much is left before a new skill invokation is available. Some skills may not fully support this
     /// </summary>
@@ -50,6 +55,94 @@ public abstract class TimedSkill : Skill
         }
         TimerData Data = coolDownTimer.Value;
         return (Data.ElapsedTime >= Data.Duration);
+    }
+
+    /// <summary>
+    /// Returns the current cooldown timer state
+    /// </summary>
+    /// <returns>True if enabled</returns>
+    public bool IsCurrentCooldownTimerEnabled()
+    {
+        return coolDownTimer != null && coolDownTimer.Value.Enabled;
+    }
+
+    /// <summary>
+    /// Sets the current cooldown timer state
+    /// </summary>
+    /// <param name="isEnabled">True to enable cooldown timer</param>
+    public void SetCurrentCooldownTimerEnabled(bool isEnabled)
+    {
+        if (coolDownTimer == null)
+        {
+            return;
+        }
+        TimerData data = coolDownTimer.Value;
+        data.Enabled = isEnabled;
+        coolDownTimer.Value = data;
+    }
+
+    /// <summary>
+    /// Returns the current cooldown elapsed time
+    /// </summary>
+    /// <returns>Elapsed time</returns>
+    public float GetCurrentCooldownElapsedTime()
+    {
+        if (coolDownTimer == null)
+        {
+            return 0f;
+        }
+        TimerData data = coolDownTimer.Value;
+        return !data.Enabled ? float.MinValue : data.ElapsedTime;
+    }
+
+    /// <summary>
+    /// Sets the current cooldown elapsed time
+    /// </summary>
+    /// <param name="newElapsedTime">New elapsed time</param>
+    public void SetCurrentCooldownElapsedTime(float newElapsedTime)
+    {
+        if (coolDownTimer == null)
+        {
+            return;
+        }
+        TimerData data = coolDownTimer.Value;
+        if (data.Enabled)
+        {
+            data.ElapsedTime = newElapsedTime;
+            coolDownTimer.Value = data;
+        }
+    }
+
+    /// <summary>
+    /// Returns the current cooldown duration
+    /// </summary>
+    /// <returns>Duration</returns>
+    public float GetCurrentCooldownDuration()
+    {
+        if (coolDownTimer == null)
+        {
+            return 0f;
+        }
+        TimerData data = coolDownTimer.Value;
+        return !data.Enabled ? float.MinValue : data.Duration;
+    }
+
+    /// <summary>
+    /// Sets the current cooldown duration
+    /// </summary>
+    /// <param name="newDuration">new duration</param>
+    public void SetCurrentCooldownDuration(float newDuration)
+    {
+        if (coolDownTimer == null)
+        {
+            return;
+        }
+        TimerData data = coolDownTimer.Value;
+        if (data.Enabled)
+        {
+            data.Duration = newDuration;
+            coolDownTimer.Value = data;
+        }
     }
 
     /// <summary>

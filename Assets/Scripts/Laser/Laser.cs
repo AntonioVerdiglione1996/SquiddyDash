@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class Laser : ISOPoolable
 {
     public const float InverseMaxByte = 1f / byte.MaxValue;
 
     public Transform CharacterTransform;
-    public Transform LaserTransform;
+    public GlobalEvents GlobalEvents;
     public float HeightTollerance = 10f;
-    public SOPool Pool;
 
     public Collider[] Colliders;
     public Renderer[] Renderers;
 
     public SoundEvent DisablerEvent;
     public BasicEvent EnablerEvent;
-    public BasicEvent GameOver;
+    public BasicEvent GameOverTrigger;
     public float DisableDuration = 0.3f;
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
@@ -24,8 +23,9 @@ public class Laser : MonoBehaviour
     public GameObject OnPlayerDeathParticle;
 
     private LinkedListNode<TimerData> timer;
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (!CharacterTransform)
         {
             SquiddyController controller = FindObjectOfType<SquiddyController>();
@@ -33,10 +33,6 @@ public class Laser : MonoBehaviour
             {
                 CharacterTransform = controller.transform;
             }
-        }
-        if (!LaserTransform)
-        {
-            LaserTransform = transform;
         }
     }
     public void OnEnable()
@@ -71,25 +67,28 @@ public class Laser : MonoBehaviour
     }
     private void Update()
     {
-        if (CharacterTransform && CharacterTransform.position.y > LaserTransform.position.y + HeightTollerance)
+        if (CharacterTransform && CharacterTransform.position.y > Root.transform.position.y + HeightTollerance)
         {
             TimeHelper.RemoveTimer(timer);
-            Pool.Recycle(LaserTransform.gameObject);
+            Recycle();
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 8)
         {
             this.enabled = false;
-            if (OnPlayerDeathParticle)
+            if (OnPlayerDeathParticle && !GlobalEvents.IsGameoverDisabled)
             {
-                Instantiate(OnPlayerDeathParticle, CharacterTransform.position, CharacterTransform.rotation);
+                ParticleSystem system = Instantiate(OnPlayerDeathParticle, CharacterTransform.position, CharacterTransform.rotation).GetComponentInChildren<ParticleSystem>();
+                if (system)
+                {
+                    system.Play(true);
+                }
             }
-            if (GameOver)
+            if (GameOverTrigger)
             {
-                GameOver.Raise();
+                GameOverTrigger.Raise();
             }
         }
     }

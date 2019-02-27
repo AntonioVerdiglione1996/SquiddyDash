@@ -63,7 +63,7 @@ public class DescriberUISpawner : MonoBehaviour
     private void Spawn(Describer describer)
     {
         int nullObj;
-        GameObject obj = DescriberUI.Get(UIParent, out nullObj, true);
+        GameObject obj = DescriberUI.Pool.Get(UIParent, out nullObj, true);
         DescriberUI describerUI = obj.GetComponent<DescriberUI>();
         if (!describerUI)
         {
@@ -85,7 +85,7 @@ public class DescriberUISpawner : MonoBehaviour
     {
         for (int i = 0; i < spawnedUI.Count; i++)
         {
-            DescriberUI.Recycle(spawnedUI[i]);
+            DescriberUI.Pool.Recycle(spawnedUI[i]);
         }
         spawnedUI.Clear();
     }

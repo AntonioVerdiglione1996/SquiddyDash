@@ -11,12 +11,15 @@ public class AccessoryUiSpawner : MonoBehaviour
     public Dictionary<EAccessoryType, AccessoryUICategory> Categories = new Dictionary<EAccessoryType, AccessoryUICategory>();
 
     public EAccessoryType CurrentType { get; private set; }
+
+    public AccessoryUnlocker UnlockGO;
     void Start()
     {
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
         foreach (EAccessoryType item in System.Enum.GetValues(typeof(EAccessoryType)))
         {
             AccessoryUICategory cat = Instantiate(Prefab, UiParent);
+            cat.UnlockGO = UnlockGO;
             cat.SpawnType(item);
             cat.gameObject.SetActive(false);
             Categories.Add(item, cat);

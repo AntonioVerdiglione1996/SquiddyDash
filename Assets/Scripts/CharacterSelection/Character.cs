@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     private Skill[] Skills = null;
     private List<Skill> updatingSkills = null;
 
+    public Skill MainSkill { get; private set; }
+
     public float DefaultIconsHeightDistance = 128.0f;
     public float DefaultIconsWidthDistance = 128.0f;
 
@@ -99,7 +101,7 @@ public class Character : MonoBehaviour
         }
         Skills = transform.root.GetComponentsInChildren<Skill>(true);
         Accessory[] accessories = transform.root.GetComponentsInChildren<Accessory>(true);
-        Skill mainSkill = null;
+        MainSkill = null;
         if (accessories != null && accessories.Length > 0 && Skills != null)
         {
             for (int i = 0; i < Skills.Length; i++)
@@ -107,12 +109,12 @@ public class Character : MonoBehaviour
                 Skill skill = Skills[i];
                 if (skill.IsMainSkill)
                 {
-                    mainSkill = skill;
+                    MainSkill = skill;
                     break;
                 }
             }
 
-            if (mainSkill)
+            if (MainSkill)
             {
                 for (int i = 0; i < accessories.Length; i++)
                 {
@@ -122,9 +124,9 @@ public class Character : MonoBehaviour
                         for (int j = 0; j < accessory.Upgrades.Count; j++)
                         {
                             Upgrade up = accessory.Upgrades[j];
-                            if (up.IsSkillUpgradable(mainSkill.GetType(), mainSkill))
+                            if (up.IsSkillUpgradable(MainSkill.GetType(), MainSkill))
                             {
-                                mainSkill.Upgrades.Add(up);
+                                MainSkill.Upgrades.Add(up);
                             }
                             else
                             {
