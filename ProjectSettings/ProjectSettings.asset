@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: eae0fa348d34f1b47a26a92ca91e2f7b
+  productGUID: debd656d3086b1a4798c06d3bdedffee
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: GreenStomp
   productName: SquiddyDash!
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: gsg.greenstopgames.squiddydash
+    Android: GSG.GreenStomp.SquiddyDash
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -260,7 +260,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
+      m_Icon: {fileID: 2800000, guid: 6405ff4d2fd2cd64eaf51712229a2605, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -566,14 +566,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: SquiddyDash_reimported
+  metroPackageName: Rebuild
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: SquiddyDash_reimported
+  metroApplicationDescription: Rebuild
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -643,8 +643,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 1f1e7714-6a34-4808-8d38-dc6d991c5c87
-  projectName: SquiddyDash_reimported
+  cloudProjectId: 3dc5d48d-24f7-412a-bb37-7360a8a44141
+  projectName: Rebuild
   organizationId: antonio_verdiglione
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

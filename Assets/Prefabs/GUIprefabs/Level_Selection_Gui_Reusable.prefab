@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 224757558487164678}
   - component: {fileID: 222455389907592584}
   - component: {fileID: 114169543964068646}
+  - component: {fileID: 114498008960278574}
   m_Layer: 5
   m_Name: CurrencyIcon
   m_TagString: Untagged
@@ -135,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1959897013852076
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +541,24 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114498008960278574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270674567674298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d66feac37f75d4f9914fff6daf4b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Currency: {fileID: 11400000, guid: 80fc50653896e574c87b0df310d7ea6b, type: 2}
+  CurrencyText: {fileID: 114580902574524166}
+  SkinPartsText: {fileID: 0}
+  AccessoryPartsText: {fileID: 0}
+  NormalCurrencyText: {fileID: 0}
+  NormalSkinPartsText: {fileID: 0}
+  NormalAccessoryPartsText: {fileID: 0}
 --- !u!114 &114520242352243520
 MonoBehaviour:
   m_ObjectHideFlags: 1
