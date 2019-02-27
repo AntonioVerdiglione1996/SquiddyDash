@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1846,7 +1846,7 @@ MonoBehaviour:
   OnDynamicSpawnEvent: {fileID: 11400000, guid: ec971f40fcfe4eb4daa6c8604fc44798,
     type: 2}
   OnGameoverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
-  Info: {fileID: 11400000, guid: a4f48ea4a25e76f42a37a4fd68102ad8, type: 2}
+  Info: {fileID: 0}
   MainCamera: {fileID: 589688054}
   SizePadding: {x: 1, y: 2, z: 0}
   UseGrid: 1
