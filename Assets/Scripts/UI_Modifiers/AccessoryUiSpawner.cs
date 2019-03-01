@@ -23,7 +23,7 @@ public class AccessoryUiSpawner : MonoBehaviour
             cat.SpawnType(item);
             cat.gameObject.SetActive(false);
             Categories.Add(item, cat);
-            options.Add(new Dropdown.OptionData(item.ToString()));
+            options.Add(new Dropdown.OptionData(item == EAccessoryType.None ? "Accessory":item.ToString()));
         }
         Dropdown.AddOptions(options);
         Dropdown.RefreshShownValue();
