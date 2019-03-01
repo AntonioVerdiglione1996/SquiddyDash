@@ -81,23 +81,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1981866139168074
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224319656818671772}
-  - component: {fileID: 222572383435765330}
-  - component: {fileID: 114816124996905884}
-  m_Layer: 5
-  m_Name: DescriberText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &114066284738652700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,40 +236,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: GLASSES OF MIRACLE
---- !u!114 &114816124996905884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981866139168074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: made by fairy of the Sylvenian country, this glasses will be the coolest
-    thing u can possibly buy in here!
 --- !u!114 &114975305220626740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Describer: {fileID: 0}
   Name: {fileID: 114595102982585236}
-  Description: {fileID: 114816124996905884}
+  Description: {fileID: 0}
   Image: {fileID: 114066284738652700}
   AccessoryIndex: 0
   Scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
@@ -322,12 +271,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049550669851438}
---- !u!222 &222572383435765330
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981866139168074}
 --- !u!222 &222593189119805324
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -355,26 +298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26161537, y: 0.20935315}
   m_AnchorMax: {x: 0.961154, y: 0.87835324}
-  m_AnchoredPosition: {x: -26.171432, y: -49.361305}
+  m_AnchoredPosition: {x: -27.846, y: -99.764}
   m_SizeDelta: {x: 37.527252, y: -129.64871}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224319656818671772
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981866139168074}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224811288593505210}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.26161537, y: 0.20935315}
-  m_AnchorMax: {x: 0.961154, y: 0.87835324}
-  m_AnchoredPosition: {x: -26.168427, y: -93.535}
-  m_SizeDelta: {x: 37.52, y: -90.525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224726279540338158
 RectTransform:
@@ -389,10 +314,10 @@ RectTransform:
   m_Father: {fileID: 224811288593505210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5, y: 44.173}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchorMin: {x: 0.18161537, y: 0.356}
+  m_AnchorMax: {x: 0.82800007, y: 1}
+  m_AnchoredPosition: {x: -0.99983215, y: 0.5}
+  m_SizeDelta: {x: -2, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224811288593505210
 RectTransform:
@@ -406,7 +331,6 @@ RectTransform:
   m_Children:
   - {fileID: 224726279540338158}
   - {fileID: 224125848500265556}
-  - {fileID: 224319656818671772}
   - {fileID: 224968936436704614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -427,10 +351,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224811288593505210}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.24161537, y: 0.20935315}
+  m_AnchorMax: {x: 0.76400006, y: 0.74}
+  m_AnchoredPosition: {x: -0.50001526, y: 1.5}
+  m_SizeDelta: {x: -1, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}

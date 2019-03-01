@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
   m_Name: RocketJumpInfo_describer
   m_EditorClassIdentifier: 
-  Name: Random skill
-  Description: Super mega useless skill!
+  Name: Rocket-jump
+  Description: A really normal skill, for the normal squiddy in the game. Very default...not
+    nice!
   Image: {fileID: 21300000, guid: 1af7184810cb2c749852bf0179956860, type: 3}
   Color: {r: 0, g: 1, b: 0, a: 1}

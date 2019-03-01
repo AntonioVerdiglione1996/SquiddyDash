@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
   m_Name: SlowTime_describer
   m_EditorClassIdentifier: 
-  Name: Slow
-  Description: Time
+  Name: Time-Crush
+  Description: For the coolest squiddy, the strongest skill in the game right now!
   Image: {fileID: 21300000, guid: 7668154bd83199648963a7d78190470f, type: 3}
   Color: {r: 0.73793125, g: 0, b: 1, a: 1}

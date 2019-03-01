@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3db78004a08f4324cb21c192cde93e74, type: 3}
-  m_Name: VulkanCharDescriber
+  m_Name: Headphones_describer
   m_EditorClassIdentifier: 
-  Name: Vulkan
-  Description: very nice squiddy, a little bit cruel. Is really useless, but is cool!
-  Image: {fileID: 21300000, guid: b0d9910b4f8fab64b8aa6e5f63d11d34, type: 3}
-  Color: {r: 1, g: 0.43529412, b: 0, a: 1}
+  Name: Headphones
+  Description: Common thing
+  Image: {fileID: 21300006, guid: 74d9483d1c1f4f6429eb98583a034d6c, type: 3}
+  Color: {r: 0, g: 1, b: 0, a: 1}
