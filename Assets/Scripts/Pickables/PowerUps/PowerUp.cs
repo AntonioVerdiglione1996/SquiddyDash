@@ -184,9 +184,9 @@ public class PowerUp : Pickable
                     currentLogic.PowerUpCollected(other, this);
                 }
                 //instantiate tigger particle after squiddy pick up PU
-                if (currentLogic.ParticleAfterTriggerPool != null)
+                if (currentLogic.ParticleAfterTriggerPrefab != null)
                 {
-                    Spawner.SpawnPrefab(null, currentLogic.ParticleAfterTriggerPool.Pool, null, false, transform.position, Quaternion.identity);
+                    Spawner.SpawnPrefab(null, currentLogic.ParticleAfterTriggerPrefab, null, false, transform.position, Quaternion.identity);
                 }
                 //activate sound
                 if (currentLogic.TriggerSound)

@@ -6,11 +6,11 @@ public class LevelSelectionSpawnHandler : MonoBehaviour
 {
     public ReusableLevelSelection LevelSelection;
     public Transform ContainerParentTransform;
-    public SOPool LevelUIPrefabPool;
+    public BasicSOPool LevelUIPrefab;
     public LevelContainer Container;
     void Start()
     {
-        if (Spawner.SpawnPrefabs(Container.Datas.Length, LevelUIPrefabPool.Pool, ContainerParentTransform, null, OnGOSpawned))
+        if (Spawner.SpawnPrefabs(Container.Datas.Length, LevelUIPrefab, ContainerParentTransform, null, OnGOSpawned))
         {
             LevelSelection.Initialize();
         }

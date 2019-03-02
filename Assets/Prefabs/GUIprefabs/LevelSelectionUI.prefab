@@ -759,7 +759,9 @@ MonoBehaviour:
   DeactivateUnlockUIEvent: {fileID: 11400000, guid: 08655aa4f0b2e8f479b5b17f4ccd6806,
     type: 2}
   LeaderboardToggleButton: {fileID: 114305929527239760}
-  LeaderboardEntryUI: {fileID: 11400000, guid: 618840e276d388242b7749d5c2c032b0, type: 2}
+  LeaderboardUIPrefab:
+    Prefab: {fileID: 1562153020428706, guid: 96240fba478c67645a9731c57f7e289b, type: 2}
+    PersistentPoolInScenes: 1
   LeaderboardEntryParent: {fileID: 224919924663343574}
 --- !u!114 &114665451100599272
 MonoBehaviour:

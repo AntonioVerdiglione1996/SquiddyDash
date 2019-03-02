@@ -6,8 +6,8 @@ public class NewSpawnPlatform : MonoBehaviour
 {
     public BasicEvent OnGameOver;
     public Transform Squiddy;
-    public SOPool PlatformPool;
-    public SOPool PlatformWithPowerUpPool;
+    public BasicSOPool PlatformPrefab;
+    public BasicSOPool PlatformWithPowerUpPrefab;
     public Material Material;
 
     public PositionalEvent OnPlatformSpawn;
@@ -79,18 +79,18 @@ public class NewSpawnPlatform : MonoBehaviour
             //normal platform spawn
             if (SpawnedPlatformCount > 0 && (SpawnedPlatformCount % SpecialPlatformSpawnIntervall == 0))
             {
-                SpawnPlatform(PlatformWithPowerUpPool, setMaterial);
+                SpawnPlatform(PlatformWithPowerUpPrefab, setMaterial);
             }
             //powerUp
             else
             {
-                SpawnPlatform(PlatformPool, setMaterial);
+                SpawnPlatform(PlatformPrefab, setMaterial);
             }
         }
     }
-    private GameObject SpawnPlatform(SOPool pool, bool setMaterials = false)
+    private GameObject SpawnPlatform(BasicSOPool pool, bool setMaterials = false)
     {
-        GameObject go = Spawner.SpawnPrefab(null, pool.Pool, null, false, newPos);
+        GameObject go = Spawner.SpawnPrefab(null, pool, null, false, newPos);
 
         Platform plat = go.GetComponentInChildren<Platform>();
         NewMovePlatform mover = go.GetComponentInChildren<NewMovePlatform>();

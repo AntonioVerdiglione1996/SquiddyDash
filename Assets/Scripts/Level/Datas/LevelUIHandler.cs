@@ -23,7 +23,8 @@ public class LevelUIHandler : IIndexable
     public BasicEvent DeactivateUnlockUIEvent;
 
     public Button LeaderboardToggleButton;
-    public SOPool LeaderboardEntryUI;
+    public BasicSOPool LeaderboardUIPrefab;
+
     public Transform LeaderboardEntryParent;
 
     private List<LeaderboardEntryUI> leadEntries = new List<LeaderboardEntryUI>();
@@ -73,7 +74,7 @@ public class LevelUIHandler : IIndexable
         for (int i = 0; i < LevelData.Entries.Length; i++)
         {
             LeaderboardEntry entry = LevelData.Entries[i];
-            LeaderboardEntryUI ui = Spawner.SpawnPrefab(null, LeaderboardEntryUI.Pool, LeaderboardEntryParent, false).GetComponentInChildren<LeaderboardEntryUI>(true);
+            LeaderboardEntryUI ui = Spawner.SpawnPrefab(null, LeaderboardUIPrefab, LeaderboardEntryParent, false).GetComponentInChildren<LeaderboardEntryUI>(true);
             ui.SetEntry(entry);
             leadEntries.Add(ui);
         }

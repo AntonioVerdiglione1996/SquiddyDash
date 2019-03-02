@@ -4,7 +4,8 @@ public abstract class PowerUpLogic : ScriptableObject
     [Tooltip("Describer of this power up")]
     public Describer Describer;
     //particle to instantiate after squiddy take the pu
-    public SOPool ParticleAfterTriggerPool;
+    public BasicSOPool ParticleAfterTriggerPrefab;
+
 
     //audio of trigger
     [Tooltip("Audio event played when pow up is collected")]
@@ -13,9 +14,8 @@ public abstract class PowerUpLogic : ScriptableObject
     [Tooltip("Audio event played when pow up is collected")]
     public AudioEvent VocalSound;
 
-    [SerializeField]
     [Tooltip("Pool used to spawn rendering object for this power up")]
-    private SOPool renderingObjectPool;
+    public BasicSOPool RenderingObjectPrefab;
 
     public GameObject SpawnPrefab()
     {
@@ -23,13 +23,13 @@ public abstract class PowerUpLogic : ScriptableObject
     }
     public GameObject SpawnPrefab(Transform parent)
     {
-        if (!renderingObjectPool)
+        if (RenderingObjectPrefab == null)
         {
             return null;
         }
 
         int nullObj;
-        GameObject go = renderingObjectPool.Pool.Get(parent, out nullObj, true);
+        GameObject go = RenderingObjectPrefab.Get(parent, out nullObj, true);
         go.transform.localPosition = Vector3.zero;
         return go;
     }
@@ -38,7 +38,7 @@ public abstract class PowerUpLogic : ScriptableObject
     {
         if (instantiatedPowerUp)
         {
-            renderingObjectPool.Pool.Recycle(instantiatedPowerUp);
+            RenderingObjectPrefab.Recycle(instantiatedPowerUp);
         }
     }
     public virtual GameObject InitPowerup(PowerUp powUp)

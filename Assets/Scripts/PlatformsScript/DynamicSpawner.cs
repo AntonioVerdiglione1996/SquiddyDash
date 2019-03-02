@@ -145,12 +145,12 @@ public class DynamicSpawner : MonoBehaviour
     }
     private bool IsSpawnValid(SpawnInfo info)
     {
-        return info != null && info.Pool && info.SpawnChance >= UnityEngine.Random.Range(0f, 1f);
+        return info != null && info.ObjPrefab != null && info.SpawnChance >= UnityEngine.Random.Range(0f, 1f);
     }
     private void Spawn(SpawnInfo info, Vector3 position)
     {
         position.z = 0f;
-        Spawner.SpawnPrefab(null, info.Pool.Pool, null, false, position);
+        Spawner.SpawnPrefab(null, info.ObjPrefab, null, false, position);
     }
 
     private void OnValidate()
