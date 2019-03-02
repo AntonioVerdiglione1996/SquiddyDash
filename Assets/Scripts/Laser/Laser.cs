@@ -36,7 +36,6 @@ public class Laser : ISOPoolable
     }
     public void OnEnable()
     {
-
         if (!CharacterTransform)
         {
             SquiddyController controller = FindObjectOfType<SquiddyController>();
@@ -57,7 +56,7 @@ public class Laser : ISOPoolable
     }
     public void OnDisable()
     {
-        Disable(0);
+        Disable(0, false);
         if (DisablerEvent)
         {
             DisablerEvent.OnSoundEvent -= Disable;
@@ -117,7 +116,11 @@ public class Laser : ISOPoolable
     }
     public void Disable(byte Strenght)
     {
-        if(timer != null && timer.Value.Enabled)
+        Disable(Strenght, true);
+    }
+    public void Disable(byte Strenght, bool restart)
+    {
+        if (timer != null && timer.Value.Enabled)
         {
             return;
         }
@@ -127,6 +130,13 @@ public class Laser : ISOPoolable
             LaserParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
         SetComponentsActivation(false);
-        timer = TimeHelper.RestartTimer(null, EnablerEvent, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
+        if (restart)
+        {
+            timer = TimeHelper.RestartTimer(null, EnablerEvent, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
+        }
+        else
+        {
+            TimeHelper.RemoveTimer(timer);
+        }
     }
 }

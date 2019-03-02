@@ -60,7 +60,7 @@ public class DescriberUISpawner : MonoBehaviour
             }
         }
     }
-    private void Spawn(Describer describer)
+    private void Spawn(IDescriber describer)
     {
         int nullObj;
         GameObject obj = DescriberUIPrefab.Get(UIParent, out nullObj, true);

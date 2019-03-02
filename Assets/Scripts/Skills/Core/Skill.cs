@@ -33,7 +33,7 @@ public abstract class Skill : MonoBehaviour
     /// <summary>
     /// Object holding informations about this skill (no gameplay effect)
     /// </summary>
-    public Describer Describer;
+    public BaseDescriber Describer;
 
     public bool IsSkillAutoActivating { get { return IsAutoActivating; } }
 

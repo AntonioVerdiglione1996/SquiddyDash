@@ -1369,7 +1369,11 @@ MonoBehaviour:
   MinImproveInvokabilityValue: 1.0001
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 1
-  Describer: {fileID: 11400000, guid: 5f7a56a82e0c9ab499fd2ae37e19a737, type: 2}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
   IsAutoActivating: 0
   Upgrades: []
   CoolDownDuration: 5
@@ -1388,7 +1392,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer: {fileID: 11400000, guid: fbd7691145493b14f92aac49289247b5, type: 2}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
@@ -1429,7 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfec7f054e572c4d9055fd609fb2680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 1
 --- !u!114 &114973970033649664
 MonoBehaviour:
   m_ObjectHideFlags: 1

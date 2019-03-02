@@ -2,7 +2,7 @@
 public abstract class PowerUpLogic : ScriptableObject
 {
     [Tooltip("Describer of this power up")]
-    public Describer Describer;
+    public BaseDescriber Describer;
     //particle to instantiate after squiddy take the pu
     public BasicSOPool ParticleAfterTriggerPrefab;
 

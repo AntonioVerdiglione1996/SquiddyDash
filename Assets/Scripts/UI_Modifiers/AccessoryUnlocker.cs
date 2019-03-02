@@ -19,7 +19,7 @@ public class AccessoryUnlocker : MonoBehaviour
             Accessory accessory = ActiveUI.Accessory;
             InGameCurrency currency = ActiveUI.Currency;
             Utils.Builder.Clear();
-            Utils.Builder.AppendFormat("This accessory {0} costs either {1} currency or {2} accessory parts to unlock. You {3}have enough to unlock this.", accessory.Describer ? accessory.Describer.Name : accessory.name, accessory.UnlockCost, accessory.UnlockParts, currency.CanModifyGameCurrency(-accessory.UnlockCost) || currency.CanModifyGameCurrency(0, -accessory.UnlockParts) ? "" : "don't ");
+            Utils.Builder.AppendFormat("This accessory {0} costs either {1} currency or {2} accessory parts to unlock. You {3}have enough to unlock this.", accessory.Describer != null ? accessory.Describer.Name : accessory.name, accessory.UnlockCost, accessory.UnlockParts, currency.CanModifyGameCurrency(-accessory.UnlockCost) || currency.CanModifyGameCurrency(0, -accessory.UnlockParts) ? "" : "don't ");
             CostText.text = Utils.Builder.ToString();
             Utils.Builder.Clear();
 
