@@ -52,8 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c562ac569541146a66082aae533340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImproveInvokabilityMultiplier: 1
+  MinImproveInvokabilityValue: 1.0001
+  MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
-  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  Describer:
+    title: Rocket
+    description: Rocket
+    image: {fileID: 21300000, guid: d0da9204dbe07d847864970f70a4ef0e, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 0.497}
   IsAutoActivating: 0
   Upgrades: []
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
@@ -73,8 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3f5598173b44c46a267af12fab2074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill: {fileID: 114480269937692150}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1141219522221854}
-  Pool: {fileID: 0}
+  Skill: {fileID: 114480269937692150}
   MaxUsages: 1
+  ActivateImmediatly: 1
   DebugEnabled: 1

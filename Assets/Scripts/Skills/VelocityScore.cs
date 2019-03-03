@@ -14,6 +14,7 @@ public class VelocityScore : PassiveSkill
     private int previousScore;
     protected override void OnStartSkill()
     {
+        base.OnStartSkill();
         ResetTempVars();
     }
     protected override void UpdateBehaviour()
@@ -38,10 +39,6 @@ public class VelocityScore : PassiveSkill
     {
         timer = 0f;
         previousScore = Score.Score;
-    }
-
-    protected override void OnStopSkill()
-    {
     }
 
     protected override void InternalImproveInvokability(float amount)

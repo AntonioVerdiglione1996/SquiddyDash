@@ -49,6 +49,9 @@ public class Accessory : MonoBehaviour
     private int unlockParts = 2;
     [SerializeField]
     private bool isUnlocked = false;
+
+    public uint MaxCollidersRecommended = 0;
+    public uint MaxRigidbodiesRecommended = 0;
     public bool Restore()
     {
         return SerializerHandler.RestoreObjectFromJson(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this);
@@ -122,6 +125,14 @@ public class Accessory : MonoBehaviour
     private void OnValidate()
     {
         Reset();
+#if UNITY_EDITOR
+        Collider[] colliders = Root.GetComponentsInChildren<Collider>(true);
+        Rigidbody[] bodies = Root.GetComponentsInChildren<Rigidbody>(true);
+        if (colliders.Length > MaxCollidersRecommended || bodies.Length > MaxRigidbodiesRecommended)
+        {
+            Debug.LogErrorFormat("{0} contains {1} colliders and {2} rigidbodies, while the recommended amount is {3} colliders and {4} rigidbodies. This may cause weird physics behaviour!", this, colliders.Length, bodies.Length, MaxCollidersRecommended, MaxRigidbodiesRecommended);
+        }
+#endif
         SaveToFile();
     }
 }

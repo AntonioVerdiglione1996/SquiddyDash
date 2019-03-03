@@ -120,14 +120,14 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PersistentPoolInScenes: 1
   Root: {fileID: 1778695132352672}
-  CharacterTransform: {fileID: 0}
-  GlobalEvents: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
+  CharacterController: {fileID: 0}
   HeightTollerance: 10
   Colliders:
   - {fileID: 136557731458096120}
   DisablerEvent: {fileID: 11400000, guid: 384a317cec7456840a7ce129ecc8634a, type: 2}
   EnablerEvent: {fileID: 11400000, guid: b5396a3f988217f40ae093aa9566668b, type: 2}
   GameOverTrigger: {fileID: 11400000, guid: 9ecb9858df5a01c4b9071e13aa85ac0d, type: 2}
+  GameoverEvent: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   DisableDuration: 1.5
   AdditiveStrenghtCurve:
     serializedVersion: 2

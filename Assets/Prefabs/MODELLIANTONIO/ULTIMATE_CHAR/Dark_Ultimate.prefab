@@ -1370,10 +1370,10 @@ MonoBehaviour:
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 1
   Describer:
-    title: 
-    description: 
-    image: {fileID: 0}
-    color: {r: 0, g: 1, b: 0, a: 1}
+    title: SlowTime
+    description: Slows platforms for a brief duration
+    image: {fileID: 21300000, guid: f89bdb5379f184c4db89ad33df098640, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 0.45}
   IsAutoActivating: 0
   Upgrades: []
   CoolDownDuration: 5

@@ -1170,10 +1170,10 @@ MonoBehaviour:
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 1
   Describer:
-    title: 
-    description: 
-    image: {fileID: 0}
-    color: {r: 0, g: 1, b: 0, a: 1}
+    title: Rocket
+    description: Rocket
+    image: {fileID: 21300000, guid: d0da9204dbe07d847864970f70a4ef0e, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 0.497}
   IsAutoActivating: 0
   Upgrades: []
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}

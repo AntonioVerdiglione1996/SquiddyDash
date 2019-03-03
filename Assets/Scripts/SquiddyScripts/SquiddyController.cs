@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using System;
 public class SquiddyController : MonoBehaviour
 {
+    public bool IsInvincible { get { return invincibleInstances > 0; } }
+    private uint invincibleInstances = 0;
+
     public BasicEvent GameOverEvent;
     public GlobalEvents GlobalEvents;
 
@@ -44,6 +47,18 @@ public class SquiddyController : MonoBehaviour
 
     public Character OwnedCharacter { get; set; }
 
+    public void AddInvincibilityInstance()
+    {
+        invincibleInstances = invincibleInstances == uint.MaxValue ? invincibleInstances : invincibleInstances + 1;
+    }
+    public void RemoveInvincibilityInstance()
+    {
+        invincibleInstances = invincibleInstances == 0 ? 0 : invincibleInstances - 1;
+    }
+    public void ClearInvincibilityInstances()
+    {
+        invincibleInstances = 0;
+    }
     private void Awake()
     {
         if (OnBorderCollisionEvent)

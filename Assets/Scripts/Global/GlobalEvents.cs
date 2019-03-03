@@ -6,7 +6,7 @@ using System;
 [CreateAssetMenu(menuName = "Utility/Events/Global")]
 public class GlobalEvents : ScriptableObject
 {
-    public bool IsGameoverDisabled = false;
+    public bool IsGameoverDisabled { get { return gameoverInterruptingCount > 0; } }
     public InGameCurrency GameCurrency;
     public GameCurrencyCalculator Calculator;
     public ScoreSystem System;
@@ -28,6 +28,8 @@ public class GlobalEvents : ScriptableObject
     private int bonusScore;
     private int bonusCurrency;
 
+    private uint gameoverInterruptingCount = 0;
+
     private LinkedListNode<TimerData> timer;
     public List<MysteryBoxType> CollectedBoxes
     {
@@ -41,6 +43,18 @@ public class GlobalEvents : ScriptableObject
         }
     }
     private List<MysteryBoxType> collectedBoxes;
+    public void AddInterruptGameoverInstance()
+    {
+        gameoverInterruptingCount = gameoverInterruptingCount == uint.MaxValue ? gameoverInterruptingCount : gameoverInterruptingCount + 1;
+    }
+    public void RemoveInterruptGameoverInstance()
+    {
+        gameoverInterruptingCount = gameoverInterruptingCount > 0 ? gameoverInterruptingCount - 1 : 0;
+    }
+    public void ClearGameoverInterruptInstances()
+    {
+        gameoverInterruptingCount = 0;
+    }
     public void AddCollectedBox(MysteryBoxType type)
     {
 #if UNITY_EDITOR
