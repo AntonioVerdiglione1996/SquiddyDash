@@ -24,6 +24,11 @@ public class Describer : ScriptableObject, IDescriber
         get { return Info.Color; }
         set { Info.Color = value; }
     }
+    public Material Material
+    {
+        get { return Info.Material; }
+        set { Info.Material = value; }
+    }
 
     public void OnValidate()
     {
@@ -41,6 +46,8 @@ public class BaseDescriber : IDescriber
     private Sprite image;
     [SerializeField]
     private Color color = Color.green;
+    [SerializeField]
+    private Material material;
 
     public string Name
     {
@@ -62,6 +69,11 @@ public class BaseDescriber : IDescriber
         get { return color; }
         set { color = value; }
     }
+    public Material Material
+    {
+        get { return material; }
+        set { material = value; }
+    }
 
     public void OnValidate()
     {
@@ -77,5 +89,6 @@ public interface IDescriber
     string Description { get; set; }
     Sprite Image { get; set; }
     Color Color { get; set; }
+    Material Material { get; set; }
     void OnValidate();
 }

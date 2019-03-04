@@ -31,6 +31,7 @@ public class ButtonSkillActivator : MonoBehaviour
         {
             Image.sprite = ActivableSkill.Describer.Image;
             Image.color = ActivableSkill.Describer.Color;
+            Image.material = ActivableSkill.Describer.Material;
             this.Image.fillMethod = this.FillMethod;
             this.Image.fillClockwise = FillClockwise;
             this.Image.fillAmount = 0f;
@@ -47,6 +48,7 @@ public class ButtonSkillActivator : MonoBehaviour
         {
             Image.sprite = ActivableSkill ? ActivableSkill.Describer.Image : null;
             Image.color = ActivableSkill ? ActivableSkill.Describer.Color : Color.black;
+            Image.material = ActivableSkill ? ActivableSkill.Describer.Material : null;
             this.Image.fillMethod = this.FillMethod;
             this.Image.fillClockwise = FillClockwise;
             this.Image.fillAmount = 0f;

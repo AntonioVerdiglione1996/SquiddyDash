@@ -11,14 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
   m_Name: Level_Base
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
-  Color: {r: 0.33088234, g: 0.49264705, b: 0, a: 1}
-  Material: {fileID: 0}
+  Describer:
+    title: Default_Level
+    description: Default boring stuff
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
+    material: {fileID: 0}
   levelIndex: 3
-  levelName: Anto_Test
   isUnlocked: 1
   unlockCost: 1
-  fileNameFull: LevelData3Anto_Test
+  fileNameFull: LevelData_3_Default_Level.json
   leaderboardTotalEntries: 10
   entries:
   - Name: 

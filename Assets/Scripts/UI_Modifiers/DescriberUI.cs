@@ -26,6 +26,7 @@ public class DescriberUI : MonoBehaviour
         {
             Image.sprite = Describer != null ? Describer.Image : null;
             Image.color = Describer != null ? Describer.Color : DefaultColor;
+            Image.material = Describer != null ? Describer.Material : null;
         }
         if (Name)
         {

@@ -119,7 +119,7 @@ public class LevelUIHandler : IIndexable
         DeactivateUnlockUI();
         if(LevelNameText)
         {
-            LevelNameText.text = LevelData.name;
+            LevelNameText.text = LevelData.LevelName;
         }
         if (LevelData.IsUnlocked)
         {
@@ -135,9 +135,9 @@ public class LevelUIHandler : IIndexable
         }
         if (LevelImage)
         {
-            LevelImage.sprite = LevelData.Image;
-            LevelImage.material = LevelData.Material;
-            LevelImage.color = LevelData.Color;
+            LevelImage.sprite = LevelData.Describer.Image;
+            LevelImage.material = LevelData.Describer.Material;
+            LevelImage.color = LevelData.Describer.Color;
         }
         if(UnlockButtonText)
         {
