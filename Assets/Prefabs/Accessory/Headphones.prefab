@@ -94,7 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ad93dac3665b14cac0e7eb04c1df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: 22052779327435d41bd4a5395ddaf952, type: 2}
+  Describer:
+    title: Headphones
+    description: Glasses in disguise
+    image: {fileID: 21300012, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 1}
   Root: {fileID: 4519141696835030}
   Skill: {fileID: 0}
   Upgrades: []
@@ -103,3 +107,5 @@ MonoBehaviour:
   unlockCost: 10
   unlockParts: 2
   isUnlocked: 0
+  MaxCollidersRecommended: 0
+  MaxRigidbodiesRecommended: 0

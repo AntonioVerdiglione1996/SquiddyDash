@@ -844,16 +844,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ad93dac3665b14cac0e7eb04c1df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: 024e92f4a6d915e40a0f4d2be66987a1, type: 2}
+  Describer:
+    title: Glasses
+    description: Glasses made of glassy glass glossed from glassland
+    image: {fileID: 21300008, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 1}
   Root: {fileID: 4316900429932186}
   Skill: {fileID: 114805459314882794}
   Upgrades:
   - {fileID: 11400000, guid: b15717cc9d28995449650213231ccdeb, type: 2}
   Type: 2
-  fileNameFull: Common_glass_Legendary_Special_Googles.json
+  fileNameFull: Glasses_Legendary_Special_Googles.json
   unlockCost: 10
   unlockParts: 2
   isUnlocked: 0
+  MaxCollidersRecommended: 0
+  MaxRigidbodiesRecommended: 0
 --- !u!114 &114805459314882794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,7 +875,11 @@ MonoBehaviour:
   MinImproveInvokabilityValue: 1.0001
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
-  Describer: {fileID: 11400000, guid: b7ac7432032796941b7c01b20e2f84ad, type: 2}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
   IsAutoActivating: 0
   Upgrades: []
   CoolDownDuration: 5

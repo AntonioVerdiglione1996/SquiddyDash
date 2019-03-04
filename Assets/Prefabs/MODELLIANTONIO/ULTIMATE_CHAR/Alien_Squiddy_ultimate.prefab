@@ -1434,9 +1434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugActive: 1
   Describer:
-    title: 
-    description: 
-    image: {fileID: 0}
+    title: Alien dude
+    description: Weird frick, stay away
+    image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}

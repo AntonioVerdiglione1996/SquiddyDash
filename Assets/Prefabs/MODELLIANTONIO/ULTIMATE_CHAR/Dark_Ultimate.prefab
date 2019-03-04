@@ -1393,9 +1393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugActive: 1
   Describer:
-    title: 
-    description: 
-    image: {fileID: 0}
+    title: Dark squiddy
+    description: Too dark to be defined
+    image: {fileID: 21300000, guid: b16bfbf49643c65448f31f342423e159, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
