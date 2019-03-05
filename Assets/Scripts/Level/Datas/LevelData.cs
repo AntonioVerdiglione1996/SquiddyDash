@@ -6,9 +6,7 @@ public class LevelData : ScriptableObject
 {
     public const string Filename = "LevelData";
 
-    public Sprite Image;
-    public Color Color = new Color(1f, 1f, 1f, 1f);
-    public Material Material;
+    public BaseDescriber Describer = new BaseDescriber();
 
     public bool IsUnlocked
     {
@@ -48,13 +46,11 @@ public class LevelData : ScriptableObject
         }
     }
     public int LevelIndex { get { return levelIndex; } }
-    public string LevelName { get { return levelName; } }
+    public string LevelName { get { return Describer.Name; } }
     public LeaderboardEntry[] Entries { get { return this.entries; } }
 
     [SerializeField]
     private int levelIndex;
-    [SerializeField]
-    private string levelName;
     [SerializeField]
     private bool isUnlocked;
     [SerializeField]

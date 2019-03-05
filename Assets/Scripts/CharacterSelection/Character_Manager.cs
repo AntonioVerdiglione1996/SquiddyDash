@@ -67,7 +67,7 @@ public class Character_Manager : MonoBehaviour
                 Model.gameObject.SetActive(true);
                 Character character = Model.GetComponent<Character>();
                 //first iteration//name and color of the first model
-                if (character.Describer)
+                if (character.Describer != null)
                 {
                     Text.text = character.Describer.Name;
                     Text.color = character.Describer.Color;
@@ -91,7 +91,7 @@ public class Character_Manager : MonoBehaviour
             }
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
-            if (character.Describer)
+            if (character.Describer != null)
             {
                 Text.text = character.Describer.Name;
                 Text.color = character.Describer.Color;

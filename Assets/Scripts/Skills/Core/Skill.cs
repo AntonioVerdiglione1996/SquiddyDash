@@ -33,7 +33,7 @@ public abstract class Skill : MonoBehaviour
     /// <summary>
     /// Object holding informations about this skill (no gameplay effect)
     /// </summary>
-    public Describer Describer;
+    public BaseDescriber Describer;
 
     public bool IsSkillAutoActivating { get { return IsAutoActivating; } }
 
@@ -195,6 +195,7 @@ public abstract class Skill : MonoBehaviour
         {
             OnStopSkill();
         }
+        Controller.RemoveInvincibilityInstance();
         if (OnSkillDisabled != null)
         {
             OnSkillDisabled();
@@ -217,6 +218,7 @@ public abstract class Skill : MonoBehaviour
     private void OnEnable()
     {
         bool isBaseBehaviourOverrided = false;
+        Controller.AddInvincibilityInstance();
 
         if (Upgrades != null)
         {

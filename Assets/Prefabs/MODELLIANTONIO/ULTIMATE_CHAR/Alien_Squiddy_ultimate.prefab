@@ -813,7 +813,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862009954441040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.30791315, y: -0.14999998, z: 0.33985475}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4915506805746366}
@@ -1433,7 +1433,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer: {fileID: 11400000, guid: b1f8b6b094e6c604fa48661fbb49483e, type: 2}
+  Describer:
+    title: Alien dude
+    description: Weird frick, stay away
+    image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
@@ -1442,7 +1446,8 @@ MonoBehaviour:
     type: 2}
   UiSpawnDirection: 1
   Locators: []
-  Skills: []
+  Skills:
+  - {fileID: 114936544877036286}
   DefaultIconsHeightDistance: 128
   DefaultIconsWidthDistance: 128
 --- !u!114 &114936544877036286
@@ -1456,8 +1461,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c562ac569541146a66082aae533340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImproveInvokabilityMultiplier: 1
+  MinImproveInvokabilityValue: 1.0001
+  MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
-  Describer: {fileID: 0}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
   IsAutoActivating: 0
   Upgrades: []
   ScoreSystem: {fileID: 0}

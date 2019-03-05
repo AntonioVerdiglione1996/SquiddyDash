@@ -18,4 +18,12 @@
         base.OnValidate();
         ResetSkill();
     }
+    protected override void OnStartSkill()
+    {
+        Controller.RemoveInvincibilityInstance();
+    }
+    protected override void OnStopSkill()
+    {
+        Controller.AddInvincibilityInstance();
+    }
 }

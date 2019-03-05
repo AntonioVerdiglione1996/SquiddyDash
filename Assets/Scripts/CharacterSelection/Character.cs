@@ -4,7 +4,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public bool DebugActive = true;
-    public Describer Describer;
+    public BaseDescriber Describer;
 
     public BasicEvent StartRotation;
     public BasicEvent StopRotation;

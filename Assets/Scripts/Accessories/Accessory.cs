@@ -5,7 +5,7 @@ using System.IO;
 public class Accessory : MonoBehaviour
 {
     public const string Dirname = "Accessory";
-    public Describer Describer;
+    public BaseDescriber Describer;
     public Transform Root;
     public Skill Skill;
     public List<Upgrade> Upgrades = new List<Upgrade>();
@@ -49,6 +49,9 @@ public class Accessory : MonoBehaviour
     private int unlockParts = 2;
     [SerializeField]
     private bool isUnlocked = false;
+
+    public uint MaxCollidersRecommended = 0;
+    public uint MaxRigidbodiesRecommended = 0;
     public bool Restore()
     {
         return SerializerHandler.RestoreObjectFromJson(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this);
@@ -106,7 +109,7 @@ public class Accessory : MonoBehaviour
     private void Reset()
     {
         Utils.Builder.Clear();
-        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", (this.Describer ? this.Describer.Name : name), Rarity, Type, Utils.JSONExtension);
+        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", (this.Describer != null ? this.Describer.Name : name), Rarity, Type, Utils.JSONExtension);
         fileNameFull = Utils.Builder.ToString(0, Utils.Builder.Length).Replace(", ", "_");
         Utils.Builder.Clear();
 
@@ -122,6 +125,14 @@ public class Accessory : MonoBehaviour
     private void OnValidate()
     {
         Reset();
+#if UNITY_EDITOR
+        Collider[] colliders = Root.GetComponentsInChildren<Collider>(true);
+        Rigidbody[] bodies = Root.GetComponentsInChildren<Rigidbody>(true);
+        if (colliders.Length > MaxCollidersRecommended || bodies.Length > MaxRigidbodiesRecommended)
+        {
+            Debug.LogErrorFormat("{0} contains {1} colliders and {2} rigidbodies, while the recommended amount is {3} colliders and {4} rigidbodies. This may cause weird physics behaviour!", this, colliders.Length, bodies.Length, MaxCollidersRecommended, MaxRigidbodiesRecommended);
+        }
+#endif
         SaveToFile();
     }
 }

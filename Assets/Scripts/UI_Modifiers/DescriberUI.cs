@@ -8,32 +8,33 @@ public class DescriberUI : MonoBehaviour
     public const string DefaultName = "Missing Name";
     public const string DefaultDescription = "Missing Description";
     public static readonly Color DefaultColor = Color.white;
-    public Describer Describer;
+    public IDescriber Describer;
     public Text Name;
     public Text Description;
     public Image Image;
     void Start()
     {
-        if (Describer)
+        if (Describer != null)
         {
             SetDescriber(Describer);
         }
     }
-    public virtual void SetDescriber(Describer describer)
+    public virtual void SetDescriber(IDescriber describer)
     {
         Describer = describer;
         if (Image)
         {
-            Image.sprite = Describer ? Describer.Image : null;
-            Image.color = Describer ? Describer.Color : DefaultColor;
+            Image.sprite = Describer != null ? Describer.Image : null;
+            Image.color = Describer != null ? Describer.Color : DefaultColor;
+            Image.material = Describer != null ? Describer.Material : null;
         }
         if (Name)
         {
-            Name.text = Describer ? Describer.Name : DefaultName;
+            Name.text = Describer != null ? Describer.Name : DefaultName;
         }
         if (Description)
         {
-            Description.text = Describer ? Describer.Description : DefaultDescription;
+            Description.text = Describer != null ? Describer.Description : DefaultDescription;
         }
     }
 }

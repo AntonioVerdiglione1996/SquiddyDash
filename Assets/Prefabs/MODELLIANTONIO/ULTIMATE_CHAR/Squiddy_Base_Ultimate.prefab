@@ -1122,7 +1122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer: {fileID: 11400000, guid: 510b3d97d5ab29d428bfec22cb8e0cba, type: 2}
+  Describer:
+    title: Default dude
+    description: Used by poor guys. Go buy something!
+    image: {fileID: 21300000, guid: 46ae4301e6f12de4389a9caa0cc557d5, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
@@ -1165,7 +1169,11 @@ MonoBehaviour:
   MinImproveInvokabilityValue: 1.0001
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 1
-  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
+  Describer:
+    title: Rocket
+    description: Rocket
+    image: {fileID: 21300000, guid: d0da9204dbe07d847864970f70a4ef0e, type: 3}
+    color: {r: 0, g: 1, b: 0, a: 0.497}
   IsAutoActivating: 0
   Upgrades: []
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
@@ -1227,4 +1235,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfec7f054e572c4d9055fd609fb2680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 1

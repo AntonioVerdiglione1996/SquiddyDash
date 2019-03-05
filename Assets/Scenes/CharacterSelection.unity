@@ -2115,7 +2115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.038250007, y: 0.26650003}
   m_AnchorMax: {x: 0.24325001, y: 0.31750003}
-  m_AnchoredPosition: {x: -0.35551453, y: 2.039978}
+  m_AnchoredPosition: {x: -0.3555298, y: 2.039978}
   m_SizeDelta: {x: -1.29, y: -4.2}
   m_Pivot: {x: 0.50000006, y: 0.4999998}
 --- !u!114 &779887921
@@ -4136,7 +4136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a6e3ec5fcf86741b25996015158369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DescriberUI: {fileID: 11400000, guid: 14568083979ab634aa25322801873eda, type: 2}
+  DescriberUIPrefab:
+    Prefab: {fileID: 1521365396056028, guid: 7b15a814add78b14d87af5b3c0a37d9f, type: 2}
+    PersistentPoolInScenes: 1
   UIParent: {fileID: 1953920484}
   Store: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
   Manager: {fileID: 1886690778}

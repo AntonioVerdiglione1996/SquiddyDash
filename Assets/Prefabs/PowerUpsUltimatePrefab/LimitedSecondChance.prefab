@@ -52,8 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a42aeb81c69ed244ab2f242e6100fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImproveInvokabilityMultiplier: 1
+  MinImproveInvokabilityValue: 1.0001
+  MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
-  Describer: {fileID: 11400000, guid: 4528cb110b3acf74794d7302e10947c8, type: 2}
+  Describer:
+    title: Second chance
+    description: Respwn if died
+    image: {fileID: 21300006, guid: 74d9483d1c1f4f6429eb98583a034d6c, type: 3}
+    color: {r: 0, g: 0, b: 1, a: 0.484}
   IsAutoActivating: 0
   Upgrades: []
   CoolDownDuration: 5
@@ -77,9 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3f5598173b44c46a267af12fab2074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill: {fileID: 114080489016888120}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1787684671219964}
-  Pool: {fileID: 0}
+  Skill: {fileID: 114080489016888120}
   MaxUsages: 1
   ActivateImmediatly: 1
   DebugEnabled: 1

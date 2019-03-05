@@ -7,7 +7,7 @@ public class LaserSpawner : MonoBehaviour
     public BasicEvent OnGameOver;
     public PositionalEvent OnPlatformMoved;
     public Vector3 Offset = new Vector3(0f, 5.5f, 0f);
-    public SOPool Pool;
+    public BasicSOPool LaserPrefab;
     public Camera MainCamera;
     public float SpawnChance = 0.2f;
     public float ScoreMultiplierAddedToSpawnChance = 0.001f;
@@ -70,11 +70,11 @@ public class LaserSpawner : MonoBehaviour
             return;
         }
 #endif
-        if (Pool && ReferenceLocation)
+        if (LaserPrefab != null && ReferenceLocation)
         {
             if (UnityEngine.Random.Range(0f, 1f) <= SpawnChance + ScoreMultiplierAddedToSpawnChance * Score.Score)
             {
-                Spawner.SpawnPrefab(null, Pool.Pool, null, false, ReferenceLocation.position + Offset);
+                Spawner.SpawnPrefab(null, LaserPrefab, null, false, ReferenceLocation.position + Offset);
             }
         }
     }

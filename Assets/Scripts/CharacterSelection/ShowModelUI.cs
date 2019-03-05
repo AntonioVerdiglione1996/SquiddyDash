@@ -37,7 +37,7 @@ public class ShowModelUI : MonoBehaviour
         //2 accedere alla variabile icon di character component
         Character charcur = Model.GetComponent<Character>();
         Sprite iconcur = null;
-        if(charcur != null && charcur.Describer)
+        if(charcur != null && charcur.Describer != null)
         {
             iconcur = charcur.Describer.Image;
         }

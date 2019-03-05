@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnInfo
 {
-    public SOPool Pool;
+    public BasicSOPool ObjPrefab;
     public bool RandomSpawnLocation = false;
     public float SpawnChance;
     public int MinSpawnCount;

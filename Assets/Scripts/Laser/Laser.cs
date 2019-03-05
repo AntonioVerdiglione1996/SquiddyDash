@@ -6,8 +6,7 @@ public class Laser : ISOPoolable
 {
     public const float InverseMaxByte = 1f / byte.MaxValue;
 
-    public Transform CharacterTransform;
-    public GlobalEvents GlobalEvents;
+    public SquiddyController CharacterController;
     public float HeightTollerance = 10f;
 
     public Collider[] Colliders;
@@ -15,6 +14,7 @@ public class Laser : ISOPoolable
     public SoundEvent DisablerEvent;
     public BasicEvent EnablerEvent;
     public BasicEvent GameOverTrigger;
+    public BasicEvent GameoverEvent;
     public float DisableDuration = 0.7f;
     public AnimationCurve AdditiveStrenghtCurve;
     public TimeHelper TimeHelper;
@@ -25,25 +25,28 @@ public class Laser : ISOPoolable
     protected override void OnValidate()
     {
         base.OnValidate();
-        if (!CharacterTransform)
+        if (!CharacterController)
         {
-            SquiddyController controller = FindObjectOfType<SquiddyController>();
-            if (controller)
+            CharacterController = FindObjectOfType<SquiddyController>();
+        }
+    }
+    private void SpawnDeathParticle()
+    {
+        if (OnPlayerDeathParticle)
+        {
+            Transform charTransform = CharacterController.transform;
+            ParticleSystem system = Instantiate(OnPlayerDeathParticle, charTransform.position, charTransform.rotation).GetComponentInChildren<ParticleSystem>();
+            if (system)
             {
-                CharacterTransform = controller.transform;
+                system.Play(true);
             }
         }
     }
     public void OnEnable()
     {
-
-        if (!CharacterTransform)
+        if (!CharacterController)
         {
-            SquiddyController controller = FindObjectOfType<SquiddyController>();
-            if (controller)
-            {
-                CharacterTransform = controller.transform;
-            }
+            CharacterController = FindObjectOfType<SquiddyController>();
         }
         if (DisablerEvent)
         {
@@ -53,11 +56,15 @@ public class Laser : ISOPoolable
         {
             EnablerEvent.OnEventRaised += Enable;
         }
+        if (GameoverEvent)
+        {
+            GameoverEvent.OnEventRaised += SpawnDeathParticle;
+        }
         Enable();
     }
     public void OnDisable()
     {
-        Disable(0);
+        Disable(0, false);
         if (DisablerEvent)
         {
             DisablerEvent.OnSoundEvent -= Disable;
@@ -66,28 +73,24 @@ public class Laser : ISOPoolable
         {
             EnablerEvent.OnEventRaised -= Enable;
         }
+        if (GameoverEvent)
+        {
+            GameoverEvent.OnEventRaised -= SpawnDeathParticle;
+        }
     }
     private void Update()
     {
-        if (CharacterTransform && CharacterTransform.position.y > Root.transform.position.y + HeightTollerance)
+        if (CharacterController && CharacterController.transform.position.y > Root.transform.position.y + HeightTollerance)
         {
-            TimeHelper.RemoveTimer(timer);
             Recycle();
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (CharacterController && !CharacterController.IsInvincible && collision.gameObject.layer == 8)
         {
             this.enabled = false;
-            if (OnPlayerDeathParticle && !GlobalEvents.IsGameoverDisabled)
-            {
-                ParticleSystem system = Instantiate(OnPlayerDeathParticle, CharacterTransform.position, CharacterTransform.rotation).GetComponentInChildren<ParticleSystem>();
-                if (system)
-                {
-                    system.Play(true);
-                }
-            }
+
             if (GameOverTrigger)
             {
                 GameOverTrigger.Raise();
@@ -117,7 +120,11 @@ public class Laser : ISOPoolable
     }
     public void Disable(byte Strenght)
     {
-        if(timer != null && timer.Value.Enabled)
+        Disable(Strenght, true);
+    }
+    public void Disable(byte Strenght, bool restart)
+    {
+        if (restart && timer != null && timer.Value.ElapsedTime < timer.Value.Duration)
         {
             return;
         }
@@ -127,6 +134,13 @@ public class Laser : ISOPoolable
             LaserParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
         SetComponentsActivation(false);
-        timer = TimeHelper.RestartTimer(null, EnablerEvent, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
+        if (restart)
+        {
+            timer = TimeHelper.RestartTimer(Enable, null, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
+        }
+        else
+        {
+            TimeHelper.RemoveTimer(timer);
+        }
     }
 }

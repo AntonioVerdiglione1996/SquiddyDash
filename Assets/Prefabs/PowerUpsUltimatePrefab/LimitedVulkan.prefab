@@ -52,8 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23df0027b37b9694fa792a18780279f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImproveInvokabilityMultiplier: 1
+  MinImproveInvokabilityValue: 1.0001
+  MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
-  Describer: {fileID: 11400000, guid: e7d9a51e141713d4da9b9889a6a2f8f7, type: 2}
+  Describer:
+    title: Ultra jump
+    description: Bigger jumps
+    image: {fileID: 21300000, guid: 7668154bd83199648963a7d78190470f, type: 3}
+    color: {r: 1, g: 0, b: 0, a: 0.509}
   IsAutoActivating: 0
   Upgrades: []
   CoolDownDuration: 5
@@ -71,8 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3f5598173b44c46a267af12fab2074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill: {fileID: 114756315816125932}
+  Pool:
+    Prefab: {fileID: 0}
+    PersistentPoolInScenes: 1
   Root: {fileID: 1872875767083828}
-  Pool: {fileID: 0}
+  Skill: {fileID: 114756315816125932}
   MaxUsages: 1
+  ActivateImmediatly: 1
   DebugEnabled: 1

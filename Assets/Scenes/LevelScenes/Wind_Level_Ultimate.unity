@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1743,9 +1743,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnGameOver: {fileID: 11400000, guid: 0e9c76d48f23feb4a8e74eebb1084700, type: 2}
   Squiddy: {fileID: 1034365228}
-  PlatformPool: {fileID: 11400000, guid: a37f169f94c07564aad85465406796c7, type: 2}
-  PlatformWithPowerUpPool: {fileID: 11400000, guid: fb68b23be87d6ac4680bf767d4ff1fce,
-    type: 2}
+  PlatformPrefab:
+    Prefab: {fileID: 1884989431584500, guid: 38a5e65d5fe0ab14baa495f0d8bc02c2, type: 2}
+    PersistentPoolInScenes: 1
+  PlatformWithPowerUpPrefab:
+    Prefab: {fileID: 1455752135451080, guid: e9a69405e022b0c40a984dd908e7efca, type: 2}
+    PersistentPoolInScenes: 1
   Material: {fileID: 2100000, guid: 638b42389afba28499f0e4d8e1ad3f98, type: 2}
   OnPlatformSpawn: {fileID: 11400000, guid: 32fdd3047436d52409fc1b7ad85b6f15, type: 2}
   NumberOfPlatformsToSpawn: 4
@@ -1753,7 +1756,7 @@ MonoBehaviour:
   treshHold: 25
   CurrentSpeedMultiplier: 1
   CurrentScaleMultiplier: {x: 1, y: 1, z: 1}
-  SpecialPlatformSpawnIntervall: 9
+  SpecialPlatformSpawnIntervall: 8
   OnPlatformRecycle: {fileID: 11400000, guid: 1fa4157b4cf68be46b73bcb859928b8b, type: 2}
 --- !u!4 &1510182581
 Transform:

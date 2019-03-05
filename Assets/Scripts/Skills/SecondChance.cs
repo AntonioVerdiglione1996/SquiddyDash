@@ -48,13 +48,13 @@ public class SecondChance : TimedSkill
         {
             TimeHelper.RemoveTimer(timer);
         }
-        GlobalEvents.IsGameoverDisabled = true;
+        GlobalEvents.AddInterruptGameoverInstance();
         OnGameoverInterrupted.OnEventRaised += RepositionPlayerToFirstPlatform;
     }
     protected override void OnStopSkill()
     {
         base.OnStopSkill();
-        GlobalEvents.IsGameoverDisabled = false;
+        GlobalEvents.RemoveInterruptGameoverInstance();
         OnGameoverInterrupted.OnEventRaised -= RepositionPlayerToFirstPlatform;
     }
     public void RepositionPlayerToFirstPlatform()
@@ -97,7 +97,7 @@ public class SecondChance : TimedSkill
 
         if (!finalPlat)
         {
-            GlobalEvents.IsGameoverDisabled = false;
+            GlobalEvents.ClearGameoverInterruptInstances();
             OnGameoverInterrupted.Raise();
             return;
         }
