@@ -9,7 +9,9 @@ public class MysteryBoxRewardAccessory : MysteryBoxRewardData
 
     private List<Accessory> accessoriesToChose;
 
-    public override void Collect(MysteryBoxType type, CollectMysteryBoxesReward collector)
+    private Accessory lastUnlocked;
+
+    public override IRewardCollected Collect(MysteryBoxType type, CollectMysteryBoxesReward collector)
     {
         if (!UnlockAccessory(type, collector))
         {
@@ -19,8 +21,17 @@ public class MysteryBoxRewardAccessory : MysteryBoxRewardData
                 Debug.LogFormat("{0} could not find a valid accessory of rarity {1} to unlock, default reward {2}", this, Rarity, collector.GlobalEvents.GameCurrency.CanModifyGameCurrency(0, DefaultAccessoryParts, 0) ? "given" : "not given");
             }
 #endif
-            collector.GlobalEvents.GameCurrency.ModifyGameCurrencyAmount(0, DefaultAccessoryParts, 0, false);
+
+            if (collector.GlobalEvents.GameCurrency.ModifyGameCurrencyAmount(0, DefaultAccessoryParts, 0, false))
+            {
+                return new RewardCollectedInfo(0, DefaultAccessoryParts, 0, null);
+            }
+            else
+            {
+                return new RewardCollectedInfo(0, 0, 0, null);
+            }
         }
+        return new RewardCollectedInfo(0, 0, 0, lastUnlocked);
     }
     protected override void OnValidate()
     {
@@ -51,11 +62,13 @@ public class MysteryBoxRewardAccessory : MysteryBoxRewardData
         }
 
         int indexToUnlock = UnityEngine.Random.Range(0, accessoriesToChose.Count);
-        accessoriesToChose[indexToUnlock].IsUnlocked = true;
+
+        lastUnlocked = accessoriesToChose[indexToUnlock];
+        lastUnlocked.IsUnlocked = true;
 #if UNITY_EDITOR
         if (DebugEnabled)
         {
-            Debug.LogFormat("{0} unlocked the accessory {1} of rarity {2}", this, accessoriesToChose[indexToUnlock], Rarity);
+            Debug.LogFormat("{0} unlocked the accessory {1} of rarity {2}", this, lastUnlocked, Rarity);
         }
 #endif
 

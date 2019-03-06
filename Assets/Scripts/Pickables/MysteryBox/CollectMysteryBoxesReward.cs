@@ -8,6 +8,8 @@ public class CollectMysteryBoxesReward : MonoBehaviour
     public StoringCurrentModelToSpawn Store;
     public MysteryBoxRewardContainer Container;
     public bool DebugEnabled = true;
+    public Dictionary<MysteryBoxType, List<IRewardCollected>> Collected = new Dictionary<MysteryBoxType, List<IRewardCollected>>();
+    public MysteryBoxRewardData DefaultReward;
     private void OnEnable()
     {
         var boxTypes = GlobalEvents.CollectedBoxes;
@@ -21,6 +23,7 @@ public class CollectMysteryBoxesReward : MonoBehaviour
             {
                 bool collected = false;
                 MysteryBoxType type = boxTypes[i];
+                IRewardCollected rewardCollected = null;
                 for (int j = 0; !collected && j < Container.Data.Length; j++)
                 {
                     MysteryBoxRewardData Data = Container.Data[j];
@@ -40,14 +43,28 @@ public class CollectMysteryBoxesReward : MonoBehaviour
                                         Debug.LogFormat("{0} collected a reward of type {1} for a mystery box of type {2}", this, Data.GetType(), type);
                                     }
 #endif
-                                    Data.Collect(Chances.Type, this);
+                                    rewardCollected = Data.Collect(Chances.Type, this);
                                 }
                                 break;
                             }
                         }
                     }
                 }
+                if (!collected)
+                {
+                    rewardCollected = DefaultReward.Collect(type, this);
+                }
                 boxTypes.RemoveAt(i);
+                if (Collected.ContainsKey(type))
+                {
+                    Collected[type].Add(rewardCollected);
+                }
+                else
+                {
+                    var list = new List<IRewardCollected>();
+                    list.Add(rewardCollected);
+                    Collected.Add(type, list);
+                }
             }
         }
         GlobalEvents.GameCurrency.SaveToFile();

@@ -3,11 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public interface IRewardCollected
+{
+    int Currency { get; set; }
+    int AccessoryParts { get; set; }
+    int SkinParts { get; set; }
+    Accessory Unlocked { get; set; }
+    bool IsRewardValid { get; }
+}
+[System.Serializable]
+public struct RewardCollectedInfo : IRewardCollected
+{
+    public int Currency { get; set; }
+    public int AccessoryParts { get; set; }
+    public int SkinParts { get; set; }
+    public Accessory Unlocked { get; set; }
+
+    public bool IsRewardValid
+    {
+        get
+        {
+            return Currency != 0 || AccessoryParts != 0 || SkinParts != 0 || Unlocked;
+        }
+    }
+
+    public RewardCollectedInfo(int currency, int accessoryParts, int skinParts, Accessory unlocked)
+    {
+        Currency = currency;
+        AccessoryParts = accessoryParts;
+        SkinParts = skinParts;
+        Unlocked = unlocked;
+    }
+}
 public abstract class MysteryBoxRewardData : ScriptableObject
 {
     public List<MysteryRewardChances> Types;
     public bool DebugEnabled = true;
-    public abstract void Collect(MysteryBoxType type, CollectMysteryBoxesReward collector);
+    public abstract IRewardCollected Collect(MysteryBoxType type, CollectMysteryBoxesReward collector);
     protected virtual void OnValidate()
     {
         var values = System.Enum.GetValues(typeof(MysteryBoxType));

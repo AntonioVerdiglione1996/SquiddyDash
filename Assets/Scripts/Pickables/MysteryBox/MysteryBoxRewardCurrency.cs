@@ -16,7 +16,7 @@ public class MysteryBoxRewardCurrency : MysteryBoxRewardData
         SkinParts = Mathf.Max(SkinParts, 0);
         AccessoryParts = Mathf.Max(AccessoryParts, 0);
     }
-    public override void Collect(MysteryBoxType type, CollectMysteryBoxesReward collector)
+    public override IRewardCollected Collect(MysteryBoxType type, CollectMysteryBoxesReward collector)
     {
 #if UNITY_EDITOR
         if (DebugEnabled)
@@ -24,7 +24,14 @@ public class MysteryBoxRewardCurrency : MysteryBoxRewardData
             Debug.LogFormat("{0} {1} to increase currency by {2}, {3}, {4}", this, collector.GlobalEvents.GameCurrency.CanModifyGameCurrency(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type)) ? "managed" : "could not manage", GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type));
         }
 #endif
-        collector.GlobalEvents.GameCurrency.ModifyGameCurrencyAmount(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type), false);
+        if (collector.GlobalEvents.GameCurrency.ModifyGameCurrencyAmount(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type), false))
+        {
+            return new RewardCollectedInfo(GetTotalValue(Currency, type), GetTotalValue(AccessoryParts, type), GetTotalValue(SkinParts, type), null);
+        }
+        else
+        {
+            return new RewardCollectedInfo(0, 0, 0, null);
+        }
     }
     private int GetTotalValue(int value, MysteryBoxType type)
     {
