@@ -66,7 +66,7 @@ public class PowUpDisplayer : MonoBehaviour
             SetActivation(true);
             timer = 0f;
             Utils.Builder.Clear();
-            Utils.Builder.AppendFormat("{0}{1}{2}", Prefix, logic.Describer == null ? logic.name : logic.Describer.Name, Suffix);
+            Utils.Builder.AppendFormat("{0}{1}{2}", Prefix, logic.Describer.Name, Suffix);
             string text = Utils.Builder.ToString();
             Utils.Builder.Clear();
             if (Text)
