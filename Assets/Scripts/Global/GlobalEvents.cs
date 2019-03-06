@@ -17,6 +17,7 @@ public class GlobalEvents : ScriptableObject
 
     public float GameoverDelay = 1f;
     public bool IsGameoverOngoing { get; private set; }
+    public int CurrencyGainedLastLevel { get; private set; }
 
 #if UNITY_EDITOR
     public bool LocalDebugActive = true;
@@ -153,6 +154,12 @@ public class GlobalEvents : ScriptableObject
             int amount = Calculator.CalculateCurrencyIncreaseAmount(System) + GetBonusCurrency();
 
             bool result = GameCurrency.ModifyGameCurrencyAmount(amount);
+
+            CurrencyGainedLastLevel = 0;
+            if (result)
+            {
+                CurrencyGainedLastLevel = amount;
+            }
 #if UNITY_EDITOR
             if (LocalDebugActive)
             {

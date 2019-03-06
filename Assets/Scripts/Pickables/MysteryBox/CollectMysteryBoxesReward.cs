@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public class CollectedBoxEvent : UnityEngine.Events.UnityEvent<MysteryBoxRewardCollection, IRewardCollected>
+{
 
+}
+[System.Serializable]
+public class MysteryBoxRewardCollection
+{
+    public Dictionary<MysteryBoxType, List<IRewardCollected>> Collected = new Dictionary<MysteryBoxType, List<IRewardCollected>>();
+}
 public class CollectMysteryBoxesReward : MonoBehaviour
 {
     public GlobalEvents GlobalEvents;
     public StoringCurrentModelToSpawn Store;
     public MysteryBoxRewardContainer Container;
     public bool DebugEnabled = true;
-    public Dictionary<MysteryBoxType, List<IRewardCollected>> Collected = new Dictionary<MysteryBoxType, List<IRewardCollected>>();
+    [System.NonSerialized]
+    public MysteryBoxRewardCollection Collected = new MysteryBoxRewardCollection();
     public MysteryBoxRewardData DefaultReward;
+    public CollectedBoxEvent OnCollectPhaseConcluded;
     private void OnEnable()
     {
         var boxTypes = GlobalEvents.CollectedBoxes;
@@ -55,20 +66,24 @@ public class CollectMysteryBoxesReward : MonoBehaviour
                     rewardCollected = DefaultReward.Collect(type, this);
                 }
                 boxTypes.RemoveAt(i);
-                if (Collected.ContainsKey(type))
+                if (Collected.Collected.ContainsKey(type))
                 {
-                    Collected[type].Add(rewardCollected);
+                    Collected.Collected[type].Add(rewardCollected);
                 }
                 else
                 {
                     var list = new List<IRewardCollected>();
                     list.Add(rewardCollected);
-                    Collected.Add(type, list);
+                    Collected.Collected.Add(type, list);
                 }
             }
         }
         GlobalEvents.GameCurrency.SaveToFile();
         Store.VerifyAndSave();
         GlobalEvents.ClearCollectedBox();
+        if (OnCollectPhaseConcluded != null)
+        {
+            OnCollectPhaseConcluded.Invoke(Collected, new RewardCollectedInfo(GlobalEvents.CurrencyGainedLastLevel, 0, 0, null));
+        }
     }
 }
