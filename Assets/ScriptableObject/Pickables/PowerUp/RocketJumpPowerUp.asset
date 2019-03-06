@@ -11,20 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac924f7970e7d645b5a42be49e8ce0f, type: 3}
   m_Name: RocketJumpPowerUp
   m_EditorClassIdentifier: 
-  Describer: {fileID: 11400000, guid: f094f3e19a0b2f04591341c7f63798a4, type: 2}
-  ParticleAfterTriggerPool: {fileID: 11400000, guid: 397545d6c73b45a4c8b7fe439b072316,
-    type: 2}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
+    material: {fileID: 0}
   ParticleAfterTriggerPrefab:
     Prefab: {fileID: 1165987183446902, guid: 5d9656c85a953a449a79e1bdd2dbddc1, type: 2}
     PersistentPoolInScenes: 1
   TriggerSound: {fileID: 11400000, guid: 082a64ffb56d3c341ba6e08095b8847f, type: 2}
   VocalSound: {fileID: 11400000, guid: 0368bc36e643f5f4d99a3482041db811, type: 2}
-  renderingObjectPool: {fileID: 11400000, guid: c7e46695a3cc8054a9260ef09ed29c5f,
-    type: 2}
   RenderingObjectPrefab:
     Prefab: {fileID: 1783614295051722, guid: 73ee7552b2b844749b01aa4f97d9bb4c, type: 2}
     PersistentPoolInScenes: 1
-  LimitedSkillPool: {fileID: 11400000, guid: f33b5a1473038ce428503c626091aa47, type: 2}
+  OnCollected: {fileID: 11400000, guid: 9f8842e7606d5814880f001309c42050, type: 2}
   LimitedSkillPrefab:
     Prefab: {fileID: 1141219522221854, guid: 729d6da43a430c7468f97b9caabc009b, type: 2}
     PersistentPoolInScenes: 1

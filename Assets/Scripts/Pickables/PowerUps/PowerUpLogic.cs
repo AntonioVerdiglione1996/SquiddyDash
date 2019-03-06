@@ -17,6 +17,8 @@ public abstract class PowerUpLogic : ScriptableObject
     [Tooltip("Pool used to spawn rendering object for this power up")]
     public BasicSOPool RenderingObjectPrefab;
 
+    public PowLogicEvent OnCollected;
+
     public GameObject SpawnPrefab()
     {
         return SpawnPrefab(null);
@@ -33,7 +35,14 @@ public abstract class PowerUpLogic : ScriptableObject
         go.transform.localPosition = Vector3.zero;
         return go;
     }
-    public abstract void PowerUpCollected(Collider player, PowerUp powUp);
+    public virtual void PowerUpCollected(Collider player, PowerUp powUp)
+    {
+        if (OnCollected)
+        {
+            OnCollected.CurrentLogic = this;
+            OnCollected.Raise();
+        }
+    }
     public virtual void ResetPowerup(GameObject instantiatedPowerUp = null)
     {
         if (instantiatedPowerUp)
