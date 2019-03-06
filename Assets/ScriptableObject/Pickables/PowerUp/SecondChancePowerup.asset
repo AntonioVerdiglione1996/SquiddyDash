@@ -11,20 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac924f7970e7d645b5a42be49e8ce0f, type: 3}
   m_Name: SecondChancePowerup
   m_EditorClassIdentifier: 
-  Describer: {fileID: 0}
-  ParticleAfterTriggerPool: {fileID: 11400000, guid: 5be44dbb4a23d914d842c63fb0669111,
-    type: 2}
+  Describer:
+    title: 
+    description: 
+    image: {fileID: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
+    material: {fileID: 0}
   ParticleAfterTriggerPrefab:
     Prefab: {fileID: 1329843976426302, guid: d3e4428187853c949b4234dc8f629269, type: 2}
     PersistentPoolInScenes: 1
   TriggerSound: {fileID: 11400000, guid: ce204a1172c340e43a5aeba345536b73, type: 2}
   VocalSound: {fileID: 11400000, guid: 6042c332b1a3e5e4c95ed0fdfcb6fdfa, type: 2}
-  renderingObjectPool: {fileID: 11400000, guid: 1268cce7f514ac64e82b859f8672b206,
-    type: 2}
   RenderingObjectPrefab:
     Prefab: {fileID: 1516330385383864, guid: 2a1ae37771e9d5843b79426def66cee1, type: 2}
     PersistentPoolInScenes: 1
-  LimitedSkillPool: {fileID: 11400000, guid: 72f4361bb109c4c4fa996be80ecbadcd, type: 2}
+  OnCollected: {fileID: 11400000, guid: 9f8842e7606d5814880f001309c42050, type: 2}
   LimitedSkillPrefab:
     Prefab: {fileID: 1787684671219964, guid: 138f1aa893159c04e93f7642c0c7d205, type: 2}
     PersistentPoolInScenes: 1

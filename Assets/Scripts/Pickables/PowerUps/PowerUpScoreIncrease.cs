@@ -6,6 +6,7 @@ public class PowerUpScoreIncrease : PowerUpLogic
     public int ScoreIncrease;
     public override void PowerUpCollected(Collider player, PowerUp powUp)
     {
+        base.PowerUpCollected(player, powUp);
         ScoreSystem.UpdateScore(ScoreIncrease);
     }
 }

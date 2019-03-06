@@ -16,7 +16,8 @@ public class PowerUpTimedScoreMultiplier : PowerUpLogic
 
     public override void PowerUpCollected(Collider player, PowerUp powUp)
     {
-        if (TimeHelper.RemoveTimer(timer))
+        base.PowerUpCollected(player, powUp);
+        if (timer != null && timer.Value.Enabled && timer.Value.ElapsedTime < timer.Value.Duration && TimeHelper.RemoveTimer(timer))
         {
             TimeOver();
         }

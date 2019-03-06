@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Laser : ISOPoolable
 {
+    public const float DisabledTimerValue = float.MaxValue;
     public const float InverseMaxByte = 1f / byte.MaxValue;
 
     public SquiddyController CharacterController;
@@ -17,11 +18,14 @@ public class Laser : ISOPoolable
     public BasicEvent GameoverEvent;
     public float DisableDuration = 0.7f;
     public AnimationCurve AdditiveStrenghtCurve;
-    public TimeHelper TimeHelper;
     public ParticleSystem LaserParticle;
     public GameObject OnPlayerDeathParticle;
 
-    private LinkedListNode<TimerData> timer;
+    public float CurrentDuration { get { return DisableDuration + AdditiveStrenghtCurve.Evaluate(strenght * InverseMaxByte); } }
+    public bool IsDisabled { get { return Mathf.Approximately(timer, DisabledTimerValue); } }
+
+    private float timer = DisabledTimerValue;
+    private byte strenght = 0;
     protected override void OnValidate()
     {
         base.OnValidate();
@@ -80,6 +84,14 @@ public class Laser : ISOPoolable
     }
     private void Update()
     {
+        if (!IsDisabled)
+        {
+            timer += Time.deltaTime;
+            if (timer >= CurrentDuration)
+            {
+                Enable();
+            }
+        }
         if (CharacterController && CharacterController.transform.position.y > Root.transform.position.y + HeightTollerance)
         {
             Recycle();
@@ -116,7 +128,7 @@ public class Laser : ISOPoolable
             LaserParticle.Play(true);
         }
         SetComponentsActivation(true);
-        TimeHelper.RemoveTimer(timer);
+        timer = DisabledTimerValue;
     }
     public void Disable(byte Strenght)
     {
@@ -124,7 +136,7 @@ public class Laser : ISOPoolable
     }
     public void Disable(byte Strenght, bool restart)
     {
-        if (restart && timer != null && timer.Value.ElapsedTime < timer.Value.Duration)
+        if (restart && timer < DisableDuration)
         {
             return;
         }
@@ -136,11 +148,12 @@ public class Laser : ISOPoolable
         SetComponentsActivation(false);
         if (restart)
         {
-            timer = TimeHelper.RestartTimer(Enable, null, timer, DisableDuration + AdditiveStrenghtCurve.Evaluate(Strenght * InverseMaxByte));
+            timer = 0f;
+            strenght = Strenght;
         }
         else
         {
-            TimeHelper.RemoveTimer(timer);
+            timer = DisabledTimerValue;
         }
     }
 }
