@@ -37,25 +37,28 @@ public class MysteryRewardShowcaser : MonoBehaviour
         int totalCurrency = 0, totalAccParts = 0, totalSkins = 0;
         Utils.Builder.Clear();
 
-        for (int i = 0; i < rewards.Count; i++)
+        if (rewards != null)
         {
-            IRewardCollected reward = rewards[i];
-            if (reward != null && reward.IsRewardValid)
+            for (int i = 0; i < rewards.Count; i++)
             {
-                totalCurrency += reward.Currency;
-                totalAccParts += reward.AccessoryParts;
-                totalSkins += reward.SkinParts;
-                if (reward.Unlocked)
+                IRewardCollected reward = rewards[i];
+                if (reward != null && reward.IsRewardValid)
                 {
-                    if (Utils.Builder.Length == 0)
+                    totalCurrency += reward.Currency;
+                    totalAccParts += reward.AccessoryParts;
+                    totalSkins += reward.SkinParts;
+                    if (reward.Unlocked)
                     {
-                        Utils.Builder.Append(AccessoryPrefix);
+                        if (Utils.Builder.Length == 0)
+                        {
+                            Utils.Builder.Append(AccessoryPrefix);
+                        }
+                        else if (Utils.Builder.Length > 0)
+                        {
+                            Utils.Builder.Append(AccessoriesSeparator);
+                        }
+                        Utils.Builder.Append(reward.Unlocked.Describer.Name);
                     }
-                    else if (Utils.Builder.Length > 0)
-                    {
-                        Utils.Builder.Append(AccessoriesSeparator);
-                    }
-                    Utils.Builder.Append(reward.Unlocked.Describer.Name);
                 }
             }
         }
@@ -83,7 +86,7 @@ public class MysteryRewardShowcaser : MonoBehaviour
 
         if (TypeText || TypeTextPro)
         {
-            Utils.Builder.AppendFormat("{0}{1}{2}", typeDescriber.Name, BoxAmountSymbol, rewards.Count);
+            Utils.Builder.AppendFormat("{0}{1}{2}", typeDescriber.Name, BoxAmountSymbol, rewards != null ? rewards.Count : 0);
             string text = Utils.Builder.ToString();
             if (TypeText)
             {
