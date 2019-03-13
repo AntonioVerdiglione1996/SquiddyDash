@@ -31,6 +31,7 @@ public class MysteryRewardShowcaser : MonoBehaviour
     public string AccessoryPrefix = "";
     public string AccessorySuffix = ".";
     public string AccessoriesSeparator = ", ";
+    public string BoxAmountSymbol = " X ";
     public void Showcase(MysteryBoxType type, List<IRewardCollected> rewards)
     {
         int totalCurrency = 0, totalAccParts = 0, totalSkins = 0;
@@ -64,11 +65,26 @@ public class MysteryRewardShowcaser : MonoBehaviour
             Utils.Builder.Append(AccessorySuffix);
         }
 
+        if (AccessoriesText || AccessoriesTextPro)
+        {
+            string text = Utils.Builder.ToString();
+            if (AccessoriesText)
+            {
+                AccessoriesText.text = text;
+            }
+            if (AccessoriesTextPro)
+            {
+                AccessoriesTextPro.text = text;
+            }
+        }
+        Utils.Builder.Clear();
+
         Describer typeDescriber = TypesDescribers.Find(x => x.Type == type).Describer;
 
-        if(TypeText || TypeTextPro)
+        if (TypeText || TypeTextPro)
         {
-            string text = typeDescriber.Name;
+            Utils.Builder.AppendFormat("{0}{1}{2}", typeDescriber.Name, BoxAmountSymbol, rewards.Count);
+            string text = Utils.Builder.ToString();
             if (TypeText)
             {
                 TypeText.text = text;
@@ -77,6 +93,7 @@ public class MysteryRewardShowcaser : MonoBehaviour
             {
                 TypeTextPro.text = text;
             }
+            Utils.Builder.Clear();
         }
 
         if (TypeDescriptionText || TypeDescriptionTextPro)
@@ -117,24 +134,11 @@ public class MysteryRewardShowcaser : MonoBehaviour
             Skins.EndValue = totalSkins;
             Skins.RestartLerp();
         }
-        if (AccessoriesText || AccessoriesTextPro)
-        {
-            string text = Utils.Builder.ToString();
-            if (AccessoriesText)
-            {
-                AccessoriesText.text = text;
-            }
-            if (AccessoriesTextPro)
-            {
-                AccessoriesTextPro.text = text;
-            }
-        }
-        Utils.Builder.Clear();
     }
     protected virtual void OnValidate()
     {
         var types = System.Enum.GetValues(typeof(MysteryBoxType));
-        if(TypesDescribers.Count != types.Length)
+        if (TypesDescribers.Count != types.Length)
         {
             TypesDescribers = new List<MysteryTypeDescriber>(types.Length);
             foreach (MysteryBoxType item in types)
