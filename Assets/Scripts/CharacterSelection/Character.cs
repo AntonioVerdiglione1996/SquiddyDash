@@ -5,6 +5,7 @@ public class Character : MonoBehaviour
 {
     public bool DebugActive = true;
     public BaseDescriber Describer;
+    public Character SkinOf;
 
     public BasicEvent StartRotation;
     public BasicEvent StopRotation;
@@ -329,6 +330,10 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
+        if(SkinOf == this)
+        {
+            SkinOf = null;
+        }
         CollectAndSpawnSkills(null, null, false);
         Locators = transform.root.GetComponentsInChildren<AccessoryLocator>(true);
 #if UNITY_EDITOR

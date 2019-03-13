@@ -13,12 +13,7 @@ public class DescriberUISpawner : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        Transform characterTransform = Manager.GetModels()[Store.GetCharacterIndex()];
-        Character character = characterTransform.GetComponent<Character>();
-        if (!character)
-        {
-            character = characterTransform.GetComponentInChildren<Character>(true);
-        }
+        Character character = Manager.GetCurrentModel;
         if (!character)
         {
             return;

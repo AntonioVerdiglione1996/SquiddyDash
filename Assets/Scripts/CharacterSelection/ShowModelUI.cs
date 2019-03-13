@@ -12,17 +12,20 @@ public class ShowModelUI : MonoBehaviour
 
     private void Start()
     {
-       
+
         //i get the copy of the list of character in CharacterManager(Var because im Lazy)
         var models = CharacterManager.GetModels();
         //create a button foreach models we have in the list
         foreach (var model in models)
         {
-            CreateButtonForModel(model);
+            if (!model.SkinOf)
+            {
+                CreateButtonForModel(model);
+            }
         }
     }
     //instantiate the button and initialize it in ShowModelButton.cs
-    private void CreateButtonForModel(Transform Model)
+    private void CreateButtonForModel(Character Model)
     {
         var button = Instantiate(ButtonPrefab);
         //this.transform will be handled by a grid layout
@@ -35,13 +38,12 @@ public class ShowModelUI : MonoBehaviour
         //ci cacheiamo character component
         //1 gettare il componente character dal model
         //2 accedere alla variabile icon di character component
-        Character charcur = Model.GetComponent<Character>();
         Sprite iconcur = null;
-        if(charcur != null && charcur.Describer != null)
+        if (Model != null && Model.Describer != null)
         {
-            iconcur = charcur.Describer.Image;
+            iconcur = Model.Describer.Image;
         }
-     
+
         button.Initialize(Model, CharacterManager.EnableModel, iconcur);
     }
     //-----------------------------------------------

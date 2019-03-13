@@ -349,7 +349,6 @@ MonoBehaviour:
   CircleLowToBig: {fileID: 198534034337818612}
   CircleBigToLow: {fileID: 198543874932337478}
   SquiddyStats: {fileID: 11400000, guid: 0dbb727b1c6be0b49bb0ad91450a9401, type: 2}
-  StartPlatform: {fileID: 0}
   OnClickDown: {fileID: 11400000, guid: 107b0777af64a1f40a779f8b19f26422, type: 2}
   OnClickUp: {fileID: 11400000, guid: 95590cbdab998b8429d2b998d0155e29, type: 2}
   OnClickPressed: {fileID: 11400000, guid: 0f37b51e17c1d6744b9349ceb7fe43e2, type: 2}
