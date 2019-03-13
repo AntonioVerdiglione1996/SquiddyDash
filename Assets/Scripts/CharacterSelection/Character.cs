@@ -3,9 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Character : MonoBehaviour
 {
+    public const string DirName = "Characters";
+    public const string SkinName = "Skin_";
+    public const string Suffix = ".json";
     public bool DebugActive = true;
     public BaseDescriber Describer;
     public Character SkinOf;
+    public int SkinUnlockCost = 10;
+    public int SkinUnlockParts = 2;
+    public bool IsUnlocked
+    {
+        get { return isUnlocked; }
+        set
+        {
+            if(value != isUnlocked)
+            {
+                isUnlocked = value;
+                SaveToFile();
+            }
+        }
+    }
+    [SerializeField]
+    private bool isUnlocked = false;
 
     public BasicEvent StartRotation;
     public BasicEvent StopRotation;
@@ -17,7 +36,6 @@ public class Character : MonoBehaviour
 
     public AccessoryLocator[] Locators = new AccessoryLocator[0];
 
-    [SerializeField]
     private Skill[] Skills = null;
     private List<Skill> updatingSkills = null;
 
@@ -261,6 +279,10 @@ public class Character : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (!Restore())
+        {
+            SaveToFile();
+        }
         if (rotator)
         {
             if (StartRotation)
@@ -330,7 +352,7 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
-        if(SkinOf == this)
+        if (SkinOf == this)
         {
             SkinOf = null;
         }
@@ -365,6 +387,7 @@ public class Character : MonoBehaviour
             }
         }
 #endif
+        SaveToFile();
     }
 
     private void Awake()
@@ -387,5 +410,17 @@ public class Character : MonoBehaviour
 #endif
             }
         }
+    }
+
+    public bool Restore()
+    {
+        string nameFile = SkinOf ? SkinName + Describer.Name + Suffix : Describer.Name + Suffix;
+        return SerializerHandler.RestoreObjectFromJson(System.IO.Path.Combine(SerializerHandler.PersistentDataDirectoryPath, DirName), nameFile, this);
+    }
+
+    public void SaveToFile()
+    {
+        string nameFile = SkinOf ? SkinName + Describer.Name + Suffix : Describer.Name + Suffix;
+        SerializerHandler.SaveJsonFromInstance(System.IO.Path.Combine(SerializerHandler.PersistentDataDirectoryPath, DirName), nameFile, this, true);
     }
 }

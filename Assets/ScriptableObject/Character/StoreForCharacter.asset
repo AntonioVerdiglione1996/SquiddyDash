@@ -11,12 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fe4f33d7b33bc48831238eb7d82d75, type: 3}
   m_Name: StoreForCharacter
   m_EditorClassIdentifier: 
-  characterIndex: 0
+  characterIndex: 1
   Characters:
   - {fileID: 114016532896683028, guid: 7009f848c0153894db9c9c118a2094c6, type: 2}
   - {fileID: 114656531778918838, guid: ca09777b42df5ad448bbe83cafc74fc0, type: 2}
   - {fileID: 114788839173389414, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
-  - {fileID: 114823413394639216, guid: c19fd55ef03bec844ba19b01c33fb64c, type: 2}
   - {fileID: 114032327829515322, guid: f4fbf54542ba9be4c89816becce86480, type: 2}
   - {fileID: 114527217949672666, guid: bf90a2c3e4f27be46a50644621ead95e, type: 2}
   - {fileID: 114096579514514496, guid: ec5b25a3dcd719b4593de6ac56d2e549, type: 2}
