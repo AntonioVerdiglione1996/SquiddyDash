@@ -7,10 +7,15 @@ public class Character_Manager : MonoBehaviour
 {
     public static Character_Manager Instance;
 
-    private List<Transform> models;
+    private List<Character> models;
 
     public Text Text;
     public StoringCurrentModelToSpawn SpawnerCharacter;
+
+    public BasicSOPool SkinPool = new BasicSOPool();
+    public RectTransform SkinParent;
+
+    private Queue<GameObject> skinsSpawned = new Queue<GameObject>();
 
     public Character GetCurrentModel
     {
@@ -20,7 +25,7 @@ public class Character_Manager : MonoBehaviour
             {
                 return null;
             }
-            return models[SpawnerCharacter.GetCharacterIndex()].GetComponent<Character>();
+            return models[SpawnerCharacter.GetCharacterIndex()];
         }
     }
     private void OnAccessoryUpdated()
@@ -44,7 +49,7 @@ public class Character_Manager : MonoBehaviour
         if (Instance != null)
             Instance = this;
 
-        models = new List<Transform>();
+        models = new List<Character>();
 
         if (SpawnerCharacter.Characters == null || SpawnerCharacter.Characters.Count <= 0)
         {
@@ -55,17 +60,17 @@ public class Character_Manager : MonoBehaviour
 
         for (int i = 0; i < SpawnerCharacter.Characters.Count; i++)
         {
-            Transform Model = Instantiate(SpawnerCharacter.Characters[i], transform).transform;
+            Character character = Instantiate(SpawnerCharacter.Characters[i], transform);
+            Transform Model = character.transform;
 
             //every model is off as default
             Model.gameObject.SetActive(false);
 
-            models.Add(Model);
+            models.Add(character);
             //set always the first active
             if (i == SpawnerCharacter.GetCharacterIndex())
             {
                 Model.gameObject.SetActive(true);
-                Character character = Model.GetComponent<Character>();
                 //first iteration//name and color of the first model
                 if (character.Describer != null)
                 {
@@ -75,15 +80,14 @@ public class Character_Manager : MonoBehaviour
                 SpawnerCharacter.SetIndexAndAccessories(i, SpawnerCharacter.GetAccessoriesIndices());
             }
         }
-    }
 
-    //Callback activation of Model ->  SetActive
-    public void EnableModel(Transform modelToActivate)
+        EnableModel(GetCurrentModel, true);
+    }
+    private void EnableModel(Character modelToActivate, bool start)
     {
-        Character character = modelToActivate.GetComponent<Character>();
         for (int i = 0; i < models.Count; i++)
         {
-            Transform transformToActivate = models[i];
+            Character transformToActivate = models[i];
             bool shouldBeActive = transformToActivate == modelToActivate;
             if (shouldBeActive)
             {
@@ -91,18 +95,58 @@ public class Character_Manager : MonoBehaviour
             }
             transformToActivate.gameObject.SetActive(shouldBeActive);
             //Setting Varius UI Elements
-            if (character.Describer != null)
+            if (modelToActivate.Describer != null)
             {
-                Text.text = character.Describer.Name;
-                Text.color = character.Describer.Color;
+                Text.text = modelToActivate.Describer.Name;
+                Text.color = modelToActivate.Describer.Color;
             }
         }
+        if (!modelToActivate.SkinOf)
+        {
+            ManageSkins(SpawnerCharacter.GetCharacterIndex());
+        }
+        else if (start)
+        {
+            ManageSkins(SpawnerCharacter.Characters.FindIndex(c => c == modelToActivate.SkinOf));
+        }
+    }
+    private void ManageSkins(int originalIndex)
+    {
+        Character original = SpawnerCharacter.Characters[originalIndex];
+        while (skinsSpawned.Count > 0)
+        {
+            SkinPool.Recycle(skinsSpawned.Dequeue());
+        }
+        for (int i = 0; i < models.Count; i++)
+        {
+            Character character = models[i];
+            if (character.SkinOf == original)
+            {
+                GameObject go = Spawner.SpawnPrefab(null, SkinPool, SkinParent, false);
+                skinsSpawned.Enqueue(go);
+                ShowModelButton button = go.GetComponent<ShowModelButton>();
+                if (button)
+                {
+                    Sprite iconcur = null;
+                    if (character.Describer != null)
+                    {
+                        iconcur = character.Describer.Image;
+                    }
+                    button.Initialize(character, EnableModel, iconcur);
+                }
+            }
+        }
+    }
+    //Callback activation of Model ->  SetActive
+    public void EnableModel(Character modelToActivate)
+    {
+        EnableModel(modelToActivate, false);
     }
     private void OnDestroy()
     {
         SpawnerCharacter.OnAccessoryUpdated -= OnAccessoryUpdated;
     }
-    public List<Transform> GetModels()
+    public List<Character> GetModels()
     {
         return models;
     }

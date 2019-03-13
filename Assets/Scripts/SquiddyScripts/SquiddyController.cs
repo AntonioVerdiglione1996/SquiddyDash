@@ -28,7 +28,6 @@ public class SquiddyController : MonoBehaviour
 
 
     public SquiddyStats SquiddyStats;
-    public Platform StartPlatform;
     public Rigidbody Rb { get; private set; }
 
     public BasicEvent OnClickDown;
@@ -75,16 +74,16 @@ public class SquiddyController : MonoBehaviour
             MainCamera = Camera.main;
         }
 
-        if (!StartPlatform)
-        {
-            StartPlatform = FindObjectOfType<StartPlatform>().GetComponent<Platform>();
-        }
         //check for the first frame initialization of the current platform
         //TODO: Initialization in another class
         if (CurrentPlatformForSquiddy.CurrentPlatform == null)
         {
-            CurrentPlatformForSquiddy.CurrentPlatform = StartPlatform;
-            CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
+            StartPlatform plat = FindObjectOfType<StartPlatform>();
+            if (plat)
+            {
+                CurrentPlatformForSquiddy.CurrentPlatform = plat.GetComponent<Platform>();
+                CurrentPlatformForSquiddy.CurrentPlatform.IsLanded = true;
+            }
         }
 
         if (GameOverEvent)
@@ -146,14 +145,6 @@ public class SquiddyController : MonoBehaviour
     }
     private void OnValidate()
     {
-        if (!StartPlatform)
-        {
-            StartPlatform startP = FindObjectOfType<StartPlatform>();
-            if (startP)
-            {
-                StartPlatform = startP.GetComponentInChildren<Platform>();
-            }
-        }
 
         Rigidbody bd = GetComponent<Rigidbody>();
         if (bd)

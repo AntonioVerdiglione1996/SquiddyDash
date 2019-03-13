@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ShowModelButton : MonoBehaviour
 {
-    private Transform objectToShow;
+    private Character objectToShow;
 
     //this will be our actions that we call when click on button
-    private Action<Transform> ClickAction;
+    private Action<Character> ClickAction;
 
 
-    public void Initialize(Transform objectToShow, Action<Transform> ClickAction , Sprite Icon)
+    public void Initialize(Character objectToShow, Action<Character> ClickAction , Sprite Icon)
     {
         this.objectToShow = objectToShow;
         this.ClickAction = ClickAction;
@@ -22,12 +22,12 @@ public class ShowModelButton : MonoBehaviour
             this.GetComponent<Image>().sprite = Icon;
         }
     }
-    private void Awake()
+    private void OnEnable()
     {
         //register to the onclick events
         GetComponent<Button>().onClick.AddListener(HandleButtonClick);
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         GetComponent<Button>().onClick.RemoveListener(HandleButtonClick);
     }
