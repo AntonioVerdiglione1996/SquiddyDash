@@ -28,7 +28,7 @@ public class CollectMysteryBoxesReward : MonoBehaviour
         {
             for (int i = 0; i < Store.Accessories.Count; i++)
             {
-                Store.Accessories[i].Restore();
+                Store.Accessories[i].PurchaseInfo.RestoreFromFile(true);
             }
             for (int i = boxTypes.Count - 1; i >= 0; i--)
             {

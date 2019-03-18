@@ -19,7 +19,7 @@ public class LevelDataEditor : Editor
         }
         if (GUILayout.Button("Restore From File"))
         {
-            obj.Restore();
+            obj.Restore(true);
         }
     }
 }

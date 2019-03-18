@@ -19,8 +19,6 @@ public class PowerUp : Pickable
 
     public int VocalAudioSourceIndex = 1;
 
-    public List<Upgrade> Upgrades = new List<Upgrade>();
-
     private PowerUpLogic currentLogic;
 
     private GameObject powerupInstantiatedObject;
@@ -40,14 +38,14 @@ public class PowerUp : Pickable
         {
             bool isPowerupOverrided = false;
 
-            if (Upgrades != null)
+            if (currentLogic.AvailableUpgrades != null)
             {
-                for (int i = Upgrades.Count - 1; i >= 0; i--)
+                for (int i = currentLogic.AvailableUpgrades.Count - 1; i >= 0; i--)
                 {
-                    Upgrade up = Upgrades[i];
+                    Upgrade up = currentLogic.AvailableUpgrades[i];
                     if (up)
                     {
-                        if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                        if (up.IsPurchased)
                         {
                             isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                             up.ResetPowerup(this, currentLogic);
@@ -55,7 +53,7 @@ public class PowerUp : Pickable
                     }
                     else
                     {
-                        Upgrades.RemoveAt(i);
+                        currentLogic.AvailableUpgrades.RemoveAt(i);
                     }
                 }
             }
@@ -89,23 +87,26 @@ public class PowerUp : Pickable
 #if UNITY_EDITOR
         DebugPowerupMinIndex = Mathf.Clamp(DebugPowerupMinIndex, 0, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
         DebugPowerupMaxIndex = Mathf.Clamp(DebugPowerupMaxIndex, DebugPowerupMinIndex, PowerUps != null && PowerUps.Length != 0 ? PowerUps.Length : 0);
-
-        if (Upgrades == null || Upgrades.Count == 0)
+        for (int j = 0; j < PowerUps.Length; j++)
         {
-            return;
-        }
-        List<Upgrade> overriders = new List<Upgrade>();
-        for (int i = 0; i < Upgrades.Count; i++)
-        {
-            Upgrade up = Upgrades[i];
-            if (up && up.OverrideSkill)
+            PowerUpLogic currentLogic = PowerUps[j];
+            if (!currentLogic || currentLogic.AvailableUpgrades == null || currentLogic.AvailableUpgrades.Count == 0)
             {
-                overriders.Add(up);
+                continue;
             }
-        }
-        if (overriders.Count > 1)
-        {
-            Debug.LogErrorFormat("{0} contains {1} overriding upgrades, this may be an undesired state", this, overriders.Count);
+            List<Upgrade> overriders = new List<Upgrade>();
+            for (int i = 0; i < currentLogic.AvailableUpgrades.Count; i++)
+            {
+                Upgrade up = currentLogic.AvailableUpgrades[i];
+                if (up && up.OverrideSkill)
+                {
+                    overriders.Add(up);
+                }
+            }
+            if (overriders.Count > 1)
+            {
+                Debug.LogErrorFormat("{0} contains {1} overriding upgrades, this may be an undesired state", currentLogic, overriders.Count);
+            }
         }
 #endif
     }
@@ -119,14 +120,14 @@ public class PowerUp : Pickable
         {
             bool isPowerupOverrided = false;
 
-            if (Upgrades != null)
+            if (currentLogic.AvailableUpgrades != null)
             {
-                for (int i = Upgrades.Count - 1; i >= 0; i--)
+                for (int i = currentLogic.AvailableUpgrades.Count - 1; i >= 0; i--)
                 {
-                    Upgrade up = Upgrades[i];
+                    Upgrade up = currentLogic.AvailableUpgrades[i];
                     if (up)
                     {
-                        if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                        if (up.IsPurchased)
                         {
                             isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                             up.InitPowerup(this, currentLogic);
@@ -134,7 +135,7 @@ public class PowerUp : Pickable
                     }
                     else
                     {
-                        Upgrades.RemoveAt(i);
+                        currentLogic.AvailableUpgrades.RemoveAt(i);
                     }
                 }
             }
@@ -159,14 +160,14 @@ public class PowerUp : Pickable
             {
                 bool isPowerupOverrided = false;
 
-                if (Upgrades != null)
+                if (currentLogic.AvailableUpgrades != null)
                 {
-                    for (int i = Upgrades.Count - 1; i >= 0; i--)
+                    for (int i = currentLogic.AvailableUpgrades.Count - 1; i >= 0; i--)
                     {
-                        Upgrade up = Upgrades[i];
+                        Upgrade up = currentLogic.AvailableUpgrades[i];
                         if (up)
                         {
-                            if (up.IsPowerupUpgradable(currentLogic.GetType(), currentLogic))
+                            if (up.IsPurchased)
                             {
                                 isPowerupOverrided = isPowerupOverrided || up.OverridePowerup;
                                 up.PowerUpCollected(other, this, currentLogic);
@@ -174,7 +175,7 @@ public class PowerUp : Pickable
                         }
                         else
                         {
-                            Upgrades.RemoveAt(i);
+                            currentLogic.AvailableUpgrades.RemoveAt(i);
                         }
                     }
                 }

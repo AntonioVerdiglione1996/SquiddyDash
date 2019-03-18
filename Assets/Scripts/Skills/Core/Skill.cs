@@ -67,7 +67,7 @@ public abstract class Skill : MonoBehaviour
     /// <summary>
     /// List of upgrades applied to this skill
     /// </summary>
-    public List<Upgrade> Upgrades = new List<Upgrade>();
+    public List<Upgrade> AvailableUpgrades = new List<Upgrade>();
 
     /// <summary>
     /// Invokes this skill and enables this monobehaviour
@@ -107,14 +107,14 @@ public abstract class Skill : MonoBehaviour
     {
         enabled = false;
 #if UNITY_EDITOR
-        if (Upgrades == null || Upgrades.Count == 0)
+        if (AvailableUpgrades == null || AvailableUpgrades.Count == 0)
         {
             return;
         }
         List<Upgrade> overriders = new List<Upgrade>();
-        for (int i = 0; i < Upgrades.Count; i++)
+        for (int i = 0; i < AvailableUpgrades.Count; i++)
         {
-            Upgrade up = Upgrades[i];
+            Upgrade up = AvailableUpgrades[i];
             if (up && up.OverrideSkill)
             {
                 overriders.Add(up);
@@ -143,19 +143,22 @@ public abstract class Skill : MonoBehaviour
     {
         bool isBaseBehaviourOverrided = false;
 
-        if (Upgrades != null)
+        if (AvailableUpgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i >= 0; i--)
+            for (int i = AvailableUpgrades.Count - 1; i >= 0; i--)
             {
-                Upgrade up = Upgrades[i];
+                Upgrade up = AvailableUpgrades[i];
                 if (up)
                 {
-                    isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
-                    up.SkillUpdate(this);
+                    if (up.IsPurchased)
+                    {
+                        isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
+                        up.SkillUpdate(this);
+                    }
                 }
                 else
                 {
-                    Upgrades.RemoveAt(i);
+                    AvailableUpgrades.RemoveAt(i);
                 }
             }
         }
@@ -174,19 +177,22 @@ public abstract class Skill : MonoBehaviour
     {
         bool isBaseBehaviourOverrided = false;
 
-        if (Upgrades != null)
+        if (AvailableUpgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i >= 0; i--)
+            for (int i = AvailableUpgrades.Count - 1; i >= 0; i--)
             {
-                Upgrade up = Upgrades[i];
+                Upgrade up = AvailableUpgrades[i];
                 if (up)
                 {
-                    isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
-                    up.SkillStop(this);
+                    if (up.IsPurchased)
+                    {
+                        isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
+                        up.SkillStop(this);
+                    }
                 }
                 else
                 {
-                    Upgrades.RemoveAt(i);
+                    AvailableUpgrades.RemoveAt(i);
                 }
             }
         }
@@ -220,19 +226,22 @@ public abstract class Skill : MonoBehaviour
         bool isBaseBehaviourOverrided = false;
         Controller.AddInvincibilityInstance();
 
-        if (Upgrades != null)
+        if (AvailableUpgrades != null)
         {
-            for (int i = Upgrades.Count - 1; i >= 0; i--)
+            for (int i = AvailableUpgrades.Count - 1; i >= 0; i--)
             {
-                Upgrade up = Upgrades[i];
+                Upgrade up = AvailableUpgrades[i];
                 if (up)
                 {
-                    isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
-                    up.SkillStart(this);
+                    if (up.IsPurchased)
+                    {
+                        isBaseBehaviourOverrided = isBaseBehaviourOverrided || up.OverrideSkill;
+                        up.SkillStart(this);
+                    }
                 }
                 else
                 {
-                    Upgrades.RemoveAt(i);
+                    AvailableUpgrades.RemoveAt(i);
                 }
             }
         }

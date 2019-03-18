@@ -50,7 +50,7 @@ public class MysteryBoxRewardAccessory : MysteryBoxRewardData
         for (int i = 0; i < store.Accessories.Count; i++)
         {
             Accessory accessory = store.Accessories[i];
-            if (accessory && accessory.Rarity == Rarity && !accessory.IsUnlocked)
+            if (accessory && accessory.Rarity == Rarity && !accessory.PurchaseInfo.IsPurchased)
             {
                 accessoriesToChose.Add(accessory);
             }
@@ -64,7 +64,7 @@ public class MysteryBoxRewardAccessory : MysteryBoxRewardData
         int indexToUnlock = UnityEngine.Random.Range(0, accessoriesToChose.Count);
 
         lastUnlocked = accessoriesToChose[indexToUnlock];
-        lastUnlocked.IsUnlocked = true;
+        lastUnlocked.PurchaseInfo.IsPurchased = true;
 #if UNITY_EDITOR
         if (DebugEnabled)
         {

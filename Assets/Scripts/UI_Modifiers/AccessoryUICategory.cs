@@ -10,6 +10,13 @@ public class AccessoryUICategory : MonoBehaviour
     public EAccessoryType Type;
     public StoringCurrentModelToSpawn scm;
     public AccessoryUnlocker UnlockGO;
+
+    public PurchaseableUI ActualPrefab;
+    public PurchaseableUIUnlocker ActualUnlockGO;
+    private void AddAccessory(int index, IPurchaseObject obj)
+    {
+        scm.AddAccessory(index);
+    }
     public void SpawnType(EAccessoryType type)
     {
         Type = type;
@@ -21,11 +28,20 @@ public class AccessoryUICategory : MonoBehaviour
                 Accessory accessory = scm.Accessories[i];
                 if (accessory && accessory.Type == Type)
                 {
-                    accessory.Restore();
-                    AccessoryUI describer = Instantiate(Prefab, UiParent);
-                    describer.UnlockGO = UnlockGO;
-                    describer.SetDescriber(accessory.Describer);
-                    describer.SetAccessory(accessory, i);
+                    accessory.PurchaseInfo.RestoreFromFile(true);
+                    if (!ActualPrefab || !ActualUnlockGO)
+                    {
+                        AccessoryUI describer = Instantiate(Prefab, UiParent);
+                        describer.UnlockGO = UnlockGO;
+                        describer.SetDescriber(accessory.Describer);
+                        describer.SetAccessory(accessory, i);
+                    }
+                    else
+                    {
+                        PurchaseableUI p = Instantiate(ActualPrefab, UiParent);
+                        p.OnClickObjPurchasedEvent.AddListener(AddAccessory);
+                        p.SetPurchaseable(accessory, ActualUnlockGO, i);
+                    }
                 }
             }
         }

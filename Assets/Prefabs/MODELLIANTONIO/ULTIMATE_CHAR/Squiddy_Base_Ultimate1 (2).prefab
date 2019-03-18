@@ -1164,17 +1164,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer:
-    title: Default dude
-    description: Used by poor guys. Go buy something!
-    image: {fileID: 21300000, guid: 46ae4301e6f12de4389a9caa0cc557d5, type: 3}
-    color: {r: 0, g: 1, b: 0, a: 1}
-    material: {fileID: 0}
-  SkinOf: {fileID: 114016532896683028, guid: 7009f848c0153894db9c9c118a2094c6, type: 2}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkinOf: {fileID: 114016532896683028, guid: 7009f848c0153894db9c9c118a2094c6, type: 2}
+  purchaseInfo:
+    describer:
+      title: Squiddy_Base_Ultimate1 (2)
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: 100
+    accessoryPartsCost: -1
+    skinPartsCost: 20
+    filename: Skin_Squiddy_Base_Ultimate1 (2).json
+    fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
   UiSpawnDirection: 1
@@ -1182,10 +1189,9 @@ MonoBehaviour:
   - {fileID: 114115202645653928}
   - {fileID: 114685845129588822}
   - {fileID: 114945212009574624}
-  Skills:
-  - {fileID: 114933992895973082}
   DefaultIconsHeightDistance: 128
   DefaultIconsWidthDistance: 128
+  rotator: {fileID: 114364220040064022}
 --- !u!114 &114685845129588822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1220,7 +1226,7 @@ MonoBehaviour:
     color: {r: 0, g: 1, b: 0, a: 0.497}
     material: {fileID: 0}
   IsAutoActivating: 0
-  Upgrades: []
+  AvailableUpgrades: []
   ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
   GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   ForceApplied: {x: 0, y: 50, z: 0}

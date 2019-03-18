@@ -1374,8 +1374,9 @@ MonoBehaviour:
     description: Slows platforms for a brief duration
     image: {fileID: 21300000, guid: f89bdb5379f184c4db89ad33df098640, type: 3}
     color: {r: 1, g: 1, b: 1, a: 0.45}
+    material: {fileID: 0}
   IsAutoActivating: 0
-  Upgrades: []
+  AvailableUpgrades: []
   CoolDownDuration: 5
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   SlowTimePercentage: 0.5
@@ -1392,15 +1393,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer:
-    title: Dark squiddy
-    description: Too dark to be defined
-    image: {fileID: 21300000, guid: b16bfbf49643c65448f31f342423e159, type: 3}
-    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkinOf: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Dark_Ultimate
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: 500
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: Dark_Ultimate.json
+    fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
   UiSpawnDirection: 1
@@ -1408,10 +1418,9 @@ MonoBehaviour:
   - {fileID: 114644602952748906}
   - {fileID: 114973970033649664}
   - {fileID: 114679211601334432}
-  Skills:
-  - {fileID: 114650899932544834}
   DefaultIconsHeightDistance: 128
   DefaultIconsWidthDistance: 128
+  rotator: {fileID: 114130414259650180}
 --- !u!114 &114678120114137972
 MonoBehaviour:
   m_ObjectHideFlags: 1
