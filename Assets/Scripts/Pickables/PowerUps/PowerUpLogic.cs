@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 public abstract class PowerUpLogic : ScriptableObject
 {
+    public const string DirPath = "Upgrades";
     [Tooltip("Describer of this power up")]
     public BaseDescriber Describer;
     //particle to instantiate after squiddy take the pu
@@ -17,8 +19,35 @@ public abstract class PowerUpLogic : ScriptableObject
     [Tooltip("Pool used to spawn rendering object for this power up")]
     public BasicSOPool RenderingObjectPrefab;
 
+    [Tooltip("List of upgrades relative to this power up")]
+    public List<Upgrade> AvailableUpgrades = new List<Upgrade>();
+
     public PowLogicEvent OnCollected;
 
+    protected virtual void OnValidate()
+    {
+        for (int i = 0; i < AvailableUpgrades.Count; i++)
+        {
+            Upgrade up = AvailableUpgrades[i];
+            if (up)
+            {
+                up.PurchaseInfo.FileDirPath = DirPath;
+                up.PurchaseInfo.Filename = Describer.Name + "_" + up.Describer.Name + Utils.JSONExtension;
+                up.PurchaseInfo.SaveToFile();
+            }
+        }
+    }
+    protected virtual void Awake()
+    {
+        for (int i = 0; i < AvailableUpgrades.Count; i++)
+        {
+            Upgrade up = AvailableUpgrades[i];
+            if (up)
+            {
+                up.PurchaseInfo.RestoreFromFile(true);
+            }
+        }
+    }
     public GameObject SpawnPrefab()
     {
         return SpawnPrefab(null);

@@ -26,7 +26,7 @@ public class AccessoryUI : DescriberUI
         Accessory = accessory;
         AccessoryIndex = index;
         UnlockGO.gameObject.SetActive(false);
-        LockedGO.SetActive(!Accessory.IsUnlocked);
+        LockedGO.SetActive(!Accessory.PurchaseInfo.IsPurchased);
         if (Buttons != null)
         {
             for (int i = 0; i < Buttons.Length; i++)
@@ -39,15 +39,15 @@ public class AccessoryUI : DescriberUI
     }
     public bool TryUnlockWithCurrency()
     {
-        Accessory.IsUnlocked = Currency.ModifyGameCurrencyAmount(-Accessory.UnlockCost);
-        LockedGO.SetActive(!Accessory.IsUnlocked);
-        return Accessory.IsUnlocked;
+        Accessory.PurchaseInfo.IsPurchased = Currency.ModifyGameCurrencyAmount(-Accessory.PurchaseInfo.CurrencyCost);
+        LockedGO.SetActive(!Accessory.PurchaseInfo.IsPurchased);
+        return Accessory.PurchaseInfo.IsPurchased;
     }
     public bool TryUnlockWithAccessoryParts()
     {
-        Accessory.IsUnlocked = Currency.ModifyGameCurrencyAmount(0, -Accessory.UnlockParts);
-        LockedGO.SetActive(!Accessory.IsUnlocked);
-        return Accessory.IsUnlocked;
+        Accessory.PurchaseInfo.IsPurchased = Currency.ModifyGameCurrencyAmount(0, -Accessory.PurchaseInfo.AccessoryPartsCost);
+        LockedGO.SetActive(!Accessory.PurchaseInfo.IsPurchased);
+        return Accessory.PurchaseInfo.IsPurchased;
     }
     public void OnSetAccessory()
     {
@@ -55,7 +55,7 @@ public class AccessoryUI : DescriberUI
         {
             return;
         }
-        if (Accessory.IsUnlocked)
+        if (Accessory.PurchaseInfo.IsPurchased)
         {
             Scm.AddAccessory(AccessoryIndex);
         }

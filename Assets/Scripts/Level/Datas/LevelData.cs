@@ -2,27 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Gameplay/Levels/Data")]
-public class LevelData : ScriptableObject
+public class LevelData : ScriptableObject, IPurchaseObject
 {
     public const string Filename = "LevelData";
 
-    public BaseDescriber Describer = new BaseDescriber();
-
-    public bool IsUnlocked
-    {
-        get
-        {
-            return isUnlocked;
-        }
-        set
-        {
-            if (value != isUnlocked)
-            {
-                isUnlocked = value;
-                SaveToFile();
-            }
-        }
-    }
     public uint BestScore
     {
         get
@@ -30,31 +13,18 @@ public class LevelData : ScriptableObject
             return entries == null || entries.Length <= 0 ? 0 : entries[0].Score;
         }
     }
-    public int UnlockCost
-    {
-        get
-        {
-            return unlockCost;
-        }
-        set
-        {
-            if (unlockCost != value)
-            {
-                unlockCost = value;
-                SaveToFile();
-            }
-        }
-    }
+
+    [SerializeField]
+    private Purchaseable purchaseInfo = new Purchaseable();
+    public IPurchaseable PurchaseInfo { get { return purchaseInfo; } }
+    public IDescriber Describer { get { return PurchaseInfo.Describer; } }
+    public bool IsPurchased { get { return PurchaseInfo.IsPurchased; } set { PurchaseInfo.IsPurchased = value; } }
+
     public int LevelIndex { get { return levelIndex; } }
-    public string LevelName { get { return Describer.Name; } }
     public LeaderboardEntry[] Entries { get { return this.entries; } }
 
     [SerializeField]
     private int levelIndex;
-    [SerializeField]
-    private bool isUnlocked;
-    [SerializeField]
-    private int unlockCost = 10;
     [SerializeField]
     private string fileNameFull;
 
@@ -65,8 +35,14 @@ public class LevelData : ScriptableObject
     private LeaderboardEntry[] entries;
     void OnValidate()
     {
+        if (PurchaseInfo == null)
+        {
+            purchaseInfo = new Purchaseable();
+        }
+        PurchaseInfo.OnSaveOverride = SaveToFile;
+        PurchaseInfo.OnRestoreOverride = Restore;
         Utils.Builder.Clear();
-        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", Filename, LevelIndex, LevelName, Utils.JSONExtension);
+        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", Filename, LevelIndex, PurchaseInfo.Describer.Name, Utils.JSONExtension);
         fileNameFull = Utils.Builder.ToString(0, Utils.Builder.Length);
         Utils.Builder.Clear();
 
@@ -77,8 +53,8 @@ public class LevelData : ScriptableObject
         if (entries.Length != leaderboardTotalEntries)
         {
             SetEntries(entries);
-            SaveToFile();
         }
+        SaveToFile();
     }
     private void Awake()
     {
@@ -87,10 +63,9 @@ public class LevelData : ScriptableObject
     //restore serialized values
     private void OnEnable()
     {
-        if (!Restore())
-        {
-            SaveToFile();
-        }
+        PurchaseInfo.OnSaveOverride = SaveToFile;
+        PurchaseInfo.OnRestoreOverride = Restore;
+        Restore(true);
         if (entries == null)
         {
             entries = new LeaderboardEntry[leaderboardTotalEntries];
@@ -138,21 +113,6 @@ public class LevelData : ScriptableObject
 
         return i;
     }
-    public void SetValuesAndSave(bool isUnlocked, int unlockCost, LeaderboardEntry[] entries)
-    {
-        bool anyChanges = (this.isUnlocked != isUnlocked) || (this.unlockCost != unlockCost) || (entries != this.entries);
-
-        if (anyChanges)
-        {
-            this.isUnlocked = isUnlocked;
-            if (entries != this.entries)
-            {
-                SetEntries(entries);
-            }
-            this.unlockCost = unlockCost;
-            SaveToFile();
-        }
-    }
     public void SetEntries(LeaderboardEntry[] entries)
     {
         LeaderboardEntry[] temp = new LeaderboardEntry[leaderboardTotalEntries];
@@ -168,9 +128,14 @@ public class LevelData : ScriptableObject
         this.entries = temp;
         ReorderDescendingEntries();
     }
-    public bool Restore()
+    public bool Restore(bool SaveIfNoFileFound)
     {
-        return SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, fileNameFull, this);
+        bool found = SerializerHandler.RestoreObjectFromJson(SerializerHandler.PersistentDataDirectoryPath, fileNameFull, this);
+        if (!found && SaveIfNoFileFound)
+        {
+            SaveToFile();
+        }
+        return found;
     }
     public void SaveToFile()
     {

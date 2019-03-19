@@ -1,58 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour , IPurchaseObject
 {
     public const string DirName = "Characters";
     public const string SkinName = "Skin_";
-    public const string Suffix = ".json";
+    public const string Suffix = Utils.JSONExtension;
+
     public bool DebugActive = true;
-    public BaseDescriber Describer;
-    public Character SkinOf;
-    public int SkinUnlockCost = 10;
-    public int SkinUnlockParts = 2;
-    public bool IsUnlocked
-    {
-        get { return isUnlocked; }
-        set
-        {
-            if(value != isUnlocked)
-            {
-                isUnlocked = value;
-                SaveToFile();
-            }
-        }
-    }
-    [SerializeField]
-    private bool isUnlocked = false;
 
     public BasicEvent StartRotation;
     public BasicEvent StopRotation;
     public BasicEvent ResetRotation;
     public BasicEvent StartLerpRotation;
 
+    public Character SkinOf;
+
+    [SerializeField]
+    private Purchaseable purchaseInfo = new Purchaseable();
+    public IPurchaseable PurchaseInfo { get { return purchaseInfo; } }
+    public IDescriber Describer { get { return PurchaseInfo.Describer; } }
+    public bool IsPurchased { get { return PurchaseInfo.IsPurchased; } set { PurchaseInfo.IsPurchased = value; } }
+
+    public Skill MainSkill { get; private set; }
+
     public ButtonSkillActivator SkillIconUIPrefab;
     public EDirectionType UiSpawnDirection = EDirectionType.Up;
 
     public AccessoryLocator[] Locators = new AccessoryLocator[0];
 
-    private Skill[] Skills = null;
+    private Skill[] skills = null;
     private List<Skill> updatingSkills = null;
-
-    public Skill MainSkill { get; private set; }
 
     public float DefaultIconsHeightDistance = 128.0f;
     public float DefaultIconsWidthDistance = 128.0f;
 
     private SquiddyController controller = null;
 
+    [SerializeField]
     private DynamicRotator rotator;
 
     private Canvas SkillUIHolder;
 
     public Skill[] GetSkills()
     {
-        return Skills;
+        return skills;
     }
     public Transform GetAccessoryTransform(EAccessoryType type)
     {
@@ -120,55 +111,19 @@ public class Character : MonoBehaviour
             }
         }
 
-        Skills = transform.root.GetComponentsInChildren<Skill>(true);
-        Accessory[] accessories = transform.root.GetComponentsInChildren<Accessory>(true);
+        skills = transform.root.GetComponentsInChildren<Skill>(true);
         MainSkill = null;
-        if (Skills != null)
+        if (skills != null)
         {
-            for (int i = 0; i < Skills.Length; i++)
+            for (int i = 0; i < skills.Length; i++)
             {
-                Skill skill = Skills[i];
+                Skill skill = skills[i];
                 if (skill.IsMainSkill)
                 {
                     MainSkill = skill;
                     break;
                 }
-            }
-
-            if (MainSkill)
-            {
-                for (int i = 0; i < accessories.Length; i++)
-                {
-                    Accessory accessory = accessories[i];
-                    if (accessory.Upgrades != null && accessory.Upgrades.Count > 0)
-                    {
-                        for (int j = 0; j < accessory.Upgrades.Count; j++)
-                        {
-                            Upgrade up = accessory.Upgrades[j];
-                            if (up.IsSkillUpgradable(MainSkill.GetType(), MainSkill))
-                            {
-                                MainSkill.Upgrades.Add(up);
-                            }
-                            else
-                            {
-                                Skill localSkill = accessory.Skill;
-                                if (!localSkill)
-                                {
-                                    localSkill = accessory.GetComponent<Skill>();
-                                    if (!localSkill)
-                                    {
-                                        localSkill = accessory.GetComponentInChildren<Skill>(true);
-                                    }
-                                }
-                                if (localSkill && up.IsSkillUpgradable(localSkill.GetType(), localSkill))
-                                {
-                                    localSkill.Upgrades.Add(up);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            }           
         }
 
         if (spawnIcons)
@@ -208,12 +163,12 @@ public class Character : MonoBehaviour
                 return false;
             }
 
-            if (Skills != null)
+            if (skills != null)
             {
                 int uiSpawnedCount = 0;
-                for (int i = 0; i < Skills.Length; i++)
+                for (int i = 0; i < skills.Length; i++)
                 {
-                    Skill skill = Skills[i];
+                    Skill skill = skills[i];
                     skill.Initialize(controller);
                     if (!skill.IsSkillAutoActivating && SkillIconUIPrefab && SkillUIHolder)
                     {
@@ -278,12 +233,18 @@ public class Character : MonoBehaviour
         }
         return true;
     }
+    private void Awake()
+    {
+        if (PurchaseInfo == null)
+        {
+            purchaseInfo = new Purchaseable();
+        }
+        PurchaseInfo.Filename = SkinOf ? SkinName + PurchaseInfo.Describer.Name + Suffix : PurchaseInfo.Describer.Name + Suffix;
+        PurchaseInfo.FileDirPath = DirName;
+        PurchaseInfo.RestoreFromFile(true);
+    }
     private void OnEnable()
     {
-        if (!Restore())
-        {
-            SaveToFile();
-        }
         if (rotator)
         {
             if (StartRotation)
@@ -353,6 +314,20 @@ public class Character : MonoBehaviour
     }
     private void OnValidate()
     {
+        if (!rotator)
+        {
+            rotator = GetComponent<DynamicRotator>();
+        }
+        if (PurchaseInfo == null)
+        {
+            purchaseInfo = new Purchaseable();
+        }
+        if(PurchaseInfo.Describer.Name == null || PurchaseInfo.Describer.Name.Length <= 0)
+        {
+            PurchaseInfo.Describer.Name = this.name;
+        }
+        PurchaseInfo.Filename = SkinOf ? SkinName + PurchaseInfo.Describer.Name + Suffix : PurchaseInfo.Describer.Name + Suffix;
+        PurchaseInfo.FileDirPath = DirName;
         if (SkinOf == this)
         {
             SkinOf = null;
@@ -388,12 +363,7 @@ public class Character : MonoBehaviour
             }
         }
 #endif
-        SaveToFile();
-    }
-
-    private void Awake()
-    {
-        rotator = GetComponent<DynamicRotator>();
+        PurchaseInfo.SaveToFile();
     }
 
     private void Update()
@@ -411,17 +381,5 @@ public class Character : MonoBehaviour
 #endif
             }
         }
-    }
-
-    public bool Restore()
-    {
-        string nameFile = SkinOf ? SkinName + Describer.Name + Suffix : Describer.Name + Suffix;
-        return SerializerHandler.RestoreObjectFromJson(System.IO.Path.Combine(SerializerHandler.PersistentDataDirectoryPath, DirName), nameFile, this);
-    }
-
-    public void SaveToFile()
-    {
-        string nameFile = SkinOf ? SkinName + Describer.Name + Suffix : Describer.Name + Suffix;
-        SerializerHandler.SaveJsonFromInstance(System.IO.Path.Combine(SerializerHandler.PersistentDataDirectoryPath, DirName), nameFile, this, true);
     }
 }

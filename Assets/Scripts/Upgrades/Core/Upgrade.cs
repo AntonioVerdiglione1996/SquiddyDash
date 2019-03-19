@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
-public abstract class Upgrade : ScriptableObject
+public abstract class Upgrade : ScriptableObject, IPurchaseObject
 {
-    public BaseDescriber Describer;
+    [SerializeField]
+    private Purchaseable purchaseInfo = new Purchaseable();
+    public IPurchaseable PurchaseInfo { get { return purchaseInfo; } }
+    public IDescriber Describer { get { return PurchaseInfo.Describer; } }
+    public bool IsPurchased { get { return PurchaseInfo.IsPurchased; } set { PurchaseInfo.IsPurchased = value; } }
+
     public bool OverrideSkill = false;
     public bool OverridePowerup = false;
 
@@ -13,14 +18,11 @@ public abstract class Upgrade : ScriptableObject
     public abstract void SkillStop(Skill skill);
     public abstract void SkillUpdate(Skill skill);
 
-    public bool IsSkillUpgradable<T>(T Skill) where T : Skill
+    protected virtual void OnValidate()
     {
-        return IsSkillUpgradable(typeof(T), Skill);
+        if(PurchaseInfo.Describer.Name == null || PurchaseInfo.Describer.Name.Length <= 0)
+        {
+            PurchaseInfo.Describer.Name = this.name;
+        }
     }
-    public abstract bool IsSkillUpgradable(System.Type type, Skill skill);
-    public bool IsPowerupUpgradable<T>(T Powerup) where T : PowerUpLogic
-    {
-        return IsPowerupUpgradable(typeof(T), Powerup);
-    }
-    public abstract bool IsPowerupUpgradable(System.Type type, PowerUpLogic Powerup);
 }

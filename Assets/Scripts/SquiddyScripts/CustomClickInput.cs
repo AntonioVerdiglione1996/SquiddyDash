@@ -20,6 +20,7 @@ public class CustomClickInput : MonoBehaviour
     public EClickState ClickState { get; private set; }
     public Vector2 ScreenPosition { get; private set; }
     public Vector2 PreviousScreenPosition { get; private set; }
+    public bool DisableEvents = false;
     public bool DebugEnabled = true;
     private void Awake()
     {
@@ -34,7 +35,9 @@ public class CustomClickInput : MonoBehaviour
             return;
         }
 
-        if (!UpdateUI())
+        bool ConsumedInput = UpdateUI();
+
+        if (!ConsumedInput && !DisableEvents)
         {
             if (OnClickPressed && ClickState == EClickState.Pressed)
             {
@@ -121,12 +124,12 @@ public class CustomClickInput : MonoBehaviour
             //In this case screen position equals previous screen position
             PreviousScreenPosition = ScreenPosition;
         }
-        else if (touches > 0 && touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+        else if (touches > 0 && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
             ClickState = EClickState.Up;
             ScreenPosition = touch.position;
         }
-        else if (touches > 0 && touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+        else if (touches > 0 && (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary))
         {
             ClickState = EClickState.Pressed;
             ScreenPosition = touch.position;

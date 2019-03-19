@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-public class Accessory : MonoBehaviour
+public class Accessory : MonoBehaviour , IPurchaseObject
 {
     public const string Dirname = "Accessory";
-    public BaseDescriber Describer;
+
     public Transform Root;
     public Skill Skill;
-    public List<Upgrade> Upgrades = new List<Upgrade>();
     public EAccessoryType Type;
     public EAccessoryRarity Rarity
     {
@@ -18,6 +17,10 @@ public class Accessory : MonoBehaviour
             if (Skill)
             {
                 if (Skill is PassiveSkill)
+                {
+                    type |= EAccessoryRarity.Special;
+                }
+                else if (Skill is TimedSkill)
                 {
                     type |= EAccessoryRarity.Rare;
                 }
@@ -30,36 +33,19 @@ public class Accessory : MonoBehaviour
             {
                 type |= EAccessoryRarity.Common;
             }
-            if (Upgrades != null && Upgrades.Count > 0)
-            {
-                type |= EAccessoryRarity.Special;
-            }
             return type;
         }
     }
-    public string FileNameFull { get { return fileNameFull; } }
-    public int UnlockCost { get { return unlockCost; } }
-    public int UnlockParts { get { return unlockParts; } }
-    public bool IsUnlocked { get { return isUnlocked; } set { isUnlocked = value; SaveToFile(); } }
+
     [SerializeField]
-    private string fileNameFull;
-    [SerializeField]
-    private int unlockCost = 10;
-    [SerializeField]
-    private int unlockParts = 2;
-    [SerializeField]
-    private bool isUnlocked = false;
+    private Purchaseable purchaseInfo = new Purchaseable();
+    public IPurchaseable PurchaseInfo { get { return purchaseInfo; } }
+    public IDescriber Describer { get { return PurchaseInfo.Describer; } }
+    public bool IsPurchased { get { return PurchaseInfo.IsPurchased; } set { PurchaseInfo.IsPurchased = value; } }
 
     public uint MaxCollidersRecommended = 0;
     public uint MaxRigidbodiesRecommended = 0;
-    public bool Restore()
-    {
-        return SerializerHandler.RestoreObjectFromJson(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this);
-    }
-    public void SaveToFile()
-    {
-        SerializerHandler.SaveJsonFromInstance(Path.Combine(SerializerHandler.PersistentDataDirectoryPath, Dirname), fileNameFull, this, true);
-    }
+
     public void SetParent(Transform parent, bool worldPositionStays = false)
     {
         Reset();
@@ -95,22 +81,17 @@ public class Accessory : MonoBehaviour
     private void Awake()
     {
         Reset();
-        if (Upgrades != null)
-        {
-            for (int i = Upgrades.Count - 1; i >= 0; i--)
-            {
-                if (!Upgrades[i])
-                {
-                    Upgrades.RemoveAt(i);
-                }
-            }
-        }
     }
     private void Reset()
     {
+        if(PurchaseInfo == null)
+        {
+            purchaseInfo = new Purchaseable();
+        }
         Utils.Builder.Clear();
-        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", (this.Describer != null ? this.Describer.Name : name), Rarity, Type, Utils.JSONExtension);
-        fileNameFull = Utils.Builder.ToString(0, Utils.Builder.Length).Replace(", ", "_");
+        Utils.Builder.AppendFormat("{0}_{1}_{2}{3}", (PurchaseInfo.Describer != null ? PurchaseInfo.Describer.Name : name), Rarity, Type, Utils.JSONExtension);
+        PurchaseInfo.Filename = Utils.Builder.ToString(0, Utils.Builder.Length).Replace(", ", "_");
+        PurchaseInfo.FileDirPath = Dirname;
         Utils.Builder.Clear();
 
         if (!Skill)
@@ -133,6 +114,6 @@ public class Accessory : MonoBehaviour
             Debug.LogErrorFormat("{0} contains {1} colliders and {2} rigidbodies, while the recommended amount is {3} colliders and {4} rigidbodies. This may cause weird physics behaviour!", this, colliders.Length, bodies.Length, MaxCollidersRecommended, MaxRigidbodiesRecommended);
         }
 #endif
-        SaveToFile();
+        PurchaseInfo.SaveToFile();
     }
 }

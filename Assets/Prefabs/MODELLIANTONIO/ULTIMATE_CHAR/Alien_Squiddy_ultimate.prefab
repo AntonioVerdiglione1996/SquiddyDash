@@ -1433,23 +1433,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer:
-    title: Alien dude
-    description: Weird frick, stay away
-    image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
-    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkinOf: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Alien_Squiddy_ultimate
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: -1
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: Alien_Squiddy_ultimate.json
+    fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
   UiSpawnDirection: 1
   Locators: []
-  Skills:
-  - {fileID: 114936544877036286}
   DefaultIconsHeightDistance: 128
   DefaultIconsWidthDistance: 128
+  rotator: {fileID: 114391363637876188}
 --- !u!114 &114936544877036286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1466,12 +1474,13 @@ MonoBehaviour:
   MaxImproveInvokabilityValue: 3.4028235e+38
   IsMainSkill: 0
   Describer:
-    title: 
-    description: 
-    image: {fileID: 0}
+    title: Rocket jump
+    description: lol
+    image: {fileID: 21300000, guid: fe78649341d8c674d94ec6a317974a13, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
+    material: {fileID: 0}
   IsAutoActivating: 0
-  Upgrades: []
+  AvailableUpgrades: []
   ScoreSystem: {fileID: 0}
   GlobalEvent: {fileID: 0}
   ForceApplied: {x: 0, y: 50, z: 0}

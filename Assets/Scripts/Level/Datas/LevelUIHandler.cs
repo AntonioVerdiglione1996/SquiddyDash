@@ -56,7 +56,7 @@ public class LevelUIHandler : IIndexable
     public void OnClicked()
     {
         UnshowLeaderboard();
-        if (LevelData.IsUnlocked)
+        if (LevelData.PurchaseInfo.IsPurchased)
         {
             ScoreSystem.Reset();
             GlobalEvents.SetCurrentLevel(LevelData);
@@ -100,9 +100,9 @@ public class LevelUIHandler : IIndexable
     }
     public void UnlockLevel()
     {
-        if (Currency.ModifyGameCurrencyAmount(-LevelData.UnlockCost))
+        if (Currency.ModifyGameCurrencyAmount(-LevelData.PurchaseInfo.CurrencyCost))
         {
-            LevelData.IsUnlocked = true;
+            LevelData.PurchaseInfo.IsPurchased = true;
             Locker.gameObject.SetActive(false);
             DeactivateUnlockUI();
         }
@@ -119,9 +119,9 @@ public class LevelUIHandler : IIndexable
         DeactivateUnlockUI();
         if(LevelNameText)
         {
-            LevelNameText.text = LevelData.LevelName;
+            LevelNameText.text = LevelData.PurchaseInfo.Describer.Name;
         }
-        if (LevelData.IsUnlocked)
+        if (LevelData.PurchaseInfo.IsPurchased)
         {
             Locker.gameObject.SetActive(false);
         }
@@ -141,7 +141,7 @@ public class LevelUIHandler : IIndexable
         }
         if(UnlockButtonText)
         {
-            UnlockButtonText.text = UnlockButtonMessage + LevelData.UnlockCost.ToString();
+            UnlockButtonText.text = UnlockButtonMessage + LevelData.PurchaseInfo.CurrencyCost.ToString();
         }
     }
 }

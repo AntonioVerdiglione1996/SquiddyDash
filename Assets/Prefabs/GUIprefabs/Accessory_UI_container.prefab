@@ -148,6 +148,10 @@ MonoBehaviour:
   UiParent: {fileID: 224567558998572186}
   Type: 0
   scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
+  UnlockGO: {fileID: 0}
+  ActualPrefab: {fileID: 114911702565946592, guid: a1e2311c0c46c0546aeaf8b040ffcff1,
+    type: 2}
+  ActualUnlockGO: {fileID: 0}
 --- !u!114 &114974139713620096
 MonoBehaviour:
   m_ObjectHideFlags: 1

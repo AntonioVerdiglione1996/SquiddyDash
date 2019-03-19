@@ -11,16 +11,6 @@ public class UpgradeScore : Upgrade
     {
     }
 
-    public override bool IsPowerupUpgradable(Type type, PowerUpLogic Powerup)
-    {
-        return true;
-    }
-
-    public override bool IsSkillUpgradable(Type type, Skill skill)
-    {
-        return true;
-    }
-
     public override void PowerUpCollected(Collider player, PowerUp powUp, PowerUpLogic logic)
     {
         Score.UpdateScore(ScoreIncrease);
