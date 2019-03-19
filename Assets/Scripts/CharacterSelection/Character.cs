@@ -106,6 +106,7 @@ public class Character : MonoBehaviour
                             if (parent)
                             {
                                 accessory.SetParent(parent);
+                                accessory.Root.parent = parent;
                             }
 #if UNITY_EDITOR
                             else
