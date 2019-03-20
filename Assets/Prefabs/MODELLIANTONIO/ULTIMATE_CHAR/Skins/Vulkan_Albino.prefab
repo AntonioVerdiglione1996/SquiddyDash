@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 114683563217218312}
   - component: {fileID: 114324122294077600}
   m_Layer: 8
-  m_Name: Vulkan_Burn_Shock
+  m_Name: Vulkan_Albino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1310,16 +1310,16 @@ MonoBehaviour:
   SkinOf: {fileID: 114788839173389414, guid: e9729a1e6a698fd4aa24243ab1fb7799, type: 2}
   purchaseInfo:
     describer:
-      title: Vulkan_Ultimate
+      title: Vulkan_Albino
       description: 
       image: {fileID: 0}
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 1, g: 1, b: 1, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
     currencyCost: -1
     accessoryPartsCost: -1
     skinPartsCost: -1
-    filename: Skin_Vulkan_Ultimate.json
+    filename: Skin_Vulkan_Albino.json
     fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}

@@ -1339,8 +1339,9 @@ MonoBehaviour:
     description: Bigger jumps
     image: {fileID: 21300000, guid: 7668154bd83199648963a7d78190470f, type: 3}
     color: {r: 1, g: 0, b: 0, a: 0.497}
+    material: {fileID: 0}
   IsAutoActivating: 0
-  Upgrades: []
+  AvailableUpgrades: []
   CoolDownDuration: 10
   TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   JumpForceMultiplier: 2
@@ -1383,15 +1384,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugActive: 1
-  Describer:
-    title: A frikking volcano
-    description: SUPER HOT!
-    image: {fileID: 21300000, guid: b0d9910b4f8fab64b8aa6e5f63d11d34, type: 3}
-    color: {r: 0, g: 1, b: 0, a: 1}
   StartRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StopRotation: {fileID: 11400000, guid: 655541e25b5b47b478a46a3bc67411f5, type: 2}
   ResetRotation: {fileID: 11400000, guid: 0516a0ffb570b424fb035323700ed6ee, type: 2}
   StartLerpRotation: {fileID: 11400000, guid: 17b238fdd34fee34e9df65f2396e1686, type: 2}
+  SkinOf: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Vulkan
+      description: 
+      image: {fileID: 0}
+      color: {r: 1, g: 0.64137924, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: -1
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: Vulkan.json
+    fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
   UiSpawnDirection: 1
@@ -1399,10 +1409,9 @@ MonoBehaviour:
   - {fileID: 114165311657612680}
   - {fileID: 114390867699081734}
   - {fileID: 114766027530035660}
-  Skills:
-  - {fileID: 114535648387064572}
   DefaultIconsHeightDistance: 128
   DefaultIconsWidthDistance: 128
+  rotator: {fileID: 114333159869430594}
 --- !u!114 &114850507537007830
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1129,16 +1129,16 @@ MonoBehaviour:
   SkinOf: {fileID: 114096579514514496, guid: ec5b25a3dcd719b4593de6ac56d2e549, type: 2}
   purchaseInfo:
     describer:
-      title: Squiddy_Base_Ultimate1 (3)
+      title: Turkish_Squiddy
       description: 
       image: {fileID: 0}
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0, g: 1, b: 0.75172424, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
     currencyCost: 100
     accessoryPartsCost: -1
     skinPartsCost: 20
-    filename: Skin_Squiddy_Base_Ultimate1 (3).json
+    filename: Skin_Turkish_Squiddy.json
     fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}

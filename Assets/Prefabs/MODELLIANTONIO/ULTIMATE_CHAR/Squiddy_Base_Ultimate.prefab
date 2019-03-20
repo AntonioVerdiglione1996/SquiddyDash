@@ -1145,7 +1145,7 @@ MonoBehaviour:
   SkinOf: {fileID: 0}
   purchaseInfo:
     describer:
-      title: Squiddy_Base_Ultimate1 (3)
+      title: Default_Squiddy
       description: 
       image: {fileID: 0}
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -1154,7 +1154,7 @@ MonoBehaviour:
     currencyCost: 100
     accessoryPartsCost: -1
     skinPartsCost: 20
-    filename: Squiddy_Base_Ultimate1 (3).json
+    filename: Default_Squiddy.json
     fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}

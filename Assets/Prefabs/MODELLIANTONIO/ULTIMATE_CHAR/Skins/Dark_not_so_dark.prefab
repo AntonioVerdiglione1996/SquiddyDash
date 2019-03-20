@@ -1338,16 +1338,16 @@ MonoBehaviour:
   SkinOf: {fileID: 114656531778918838, guid: ca09777b42df5ad448bbe83cafc74fc0, type: 2}
   purchaseInfo:
     describer:
-      title: Dark_Ultimate
+      title: Dark_not_so_dark
       description: 
       image: {fileID: 0}
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0, g: 1, b: 0.99999976, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
     currencyCost: 500
     accessoryPartsCost: -1
     skinPartsCost: -1
-    filename: Skin_Dark_Ultimate.json
+    filename: Skin_Dark_not_so_dark.json
     fileDirPath: Characters
   SkillIconUIPrefab: {fileID: 114765456959367204, guid: 4c2a0a07a455e8f45bad62b57e61f0b5,
     type: 2}
