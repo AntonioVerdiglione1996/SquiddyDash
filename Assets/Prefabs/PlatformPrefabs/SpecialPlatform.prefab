@@ -411,7 +411,6 @@ MonoBehaviour:
   DebugPowerupMaxIndex: 5
   TriggerAudioSourceIndex: 0
   VocalAudioSourceIndex: 1
-  Upgrades: []
 --- !u!114 &114741969028539820
 MonoBehaviour:
   m_ObjectHideFlags: 1
