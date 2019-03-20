@@ -2278,8 +2278,7 @@ MonoBehaviour:
   Prefab: {fileID: 114913300609492666, guid: 606eea9812c46ae489980772d7b2e444, type: 2}
   UiParent: {fileID: 509414882}
   Dropdown: {fileID: 1372053143}
-  UnlockGO: {fileID: 0}
-  ActualUnlockGO: {fileID: 230786960}
+  UnlockGO: {fileID: 230786960}
 --- !u!1 &859142552
 GameObject:
   m_ObjectHideFlags: 0

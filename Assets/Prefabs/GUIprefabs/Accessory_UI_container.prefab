@@ -144,14 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6eea9d88edce5646b76776737e460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 114975305220626740, guid: dbf4ab1e07820ba48ad8608e7a911ca2, type: 2}
   UiParent: {fileID: 224567558998572186}
   Type: 0
   scm: {fileID: 11400000, guid: 24ca34ed94a51414789ffc72bfc9d0fa, type: 2}
+  Prefab: {fileID: 114911702565946592, guid: a1e2311c0c46c0546aeaf8b040ffcff1, type: 2}
   UnlockGO: {fileID: 0}
-  ActualPrefab: {fileID: 114911702565946592, guid: a1e2311c0c46c0546aeaf8b040ffcff1,
-    type: 2}
-  ActualUnlockGO: {fileID: 0}
 --- !u!114 &114974139713620096
 MonoBehaviour:
   m_ObjectHideFlags: 1

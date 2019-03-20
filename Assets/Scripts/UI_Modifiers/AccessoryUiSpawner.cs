@@ -12,8 +12,7 @@ public class AccessoryUiSpawner : MonoBehaviour
 
     public EAccessoryType CurrentType { get; private set; }
 
-    public AccessoryUnlocker UnlockGO;
-    public PurchaseableUIUnlocker ActualUnlockGO;
+    public PurchaseableUIUnlocker UnlockGO;
     void Start()
     {
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
@@ -21,7 +20,6 @@ public class AccessoryUiSpawner : MonoBehaviour
         {
             AccessoryUICategory cat = Instantiate(Prefab, UiParent);
             cat.UnlockGO = UnlockGO;
-            cat.ActualUnlockGO = ActualUnlockGO;
             cat.SpawnType(item);
             cat.gameObject.SetActive(false);
             Categories.Add(item, cat);
