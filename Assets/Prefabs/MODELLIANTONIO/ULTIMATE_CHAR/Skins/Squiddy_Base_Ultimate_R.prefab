@@ -1210,7 +1210,7 @@ MonoBehaviour:
     describer:
       title: Red_Squiddy
       description: 
-      image: {fileID: 0}
+      image: {fileID: 21300000, guid: 02174af2862ef8a47a87b849e2a8a526, type: 3}
       color: {r: 1, g: 0, b: 0, a: 1}
       material: {fileID: 0}
     isUnlocked: 0

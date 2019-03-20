@@ -5,4 +5,5 @@ public enum EAccessoryType
     Hat,
     Googles,
     Wings,
+    Trail,
 }

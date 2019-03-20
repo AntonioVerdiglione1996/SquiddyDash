@@ -1442,7 +1442,7 @@ MonoBehaviour:
     describer:
       title: Alien_Squiddy
       description: 
-      image: {fileID: 0}
+      image: {fileID: 21300000, guid: cb120ef87dc9a914fa2de4e9c472ce77, type: 3}
       color: {r: 0, g: 0.7352941, b: 0, a: 1}
       material: {fileID: 0}
     isUnlocked: 0

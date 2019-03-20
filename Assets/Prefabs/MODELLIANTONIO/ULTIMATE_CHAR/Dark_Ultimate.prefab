@@ -1402,7 +1402,7 @@ MonoBehaviour:
     describer:
       title: Dark
       description: 
-      image: {fileID: 0}
+      image: {fileID: 21300000, guid: b16bfbf49643c65448f31f342423e159, type: 3}
       color: {r: 0.29411763, g: 0.29411763, b: 0.29411763, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
