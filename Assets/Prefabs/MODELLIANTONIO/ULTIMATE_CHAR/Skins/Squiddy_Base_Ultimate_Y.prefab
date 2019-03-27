@@ -1131,7 +1131,7 @@ MonoBehaviour:
     describer:
       title: Yellow_Squiddy
       description: 
-      image: {fileID: 21300000, guid: 9a1a7e25a2228384fa75290f78e002ed, type: 3}
+      image: {fileID: 21300000, guid: 5d09a655500e29b408b6f346cdb1c37d, type: 3}
       color: {r: 1, g: 0.93103445, b: 0, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
