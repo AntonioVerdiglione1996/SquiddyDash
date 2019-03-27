@@ -44,6 +44,21 @@ public class GlobalEvents : ScriptableObject
         }
     }
     private List<MysteryBoxType> collectedBoxes;
+    public void RetryLevel()
+    {
+        StartLevel(CurrentLevel);
+    }
+    public bool StartLevel(LevelData level)
+    {
+        if (level && level.PurchaseInfo.IsPurchased)
+        {
+            System.Reset();
+            SetCurrentLevel(level);
+            SelectLevelByIndex(level.LevelIndex);
+            return true;
+        }
+        return false;
+    }
     public void AddInterruptGameoverInstance()
     {
         gameoverInterruptingCount = gameoverInterruptingCount == uint.MaxValue ? gameoverInterruptingCount : gameoverInterruptingCount + 1;

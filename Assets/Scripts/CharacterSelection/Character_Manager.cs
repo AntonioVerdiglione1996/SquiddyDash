@@ -127,12 +127,7 @@ public class Character_Manager : MonoBehaviour
                 ShowModelButton button = go.GetComponent<ShowModelButton>();
                 if (button)
                 {
-                    Sprite iconcur = null;
-                    if (character.Describer != null)
-                    {
-                        iconcur = character.Describer.Image;
-                    }
-                    button.Initialize(character, EnableModel, iconcur);
+                    button.Initialize(character, EnableModel);
                 }
             }
         }

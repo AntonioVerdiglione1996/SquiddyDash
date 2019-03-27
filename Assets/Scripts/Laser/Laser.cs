@@ -29,6 +29,10 @@ public class Laser : ISOPoolable
     protected override void OnValidate()
     {
         base.OnValidate();
+        for (int i = 0; i < Colliders.Length; i++)
+        {
+            Colliders[i].isTrigger = true;
+        }
         if (!CharacterController)
         {
             CharacterController = FindObjectOfType<SquiddyController>();
@@ -99,7 +103,11 @@ public class Laser : ISOPoolable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (CharacterController && !CharacterController.IsInvincible && collision.gameObject.layer == 8)
+        OnTriggerEnter(collision.collider);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (CharacterController && !CharacterController.IsInvincible && other.gameObject.layer == 8)
         {
             this.enabled = false;
 
@@ -109,7 +117,6 @@ public class Laser : ISOPoolable
             }
         }
     }
-
     public void SetComponentsActivation(bool enabled)
     {
         if (Colliders != null)

@@ -56,11 +56,8 @@ public class LevelUIHandler : IIndexable
     public void OnClicked()
     {
         UnshowLeaderboard();
-        if (LevelData.PurchaseInfo.IsPurchased)
+        if (GlobalEvents.StartLevel(LevelData))
         {
-            ScoreSystem.Reset();
-            GlobalEvents.SetCurrentLevel(LevelData);
-            GlobalEvents.SelectLevelByIndex(LevelData.LevelIndex);
             return;
         }
         if (UnlockUI)

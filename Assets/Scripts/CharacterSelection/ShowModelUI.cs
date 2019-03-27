@@ -38,13 +38,8 @@ public class ShowModelUI : MonoBehaviour
         //ci cacheiamo character component
         //1 gettare il componente character dal model
         //2 accedere alla variabile icon di character component
-        Sprite iconcur = null;
-        if (Model != null && Model.Describer != null)
-        {
-            iconcur = Model.Describer.Image;
-        }
 
-        button.Initialize(Model, CharacterManager.EnableModel, iconcur);
+        button.Initialize(Model, CharacterManager.EnableModel);
     }
     //-----------------------------------------------
 }

@@ -12,14 +12,17 @@ public class ShowModelButton : MonoBehaviour
     private Action<Character> ClickAction;
 
 
-    public void Initialize(Character objectToShow, Action<Character> ClickAction , Sprite Icon)
+    public void Initialize(Character objectToShow, Action<Character> ClickAction)
     {
         this.objectToShow = objectToShow;
         this.ClickAction = ClickAction;
         //THIS ONLY WHEN WE HAVE SPRITES
-        if (this.GetComponent<Image>() != null)
+        Image img = this.GetComponent<Image>();
+        if (img && objectToShow)
         {
-            this.GetComponent<Image>().sprite = Icon;
+            img.sprite = objectToShow.Describer.Image;
+            img.color = objectToShow.Describer.Color;
+            img.material = objectToShow.Describer.Material;
         }
     }
     private void OnEnable()
