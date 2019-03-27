@@ -11,16 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
   m_Name: Level_Laser
   m_EditorClassIdentifier: 
-  Describer:
-    title: Laser_Level_Ultimate
-    description: Them lasers
-    image: {fileID: 0}
-    color: {r: 1, g: 0, b: 0, a: 1}
-    material: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Laser
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: 50
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: 
+    fileDirPath: 
   levelIndex: 4
-  isUnlocked: 0
-  unlockCost: 22
-  fileNameFull: LevelData_4_Laser_Level_Ultimate.json
+  fileNameFull: LevelData_4_Laser.json
   leaderboardTotalEntries: 10
   entries:
   - Name: Saturday, March 02, 2019

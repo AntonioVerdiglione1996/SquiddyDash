@@ -11,16 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
   m_Name: Level_Wind
   m_EditorClassIdentifier: 
-  Describer:
-    title: Wind_Level_Ultimate
-    description: Level with wind in it
-    image: {fileID: 0}
-    color: {r: 0, g: 0, b: 1, a: 1}
-    material: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Wind
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 0
+    currencyCost: 20
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: 
+    fileDirPath: 
   levelIndex: 5
-  isUnlocked: 0
-  unlockCost: 10
-  fileNameFull: LevelData_5_Wind_Level_Ultimate.json
+  fileNameFull: LevelData_5_Wind.json
   leaderboardTotalEntries: 10
   entries:
   - Name: 
