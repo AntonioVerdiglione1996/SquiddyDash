@@ -1340,7 +1340,7 @@ MonoBehaviour:
     describer:
       title: Dark_not_so_dark
       description: 
-      image: {fileID: 0}
+      image: {fileID: 21300000, guid: 5d09a655500e29b408b6f346cdb1c37d, type: 3}
       color: {r: 0, g: 1, b: 0.99999976, a: 1}
       material: {fileID: 0}
     isUnlocked: 0
