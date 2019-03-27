@@ -20,8 +20,8 @@ MonoBehaviour:
       material: {fileID: 0}
     isUnlocked: 1
     currencyCost: 0
-    accessoryPartsCost: -1
-    skinPartsCost: -1
+    accessoryPartsCost: 0
+    skinPartsCost: 0
     filename: 
     fileDirPath: 
   levelIndex: 3
