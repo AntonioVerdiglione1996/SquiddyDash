@@ -11,16 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8ba1c7c16d3f4fb22da8b6e38b4d2, type: 3}
   m_Name: Level_Base
   m_EditorClassIdentifier: 
-  Describer:
-    title: Default_Level
-    description: Default boring stuff
-    image: {fileID: 0}
-    color: {r: 0, g: 1, b: 0, a: 1}
-    material: {fileID: 0}
+  purchaseInfo:
+    describer:
+      title: Basic
+      description: 
+      image: {fileID: 0}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      material: {fileID: 0}
+    isUnlocked: 1
+    currencyCost: 0
+    accessoryPartsCost: -1
+    skinPartsCost: -1
+    filename: 
+    fileDirPath: 
   levelIndex: 3
-  isUnlocked: 1
-  unlockCost: 1
-  fileNameFull: LevelData_3_Default_Level.json
+  fileNameFull: LevelData_3_Basic.json
   leaderboardTotalEntries: 10
   entries:
   - Name: 
