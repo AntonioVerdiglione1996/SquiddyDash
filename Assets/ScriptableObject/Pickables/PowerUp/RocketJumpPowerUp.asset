@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: RocketJumpPowerUp
   m_EditorClassIdentifier: 
   Describer:
-    title: Orange
+    title: Rocket Jump
     description: 
     image: {fileID: 0}
     color: {r: 0, g: 1, b: 0, a: 1}
@@ -25,6 +25,7 @@ MonoBehaviour:
   RenderingObjectPrefab:
     Prefab: {fileID: 1783614295051722, guid: 73ee7552b2b844749b01aa4f97d9bb4c, type: 2}
     PersistentPoolInScenes: 1
+  AvailableUpgrades: []
   OnCollected: {fileID: 11400000, guid: 9f8842e7606d5814880f001309c42050, type: 2}
   LimitedSkillPrefab:
     Prefab: {fileID: 1141219522221854, guid: 729d6da43a430c7468f97b9caabc009b, type: 2}

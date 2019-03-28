@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: UltraJumpPowerUp
   m_EditorClassIdentifier: 
   Describer:
-    title: Green
+    title: Ultra Jump
     description: 
     image: {fileID: 0}
     color: {r: 0, g: 1, b: 0, a: 1}
@@ -25,6 +25,7 @@ MonoBehaviour:
   RenderingObjectPrefab:
     Prefab: {fileID: 1018832359676456, guid: 09bc7500c140553449acf361564181df, type: 2}
     PersistentPoolInScenes: 1
+  AvailableUpgrades: []
   OnCollected: {fileID: 11400000, guid: 9f8842e7606d5814880f001309c42050, type: 2}
   LimitedSkillPrefab:
     Prefab: {fileID: 1872875767083828, guid: 78d5571a5cee6b34198bb8029acc5cf7, type: 2}

@@ -1350,7 +1350,7 @@ MonoBehaviour:
     title: Ultra jump
     description: Bigger jumps
     image: {fileID: 21300000, guid: 7668154bd83199648963a7d78190470f, type: 3}
-    color: {r: 1, g: 0, b: 0, a: 0.497}
+    color: {r: 1, g: 1, b: 1, a: 1}
     material: {fileID: 0}
   IsAutoActivating: 0
   AvailableUpgrades: []

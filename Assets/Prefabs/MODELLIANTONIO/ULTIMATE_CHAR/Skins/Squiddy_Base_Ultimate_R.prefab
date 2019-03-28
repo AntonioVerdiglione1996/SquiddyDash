@@ -1178,8 +1178,8 @@ MonoBehaviour:
   Describer:
     title: Rocket
     description: Rocket
-    image: {fileID: 21300000, guid: d0da9204dbe07d847864970f70a4ef0e, type: 3}
-    color: {r: 0, g: 1, b: 0, a: 0.497}
+    image: {fileID: 21300000, guid: 1af7184810cb2c749852bf0179956860, type: 3}
+    color: {r: 1, g: 0, b: 0, a: 1}
     material: {fileID: 0}
   IsAutoActivating: 0
   AvailableUpgrades: []
