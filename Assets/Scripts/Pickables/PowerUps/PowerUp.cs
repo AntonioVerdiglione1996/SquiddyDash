@@ -32,6 +32,10 @@ public class PowerUp : Pickable
             aSourceForVocal = finder.Sources[VocalAudioSourceIndex];
         }
     }
+    protected override IDescriber GetOnCollectedInfo()
+    {
+        return currentLogic ? currentLogic.Describer : base.GetOnCollectedInfo();
+    }
     private void OnDisable()
     {
         if (currentLogic)

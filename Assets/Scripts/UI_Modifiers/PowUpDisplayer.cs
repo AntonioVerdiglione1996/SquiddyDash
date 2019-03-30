@@ -76,7 +76,7 @@ public class PowUpDisplayer : MonoBehaviour
     }
     public void OnCollected(IDescriber describer)
     {
-        if (describer != null && (Text || TextPro))
+        if (describer != null)
         {
             SetActivation(true);
             timer = 0f;
