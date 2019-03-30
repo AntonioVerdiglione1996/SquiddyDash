@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Power Up Score Increase
   m_EditorClassIdentifier: 
   Describer:
-    title: Blu
+    title: Score Increase
     description: 
     image: {fileID: 0}
     color: {r: 0, g: 1, b: 0, a: 1}

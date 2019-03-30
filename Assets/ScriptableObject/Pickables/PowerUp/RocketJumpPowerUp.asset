@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: RocketJumpPowerUp
   m_EditorClassIdentifier: 
   Describer:
-    title: Orange
+    title: Rocket Jump
     description: 
     image: {fileID: 0}
     color: {r: 0, g: 1, b: 0, a: 1}
