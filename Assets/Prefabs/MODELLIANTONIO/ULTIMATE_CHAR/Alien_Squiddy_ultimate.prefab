@@ -1481,8 +1481,8 @@ MonoBehaviour:
     material: {fileID: 0}
   IsAutoActivating: 0
   AvailableUpgrades: []
-  ScoreSystem: {fileID: 0}
-  GlobalEvent: {fileID: 0}
+  ScoreSystem: {fileID: 11400000, guid: 6c5380e681fc179439285bab11668802, type: 2}
+  GlobalEvent: {fileID: 11400000, guid: 73f3e09a60edddf47be4b62c07d70733, type: 2}
   ForceApplied: {x: 0, y: 50, z: 0}
   Mode: 1
   defaultScoreRequirement: 10

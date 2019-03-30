@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e77b456535ed24ebb07acab1f01252, type: 3}
-  m_Name: OnPowerupLogicCollected
+  m_Script: {fileID: 11500000, guid: 350d49d1eae4f8f41964f4ec9b5a4532, type: 3}
+  m_Name: OnPickableCollected
   m_EditorClassIdentifier: 
   LocalDebugActive: 0
-  CurrentLogic: {fileID: 0}

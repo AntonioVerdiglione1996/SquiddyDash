@@ -100,7 +100,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  TimeHelper: {fileID: 11400000, guid: bdb1e91b30562d84186fe8f49d1d6e3a, type: 2}
   LaserParticle: {fileID: 0}
   OnPlayerDeathParticle: {fileID: 1365656158052374, guid: 2a2af400d0ea3af41b3e2bf783d48961,
     type: 2}
@@ -199,7 +198,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488070402599788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.1
   m_Height: 5

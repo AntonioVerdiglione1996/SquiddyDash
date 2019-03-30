@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public abstract class Pickable : ISOPoolable
 {
     public event System.Action OnPickupCollected;
@@ -11,10 +10,22 @@ public abstract class Pickable : ISOPoolable
     public Collider Collider { get { return myCollider; } }
     public Rigidbody Body { get { return body; } }
     public bool FindRigidbody = true;
+    public DescriberEvent OnCollected;
     [SerializeField]
     private Collider myCollider;
     [SerializeField]
     private Rigidbody body;
+
+    private BaseDescriber defaultDescriber;
+    protected virtual IDescriber GetOnCollectedInfo()
+    {
+        if (defaultDescriber == null)
+        {
+            defaultDescriber = new BaseDescriber();
+            defaultDescriber.Name = Pool.Prefab ? Pool.Prefab.name : name;
+        }
+        return defaultDescriber;
+    }
     protected override void OnValidate()
     {
         base.OnValidate();
@@ -52,6 +63,11 @@ public abstract class Pickable : ISOPoolable
             if (OnPickupCollected != null)
             {
                 OnPickupCollected();
+            }
+            if (OnCollected)
+            {
+                OnCollected.CurrentDescriber = GetOnCollectedInfo();
+                OnCollected.Raise();
             }
             recycle = recycle || RecycleOnPickup;
         }

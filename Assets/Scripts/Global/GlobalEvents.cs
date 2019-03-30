@@ -184,7 +184,8 @@ public class GlobalEvents : ScriptableObject
         }
         if (CurrentLevel && System)
         {
-            CurrentLevel.TryAddEntry((uint)(System.Score + GetBonusScore()), DateTime.Now.ToLocalTime().ToLongDateString());
+            CurrentLevel.
+                TryAddEntry((uint)(System.Score + GetBonusScore()), DateTime.Now.ToLocalTime().ToLongDateString());
         }
         AddBonusCurrency(-bonusCurrency);
         AddBonusScore(-bonusScore);

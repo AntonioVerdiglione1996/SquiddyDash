@@ -148,6 +148,7 @@ MonoBehaviour:
   RecycleOnSafetyLayer: 1
   SafetyLayerRecycler: 9
   FindRigidbody: 1
+  OnCollected: {fileID: 11400000, guid: 7865ce05f1258234594e7af46b912d15, type: 2}
   myCollider: {fileID: 135160017172790448}
   body: {fileID: 54650548466809612}
   BonusScoreIncrease: 0

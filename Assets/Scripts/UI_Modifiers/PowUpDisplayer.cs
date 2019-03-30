@@ -5,9 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 public class PowUpDisplayer : MonoBehaviour
 {
-    public PowLogicEvent OnCollectedEvent;
+    public DescriberEvent OnCollectedEvent;
     public Text Text;
     public TextMeshPro TextPro;
+    public Image Image;
+    public Text Description;
+    public TextMeshPro DescriptionPro;
     public string Prefix = string.Empty;
     public string Suffix = " collected!";
     public float ShowDuration = 2f;
@@ -29,14 +32,14 @@ public class PowUpDisplayer : MonoBehaviour
         SetActivation(false);
         if (OnCollectedEvent)
         {
-            OnCollectedEvent.OnPowLogicEvent += OnCollected;
+            OnCollectedEvent.OnDescriberEvent += OnCollected;
         }
     }
     private void OnDestroy()
     {
         if (OnCollectedEvent)
         {
-            OnCollectedEvent.OnPowLogicEvent -= OnCollected;
+            OnCollectedEvent.OnDescriberEvent -= OnCollected;
         }
     }
     private void SetActivation(bool isActive)
@@ -50,6 +53,18 @@ public class PowUpDisplayer : MonoBehaviour
         {
             TextPro.enabled = isActive;
         }
+        if (Description)
+        {
+            Description.enabled = isActive;
+        }
+        if (DescriptionPro)
+        {
+            DescriptionPro.enabled = isActive;
+        }
+        if (Image)
+        {
+            Image.enabled = isActive;
+        }
     }
     private void Update()
     {
@@ -59,14 +74,14 @@ public class PowUpDisplayer : MonoBehaviour
             SetActivation(false);
         }
     }
-    public void OnCollected(PowerUpLogic logic)
+    public void OnCollected(IDescriber describer)
     {
-        if (logic && (Text || TextPro))
+        if (describer != null && (Text || TextPro))
         {
             SetActivation(true);
             timer = 0f;
             Utils.Builder.Clear();
-            Utils.Builder.AppendFormat("{0}{1}{2}", Prefix, logic.Describer.Name, Suffix);
+            Utils.Builder.AppendFormat("{0}{1}{2}", Prefix, describer.Name, Suffix);
             string text = Utils.Builder.ToString();
             Utils.Builder.Clear();
             if (Text)
@@ -76,6 +91,20 @@ public class PowUpDisplayer : MonoBehaviour
             if (TextPro)
             {
                 TextPro.text = text;
+            }
+            if (Description)
+            {
+                Description.text = describer.Description;
+            }
+            if (DescriptionPro)
+            {
+                DescriptionPro.text = describer.Description;
+            }
+            if (Image)
+            {
+                Image.sprite = describer.Image;
+                Image.color = describer.Color;
+                Image.material = describer.Material;
             }
         }
     }

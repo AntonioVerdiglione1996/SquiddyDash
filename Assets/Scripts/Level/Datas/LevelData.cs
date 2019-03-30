@@ -58,6 +58,7 @@ public class LevelData : ScriptableObject, IPurchaseObject
     }
     private void Awake()
     {
+        Restore(true);
         OnValidate();
     }
     //restore serialized values

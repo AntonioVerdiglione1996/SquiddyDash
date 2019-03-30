@@ -22,7 +22,7 @@ public abstract class PowerUpLogic : ScriptableObject
     [Tooltip("List of upgrades relative to this power up")]
     public List<Upgrade> AvailableUpgrades = new List<Upgrade>();
 
-    public PowLogicEvent OnCollected;
+    public DescriberEvent OnCollected;
 
     protected virtual void OnValidate()
     {
@@ -68,7 +68,7 @@ public abstract class PowerUpLogic : ScriptableObject
     {
         if (OnCollected)
         {
-            OnCollected.CurrentLogic = this;
+            OnCollected.CurrentDescriber = this.Describer;
             OnCollected.Raise();
         }
     }

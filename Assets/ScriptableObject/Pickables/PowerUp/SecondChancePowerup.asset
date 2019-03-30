@@ -25,7 +25,8 @@ MonoBehaviour:
   RenderingObjectPrefab:
     Prefab: {fileID: 1516330385383864, guid: 2a1ae37771e9d5843b79426def66cee1, type: 2}
     PersistentPoolInScenes: 1
-  OnCollected: {fileID: 11400000, guid: 9f8842e7606d5814880f001309c42050, type: 2}
+  AvailableUpgrades: []
+  OnCollected: {fileID: 11400000, guid: 7865ce05f1258234594e7af46b912d15, type: 2}
   LimitedSkillPrefab:
     Prefab: {fileID: 1787684671219964, guid: 138f1aa893159c04e93f7642c0c7d205, type: 2}
     PersistentPoolInScenes: 1

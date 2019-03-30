@@ -99,7 +99,7 @@ public class LevelUIHandler : IIndexable
     {
         if (Currency.ModifyGameCurrencyAmount(-LevelData.PurchaseInfo.CurrencyCost))
         {
-            LevelData.PurchaseInfo.IsPurchased = true;
+            LevelData.IsPurchased = true;
             Locker.gameObject.SetActive(false);
             DeactivateUnlockUI();
         }
