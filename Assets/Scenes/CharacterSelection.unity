@@ -3512,8 +3512,8 @@ MonoBehaviour:
   distance: 5
   xSpeed: 240
   ySpeed: 120
-  xSpeedMobile: 240
-  ySpeedMobile: 120
+  xSpeedMobile: 60
+  ySpeedMobile: 40
   scrollrate: 3
   yMinLimit: -20
   yMaxLimit: 80
