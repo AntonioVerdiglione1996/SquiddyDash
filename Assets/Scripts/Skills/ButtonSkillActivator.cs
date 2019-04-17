@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class ButtonSkillActivator : MonoBehaviour
 {
+    public delegate void OnSkillReady(Skill ReadySkill);
+    public delegate void OnSkillInvoked(Skill InvokedSkill);
     public Image Image;
     public Skill ActivableSkill;
-    public event System.Action OnSkillReady;
-    public event System.Action OnSkillInvoked;
+    public event OnSkillReady SkillReady;
+    public event OnSkillInvoked SkillInvoked;
 
     public Image.FillMethod FillMethod = Image.FillMethod.Radial360;
     public Image.Type ImageType = Image.Type.Filled;
@@ -67,9 +69,9 @@ public class ButtonSkillActivator : MonoBehaviour
             Debug.LogFormat("{0} invoked", this);
 #endif
             skillReady = false;
-            if (OnSkillInvoked != null)
+            if (SkillInvoked != null)
             {
-                OnSkillInvoked();
+                SkillInvoked(ActivableSkill);
             }
         }
     }
@@ -82,9 +84,9 @@ public class ButtonSkillActivator : MonoBehaviour
             Image.fillAmount = ActivableSkill.GetCooldownPassedPercentage();
             if (Mathf.Approximately(Image.fillAmount, 1f))
             {
-                if (OnSkillReady != null && !skillReady)
+                if (SkillReady != null && !skillReady)
                 {
-                    OnSkillReady();
+                    SkillReady(ActivableSkill);
                 }
                 skillReady = true;
             }

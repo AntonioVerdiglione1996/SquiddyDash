@@ -15,6 +15,8 @@ public class Character : MonoBehaviour , IPurchaseObject
 
     public Character SkinOf;
 
+    public GameObject UltimateActivableObject;
+
     [SerializeField]
     private Purchaseable purchaseInfo = new Purchaseable();
     public IPurchaseable PurchaseInfo { get { return purchaseInfo; } }
@@ -77,6 +79,20 @@ public class Character : MonoBehaviour , IPurchaseObject
             }
         }
         return removed;
+    }
+    public void ActivateUltimateObj(Skill Skill)
+    {
+        if(UltimateActivableObject && Skill && Skill.IsMainSkill)
+        {
+            UltimateActivableObject.SetActive(true);
+        }
+    }
+    public void DeactivateUltimateObj(Skill Skill)
+    {
+        if (UltimateActivableObject && Skill && Skill.IsMainSkill)
+        {
+            UltimateActivableObject.SetActive(false);
+        }
     }
     public bool CollectAndSpawnSkills(List<Accessory> accessoriesToSpawn = null, List<int> accessoriesIndices = null, bool spawnIcons = true)
     {
@@ -173,6 +189,8 @@ public class Character : MonoBehaviour , IPurchaseObject
                     if (!skill.IsSkillAutoActivating && SkillIconUIPrefab && SkillUIHolder)
                     {
                         ButtonSkillActivator skillIcon = Instantiate<ButtonSkillActivator>(SkillIconUIPrefab, SkillUIHolder.transform);
+                        skillIcon.SkillReady += ActivateUltimateObj;
+                        skillIcon.SkillInvoked += DeactivateUltimateObj;
                         skillIcon.ActivableSkill = skill;
                         RectTransform rect = skillIcon.GetComponent<RectTransform>();
                         if (rect)
