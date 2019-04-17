@@ -35,7 +35,11 @@ public class StoringCurrentModelToSpawn : ScriptableObject
         //if the file does not exist we serialize this object for the first time.
         if (!Restore())
         {
+#if UNITY_EDITOR
             VerifyAndSave();
+#else
+            SaveToFile();
+#endif
         }
     }
     public void RemoveAccessory(EAccessoryType Type)
