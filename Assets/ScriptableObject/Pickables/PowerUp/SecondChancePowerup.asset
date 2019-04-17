@@ -14,7 +14,7 @@ MonoBehaviour:
   Describer:
     title: Second Chance
     description: 
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 2038397b1fddcc84b844264bb4c144ab, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
     material: {fileID: 0}
   ParticleAfterTriggerPrefab:

@@ -14,7 +14,7 @@ MonoBehaviour:
   Describer:
     title: Ultra Jump
     description: 
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 9160c60d3caa45f48a11dcdad1d199f0, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
     material: {fileID: 0}
   ParticleAfterTriggerPrefab:

@@ -14,7 +14,7 @@ MonoBehaviour:
   Describer:
     title: Score Increase
     description: 
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 5bda1132af804e840a736fb0de21c668, type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
     material: {fileID: 0}
   ParticleAfterTriggerPrefab:

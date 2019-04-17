@@ -13,24 +13,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - ObjPrefab:
-      Prefab: {fileID: 1232313538195260, guid: 7c3714a2a40b14843a4e172d27ffc4a0, type: 2}
+      Prefab: {fileID: 1262650549955396, guid: e34fc942d3239484d93d7df5e23d3d4a, type: 2}
       PersistentPoolInScenes: 1
     RandomSpawnLocation: 0
     SpawnChance: 0.4
     MinSpawnCount: 1
     MaxSpawnCount: 1
   - ObjPrefab:
-      Prefab: {fileID: 1679830971974766, guid: b262bd52c7241ac44a52d2cdf56b165a, type: 2}
+      Prefab: {fileID: 1071162491813416, guid: 70114d1ec3ce9e143a148f6b627ad6b2, type: 2}
       PersistentPoolInScenes: 1
     RandomSpawnLocation: 0
     SpawnChance: 0.6
     MinSpawnCount: 1
     MaxSpawnCount: 1
   - ObjPrefab:
-      Prefab: {fileID: 1795526846146356, guid: dd43880363e8d804aa0513d622f627bf, type: 2}
+      Prefab: {fileID: 1070802094838090, guid: 4391cb3043ca4a54a80b98e8b0757ec9, type: 2}
       PersistentPoolInScenes: 1
     RandomSpawnLocation: 0
-    SpawnChance: 0.4
+    SpawnChance: 1
     MinSpawnCount: 1
     MaxSpawnCount: 1
   Validate: 0
