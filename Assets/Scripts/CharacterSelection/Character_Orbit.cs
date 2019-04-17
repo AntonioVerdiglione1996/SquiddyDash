@@ -5,6 +5,7 @@ using System.Collections;
 public class Character_Orbit : MonoBehaviour
 {
     public Transform ylimit;
+    public GameObject Informer;
 
     public Transform target;
     public float distance = 5.0f;
@@ -28,11 +29,16 @@ public class Character_Orbit : MonoBehaviour
     public float x = 0.0f;
     float y = 0.0f;
 
+    private Vector3 DefaultPosition;
+    private Quaternion DefaultRotation;
+
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
+        DefaultPosition = transform.position;
+        DefaultRotation = transform.rotation;
     }
     private Vector3 GetTarget()
     {
@@ -42,6 +48,12 @@ public class Character_Orbit : MonoBehaviour
     }
     void LateUpdate()
     {
+        if(!Informer.activeSelf)
+        {
+            transform.position = DefaultPosition;
+            transform.rotation = DefaultRotation;
+            return;
+        }
         Vector3 tgt = GetTarget();
 #if UNITY_STANDALONE
         if (Input.GetMouseButton(0) && Input.mousePosition.y > ylimit.position.y)
