@@ -10,11 +10,11 @@ public class UI_ParticleSystemActivator : MonoBehaviour
 
     private void Awake()
     {
-        DisableParticles();
+        DisableParticles(null);
         if (SkillActivator)
         {
-            SkillActivator.OnSkillInvoked += DisableParticles;
-            SkillActivator.OnSkillReady += ActivateParticles;
+            SkillActivator.SkillInvoked += DisableParticles;
+            SkillActivator.SkillReady += ActivateParticles;
         }
 #if UNITY_EDITOR
         else
@@ -27,16 +27,16 @@ public class UI_ParticleSystemActivator : MonoBehaviour
     {
         if (SkillActivator)
         {
-            SkillActivator.OnSkillInvoked -= DisableParticles;
-            SkillActivator.OnSkillReady -= ActivateParticles;
+            SkillActivator.SkillInvoked -= DisableParticles;
+            SkillActivator.SkillReady -= ActivateParticles;
         }
     }
-    public void ActivateParticles()
+    public void ActivateParticles(Skill Skill)
     {
         UI_PS.enabled = true;
         UI_PS.Play();
     }
-    public void DisableParticles()
+    public void DisableParticles(Skill Skill)
     {
         UI_PS.enabled = false;
     }
