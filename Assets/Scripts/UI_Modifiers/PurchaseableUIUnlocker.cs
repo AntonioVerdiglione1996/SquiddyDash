@@ -8,9 +8,9 @@ public class PurchaseEvent : UnityEvent<PurchaseableUI> { }
 public class PurchaseableUIUnlocker : MonoBehaviour
 {
     public const string Cost = "Cost: ";
-    public const string Curr = " Currency";
-    public const string Acc = " Accessory parts";
-    public const string Skin = " Skin parts";
+    public const string Curr = "";
+    public const string Acc = "";
+    public const string Skin = "";
     public const string NoCost = " Not available";
     public PurchaseableUI Ui { get; protected set; }
     public DescriberUI DescriberUI;
